@@ -1,2 +1,1 @@
-# mintcopy
-Copy my preferred Linux Mint layout with minimal commands
+feel free to look around, you're probs here for the dotfiles if anything though
