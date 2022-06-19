@@ -1,0 +1,351 @@
+# i3 config file (v4)
+# Please see http://i3wm.org/docs/userguide.html for a complete reference!
+
+
+###################
+## Initial Setup ##
+###################
+
+# Workspace names
+# to display names or symbols instead of plain workspace numbers you can use
+# something like: set $ws1 1:mail
+#                 set $ws2 2:
+set $ws1 1
+set $ws2 2
+set $ws3 3
+set $ws4 4
+set $ws5 5
+set $ws6 6
+set $ws7 7
+set $ws8 8
+set $ws9 9
+set $ws10 10
+
+# Set mod key (Mod1=<Alt>, Mod4=<Super>)
+set $mod Mod4
+
+# Use Mouse+$mod to drag floating windows
+floating_modifier $mod
+
+# Set inner/outer gaps
+#gaps inner 14
+#gaps outer -2
+
+# Additionally, you can issue commands with the following syntax. This is useful to bind keys to changing the gap size.
+# gaps inner|outer current|all set|plus|minus <px>
+# gaps inner all set 10
+# gaps outer all plus 5
+
+# Configure border style <normal|1pixel|pixel xx|none|pixel>
+default_floating_border normal
+default_border pixel 2
+
+# Smart gaps (gaps used if only more than one container on the workspace)
+#-smart_gaps on
+
+# Smart borders (draw borders around container only if it is not the only container on this workspace) 
+# on|no_gaps (on=always activate and no_gaps=only activate if the gap size to the edge of the screen is 0)
+smart_borders on
+
+# Hide borders (probably set to show borders)
+hide_edge_borders none
+
+# Font for window titles. Will also be used by the bar unless a different font
+# is used in the bar {} block below.
+font pango:monospace 8
+
+# Require manual focus changing (for future reference)
+#focus_follows_mouse no
+
+# Color palette used for the terminal ( ~/.Xresources file )
+# Colors are gathered based on the documentation:
+# https://i3wm.org/docs/userguide.html#xresources
+# Change the variable name at the place you want to match the color
+# of your terminal like this:
+# [example]
+# If you want your bar to have the same background color as your 
+# terminal background change the line 362 from:
+# background #14191D
+# to:
+# background $term_background
+# Same logic applied to everything else.
+set_from_resource $term_background background
+set_from_resource $term_foreground foreground
+set_from_resource $term_color0     color0
+set_from_resource $term_color1     color1
+set_from_resource $term_color2     color2
+set_from_resource $term_color3     color3
+set_from_resource $term_color4     color4
+set_from_resource $term_color5     color5
+set_from_resource $term_color6     color6
+set_from_resource $term_color7     color7
+set_from_resource $term_color8     color8
+set_from_resource $term_color9     color9
+set_from_resource $term_color10    color10
+set_from_resource $term_color11    color11
+set_from_resource $term_color12    color12
+set_from_resource $term_color13    color13
+set_from_resource $term_color14    color14
+set_from_resource $term_color15    color15
+
+# Theme colors
+# class                   border  backgr. text    indic.   child_border
+  #client.focused          #556064 #556064 #80FFF9 #FDF6E3
+  #client.focused_inactive #2F3D44 #2F3D44 #1ABC9C #454948
+  #client.unfocused        #2F3D44 #2F3D44 #1ABC9C #454948
+  #client.urgent           #CB4B16 #FDF6E3 #1ABC9C #268BD2
+  #client.placeholder      #000000 #0c0c0c #ffffff #000000 
+
+  #client.background       #2B2C2B
+
+  client.focused          #FF5555 #FF5555 #FF5555 #FF5555
+  client.focused_inactive #282828 #282828 #282828 #282828
+  client.unfocused        #282828 #282828 #282828 #282828
+  client.urgent           #CB4B16 #FDF6E3 #1ABC9C #268BD2
+  client.placeholder      #000000 #0c0c0c #ffffff #000000 
+
+  client.background       #2B2C2B
+
+# Have programs open on a specific workspace
+assign [class="(?i)discord"] $ws10
+for_window [class="Spotify"] move to workspace $ws3
+assign [class="(?i)code-oss"] $ws1
+assign [class="(?i)Code"] $ws1
+
+# Have programs open as floating
+for_window [class="ConnectFourAI.py"] floating enable
+
+
+
+
+
+################################################################################################
+## sound-section - DO NOT EDIT if you wish to automatically upgrade Alsa -> Pulseaudio later! ##
+################################################################################################
+
+#exec --no-startup-id volumeicon
+#exec --no-startup-id pulseaudio
+#exec --no-startup-id pa-applet
+#bindsym $mod+Ctrl+m exec pavucontrol
+
+
+
+
+
+##########################
+## Startup Applications ##
+##########################
+
+# Autostart applications
+exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
+exec --no-startup-id nm-applet
+exec --no-startup-id xfce4-power-manager
+exec --no-startup-id pamac-tray
+exec --no-startup-id clipit
+exec --no-startup-id flameshot
+exec_always --no-startup-id ff-theme-util
+exec_always --no-startup-id fix_xcursor
+exec_always --no-startup-id $HOME/.config/polybar/launch.sh &
+
+#Load background
+#exec feh --bg-fill ~/Pictures/kemono_friends_grey_wolf_by_korusee_hue.png
+exec nitrogen --restore
+
+# Start i3bar to display a workspace bar (plus the system information i3status if available)
+#bar {
+#	#i3bar_command i3bar
+#	status_command i3status
+#	position bottom
+#
+#	bindsym button4 nop
+#	bindsym button5 nop
+#   font xft:URWGothic-Book 11
+#	strip_workspace_numbers yes
+#
+#    colors {
+#        background #222D31
+#        statusline #F9FAF9
+#        separator  #454947
+#
+#                      border  backgr. text
+#        focused_workspace  #F9FAF9 #16a085 #292F34
+#        active_workspace   #595B5B #353836 #FDF6E3
+#        inactive_workspace #595B5B #222D31 #EEE8D5
+#        binding_mode       #16a085 #2C2C2C #F9FAF9
+#        urgent_workspace   #16a085 #FDF6E3 #E5201D
+#    }
+#}
+
+#Lower mouse sensitivity, mouse id may need to be changed at some later date, check via xinput list
+exec xinput set-prop 10 "libinput Accel Speed" -0.7
+
+#Set volume to max
+exec pamixer --set-volume 100
+
+
+
+
+
+#####################
+## Set up keybinds ##
+#####################
+
+# Switch to workspace
+bindsym $mod+1 workspace $ws1
+bindsym $mod+2 workspace $ws2
+bindsym $mod+3 workspace $ws3
+bindsym $mod+4 workspace $ws4
+bindsym $mod+5 workspace $ws5
+bindsym $mod+6 workspace $ws6
+bindsym $mod+7 workspace $ws7
+bindsym $mod+8 workspace $ws8
+bindsym $mod+9 workspace $ws9
+bindsym $mod+0 workspace $ws10
+
+# Move focused container to workspace
+bindsym $mod+Shift+1 move container to workspace $ws1
+bindsym $mod+Shift+2 move container to workspace $ws2
+bindsym $mod+Shift+3 move container to workspace $ws3
+bindsym $mod+Shift+4 move container to workspace $ws4
+bindsym $mod+Shift+5 move container to workspace $ws5
+bindsym $mod+Shift+6 move container to workspace $ws6
+bindsym $mod+Shift+7 move container to workspace $ws7
+bindsym $mod+Shift+8 move container to workspace $ws8
+bindsym $mod+Shift+9 move container to workspace $ws9
+bindsym $mod+Shift+0 move container to workspace $ws10
+
+# Move to workspace with focused container
+bindsym $mod+Ctrl+1 move container to workspace $ws1; workspace $ws1
+bindsym $mod+Ctrl+2 move container to workspace $ws2; workspace $ws2
+bindsym $mod+Ctrl+3 move container to workspace $ws3; workspace $ws3
+bindsym $mod+Ctrl+4 move container to workspace $ws4; workspace $ws4
+bindsym $mod+Ctrl+5 move container to workspace $ws5; workspace $ws5
+bindsym $mod+Ctrl+6 move container to workspace $ws6; workspace $ws6
+bindsym $mod+Ctrl+7 move container to workspace $ws7; workspace $ws7
+bindsym $mod+Ctrl+8 move container to workspace $ws8; workspace $ws8
+bindsym $mod+Ctrl+9 move container to workspace $ws9; workspace $ws9
+bindsym $mod+Ctrl+0 move container to workspace $ws10; workspace $ws10
+
+# Switch to next/previous workspace
+bindsym $mod+equal workspace next
+bindsym $mod+minus workspace prev
+
+# Move focused container to next/previous workspace
+bindsym $mod+Shift+equal move container to workspace next
+bindsym $mod+Shift+minus move container to workspace prev
+
+# Move to next/previous workspace with focused container
+bindsym $mod+Ctrl+equal move container to workspace next; workspace next
+bindsym $mod+Ctrl+minus move container to workspace prev; workspace prev
+
+# Change focus
+bindsym $mod+Left focus left
+bindsym $mod+Down focus down
+bindsym $mod+Up focus up
+bindsym $mod+Right focus right
+
+# Move focused window
+bindsym $mod+Shift+Left move left
+bindsym $mod+Shift+Down move down
+bindsym $mod+Shift+Up move up
+bindsym $mod+Shift+Right move right
+
+# Split orientation
+bindsym $mod+h split h
+bindsym $mod+v split v
+
+# Resize windows outside of resize mode
+bindsym $mod+Ctrl+Right resize grow width 5 px or 5 ppt
+bindsym $mod+Ctrl+Up resize grow height 5 px or 5 ppt
+bindsym $mod+Ctrl+Down resize shrink height 5 px or 5 ppt
+bindsym $mod+Ctrl+Left resize shrink width 5 px or 5 ppt
+
+# Change focus between tiling / floating windows
+bindsym $mod+p focus mode_toggle
+
+# Toggle tiling / floating
+bindsym $mod+Shift+p floating toggle
+
+# Kill focused window
+bindsym $mod+Shift+z kill
+
+# Toggle fullscreen mode for the focused container
+bindsym $mod+f fullscreen toggle
+
+# Restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
+bindsym $mod+Shift+r restart
+
+# Reload the configuration file
+bindsym $mod+Shift+c reload
+
+# Hide/unhide i3status bar
+bindsym $mod+m bar mode toggle
+
+# Exit i3 (logs you out of your X session)
+#bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
+
+# Set shut down, restart and locking features
+bindsym $mod+Shift+BackSpace mode "$mode_system"
+set $mode_system (l)ock, (e)xit, switch_(u)ser, (s)uspend, (h)ibernate, (r)eboot, (Shift+s)hutdown
+mode "$mode_system" {
+    bindsym l exec --no-startup-id i3exit lock, mode "default"
+    bindsym s exec --no-startup-id i3exit suspend, mode "default"
+    bindsym u exec --no-startup-id i3exit switch_user, mode "default"
+    bindsym e exec --no-startup-id i3exit logout, mode "default"
+    bindsym h exec --no-startup-id i3exit hibernate, mode "default"
+    bindsym r exec --no-startup-id i3exit reboot, mode "default"
+    bindsym Shift+s exec --no-startup-id i3exit shutdown, mode "default"
+
+    # exit system mode: "Enter" or "Escape"
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+}
+
+# Start a terminal
+bindsym $mod+Return exec gnome-terminal
+
+# Start dmenu with specified colors
+bindsym $mod+space exec dmenu_run -nb '#282C34' -sf '#61AFEF' -sb '#3E4451' -nf '#bbbbbb'
+
+# Turn on EQ
+bindsym $mod+Shift+o exec easyeffects --gapplication-service
+
+# Turn off EQ
+bindsym $mod+Shift+l exec easyeffects -q
+
+
+# Update background if necessary
+#bindsym $mod+Shift+b exec feh --bg-fill ~/Pictures/kemono_friends_grey_wolf_by_korusee_hue.png
+bindsym $mod+Shift+b exec nitrogen --restore
+
+# Update mouse if necessary
+bindsym $mod+Shift+m exec xinput set-prop 10 "libinput Accel Speed" -0.7
+
+# Open applications
+bindsym $mod+Mod1+m exec gnome-terminal --command 'alsamixer'
+bindsym $mod+Mod1+f exec firefox
+bindsym $mod+Mod1+n exec nemo
+bindsym $mod+Mod1+d exec discord
+bindsym $mod+Mod1+s exec spotify
+bindsym $mod+Mod1+b exec brave
+bindsym $mod+Mod1+l exec librewolf
+bindsym $mod+Mod1+v exec code
+bindysm $mod+Mod1+u exec gnome-terminal --command 'htop'
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
