@@ -6,7 +6,8 @@
 
 # terminal
 super + Return
-	xfce4-terminal
+	xfce4-terminal &
+#	alacritty &
 
 # dmenu
 super + space
@@ -20,11 +21,11 @@ super + alt + n
 
 # librewolf
 super + alt + l
-	librewolf
+	librewolf &
 
 # code
 super + alt + v
-	code
+	vscodium &
 
 # update background
 super + shift + b
@@ -39,7 +40,7 @@ super + shift + b
 
 # shutdown
 super + F1
-#	 shutdown now
+#	shutdown now
 	systemctl poweroff
 
 # reboot
@@ -129,7 +130,7 @@ super + shift + {Left,Down,Up,Right}
 #	bspc node -s {west,south,north,east}
 
 # preselect the direction
-super + {j,k,i,l}
+super + {h,j,k,l}
 	bspc node -p {west,south,north,east}
 
 # cancel the preselection for the focused node

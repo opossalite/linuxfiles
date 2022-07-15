@@ -51,10 +51,12 @@ _query_nodes() {
 receptacle="$(_query_nodes 'any.leaf.!window')"
 
 # This regulates the behaviour documented in the description.
-if [ -n "$(_query_nodes "${dir}.!floating")" ]; then
+if [ -n "$(_query_nodes "${dir}.!floating")" ]; then #puts swapping as higher priority over opening new slot, keep on
 	bspc node -s "$dir"
-elif [ -n "$receptacle" ]; then
+elif [ -n "$receptacle" ]; then #the behavior to move window into the newly opened slot
 	bspc node focused -n "$receptacle" --follow
-else
+else #creates a new split
 	bspc node @/ -p "$dir" -i && bspc node -n "$receptacle" --follow
+	#bspc node @/ -p "$dir" -i
+	#bspc node -n "$receptacle" --follow
 fi

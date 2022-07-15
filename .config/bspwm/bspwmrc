@@ -34,3 +34,5 @@ bspc config focus_follows_pointer true
 
 bspc config ignore_ewmh_focus true
 bspc rule -a code-oss desktop=1
+bspc rule -a Code desktop=1
+bspc rule -a VSCodium desktop=1
