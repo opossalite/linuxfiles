@@ -1,0 +1,33 @@
+acpi
+	Battery info
+alsamixer
+	Volume control TUI
+amixer
+	Volume control CONSOLE
+awk
+	Text cutting and partitioning
+iwctl
+	Network configuration
+pacman -Scc
+	Clear all cache (omit second c to clear uninstalled)
+pacman -Ss
+	Search the online repo
+pacman -Q
+	Search locally installed programs
+pacman -Qtdq | pacman -Rns -
+	Remove all orphans
+pavucontrol
+	Volume control GUI
+pgrep
+	Check if a process is running
+rm -R /var/lib/pacman/sync
+	Fixes pacman when getting "error: GPGME error: No data"
+whereis
+	Self explanatory
+
+
+Connecting to a network:
+iwctl
+station list
+station wlan0 get-networks
+station wlan0 connect _

@@ -6,18 +6,26 @@
 
 # terminal
 super + Return
-	xfce4-terminal &
-#	alacritty &
+#	xfce4-terminal &
+	alacritty &
 
 # dmenu
 super + space
-	dmenu_run -nb '#282828' -sf '#FF5555' -sb '#464646' -nf '#bbbbbb'
+	dmenu_run -nb '#282828' -sf '#2288FF' -sb '#464646' -nf '#bbbbbb' &
 #			  main back     color text	  higlight box	default text
 #	dmenu_run -nb '#282C34' -sf '#61AFEF' -sb '#3E4451' -nf '#bbbbbb'
 
 # nemo
 super + alt + n
-	nemo
+	nemo &
+
+# firefox
+super + alt + f
+	firefox &
+
+# brave
+super + alt + b
+	brave &
 
 # librewolf
 super + alt + l
@@ -25,11 +33,84 @@ super + alt + l
 
 # code
 super + alt + v
-	vscodium &
+#	vscodium &
+	code &
 
-# update background
+# discord
+super + alt + d
+	discord &
+
+
+
+
+#
+# Restart Applications
+#
+
+# nitrogen
 super + shift + b
-    nitrogen --restore
+	nitrogen --restore &
+
+# polybar
+super + shift + p
+	./.config/polybar/launch.sh $
+
+
+
+
+#
+# Brightness
+#
+
+# increase
+super + KP_Up
+	brightnessctl set 10%+ &
+
+super + shift + KP_Up
+	brightnessctl set 1%+ &
+
+# decrease
+super + KP_Down
+	brightnessctl set 10%- &
+
+super + shift + KP_Down
+	brightnessctl set 1%- &
+
+# night mode intensities (6500 off)
+super + ctrl + KP_Right
+	redshift -P -O 1500 &
+
+super + ctrl + KP_Left
+	redshift -P -O 2500 &
+
+super + ctrl + KP_Up
+	redshift -P -O 3500 &
+
+super + ctrl + KP_Down
+	redshift -P -O 6500 &
+
+
+
+
+#
+# Audio
+#
+
+# increase
+XF86AudioRaiseVolume
+	amixer -M set Master 5%+ &
+shift + XF86AudioRaiseVolume
+	amixer -M set Master 1%+ &
+
+# decrease
+XF86AudioLowerVolume
+	amixer -M set Master 5%- &
+shift + XF86AudioLowerVolume
+	amixer -M set Master 1%- &
+
+# toggle mute
+XF86AudioMute
+	amixer -M set Master toggle &
 
 
 
@@ -121,20 +202,20 @@ super + y
 # focus the node in the given direction
 #super + {_,shift + }{Left,Down,Up,Right}
 #	bspc node -{f,s} {west,south,north,east}
-super + {Left,Down,Up,Right}
+super + {h,j,k,l}
 	bspc node -f {west,south,north,east}
 
 # move the node in the given direction
-super + shift + {Left,Down,Up,Right}
+super + shift + {h,j,k,l}
 	$HOME/.config/sxhkd/bspwm_smart_move {west,south,north,east}
 #	bspc node -s {west,south,north,east}
 
 # preselect the direction
-super + {h,j,k,l}
+super + {n,m,comma,period}
 	bspc node -p {west,south,north,east}
 
 # cancel the preselection for the focused node
-super + u
+super + slash
 	bspc node -p cancel
 
 # expand a window by moving one of its side outward
