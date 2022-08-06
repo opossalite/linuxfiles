@@ -6,6 +6,8 @@ amixer
 	Volume control CONSOLE
 awk
 	Text cutting and partitioning
+git remote add origin <>
+	Syncs local repo to the specified repo
 iwctl
 	Network configuration
 pacman -Scc
