@@ -11,13 +11,12 @@ map gc cd ~/.config
 map r
 map rr reload
 map rn rename
-#map <enter> open
 map ot ${{
     xfce4-terminal --working-directory=$PWD &
     #alacritty --working-directory=$PWD &
 }}
 map ov ${{
-    vscodium $PWD &
+    code $PWD &
 }}
 
 # interpreter for shell commands

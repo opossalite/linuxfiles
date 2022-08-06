@@ -53,7 +53,7 @@ super + shift + b
 
 # polybar
 super + shift + p
-	./.config/polybar/launch.sh $
+	./.config/polybar/launch.sh $ &
 
 
 
