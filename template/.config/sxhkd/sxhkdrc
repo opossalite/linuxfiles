@@ -37,6 +37,10 @@ super + alt + v
 # discord
 super + alt + d
 	discord &
+	
+# spotify
+super + alt + s
+	spotify &
 
 # lf
 super + alt + m
