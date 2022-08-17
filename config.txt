@@ -1,12 +1,10 @@
 # --- OPTIONS ---
+
 # oni, cobalt, abyss
 THEME {oni}
 
 # desktop, laptop, virtual
-SYSTEM {laptop}
-
-# any terminal of choice
-TERMINAL {alacritty}
+SYSTEM {virtual}
 
 # the OS you're on (will only matter if set to arcolinux)
 OS {arcolinux}
@@ -14,6 +12,7 @@ OS {arcolinux}
 # monitor names
 MON_1 {DisplayPort-2}
 MON_2 {HDMI-A-0}
+
 
 # --- THEME ---
 
@@ -83,13 +82,22 @@ POLY_INTERNET {eth}
 end
 
 if SYSTEM {virtual}
-exclude ".config/alacritty"
 TERMINAL {xfce4-terminal}
 else
-exclude ".config/xfce4"
 TERMINAL {alacritty}
 end
 
 if not OS {arcolinux}
 exclude ".config/neofetch"
+end
+
+
+# --- TERMINAL ---
+
+if not TERMINAL {alacritty}
+exclude ".config/alacritty"
+end
+
+if not TERMINAL {xfce4-terminal}
+exclude ".config/xfce4"
 end
