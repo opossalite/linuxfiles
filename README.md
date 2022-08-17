@@ -1,2 +1,2 @@
-# Terrior's Linux Dotfiles
+## Terrior's Linux Dotfiles
 Welcome to my linux dotfiles repo. This repo uses my personal project, Templater, to generate a set of config files. Simply configure config.txt according to the instructions defined in my Templater repo, and run templater.py. This will generate your configs in the output directory (this will be created after the file is run). For non-dotfile configuration, check out the wallpapers and themes folders (themes folder will contain info about which wallpaper to select for a given theme).
