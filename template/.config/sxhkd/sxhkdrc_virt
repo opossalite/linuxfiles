@@ -6,12 +6,12 @@
 
 # terminal
 super + Return
-#	xfce4-terminal &
-	alacritty &
+	xfce4-terminal &
+#	alacritty &
 
 # dmenu
 super + space
-	dmenu_run -nb '#282828' -sf '#2288FF' -sb '#464646' -nf '#bbbbbb' &
+	dmenu_run -nb '#282828' -sf '#FF5555' -sb '#464646' -nf '#bbbbbb' &
 #			  main back     color text	  higlight box	default text
 #	dmenu_run -nb '#282C34' -sf '#61AFEF' -sb '#3E4451' -nf '#bbbbbb'
 
@@ -19,32 +19,17 @@ super + space
 super + alt + n
 	nemo &
 
-# firefox
-super + alt + f
-	firefox &
-
-# brave
-super + alt + b
-	brave &
-
 # librewolf
 super + alt + l
 	librewolf &
 
 # code
 super + alt + v
-#	vscodium &
-	code &
-
-# discord
-super + alt + d
-	discord &
+	vscodium &
 
 # lf
 super + alt + m
 	xfce4-terminal --command lf &
-
-
 
 
 #
@@ -58,63 +43,6 @@ super + shift + b
 # polybar
 super + shift + p
 	./.config/polybar/launch.sh $ &
-
-
-
-
-#
-# Brightness
-#
-
-# increase
-super + KP_Up
-	brightnessctl set 10%+ &
-
-super + shift + KP_Up
-	brightnessctl set 1%+ &
-
-# decrease
-super + KP_Down
-	brightnessctl set 10%- &
-
-super + shift + KP_Down
-	brightnessctl set 1%- &
-
-# night mode intensities (6500 off)
-super + ctrl + KP_Right
-	redshift -P -O 1500 &
-
-super + ctrl + KP_Left
-	redshift -P -O 2500 &
-
-super + ctrl + KP_Up
-	redshift -P -O 3500 &
-
-super + ctrl + KP_Down
-	redshift -P -O 6500 &
-
-
-
-
-#
-# Audio
-#
-
-# increase
-XF86AudioRaiseVolume
-	amixer -M set Master 5%+ &
-shift + XF86AudioRaiseVolume
-	amixer -M set Master 1%+ &
-
-# decrease
-XF86AudioLowerVolume
-	amixer -M set Master 5%- &
-shift + XF86AudioLowerVolume
-	amixer -M set Master 1%- &
-
-# toggle mute
-XF86AudioMute
-	amixer -M set Master toggle &
 
 
 
