@@ -216,7 +216,7 @@ colors:
   cursor:
   #  text: CellBackground
   #  cursor: CellForeground
-    cursor: '#5fafff'
+    cursor: '$t{ALAC_CURSOR}'
 
   # Vi mode cursor colors
   #
