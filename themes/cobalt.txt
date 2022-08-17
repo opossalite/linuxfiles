@@ -1,0 +1,4 @@
+Wallpaper: blue.png	NOTE: wallpaper was edited, couldn't find original artist
+GTK Theme: Qogir-Dark 
+GTK Icons: Sardi-Ghost-Flexible-Arc
+

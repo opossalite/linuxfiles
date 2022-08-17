@@ -1,0 +1,3 @@
+Wallpaper: Dark_Abyss_by_darkness.jpg
+GTK Theme:
+GTK Icons:

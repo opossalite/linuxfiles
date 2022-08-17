@@ -1,4 +1,0 @@
-Wallpaper by Noelesz, wallpaper was edited
-GTK Theme: https://github.com/NillyTheL0L/razor-sharp
-GTK Icons: https://github.com/Maxattax97/papirus-icon-theme
-

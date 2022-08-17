@@ -1,0 +1,4 @@
+Wallpaper: noelesz.png	NOTE: wallpaper was edited
+GTK Theme: razor-sharp	https://github.com/NillyTheL0L/razor-sharp
+GTK Icons: Papirus-Grey https://github.com/Maxattax97/papirus-icon-theme
+
