@@ -1,0 +1,18 @@
+alias la='ls -a --color=auto'
+alias ls='ls --color=auto'
+alias py=python
+$t{BATTERY}
+
+. "$HOME/.cargo/env"
+[ -f "/home/terrior/.ghcup/env" ] && source "/home/terrior/.ghcup/env" # ghcup-env
+eval "$(thefuck --alias)"
+
+RESET="\[$(tput sgr0)\]"
+BOLD="\[$(tput bold)\]"
+WHITE="\[$(tput setaf 15)\]"
+BRACKET="\[$(tput setaf $t{BRACKET})\]"
+USER="\[$(tput setaf $t{USER})\]"
+HOST="\[$(tput setaf $t{HOST})\]"
+DIR="\[$(tput setaf $t{DIR})\]"
+
+PS1="${BOLD}${BRACKET}[${USER}\u${HOST}@\h ${DIR}\w${BRACKET}]${WHITE}$ ${RESET}${WHITE}"

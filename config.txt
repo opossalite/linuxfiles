@@ -55,18 +55,21 @@ end
 # --- SYSTEM INFO ---
 
 if SYSTEM {desktop}
-BSPWM_WORKSPACES {bspc monitor DisplayPort-2 -d 1 2 3 4 5 6 7
-bspc monitor HDMI-A-0 -d 8 9 0}
+BSPWM_WORKSPACES {bspc monitor $t{MON_1} -d 1 2 3 4 5 6 7
+bspc monitor $t{MON_2} -d 8 9 0}
 BSPWM_POLYBAR {polybar main &
 polybar secondary &}
 POLY_LINE {3pt}
-POLY_MON {monitor = DisplayPort-2
+POLY_MON {monitor = $t{MON_1}
 }
 POLY_MODULES {audio _ _ }
+POLY_LAUNCH {polybar main &
+polybar secondary &}
 else
 BSPWM_WORKSPACES {bspc monitor -d 1 2 3 4 5 6 7 8 9 0}
 BSPWM_POLYBAR {polybar &}
 POLY_LINE {4pt}
+POLY_LAUNCH {polybar main &}
 end
 
 if SYSTEM {laptop}
