@@ -31,6 +31,7 @@ POLY_PRIMBOX {#FF5555}
 POLY_SEC {#D24545}
 POLY_DISABLED {#707880}
 SX_DMENU {-nb '#282828' -sf '#FF5555' -sb '#464646' -nf '#bbbbbb'}
+ALAC_CURSOR {#ff5555}
 end
 
 if THEME {cobalt}
@@ -48,6 +49,7 @@ POLY_PRIMBOX {#1843F2}
 POLY_SEC {#1843F2}
 POLY_DISABLED {#6688AA}
 SX_DMENU {-nb '#282828' -sf '#2288FF' -sb '#464646' -nf '#bbbbbb'}
+ALAC_CURSOR {#5fafff}
 end
 
 
