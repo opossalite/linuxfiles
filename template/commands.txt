@@ -6,6 +6,8 @@ amixer
 	Volume control CONSOLE
 awk
 	Text cutting and partitioning
+chmod u+x <>
+        Give a file executable permissions
 git remote add origin <>
 	Syncs local repo to the specified repo
 git submodule update --recursive --remote
@@ -26,10 +28,17 @@ pgrep
 	Check if a process is running
 rm -R /var/lib/pacman/sync
 	Fixes pacman when getting "error: GPGME error: No data"
+steam steam://rungameid/<id>
+        Runs the steam game whose id was provided (to get the id go into steam, the game, settings, updates, app id)
 xsel
 	If piped into, will put text into the clipboard. Use -s for selection (middle mouse) or -b for clipboard (ctrl+v)
 whereis
 	Self explanatory
+
+
+FILES
+/etc/environment
+        Contains environment variables
 
 
 Connecting to a network:
