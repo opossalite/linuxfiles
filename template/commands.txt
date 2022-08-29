@@ -36,9 +36,12 @@ whereis
 	Self explanatory
 
 
+
 FILES
 /etc/environment
         Contains environment variables
+/etc/greetd/config.toml
+	Config for greetd
 
 
 Connecting to a network:
