@@ -14,6 +14,8 @@ git submodule update --recursive --remote
 	Updates all submodules in a git directory
 iwctl
 	Network configuration
+mount -t ntfs-3g /dev/nvme0n1p2 /mnt/ntfs
+        Mounts an NTFS partition to the specified location
 pacman -Scc
 	Clear all cache (omit second c to clear uninstalled)
 pacman -Ss
