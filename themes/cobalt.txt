@@ -1,4 +1,5 @@
-Wallpaper: blue.png	NOTE: wallpaper was edited, couldn't find original artist
-GTK Theme: Qogir-Dark 
-GTK Icons: Sardi-Ghost-Flexible-Arc
+Wallpaper:  blue.png    NOTE: wallpaper was edited, couldn't find original artist
+            Gharliera_Cyberpunk2_blue
+GTK Theme:  Qogir-Dark 
+GTK Icons:  Sardi-Ghost-Flexible-Arc
 
