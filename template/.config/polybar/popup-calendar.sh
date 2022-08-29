@@ -1,6 +1,6 @@
 #!/bin/sh
 
-BAR_HEIGHT=20  # polybar height
+BAR_HEIGHT=$t{POLY_HEIGHT}  # polybar height
 BORDER_SIZE=2  # border size from your wm settings
 YAD_WIDTH=222  # 222 is minimum possible value
 YAD_HEIGHT=193 # 193 is minimum possible value
@@ -21,10 +21,10 @@ case "$1" in --popup)
     eval "$(xdotool getdisplaygeometry --shell)" #doesn't work for mult monitors
 
     if [ $X -gt 1920 ]; then
-	: $((pos_x = WIDTH - YAD_WIDTH - 49)) #second monitor
+	: $((pos_x = WIDTH - YAD_WIDTH - BAR_HEIGHT - 29)) #second monitor
 # 	: $(dunstify "gt $X")
     else
-	: $((pos_x = WIDTH - YAD_WIDTH - 48)) #main monitor
+	: $((pos_x = WIDTH - YAD_WIDTH - BAR_HEIGHT - 28)) #main monitor
 #	: $(dunstify "lt $X")
     fi
     $((pos_y = HEIGHT - YAD_HEIGHT - 31))
