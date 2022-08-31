@@ -50,6 +50,7 @@ FILES
 	Config for greetd
 
 
+
 Connecting to a network:
 iwctl
 station list
