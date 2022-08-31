@@ -21,13 +21,13 @@ case "$1" in --popup)
     eval "$(xdotool getdisplaygeometry --shell)" #doesn't work for mult monitors
 
     if [ $X -gt 1920 ]; then
-	: $((pos_x = WIDTH - YAD_WIDTH - BAR_HEIGHT - 29)) #second monitor
+	: $((pos_x = WIDTH - YAD_WIDTH - 49)) #second monitor
 # 	: $(dunstify "gt $X")
     else
-	: $((pos_x = WIDTH - YAD_WIDTH - BAR_HEIGHT - 28)) #main monitor
+	: $((pos_x = WIDTH - YAD_WIDTH - 48)) #main monitor
 #	: $(dunstify "lt $X")
     fi
-    $((pos_y = HEIGHT - YAD_HEIGHT - 31))
+    $((pos_y = HEIGHT - YAD_HEIGHT - BAR_HEIGHT - 11))
 
     yad --calendar --undecorated --fixed --close-on-unfocus --no-buttons \
         --width="$YAD_WIDTH" --height="$YAD_HEIGHT" --posx="$pos_x" --posy="$pos_y" \

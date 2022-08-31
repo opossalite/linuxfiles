@@ -1,8 +1,6 @@
 #! /bin/sh
 
 pgrep -x sxhkd > /dev/null || sxhkd &
-picom -b &
-nitrogen --restore &
 
 $t{BSPWM_WORKSPACES}
 
@@ -33,3 +31,5 @@ bspc rule -a code-oss desktop=1
 bspc rule -a Code desktop=1
 bspc rule -a VSCodium desktop=1
 bspc rule -a discord desktop=8
+bspc rule -a spotify desktop=9
+bspc rule -a Spotify desktop=9

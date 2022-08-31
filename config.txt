@@ -4,7 +4,7 @@
 THEME {oni}
 
 # desktop, laptop, virtual
-SYSTEM {virtual}
+SYSTEM {desktop}
 
 # the OS you're on (will only matter if set to arcolinux)
 OS {arcolinux}
@@ -13,6 +13,10 @@ OS {arcolinux}
 MON_1 {DisplayPort-2}
 MON_2 {HDMI-A-0}
 
+# exlude some checks
+exclude_check ".bashrc_sudo"
+exclude_check ".bashrc-personal"
+exclude_check "mimeapps.list"
 
 # --- THEME ---
 
@@ -46,7 +50,7 @@ POLY_BACK {#FF1B1326}
 POLY_BACKALT {#464646}
 POLY_PRIM {#2288FF}
 POLY_PRIMBOX {#1843F2}
-POLY_SEC {#1843F2}
+POLY_SEC {#5FAFFF}
 POLY_DISABLED {#6688AA}
 SX_DMENU {-nb '#282828' -sf '#2288FF' -sb '#464646' -nf '#bbbbbb'}
 ALAC_CURSOR {#5fafff}
@@ -66,20 +70,22 @@ POLY_MON {monitor = $t{MON_1}
 POLY_MODULES {audio _ _ }
 POLY_LAUNCH {polybar main &
 polybar secondary &}
+ALAC_FONT_SIZE {9.0}
 else
 BSPWM_WORKSPACES {bspc monitor -d 1 2 3 4 5 6 7 8 9 0}
 BSPWM_POLYBAR {polybar &}
 POLY_LINE {4pt}
 POLY_LAUNCH {polybar main &}
+ALAC_FONT_SIZE {8.0}
 end
 
 if SYSTEM {laptop}
 BATTERY {alias battery="acpi"}
-POLY_HEIGHT {25pt}
+POLY_HEIGHT {25}
 POLY_MODULES {audio _ _ battery _ _ }
 POLY_INTERNET {wlan}
 else
-POLY_HEIGHT {20pt}
+POLY_HEIGHT {20}
 POLY_INTERNET {eth}
 end
 

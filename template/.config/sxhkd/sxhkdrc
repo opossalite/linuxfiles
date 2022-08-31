@@ -37,14 +37,20 @@ super + alt + v
 # discord
 super + alt + d
 	discord &
-	
-# spotify
-super + alt + s
-	spotify &
 
 # lf
 super + alt + m
 	$t{TERMINAL} --command lf &
+
+# spotify
+super + alt + s
+	spotify &
+
+# steam
+super + alt + t
+	steam &
+
+
 
 
 #
@@ -58,6 +64,10 @@ super + shift + b
 # polybar
 super + shift + p
 	./.config/polybar/launch.sh $ &
+
+# restart sxhkd
+super + shift + t
+	pkill -USR1 -x sxhkd
 
 
 
@@ -131,9 +141,36 @@ super + F1
 super + F2
 	systemctl reboot
 
+
+
+
+
+
+###
+### BSPWM
+###
+
+
+
+
+#
+# Miscellaneous
+#
+
+# restart bspwm
+super + shift + r
+	bspc wm -r
+
 # logout
 super + F3
 	bspc quit
+
+
+
+
+#	if [ "$(wmctrl -m | grep Name | awk '{print $2}')" = "bspwm" ]; then \
+#        exit 0 \
+#    fi
 
 
 
@@ -234,20 +271,3 @@ super + ctrl + shift + {Left,Down,Up,Right}
 # alternate between the tiled and monocle layout
 super + m
 	bspc desktop -l next
-
-
-
-
-#
-# Configs
-#
-
-# restart bspwm
-super + shift + r
-	bspc wm -r
-
-# restart sxhkd
-super + shift + t
-	pkill -USR1 -x sxhkd
-
-

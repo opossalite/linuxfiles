@@ -5,16 +5,17 @@ set ignorecase true
 # shortcuts
 map gp cd ~/Programming
 map gc cd ~/.config
+map gu cd ~/Uni
 
 # keymaps
 map r
 map rr reload
 map rn rename
 map ot ${{
-    $t{TERMINAL} --working-directory=$PWD &
+    nohup $t{TERMINAL} --working-directory=$PWD &
 }}
 map ov ${{
-    code $PWD &
+    nohup code $PWD &
 }}
 
 # interpreter for shell commands
