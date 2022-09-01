@@ -3,4 +3,4 @@ Welcome to my linux dotfiles repo. This repo uses my personal project, Templater
 
 To download this repo and generate dotfiles, use: 
 
-    git clone --recursive.
+    git clone --recursive
