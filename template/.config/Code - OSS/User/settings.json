@@ -42,6 +42,7 @@
     "editor.fontFamily": "Liberation Mono",
     "vscode-neovim.mouseSelectionStartVisualMode": true,
     "vscode-neovim.neovimExecutablePaths.linux": "/usr/bin/nvim",
-    "workbench.enableExperiments": false
+    "workbench.enableExperiments": false,
+    "editor.fontSize": $t{CODE_SIZE}
 }
 
