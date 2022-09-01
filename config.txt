@@ -78,7 +78,7 @@ CAL_OFFSET_W2Y {11}
 CODE_SIZE {13}
 else
 BSPWM_WORKSPACES {bspc monitor -d 1 2 3 4 5 6 7 8 9 0}
-BSPWM_POLYBAR {polybar &}
+BSPWM_POLYBAR {polybar main &}
 POLY_LINE {4pt}
 POLY_LAUNCH {polybar main &}
 ALAC_FONT_SIZE {8.0}
