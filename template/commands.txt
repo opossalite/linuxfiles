@@ -52,6 +52,8 @@ FILES
     Contains environment variables
 /etc/greetd/config.toml
 	Config for greetd
+/etc/systemd/logind.conf.d/*.conf
+	Set HandleLidSwitch=suspend to suspend laptop upon closing
 
 
 

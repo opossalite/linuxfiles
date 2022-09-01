@@ -1,10 +1,10 @@
 # --- OPTIONS ---
 
 # oni, cobalt, abyss
-THEME {oni}
+THEME {cobalt}
 
 # desktop, laptop, virtual
-SYSTEM {desktop}
+SYSTEM {laptop}
 
 # the OS you're on (will only matter if set to arcolinux)
 OS {arcolinux}

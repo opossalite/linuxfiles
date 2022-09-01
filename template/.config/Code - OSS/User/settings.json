@@ -44,3 +44,4 @@
     "vscode-neovim.neovimExecutablePaths.linux": "/usr/bin/nvim",
     "workbench.enableExperiments": false
 }
+
