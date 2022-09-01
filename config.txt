@@ -71,6 +71,10 @@ POLY_MODULES {audio _ _ }
 POLY_LAUNCH {polybar main &
 polybar secondary &}
 ALAC_FONT_SIZE {9.0}
+CAL_OFFSET_W1X {48}
+CAL_OFFSET_W1Y {10}
+CAL_OFFSET_W2X {49}
+CAL_OFFSET_W2Y {11}
 else
 BSPWM_WORKSPACES {bspc monitor -d 1 2 3 4 5 6 7 8 9 0}
 BSPWM_POLYBAR {polybar &}
@@ -84,9 +88,14 @@ BATTERY {alias battery="acpi"}
 POLY_HEIGHT {25}
 POLY_MODULES {audio _ _ battery _ _ }
 POLY_INTERNET {wlan}
+WINTERFACE {wlan0}
+POLY_PADDING {1.3}
+CAL_OFFSET_W1X {112}
+CAL_OFFSET_W1Y {28}
 else
 POLY_HEIGHT {20}
 POLY_INTERNET {eth}
+POLY_PADDING {1}
 end
 
 if SYSTEM {virtual}
