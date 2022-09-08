@@ -17,6 +17,9 @@ map ot ${{
 map ov ${{
     nohup code $PWD &
 }}
+map or ${{
+    nohup rider $PWD &
+}}
 
 # interpreter for shell commands
 set shell sh

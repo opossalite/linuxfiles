@@ -1,5 +1,8 @@
 #! /bin/sh
 
+if [ -f $HOME/.autorun ]; then
+	. $HOME/.autorun
+fi
 pgrep -x sxhkd > /dev/null || sxhkd &
 
 $t{BSPWM_WORKSPACES}

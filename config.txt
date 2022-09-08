@@ -17,6 +17,7 @@ MON_2 {HDMI-A-0}
 exclude_check ".bashrc_sudo"
 exclude_check ".bashrc-personal"
 exclude_check "mimeapps.list"
+exclude_check ".autorun"
 
 # --- THEME ---
 

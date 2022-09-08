@@ -10,6 +10,8 @@ chmod u+x <>
     Give a file executable permissions
 git remote add origin <>
 	Syncs local repo to the specified repo
+git remote set-url origin <>
+	Changes a git url, useful for switching between https and ssh
 git submodule init
 	Downloads the submodules
 git submodule foreach git pull origin main
