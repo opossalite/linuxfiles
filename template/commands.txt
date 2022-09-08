@@ -36,8 +36,10 @@ pgrep
 	Check if a process is running
 rm -R /var/lib/pacman/sync
 	Fixes pacman when getting "error: GPGME error: No data"
+ssh-keygen
+	Generates a new RSA pair, in ~/.ssh/id_rsa.pub
 steam steam://rungameid/<id>
-    Runs the steam game whose id was provided (to get the id go into steam, the game, settings, updates, app id)
+	Runs the steam game whose id was provided (to get the id go into steam, the game, settings, updates, app id)
 xev
 	Returns info about keyboard keys clicked
 xprop
