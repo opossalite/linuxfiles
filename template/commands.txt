@@ -7,7 +7,7 @@ amixer
 awk
 	Text cutting and partitioning
 chmod u+x <>
-    Give a file executable permissions
+	Give a file executable permissions
 git remote add origin <>
 	Syncs local repo to the specified repo
 git remote set-url origin <>
