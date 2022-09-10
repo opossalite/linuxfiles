@@ -86,10 +86,12 @@ keys = [
     # Split = all windows displayed
     # Unsplit = 1 window displayed, like Max layout, but still with
     # multiple stack panes
-    
     Key([mod, "shift"], "Return", lazy.layout.toggle_split(), desc="Toggle between split and unsplit sides of stack"),
-    #Open programs
-    
+
+    # Toggle between different layouts as defined below
+    Key([mod], "Tab", lazy.next_layout(), desc="Toggle between layouts"),
+
+    # Open programs
     Key([mod], "Return", lazy.spawn(terminal), desc="Launch terminal"),
     Key([mod], "space", lazy.spawn("dmenu_run -nb '#282828' -sf '#FF5555' -sb '#464646' -nf '#bbbbbb'"), desc="Run dmenu"),
     Key([mod, alt], "n", lazy.spawn("nemo"), desc="Run nemo"),
@@ -102,11 +104,36 @@ keys = [
     Key([mod, alt], "s", lazy.spawn("spotify"), desc="Run spotify"),
     Key([mod, alt], "t", lazy.spawn("steam"), desc="Run steam"),
     
-    # Toggle between different layouts as defined below
-    Key([mod], "Tab", lazy.next_layout(), desc="Toggle between layouts"),
-    Key([mod, "shift"], "z", lazy.window.kill(), desc="Kill focused window"),
+    # Restart Applications
+    Key([mod, "shift"], "b", lazy.spawn("nitrogen --restore"), desc="Restart background"),
+    #Key([mod, "shift"], "p", lazy.spawn("./.config/polybar/launch.sh"), desc="Restart polybar"),
     Key([mod, "shift"], "r", lazy.reload_config(), desc="Reload the config"),
-    Key([mod], "F3", lazy.shutdown(), desc="Shutdown Qtile"),
+
+    # Lighting
+    Key([mod], "KP_Up", lazy.spawn("brightnessctl set 10%+"), desc="Brightness up"),
+    Key([mod, "shift"], "KP_Up", lazy.spawn("brightnessctl set 1%+"), desc="Brightness slight up"),
+    Key([mod], "KP_Down", lazy.spawn("brightnessctl set 10%-"), desc="Brightness down"),
+    Key([mod, "shift"], "KP_Down", lazy.spawn("brightnessctl set 1%-"), desc="Brightness slight down"),
+    Key([mod, "control"], "KP_Down", lazy.spawn("redshift -P -O 6500"), desc="Redshift 0"),
+    Key([mod, "control"], "KP_Up", lazy.spawn("redshift -P -O 3500"), desc="Redshift 1"),
+    Key([mod, "control"], "KP_Left", lazy.spawn("redshift -P -O 2500"), desc="Redshift 2"),
+    Key([mod, "control"], "KP_Right", lazy.spawn("redshift -P -O 1500"), desc="Redshift 3"),
+
+    Key([], "XF86AudioRaiseVolume", lazy.spawn("amixer -M set Master 5%+"), desc="Volume up"),
+    Key(["shift"], "XF86AudioRaiseVolume", lazy.spawn("amixer -M set Master 1%+"), desc="Volume slight up"),
+    Key([], "XF86AudioLowerVolume", lazy.spawn("amixer -M set Master 5%-"), desc="Volume down"),
+    Key(["shift"], "XF86AudioLowerVolume", lazy.spawn("amixer -M set Master 1%-"), desc="Volume slight down"),
+    Key([], "XF86AudioMute", lazy.spawn("amixer -M set Master toggle"), desc="Volume toggle mute"),
+
+    # Power
+    Key([mod], "F1", lazy.spawn("systemctl shutoff"), desc="Shutdown"),
+    Key([mod], "F2", lazy.spawn("systemctl reboot"), desc="Restart"),
+    Key([mod], "F3", lazy.shutdown(), desc="Logout / Shutdown Qtile"),
+
+    # Close window
+    Key([mod, "shift"], "z", lazy.window.kill(), desc="Kill focused window"),
+
+    #Spawn prompt
     Key([mod], "r", lazy.spawncmd(), desc="Spawn a command using a prompt widget"),
     
     # Miscellaneous
@@ -129,15 +156,15 @@ for i in groups:
             ),
             # mod1 + shift + letter of group = switch to & move focused window to group
             Key(
-                [mod, "shift"],
+                [mod, "control"],
                 i.name,
                 lazy.window.togroup(i.name, switch_group=True),
                 desc="Switch to & move focused window to group {}".format(i.name),
             ),
             # Or, use below if you prefer not to switch to that group.
-            # # mod1 + shift + letter of group = move focused window to group
-            # Key([mod, "shift"], i.name, lazy.window.togroup(i.name),
-            #     desc="move focused window to group {}".format(i.name)),
+            # mod1 + shift + letter of group = move focused window to group
+            Key([mod, "shift"], i.name, lazy.window.togroup(i.name),
+                desc="Move focused window to group {}".format(i.name)),
         ]
     )
 
@@ -146,13 +173,13 @@ layouts = [
     layout.Max(),
     # Try more layouts by unleashing below layouts.
     # layout.Stack(num_stacks=2),
-    # layout.Bsp(),
+    layout.Bsp(),
     # layout.Matrix(),
     # layout.MonadTall(),
     # layout.MonadWide(),
     # layout.RatioTile(),
     # layout.Tile(),
-    # layout.TreeTab(),
+    layout.TreeTab(),
     # layout.VerticalTile(),
     # layout.Zoomy(),
 ]
