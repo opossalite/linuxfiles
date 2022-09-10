@@ -28,17 +28,40 @@ import os
 import subprocess
 from typing import List
 
-from libqtile import qtile, bar, layout, widget, hook
+from libqtile import qtile, bar, layout, widget, hook, backend
 from libqtile.config import Click, Drag, Group, Key, Match, Screen, KeyChord
 from libqtile.lazy import lazy
 from libqtile.utils import guess_terminal
 from libqtile.command import lazy
 
+home = os.path.expanduser('~')
 
 @hook.subscribe.startup_once
 def autostart():
-    home = os.path.expanduser('~')
     subprocess.run([home + "/.autorun"], shell=True)
+    
+@hook.subscribe.client_new
+def client_new(client: backend.base.Window):
+    #backend.x11.window.Window
+    #backend.base.Window
+    #with open(home + "/temp.txt", 'w') as file:
+    #    file.write(client.name + str(client.get_wm_role()) + str(client.get_wm_type()))
+    classes = client.get_wm_class()
+    if 'code-oss' in classes:
+        client.togroup('1')
+    if client.name == None: #workaround for spotify, but may affect other programs too
+        client.togroup('9')
+    if 'discord' in classes:
+        client.togroup('8')
+    
+    client.cmd_focus()
+    hook.fire("focus_change")
+    
+    with open(home + "/temp.txt", 'w') as file:
+        file.write("shit")
+    
+    hook.fire("focus_change")
+    
     
 #@hook.subscribe.startup_once
 #def autostart():
@@ -126,7 +149,7 @@ keys = [
     Key([], "XF86AudioMute", lazy.spawn("amixer -M set Master toggle"), desc="Volume toggle mute"),
 
     # Power
-    Key([mod], "F1", lazy.spawn("systemctl shutoff"), desc="Shutdown"),
+    Key([mod], "F1", lazy.spawn("systemctl poweroff"), desc="Shutdown"),
     Key([mod], "F2", lazy.spawn("systemctl reboot"), desc="Restart"),
     Key([mod], "F3", lazy.shutdown(), desc="Logout / Shutdown Qtile"),
 
@@ -169,17 +192,17 @@ for i in groups:
     )
 
 layouts = [
-    layout.Columns(border_focus_stack=["#d75f5f", "#8f3d3d"], border_width=4),
+    layout.Columns(border_focus_stack=["#d75f5f", "#8f3d3d"], border_width=4, insert_position=1),
     layout.Max(),
     # Try more layouts by unleashing below layouts.
     # layout.Stack(num_stacks=2),
-    layout.Bsp(),
+    # layout.Bsp(),
     # layout.Matrix(),
     # layout.MonadTall(),
     # layout.MonadWide(),
     # layout.RatioTile(),
     # layout.Tile(),
-    layout.TreeTab(),
+    # layout.TreeTab(),
     # layout.VerticalTile(),
     # layout.Zoomy(),
 ]
@@ -205,7 +228,7 @@ screens = [
                     },
                     name_transform=lambda name: name.upper(),
                 ),
-                widget.TextBox("default config", name="default"),
+                #widget.TextBox("default config", name="default"),
                 widget.TextBox("Press &lt;M-r&gt; to spawn", foreground="#d75f5f"),
                 widget.Systray(),
                 widget.Clock(format="%Y-%m-%d %a %I:%M %p"),

@@ -12,13 +12,13 @@ map r
 map rr reload
 map rn rename
 map ot ${{
-    nohup $t{TERMINAL} --working-directory=$PWD &
+    nohup $t{TERMINAL} --working-directory=$PWD >/dev/null 2>&1 &
 }}
 map ov ${{
-    nohup code $PWD &
+    nohup code $PWD >/dev/null 2>&1 &
 }}
 map or ${{
-    nohup rider $PWD &
+    nohup rider $PWD >/dev/null 2>&1 &
 }}
 
 # interpreter for shell commands
