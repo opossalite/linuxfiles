@@ -52,12 +52,16 @@ whereis
 
 
 FILES
+~/.config/discord/settings.json
+	Add "SKIP_HOST_UPDATE": true    to disable update checking
 /etc/environment
-    Contains environment variables
+	Contains environment variables
 /etc/greetd/config.toml
 	Config for greetd
 /etc/systemd/logind.conf.d/*.conf
 	Set HandleLidSwitch=suspend to suspend laptop upon closing
+/opt/discord/resources/build_info.json
+	Edit this to say the correct version to trick discord
 
 
 
