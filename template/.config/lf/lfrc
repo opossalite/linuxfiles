@@ -20,6 +20,9 @@ map ov ${{
 map or ${{
     nohup rider $PWD >/dev/null 2>&1 &
 }}
+map on ${{
+    nohup nemo $PWD >/dev/null 2>&1 &
+}}
 
 # interpreter for shell commands
 set shell sh

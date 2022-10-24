@@ -103,6 +103,12 @@ super + ctrl + KP_Up
 super + ctrl + KP_Down
         redshift -P -O 6500 &
 
+super + Prior
+        redshift -P -O 2500 &
+
+super + Next
+        redshift -P -O 6500 &
+
 
 
 

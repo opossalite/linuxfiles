@@ -43,6 +43,9 @@
     "vscode-neovim.mouseSelectionStartVisualMode": true,
     "vscode-neovim.neovimExecutablePaths.linux": "/usr/bin/nvim",
     "workbench.enableExperiments": false,
-    "editor.fontSize": $t{CODE_SIZE}
+    "editor.fontSize": $t{CODE_SIZE},
+    "Lua.telemetry.enable": false,
+    "haskell.manageHLS": "GHCup",
+    "liveshare.languages.allowGuestCommandControl": true
 }
 

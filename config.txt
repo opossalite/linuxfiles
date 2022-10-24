@@ -1,10 +1,10 @@
 # --- OPTIONS ---
 
 # oni, cobalt, abyss
-THEME {cobalt}
+THEME {oni}
 
 # desktop, laptop, virtual
-SYSTEM {laptop}
+SYSTEM {desktop}
 
 # the OS you're on (will only matter if set to arcolinux)
 OS {arcolinux}
@@ -13,11 +13,22 @@ OS {arcolinux}
 MON_1 {DisplayPort-2}
 MON_2 {HDMI-A-0}
 
-# exlude some checks
+# exclude some checks
 exclude_check ".bashrc_sudo"
 exclude_check ".bashrc-personal"
 exclude_check "mimeapps.list"
 exclude_check ".autorun"
+#exclude_check ".config/awesome/themes/oni/layouts"
+#exclude_check ".config/awesome/themes/oni/taglist"
+#exclude_check ".config/awesome/themes/oni/titlebar"
+#exclude_check ".config/awesome/themes/oni/submenu.png"
+
+# exclude some variable replacements
+exclude_vars ".config/awesome/themes/oni/layouts"
+exclude_vars ".config/awesome/themes/oni/taglist"
+exclude_vars ".config/awesome/themes/oni/titlebar"
+exclude_vars ".config/awesome/themes/oni/submenu.png"
+exclude_vars "commands.txt"
 
 # --- THEME ---
 

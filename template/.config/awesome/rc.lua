@@ -193,6 +193,18 @@ mykeyboardlayout = awful.widget.keyboardlayout()
 -- {{{ Wibar
 -- Create a textclock widget
 mytextclock = wibox.widget.textclock()
+mytextclock:buttons(gears.table.join(
+    mytextclock:buttons(),
+    awful.button({}, 1, nil, function()
+        awful.util.spawn_with_shell("~/.config/awesome/popup-calendar.sh --popup")
+    end)
+))
+
+-- The 3 is for a right click. Use 1 for left click 2 for scroll wheel click, 4 for scrolling up and 5 for scrolling down.
+
+--local mytextclock = wibox.widget.textclock()
+--local month_calendar = awful.widget.calendar_popup.month()
+--month_calendar:attach( mytextclock, "tr" )
 
 -- Create a wibox for each screen and add it
 local taglist_buttons = gears.table.join(
@@ -254,10 +266,33 @@ screen.connect_signal("property::geometry", set_wallpaper)
 
 
 
+-- Toolbar, bottom bar
+awful.screen.connect_for_each_screen(function(s)
+    -- Wallpaper
+    set_wallpaper(s)
 
--- generate a widget for the taglist with the cool line thingy, from here: https://github.com/nullchilly/nvim/
-function tag_list(s)
-	return awful.widget.taglist {
+    -- Each screen has its own tag table.
+    awful.tag({ "1", "2", "3", "4", "5", "6", "7", "8", "9", "0" }, s, awful.layout.layouts[1])
+
+    -- Create a promptbox for each screen
+    s.mypromptbox = awful.widget.prompt()
+    -- Create an imagebox widget which will contain an icon indicating which layout we're using.
+    -- We need one layoutbox per screen.
+    s.mylayoutbox = awful.widget.layoutbox(s)
+    s.mylayoutbox:buttons(gears.table.join(
+                           awful.button({ }, 1, function () awful.layout.inc( 1) end),
+                           awful.button({ }, 3, function () awful.layout.inc(-1) end),
+                           awful.button({ }, 4, function () awful.layout.inc( 1) end),
+                           awful.button({ }, 5, function () awful.layout.inc(-1) end)))
+
+    -- Create a taglist widget
+    --s.mytaglist = awful.widget.taglist {
+    --    screen  = s,
+    --    filter  = awful.widget.taglist.filter.all,
+    --    buttons = taglist_buttons
+    --}
+    -- generate a widget for the taglist with the cool line thingy, from here: https://github.com/nullchilly/nvim/
+    s.mytaglist = awful.widget.taglist {
 		screen = s,
 		filter = awful.widget.taglist.filter.all,
 		buttons = awful.util.table.join(
@@ -333,43 +368,79 @@ function tag_list(s)
 			shape = gears.shape.rectangle,
 		},
 	}
-end
-
-
-
-
-
--- Toolbar, bottom bar
-awful.screen.connect_for_each_screen(function(s)
-    -- Wallpaper
-    set_wallpaper(s)
-
-    -- Each screen has its own tag table.
-    awful.tag({ "1", "2", "3", "4", "5", "6", "7", "8", "9", "0" }, s, awful.layout.layouts[1])
-
-    -- Create a promptbox for each screen
-    s.mypromptbox = awful.widget.prompt()
-    -- Create an imagebox widget which will contain an icon indicating which layout we're using.
-    -- We need one layoutbox per screen.
-    s.mylayoutbox = awful.widget.layoutbox(s)
-    s.mylayoutbox:buttons(gears.table.join(
-                           awful.button({ }, 1, function () awful.layout.inc( 1) end),
-                           awful.button({ }, 3, function () awful.layout.inc(-1) end),
-                           awful.button({ }, 4, function () awful.layout.inc( 1) end),
-                           awful.button({ }, 5, function () awful.layout.inc(-1) end)))
-    -- Create a taglist widget
-    s.mytaglist = awful.widget.taglist {
-        screen  = s,
-        filter  = awful.widget.taglist.filter.all,
-        buttons = taglist_buttons
-    }
 
     -- Create a tasklist widget
     s.mytasklist = awful.widget.tasklist {
-        screen  = s,
-        filter  = awful.widget.tasklist.filter.currenttags,
-        buttons = tasklist_buttons
+        screen   = s,
+        filter   = awful.widget.tasklist.filter.currenttags,
+        buttons  = tasklist_buttons,
+        style    = {
+            shape_border_width = 1,
+            shape_border_color = '#777777',
+            --shape  = gears.shape.rounded_bar,
+            disable_task_name = true,
+        },
+        layout   = {
+            spacing_widget = {
+                {
+                    forced_width  = 5,
+                    forced_height = 24,
+                    thickness     = 1,
+                    color         = '#777777',
+                    --shape        = gears.shape.circle,
+                    widget        = wibox.widget.separator
+                },
+                valign = 'center',
+                halign = 'center',
+                widget = wibox.container.place,
+            },
+            spacing = 10,
+            layout  = wibox.layout.fixed.horizontal
+        },
+        -- Notice that there is *NO* wibox.wibox prefix, it is a template,
+        -- not a widget instance.
+        widget_template = {
+            {
+                wibox.widget.base.make_widget(),
+                --forced_height = -30,
+                id            = 'background_role',
+                widget        = wibox.container.background,
+            },
+            {
+                {
+                    --forced_width = 20,
+                    id     = 'clienticon',
+                    widget = awful.widget.clienticon,
+                },
+                margins = 0,
+                widget  = wibox.container.margin
+            },
+            nil,
+            create_callback = function(self, c, index, objects) --luacheck: no unused args
+                self:get_children_by_id('clienticon')[1].client = c
+            end,
+            layout = wibox.layout.align.vertical,
+        },
     }
+
+    function s.spacingwidget(space, thickness)
+        return {
+            {
+                forced_width  = space,
+                forced_height = 24,
+                thickness     = thickness,
+                color         = '#777777',
+                --shape        = gears.shape.circle,
+                widget        = wibox.widget.separator
+            },
+            valign = 'center',
+            halign = 'center',
+            widget = wibox.container.place
+        }
+    end
+
+
+
 
     -- Create the wibox
     s.mywibox = awful.wibar({ position = "bottom", screen = s, opacity = 1})
@@ -384,13 +455,16 @@ awful.screen.connect_for_each_screen(function(s)
         { -- Left widgets
             layout = wibox.layout.fixed.horizontal,
             --s.mytaglist,
-            tag_list(s),
-            s.mylayoutbox,
+            --tag_list(s),
+            s.mytaglist,
             s.mypromptbox,
+            s.spacingwidget(20, 0),
         },
         s.mytasklist, -- Middle widget
+        --nil,
         { -- Right widgets
             layout = wibox.layout.fixed.horizontal,
+            s.mylayoutbox,
             mykeyboardlayout,
             wibox.widget.systray(),
             mytextclock,
@@ -665,14 +739,14 @@ globalkeys = gears.table.join(
     --
 
     -- Increase master width
-    awful.key({ modkey, "Control" }, "Right",
+    awful.key({ modkey, "Control" }, "Left",
         function()
             awful.tag.incmwfact( 0.05)
         end,
         {description = "increase master width factor", group = "layout"}),
 
     -- Decrease master width
-    awful.key({ modkey, "Control" }, "Left",
+    awful.key({ modkey, "Control" }, "Right",
         function()
             awful.tag.incmwfact(-0.05)
         end,
@@ -762,11 +836,11 @@ globalkeys = gears.table.join(
         {description = "lua execute prompt", group = "awesome"}),
 
     -- Menubar
-    awful.key({ modkey }, "p",
-        function()
-            menubar.show()
-        end,
-        {description = "show the menubar", group = "launcher"}),
+    --awful.key({ modkey }, "p",
+    --    function()
+    --        menubar.show()
+    --    end,
+    --    {description = "show the menubar", group = "launcher"}),
 
 
 
@@ -775,7 +849,7 @@ globalkeys = gears.table.join(
     --
 
     -- Jump to urgent
-    awful.key({ modkey }, "u",
+    awful.key({ modkey }, "p",
         awful.client.urgent.jumpto,
         {description = "jump to urgent client", group = "client"}),
 
@@ -790,19 +864,19 @@ globalkeys = gears.table.join(
         end,
         {description = "restore minimized", group = "client"}),
 
-    --
-    awful.key({ modkey }, ";",
+    -- n tilde
+    awful.key({ alt }, ";",
         function()
-            awful.util.spawn_with_shell("sleep 0.075 && xdotool key U00F1")
+            awful.util.spawn_with_shell("sleep 0.1 && xdotool key U00F1") --0.075
         end,
-        {description = "restart", group = "launcher"}),
+        {description = "write n with tilde", group = "launcher"}),
 
-    -- 
-    awful.key({ modkey, "Shift" }, ";",
+    -- n tilde capital
+    awful.key({ alt, "Shift" }, ";",
         function()
-            awful.util.spawn_with_shell("sleep 0.075 && xdotool key Shift+U00F1")
+            awful.util.spawn_with_shell("sleep 0.1 && xdotool key Shift+U00F1")
         end,
-        {description = "restart", group = "launcher"})
+        {description = "write capital n with tilde", group = "launcher"})
 
 )
 
@@ -1049,6 +1123,10 @@ awful.rules.rules = {
     { rule = { class = "code-oss" },
         properties = { screen = 1, tag = "1" }},
 
+    -- Rider to screen 1 workspace 1
+    { rule = { class = "jetbrains-rider" },
+        properties = { screen = 1, tag = "1" }},
+
     -- Discord to screen 2 workspace 8
     { rule = { class = "discord" },
         properties = { screen = 2, tag = "8" }},
@@ -1056,6 +1134,28 @@ awful.rules.rules = {
     -- Spotify to screen 2 workspace 9
     { rule = { class = "Spotify" },
         properties = { screen = 2, tag = "9" }},
+
+    -- HW floating
+    { rule = { class = "HW3" },
+        properties = { maximized = false, maximized_vertical = false, maximized_horizontal = false, floating = true }},
+
+--[[
+{ rule = { },
+  properties = { border_width = beautiful.border_width,
+                 border_color = beautiful.border_normal,
+                 focus = awful.client.focus.filter,
+                 raise = true,
+                 keys = clientkeys,
+                 buttons = clientbuttons,
+                 screen = awful.screen.preferred,
+                 placement = awful.placement.no_overlap+awful.placement.no_offscreen,
+                 maximized_vertical   = false,
+                 maximized_horizontal = false,
+                 floating = false,
+                 maximized = false
+ }
+]]
+
 
 }
 -- }}}
@@ -1144,4 +1244,4 @@ client.connect_signal("focus", function(c) c.border_color = beautiful.border_foc
 client.connect_signal("unfocus", function(c) c.border_color = beautiful.border_normal end)
 -- }}}
 
-awful.util.spawn_with_shell("~/.autorun")
+awful.util.spawn_with_shell("~/autorun.sh")
