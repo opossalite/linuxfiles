@@ -46,6 +46,11 @@
     "editor.fontSize": $t{CODE_SIZE},
     "Lua.telemetry.enable": false,
     "haskell.manageHLS": "GHCup",
-    "liveshare.languages.allowGuestCommandControl": true
+    "liveshare.languages.allowGuestCommandControl": true,
+    "editor.lineNumbers": "on",
+    "editor.glyphMargin": true,
+    "search.showLineNumbers": true,
+    "zenMode.hideLineNumbers": false,
+    "vim.smartRelativeLine": true
 }
 

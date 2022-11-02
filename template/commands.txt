@@ -44,6 +44,8 @@ ssh-keygen
 	Generates a new RSA pair, in ~/.ssh/id_rsa.pub
 steam steam://rungameid/<id>
 	Runs the steam game whose id was provided (to get the id go into steam, the game, settings, updates, app id)
+usermod -aG [group] [user]
+	Adds the user to the group
 xev
 	Returns info about keyboard keys clicked
 xprop
