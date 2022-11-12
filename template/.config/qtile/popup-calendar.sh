@@ -19,6 +19,7 @@ case "$1" in --popup)
 
     eval "$(xdotool getmouselocation --shell)"
     eval "$(xdotool getdisplaygeometry --shell)" #doesn't work for mult monitors
+    # GAPS=$(awk '{ print $3}' rice_config.txt)
 
     if [ $X -gt 1920 ]; then
 	: $((pos_x = 220 - YAD_WIDTH)) #second monitor
@@ -26,7 +27,7 @@ case "$1" in --popup)
 # 	: $(dunstify "gt $X")
     else
 	: $((pos_x = WIDTH - YAD_WIDTH - 46)) #main monitor
-	: $((pos_y = HEIGHT - YAD_HEIGHT - BAR_HEIGHT - 7))
+	: $((pos_y = HEIGHT - YAD_HEIGHT - BAR_HEIGHT - 6))
 #	: $(dunstify "lt $X")
     fi
     echo "hi"
