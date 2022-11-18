@@ -64,6 +64,8 @@ FILES
 	Contains environment variables
 /etc/greetd/config.toml
 	Config for greetd
+/etc/pacman.d/mirrorlist
+	Sets the mirrors for pacman
 /etc/systemd/logind.conf.d/*.conf
 	Set HandleLidSwitch=suspend to suspend laptop upon closing
 /etc/X11/xorg.conf.d/20-amdgpu.conf

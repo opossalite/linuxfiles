@@ -1,18 +1,35 @@
-alias la='ls -a --color=auto'
-alias ls='ls --color=auto'
-alias py=python
-$t{BATTERY}
 
-. "$HOME/.cargo/env"
+
+#. "$HOME/.cargo/env"
 [ -f "/home/terrior/.ghcup/env" ] && source "/home/terrior/.ghcup/env" # ghcup-env
 eval "$(thefuck --alias)"
 
 RESET_="\[$(tput sgr0)\]"
 BOLD_="\[$(tput bold)\]"
 WHITE_="\[$(tput setaf 15)\]"
-BRACKET_="\[$(tput setaf $t{BRACKET})\]"
-USER_="\[$(tput setaf $t{USER})\]"
-HOST_="\[$(tput setaf $t{HOST})\]"
-DIR_="\[$(tput setaf $t{DIR})\]"
+BRACKET_="\[$(tput setaf 1)\]"
+USER_="\[$(tput setaf 15)\]"
+HOST_="\[$(tput setaf 15)\]"
+DIR_="\[$(tput setaf 240)\]"
 
 PS1="${BOLD_}${BRACKET_}[${USER_}\u${HOST_}@\h ${DIR_}\w${BRACKET_}]${WHITE_}$ ${RESET_}${WHITE_}"
+
+alias la='ls -a --color=auto'
+alias ls='ls --color=auto'
+alias sleepl="systemctl suspend"
+alias compare="git diff --no-index"
+alias commands="cat ~/commands.txt | most"
+alias py="python3"
+alias pyp="pypy3"
+alias pyp2="pypy"
+alias kb="setxkbmap"
+alias nf="neofetch --ascii_distro arcolinux --ascii_colors 6 6 6 6 6 6 --colors 6 7 7 6 7 7"
+alias nfd="neofetch --ascii_distro"
+alias sudo="doas"
+
+#function con() {
+#    $(nohup $@ >/dev/null 2>&1 &)
+#}
+
+#export -f con
+
