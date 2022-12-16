@@ -36,9 +36,9 @@ def autostart():
 
 @hook.subscribe.client_new
 def client_new(client):
-    qtile.debug()  # turn on debug logging
+    #qtile.debug()  # turn on debug logging
     client.focus()
-    qtile.warning()  # turn off debug logging
+    #qtile.warning()  # turn off debug logging
 
 # MARKED FOR UPDATING, refactor this code
 # On a new client, spawn on the same screen as the mouse initially, otherwise follow the rules 
