@@ -1,0 +1,18 @@
+RESET_="\[$(tput sgr0)\]"
+BOLD_="\[$(tput bold)\]"
+BRACKET_="\[$(tput setaf 21)\]"
+UNAME_="\[$(tput setaf 75)\]"
+DIR_="\[$(tput setaf 141)\]"
+DARKGREY_="\[$(tput setaf 240)\]"
+WHITE_="\[$(tput setaf 15)\]"
+
+PS1="${BOLD_}${BRACKET_}[${WHITE_}\u${UNAME_}@\h ${DIR_}\w${BRACKET_}]${WHITE_}$ ${RESET_}${WHITE_}"
+
+alias waddup="echo why hello there"
+alias battery="acpi"
+alias py="python"
+
+alias sudo="doas"
+complete -cf doas
+
+
