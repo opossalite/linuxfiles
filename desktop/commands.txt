@@ -1,0 +1,30 @@
+/etc/ssh/sshd_config
+	A file that contains all ssh configurations
+https://unix.stackexchange.com/questions/699507/how-can-i-install-java-8-on-debian-11-bullseye
+	Instructions on downloading jdk8
+
+
+
+
+
+> say ping
+[23:36:56] [Server thread/INFO] [minecraft/DedicatedServer]: [Server] ping
+[23:38:04] [Server thread/INFO] [minecraft/NetHandlerPlayServer]: Terrior lost connection: Internal Exception: io.netty.channel.unix.Errors$NativeIoException: syscall:read(..) failed: Connection reset by peer
+[23:38:04] [Server thread/INFO] [minecraft/DedicatedServer]: Terrior left the game                                            
+> 
+
+[23:58:31] [Server thread/INFO] [FML]: [Server thread] Server side modded connection established
+[23:58:31] [Server thread/INFO] [minecraft/PlayerList]: Terrior[/73.53.117.90:50246] logged in with entity id 337 at (47111.30000001192, 45.0, 7.699999988079071)
+[23:58:31] [Server thread/INFO] [dsurround]: Player [Terrior] connected with Dynamic Surroundings 3.6.1.0
+[23:58:31] [Server thread/INFO] [minecraft/DedicatedServer]: Terrior joined the game                                          
+[23:58:31] [Server thread/INFO] [buildinggadgets]: Sending SyncedConfig to freshly logged in player Terrior.
+[23:58:31] [Server thread/INFO] [EnderCore]: Sending server configs to client for com.enderio.core.common.config.ConfigHandler
+[23:58:31] [ForkJoinPool-1-worker-3/INFO] [opencomputers]: Starting OpenComputers version check.
+[23:58:32] [ForkJoinPool-1-worker-3/INFO] [opencomputers]: A newer version of OpenComputers is available: 1.12.2-forge/1.7.7.
+> Nov 23, 2022 11:58:56 PM io.netty.util.ResourceLeakDetector reportUntracedLeak
+SEVERE: LEAK: ByteBuf.release() was not called before it's garbage-collected. Enable advanced leak reporting to find out where the leak occurred. To enable advanced leak reporting, specify the JVM option '-Dio.netty.leakDetection.level=advanced' or call ResourceLeakDetector.setLevel() See http://netty.io/wiki/reference-counted-objects.html for more information.
+[23:59:09] [Server thread/WARN] [opencomputers]: Error handling file saving: Did the server never start?                      
+[23:59:09] [Server thread/WARN] [opencomputers]: Creating new thread pool.                                                    
+[00:03:06] [Server thread/INFO] [minecraft/NetHandlerPlayServer]: Terrior lost connection: Internal Exception: io.netty.channel.unix.Errors$NativeIoException: syscall:read(..) failed: Connection reset by peer
+[00:03:06] [Server thread/INFO] [minecraft/DedicatedServer]: Terrior left the game
+

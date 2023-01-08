@@ -1,0 +1,28 @@
+#!/bin/sh
+
+RESET_="\[$(tput sgr0)\]"
+BOLD_="\[$(tput bold)\]"
+BRACKET_="\[$(tput setaf 21)\]"
+UNAME_="\[$(tput setaf 214)\]" #214
+DIR_="\[$(tput setaf 130)\]"
+DARKGREY_="\[$(tput setaf 240)\]"
+WHITE_="\[$(tput setaf 15)\]"
+
+#UNAME_="\[$(tput setaf 75)\]"
+#DIR_="\[$(tput setaf 141)\]"
+
+# FULL COLOR LIST: https://unix.stackexchange.com/questions/105568/how-can-i-list-the-available-color-names
+
+#PS1="${BOLD_}${BRACKET_}[${WHITE_}\u${UNAME_}@\h ${DIR_}\w${BRACKET_}]${WHITE_}$ ${RESET_}${WHITE_}"
+PS1="${BOLD_}${WHITE_}\u${UNAME_}@\h${WHITE_}:${DIR_}\w${WHITE_}$ ${RESET_}${WHITE_}"
+
+alias ls="ls --color=auto"
+alias la="ls -a"
+alias py="python"
+alias java8="/home/terrior/jdk8/bin/java"
+alias sudo="doas"
+alias gitconfigw="git config user.name nbalcarc && git config user.email nathan.balcarcel@wsu.edu"
+alias gitconfigp="git config user.name TheTerrior && git config user.email werbird10@gmail.com"
+
+# Welcome message:
+#whoami | figlet | lolcat
