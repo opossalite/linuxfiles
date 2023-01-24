@@ -1,0 +1,106 @@
+acpi
+	Battery info
+alsamixer
+	Volume control TUI
+amixer
+	Volume control CONSOLE
+awk
+	Text cutting and partitioning
+chmod u+x <>
+	Give a file executable permissions
+git diff --no-index {} {}
+	Compares two files anywhere on the system and runs "most"
+git remote add origin <>
+	Syncs local repo to the specified repo
+git remote set-url origin <>
+	Changes a git url, useful for switching between https and ssh
+git submodule init
+	Downloads the submodules
+git submodule foreach git pull origin main
+	Updates all the submodules to each of their latest versions
+git submodule update --recursive --remote
+	Updates all submodules in a git directory
+iwctl
+	Network configuration for iwd
+mount -t ntfs-3g /dev/nvme0n1p2 /mnt/ntfs
+	Mounts an NTFS partition to the specified location
+nmcli
+	Network configuration for NetworkManager
+pacman -Scc
+	Clear all cache (omit second c to clear uninstalled)
+pacman -Ss
+	Search the online repo
+pacman -Q
+	Search locally installed programs
+pacman -Qtdq | pacman -Rns -
+	Remove all orphans
+PATH=$PATH:_
+	Adds _ to path
+pavucontrol
+	Volume control GUI
+pgrep
+	Check if a process is running
+qtile cmd-obj -o cmd -f restart
+	Restart Qtile
+rm -R /var/lib/pacman/sync
+	Fixes pacman when getting "error: GPGME error: No data"
+ssh-keygen
+	Generates a new RSA pair, in ~/.ssh/id_rsa.pub
+steam steam://rungameid/<id>
+	Runs the steam game whose id was provided (to get the id go into steam, the game, settings, updates, app id)
+usermod -aG [group] [user]
+	Adds the user to the group
+xev
+	Returns info about keyboard keys clicked
+xprop
+	Returns info about the chosen window
+xsel
+	If piped into, will put text into the clipboard. Use -s for selection (middle mouse) or -b for clipboard (ctrl+v)
+whereis
+	Self explanatory
+
+
+
+FILES
+~/.config/discord/settings.json
+	Add "SKIP_HOST_UPDATE": true   to disable update checking
+/etc/environment
+	Contains environment variables
+/etc/greetd/config.toml
+	Config for greetd
+/etc/pacman.d/mirrorlist
+	Sets the mirrors for pacman
+/etc/systemd/logind.conf.d/*.conf
+	Set HandleLidSwitch=suspend to suspend laptop upon closing
+/etc/X11/xorg.conf.d/20-amdgpu.conf
+	Config file for AMD graphics settings
+/opt/discord/resources/build_info.json
+	Edit this to say the correct version to trick discord
+
+
+
+FOLDERS
+/usr/bin
+	Contains executables that can be run from the terminal
+/usr/lib/*
+	Contains files associated with executables, or simply files associated with a program
+
+
+
+Connecting to a network:
+iwctl
+station list
+station wlan0 get-networks
+station wlan0 connect _
+
+
+
+Bash:
+echo $@;              #"p1" "p2" "p3" "p4" "p5"
+echo ${@: 0};  #"bash" "p1" "p2" "p3" "p4" "p5"
+echo ${@: 1};         #"p1" "p2" "p3" "p4" "p5"
+echo ${@: 2};              #"p2" "p3" "p4" "p5"
+echo ${@: 2:1};            #"p2"
+echo ${@: 2:2};            #"p2" "p3"
+echo ${@: -2};                       #"p4" "p5"
+echo ${@: -2:1};                     #"p4"
