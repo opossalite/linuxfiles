@@ -43,7 +43,7 @@
     "vscode-neovim.mouseSelectionStartVisualMode": true,
     "vscode-neovim.neovimExecutablePaths.linux": "/usr/bin/nvim",
     "workbench.enableExperiments": false,
-    "editor.fontSize": 14,
+    "editor.fontSize": 13,
     "Lua.telemetry.enable": false,
     "haskell.manageHLS": "GHCup",
     "liveshare.languages.allowGuestCommandControl": true,
@@ -51,8 +51,6 @@
     "editor.glyphMargin": true,
     "search.showLineNumbers": true,
     "zenMode.hideLineNumbers": false,
-    "vim.smartRelativeLine": true,
-    "haskell.ghcupExecutablePath": "~/.ghcup/bin/ghcup",
-    "elixirLS.suggestSpecs": false
+    "vim.smartRelativeLine": true
 }
 

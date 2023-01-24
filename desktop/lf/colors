@@ -1,0 +1,49 @@
+# vim:ft=dircolors
+# (This is not a dircolors file but it helps to highlight colors and comments)
+
+# bg;style;fg  if less then clipped from start
+fi      00              # FILE, normal files, color
+di      01;31           # DIR, folders, style;color
+ln      01;36           # LINK
+pi      33              # FIFO
+so      01;35           # SOCK
+bd      33;01           # BLK
+cd      33;01           # CHR
+or      31;01           # ORPHAN, links that don't work anymore
+su      01;32           # SETUID
+sg      01;32           # SETGID
+tw      01;34           # STICKY_OTHER_WRITABLE
+ow      01;34           # OTHER_WRITABLE
+st      01;34           # STICKY
+ex      01;32           # EXEC
+
+#no     31              # NORMAL
+#rs     0               # RESET
+#mh     31              # MULTIHARDLINK
+#do     01;31           # DOOR
+#mi     31              # MISSING
+#ca     30;31           # CAPABILITY
+
+
+# default values from dircolors
+# (entries with a leading # are not implemented in lf)
+##no     00              # NORMAL
+#fi      00              # FILE
+##rs     0               # RESET
+#di      01;34           # DIR, main color for folders
+#ln      01;36           # LINK
+##mh     00              # MULTIHARDLINK
+#pi      40;33           # FIFO
+#so      01;35           # SOCK
+##do     01;35           # DOOR
+#bd      40;33;01        # BLK
+#cd      40;33;01        # CHR
+#or      40;31;01        # ORPHAN
+##mi     00              # MISSING
+#su      37;41           # SETUID
+#sg      30;43           # SETGID
+##ca     30;41           # CAPABILITY
+#tw      30;42           # STICKY_OTHER_WRITABLE
+#ow      34;42           # OTHER_WRITABLE
+#st      37;44           # STICKY
+#ex      01;32           # EXEC
