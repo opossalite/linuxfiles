@@ -84,6 +84,8 @@ FOLDERS
 	Contains executables that can be run from the terminal
 /usr/lib/*
 	Contains files associated with executables, or simply files associated with a program
+/usr/share/X11/xkb/symbols/
+    Contains keymaps that can be applied with setxkbmap
 
 
 
@@ -104,3 +106,4 @@ echo ${@: 2:1};            #"p2"
 echo ${@: 2:2};            #"p2" "p3"
 echo ${@: -2};                       #"p4" "p5"
 echo ${@: -2:1};                     #"p4"
+
