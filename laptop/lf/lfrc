@@ -14,15 +14,44 @@ map rn rename
 map ot ${{
     nohup alacritty --working-directory=$PWD >/dev/null 2>&1 &
 }}
-map ov ${{
+map oh ${{
     nohup code $PWD >/dev/null 2>&1 &
 }}
 map or ${{
     nohup rider $PWD >/dev/null 2>&1 &
 }}
 map on ${{
-    nohup nemo $PWD >/dev/null 2>&1 &
+    nohup thunar $PWD >/dev/null 2>&1 &
 }}
+
+map <esc> quit
+
+
+# default values from dircolors
+# (entries with a leading # are not implemented in lf)
+#no     00              # NORMAL
+#fi      00              # FILE
+#rs     0               # RESET
+#di      01;34           # DIR
+#ln      01;36           # LINK
+#mh     00              # MULTIHARDLINK
+#pi      40;33           # FIFO
+#so      01;35           # SOCK
+#do     01;35           # DOOR
+#bd      40;33;01        # BLK
+#cd      40;33;01        # CHR
+#or      40;31;01        # ORPHAN
+#mi     00              # MISSING
+#su      37;41           # SETUID
+#sg      30;43           # SETGID
+#ca     30;41           # CAPABILITY
+#tw      30;42           # STICKY_OTHER_WRITABLE
+#ow      34;42           # OTHER_WRITABLE
+#st      37;44           # STICKY
+#ex      01;32           # EXEC
+
+# set the prompt
+# ex: set promptfmt "\033[1;256;48;5;128m%d\033[0m\033[1;256;48;5;128m%f\033[0m"
 
 # interpreter for shell commands
 set shell sh
@@ -61,11 +90,10 @@ map X !$f
 # This command is called when current file is not a directory. You may want to
 # use either file extensions and/or mime types here. Below uses an editor for
 # text files and a file opener for the rest.
-cmd open ${{
-    test -L $f && f=$(readlink -f $f)
-    case $(file --mime-type $f -b) in
-        text/*) $EDITOR $fx;;
-        *) for f in $fx; do setsid $OPENER $f > /dev/null 2> /dev/null & done;;
+cmd open &{{
+    case $(file --mime-type -Lb $f) in
+        text/*) lf -remote "send $id \$$EDITOR \$fx";;
+        *) for f in $fx; do $OPENER $f > /dev/null 2> /dev/null & done;;
     esac
 }}
 

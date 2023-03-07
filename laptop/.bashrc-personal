@@ -1,3 +1,5 @@
+#!/bin/bash
+
 RESET_="\[$(tput sgr0)\]"
 BOLD_="\[$(tput bold)\]"
 BRACKET_="\[$(tput setaf 21)\]"
@@ -8,11 +10,25 @@ WHITE_="\[$(tput setaf 15)\]"
 
 PS1="${BOLD_}${BRACKET_}[${WHITE_}\u${UNAME_}@\h ${DIR_}\w${BRACKET_}]${WHITE_}$ ${RESET_}${WHITE_}"
 
-alias waddup="echo why hello there"
-alias battery="acpi"
-alias py="python"
 
+alias ls="ls --color=auto"
+alias la="ls -a"
+alias py="python"
 alias sudo="doas"
-complete -cf doas
+alias gitconfigw="git config user.name nbalcarc && git config user.email nathan.balcarcel@wsu.edu"
+alias gitconfigp="git config user.name TheTerrior && git config user.email werbird10@gmail.com"
+#alias nf="neofetch --ascii_distro endeavouros --ascii_colors 1 7 0 --colors 1 15 15 1 15 15"
+alias nf="neofetch --ascii_distro endeavouros --ascii_colors 15 75 141 --colors 75 15 141 75 15 15"
+alias vim="nvim"
+alias server="ssh -o ServerAliveInterval=60 terrior@73.53.117.90 -p 2200"
+alias pil="ssh rover@192.168.0.10"
+alias pi="ssh rover@10.219.198.202"
+alias sleepl="systemctl suspend"
+alias venv="source venv/bin/activate"
+
+xset r rate 330 25
+
+#export EDITOR=nvim
+#export VISUAL=nvim
 
 

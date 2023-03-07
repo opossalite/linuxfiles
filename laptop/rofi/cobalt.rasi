@@ -1,0 +1,105 @@
+/*******************************************************************************
+ * Inspiration Repo           : https://github.com/lr-tech/rofi-themes-collection
+ *******************************************************************************/
+
+* {
+
+    background-color:           transparent; //global default
+    text-color:                 #DDDDDD; //global default
+    unselected-background:      #0F0F0FCC;
+    unselected-background-alt:  #22222299;
+    unselected-foreground:      #DDDDDD;
+    unselected-foreground-alt:  @unselected-foreground;
+    urgent-background:          #660000CC;
+    urgent-foreground:          @unselected-foreground;
+    highlight-background:       #464646;
+    highlight-foreground:       #2254e2;
+    border-color:		#2254e2;
+    prompt-color:		@border-color;
+    line-color:                 @border-color;
+
+    margin:     0;
+    padding:    0;
+    spacing:    0;
+}
+
+window {
+    location:   center;
+    width:      480;
+    border: 	1; //global border
+
+    background-color:   @unselected-background;
+    border:       2px solid;
+    border-color: @border-color; //controls the exterior border
+}
+
+inputbar {
+    spacing:    8px; 
+    padding:    8px;
+
+    background-color:   @unselected-background;
+}
+
+prompt, entry, element-icon, element-text {
+    vertical-align: 0.5;
+}
+
+prompt { //prompt at top
+    background-color: transparent;
+    text-color: @prompt-color;
+}
+
+textbox {
+    padding:            8px;
+    background-color:   @unselected-background;
+}
+
+listview {
+    padding:    0px 0;
+    lines:      8;
+    columns:    1;
+    border:       2px solid 0px 0px ;
+    border-color: @line-color; //controls the tiny line
+
+    fixed-height:   0;
+}
+
+element {
+    padding:    8px;
+    spacing:    8px;
+}
+
+element.normal.normal { //unselected normal
+    background-color:   @unselected-background;
+    text-color: @unselected-foreground;
+}
+
+element.normal.urgent {
+    background-color:   @urgent-background;
+    text-color:         @urgent-foreground;
+}
+
+element.normal.active {
+    background-color:   @highlight-background;
+    text-color:         @highlight-foreground;
+}
+
+element.selected.urgent {
+    background-color:   @urgent-background;
+    text-color:         @urgent-foreground;
+}
+
+element-icon {
+    size:   0.8em;
+}
+
+element.alternate.normal { //unselected alternate
+    background-color: @unselected-background-alt;
+    text-color:       @unselected-foreground-alt;
+}
+
+element.selected {
+    background-color:   @highlight-background;
+    text-color:         @highlight-foreground;
+}
+
