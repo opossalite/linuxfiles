@@ -51,6 +51,12 @@
     "editor.glyphMargin": true,
     "search.showLineNumbers": true,
     "zenMode.hideLineNumbers": false,
-    "vim.smartRelativeLine": true
+    "vim.smartRelativeLine": true,
+    "terminal.integrated.tabStopWidth": 4,
+    "editor.detectIndentation": false,
+    "jupyter.widgetScriptSources": [
+        "jsdelivr.com",
+        "unpkg.com"
+    ]
 }
 

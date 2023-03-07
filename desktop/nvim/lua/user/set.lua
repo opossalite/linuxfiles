@@ -1,3 +1,5 @@
+local api = vim.api
+
 vim.opt.nu = true
 vim.opt.relativenumber = true
 
@@ -21,4 +23,9 @@ vim.opt.termguicolors = true
 
 vim.opt.scrolloff = 8
 vim.g.mapleader = " "
+
+vim.cmd("autocmd FileType * set formatoptions-=cro")
+
+vim.g.lf_width = 1920
+vim.g.lf_height = 1080
 

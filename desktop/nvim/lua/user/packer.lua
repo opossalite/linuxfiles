@@ -29,7 +29,7 @@ return require('packer').startup(function(use)
   -- LSP
   use { "williamboman/mason.nvim" }
   use {
-	  'VonHeikemen/lsp-zero.nvim',
+      'VonHeikemen/lsp-zero.nvim',
 	  branch = 'v1.x',
 	  requires = {
 		  -- LSP Support
@@ -50,6 +50,14 @@ return require('packer').startup(function(use)
 		  {'rafamadriz/friendly-snippets'}, -- Optional
 	  }
   }
+
+  use {
+	"windwp/nvim-autopairs",
+    config = function() require("nvim-autopairs").setup {} end
+  }
+
+  use('ptzz/lf.vim')
+  use('voldikss/vim-floaterm')
 
 
 end)

@@ -3,7 +3,7 @@
 
 # bg;style;fg  if less then clipped from start
 fi      00              # FILE, normal files, color
-di      01;31           # DIR, folders, style;color
+#di      01;31           # DIR, folders, style;color
 ln      01;36           # LINK
 pi      33              # FIFO
 so      01;35           # SOCK

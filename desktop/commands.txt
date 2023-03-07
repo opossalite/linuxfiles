@@ -20,6 +20,8 @@ git submodule foreach git pull origin main
 	Updates all the submodules to each of their latest versions
 git submodule update --recursive --remote
 	Updates all submodules in a git directory
+grub-mkconfig -o /boot/grub/grub.cfg
+    Update GRUB config
 iwctl
 	Network configuration for iwd
 mount -t ntfs-3g /dev/nvme0n1p2 /mnt/ntfs
@@ -80,8 +82,10 @@ FILES
 
 
 FOLDERS
+~/.local/bin
+    Directory in system path, for the user to place personal executables
 /usr/bin
-	Contains executables that can be run from the terminal
+	Directory in sysetm path, executables accessible by all users
 /usr/lib/*
 	Contains files associated with executables, or simply files associated with a program
 /usr/share/X11/xkb/symbols/
