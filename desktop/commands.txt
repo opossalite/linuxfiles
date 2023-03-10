@@ -66,10 +66,16 @@ whereis
 FILES
 ~/.config/discord/settings.json
 	Add "SKIP_HOST_UPDATE": true   to disable update checking
+/etc/default/grub
+    GRUB config file
 /etc/environment
 	Contains environment variables
 /etc/greetd/config.toml
 	Config for greetd
+/etc/lightdm/lightdm.conf
+    LightDM config
+/etc/lightdm/lightdm.conf
+    LightDM Webkit config
 /etc/pacman.d/mirrorlist
 	Sets the mirrors for pacman
 /etc/systemd/logind.conf.d/*.conf
