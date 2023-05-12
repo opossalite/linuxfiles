@@ -35,10 +35,10 @@ from libqtile.utils import guess_terminal
 from libqtile.command import lazy
 from xcffib.xproto import EventMask
 
-from pynput.mouse import Button, Controller
+#from pynput.mouse import Button, Controller
 
 home = os.path.expanduser('~')
-mouse_pynput = Controller()
+#mouse_pynput = Controller()
 mouse_positions = []
 
 # Run at Qtile start
@@ -127,9 +127,9 @@ def mouse_to_next_screen(qtile, move_focus = False):
     mouse_positions[screen_index] = mouse_pos #save the current mouse position before switching
     
     #switch focus and mouse position
-    mouse_pynput.position = mouse_positions[(screen_index + 1) % len(qtile.screens)]
-    if move_focus == True:
-        qtile.cmd_next_screen() #will need to remove the cmd_ in the future
+    #mouse_pynput.position = mouse_positions[(screen_index + 1) % len(qtile.screens)]
+    #if move_focus == True:
+    #    qtile.cmd_next_screen() #will need to remove the cmd_ in the future
 
 
 # Initialize mouse positions    
@@ -219,9 +219,9 @@ keys = [
     Key([mod], "space", lazy.spawn("rofi -show run -theme cobalt"), desc="Run dmenu"),
     Key([mod], "d", lazy.spawn("dmenu_run -nb '#2A2A2A' -sf '#2288ff' -sb '#464646' -nf '#bbbbbb'"), desc="Run dmenu"),
     Key([mod, alt], "h", lazy.spawn("code"), desc="Run code"),
-    Key([mod, alt], "j", lazy.spawn("firefox"), desc="Run firefox"),
-    Key([mod, alt], "k", lazy.spawn("librewolf"), desc="Run librewolf"),
-    Key([mod, alt], "l", lazy.spawn("brave"), desc="Run brave"),
+    Key([mod, alt], "j", lazy.spawn("flatpak run org.mozilla.firefox"), desc="Run firefox"),
+    Key([mod, alt], "k", lazy.spawn("flatpak run io.gitlab.librewolf-community"), desc="Run librewolf"),
+    Key([mod, alt], "l", lazy.spawn("flatpak run com.brave.Browser"), desc="Run brave"),
     Key([mod, alt], "n", lazy.spawn("thunar"), desc="Run thunar"),
     Key([mod, alt], "m", lazy.spawn("alacritty --command lf"), desc="Run lf"),
     Key([mod, alt], "u", lazy.spawn("spotify"), desc="Run spotify"),

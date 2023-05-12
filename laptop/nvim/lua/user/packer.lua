@@ -24,6 +24,11 @@ return require('packer').startup(function(use)
     -- Themes
     use { 'folke/tokyonight.nvim', as = "tokyonight" }
     use { "catppuccin/nvim", as = "catppuccin" }
+    use 'Mofiqul/dracula.nvim'
+    use "EdenEast/nightfox.nvim" -- Packer
+    use "rebelot/kanagawa.nvim"
+    use({ 'rose-pine/neovim', as = 'rose-pine' })
+
 
 
     -- LSP
@@ -54,6 +59,19 @@ return require('packer').startup(function(use)
         "windwp/nvim-autopairs",
         config = function() require("nvim-autopairs").setup {} end
     }
+    use {
+        'mrcjkb/haskell-tools.nvim',
+        requires = {
+            'nvim-lua/plenary.nvim',
+            'nvim-telescope/telescope.nvim', -- optional
+        },
+        branch = '1.x.x', -- recommended
+    }
+    use 'mfussenegger/nvim-dap'
+    use 'mfussenegger/nvim-lint'
+
+
+    -- Misc
     use('ptzz/lf.vim')
     use('voldikss/vim-floaterm')
 

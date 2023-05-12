@@ -63,6 +63,7 @@ lsp.on_attach(function(client, bufnr)
 	--vim.keymap.set("n", "<leader>vk", function() vim.diagnostic.open_float() end, opts)
 	vim.keymap.set("n", "N", function() vim.diagnostic.open_float() end, opts)
     vim.opt.signcolumn = "yes"
+    client.server_capabilities.semanticTokensProvider = nil
 end)
 
 lsp.setup()
