@@ -24,8 +24,8 @@ vim.g.mapleader = " "
 
 vim.cmd("autocmd FileType * set formatoptions-=cro")
 
---vim.g.NERDTreeHijackNetrw = 0
---vim.g.lf_replace_netrw = 1
 vim.g.lf_width = 1920
 vim.g.lf_height = 1080
+
+
 

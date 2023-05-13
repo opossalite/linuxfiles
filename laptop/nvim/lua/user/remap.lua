@@ -25,4 +25,3 @@ vim.keymap.set("n", "<leader>pp", "\"+p")
 vim.keymap.set("i", "<C-c>", "<Esc>")
 
 vim.keymap.set("n", "Q", "<nop>")
-

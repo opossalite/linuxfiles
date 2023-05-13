@@ -1,15 +1,7 @@
-function ColorMyPencils(color)
-	--color = color or "ayu-mirage"
-    color = color or "catppuccin"
-	vim.cmd.colorscheme(color)
-
-	vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
-	vim.api.nvim_set_hl(0, "NormalFloat", { bg = "none" })
-end
-
+-- Theme settings
+vim.opt.termguicolors = true
 require('rose-pine').setup({
-    variant = "moon", --main, moon, dawn
-    disable_background = false,
+    variant = "moon", --main, moon, dawn	
 })
 require('catppuccin').setup({
     flavour = "macchiato", --latte, frappe, macchiato, mocha
@@ -17,5 +9,7 @@ require('catppuccin').setup({
 require('kanagawa').setup({
     theme = "lotus", --wave, dragon, lotus
 })
+vim.api.nvim_set_hl(0, "Normal", {bg = "none"})
+vim.api.nvim_set_hl(0, "NormalFloat", {bg = "none"})
+vim.cmd.colorscheme('rose-pine')
 
-ColorMyPencils()
