@@ -21,71 +21,69 @@ vim.opt.rtp:prepend(lazypath)
 
 -- Lazy package manager installs
 require('lazy').setup({
-    require('lazy').setup({
 
-        -- LSP
-        {'VonHeikemen/lsp-zero.nvim',
-            branch = 'v2.x',
-            dependencies = {
-                -- LSP Support
-                {'neovim/nvim-lspconfig'},             -- Required
-                {                                      -- Optional
-                    'williamboman/mason.nvim',
-                    build = function()
-                        pcall(vim.cmd, 'MasonUpdate')
-                    end,
-                },
-                {'williamboman/mason-lspconfig.nvim'}, -- Optional
+    -- LSP
+    {'VonHeikemen/lsp-zero.nvim',
+        branch = 'v2.x',
+        dependencies = {
+            -- LSP Support
+            {'neovim/nvim-lspconfig'},             -- Required
+            {                                      -- Optional
+                'williamboman/mason.nvim',
+                build = function()
+                    pcall(vim.cmd, 'MasonUpdate')
+                end,
+            },
+            {'williamboman/mason-lspconfig.nvim'}, -- Optional
 
-                -- Autocompletion
-                {'hrsh7th/nvim-cmp'},     -- Required
-                {'hrsh7th/cmp-nvim-lsp'}, -- Required
-                {'L3MON4D3/LuaSnip'},     -- Required
+            -- Autocompletion
+            {'hrsh7th/nvim-cmp'},     -- Required
+            {'hrsh7th/cmp-nvim-lsp'}, -- Required
+            {'L3MON4D3/LuaSnip'},     -- Required
+        }
+    },
+    {'nvim-treesitter/nvim-treesitter',
+        build = ":TSUpdate",
+        config = function()
+            require("nvim-treesitter.configs").setup {
+                --ensure_installed = { "c", "lua", "rust" },
+                highlight = { enable = true, }
             }
-        },
-        {'nvim-treesitter/nvim-treesitter',
-            build = ":TSUpdate",
-            config = function()
-                require("nvim-treesitter.configs").setup {
-                    --ensure_installed = { "c", "lua", "rust" },
-                    highlight = { enable = true, }
-                }
-            end
-        },
-        {'nvim-treesitter/playground'},
-        {'mrcjkb/haskell-tools.nvim',
-            branch = '1.x.x',
-            dependencies = {
-                {'nvim-lua/plenary.nvim'},
-                {'nvim-telescope/telescope.nvim'},
-            }
-        },
-        --{'mfussenegger/nvim-lint'},
-        --{'mfussenegger/nvim-dap'},
+        end
+    },
+    {'nvim-treesitter/playground'},
+    {'mrcjkb/haskell-tools.nvim',
+        branch = '1.x.x',
+        dependencies = {
+            {'nvim-lua/plenary.nvim'},
+            {'nvim-telescope/telescope.nvim'},
+        }
+    },
+    --{'mfussenegger/nvim-lint'},
+    --{'mfussenegger/nvim-dap'},
 
-        -- Tools
-        {'nvim-telescope/telescope.nvim',
-            tag = '0.1.1',
-            dependencies = {
-                {'nvim-lua/plenary.nvim'}
-            }
-        },
-        {'theprimeagen/harpoon'},
-        {'windwp/nvim-autopairs',
-            config = function() require('nvim-autopairs').setup{} end
-        },
-        {'voldikss/vim-floaterm'},
-        {'ptzz/lf.vim'},
+    -- Tools
+    {'nvim-telescope/telescope.nvim',
+        tag = '0.1.1',
+        dependencies = {
+            {'nvim-lua/plenary.nvim'}
+        }
+    },
+    {'theprimeagen/harpoon'},
+    {'windwp/nvim-autopairs',
+        config = function() require('nvim-autopairs').setup{} end
+    },
+    {'voldikss/vim-floaterm'},
+    {'ptzz/lf.vim'},
 
-        -- Themes
-        {'folke/tokyonight.nvim', as = 'tokyonight'},
-        {'catppuccin/nvim', as = 'catppuccin'},
-        {'Mofiqul/dracula.nvim', as = 'dracula'},
-        {'EdenEast/nightfox.nvim', as = 'nightfox'},
-        {'rebelot/kanagawa.nvim', as = 'kanagawa'},
-        {'rose-pine/neovim', as = 'rose-pine'},
-        {'Shatur/neovim-ayu', as = 'ayu'},
-    }),
+    -- Themes
+    {'folke/tokyonight.nvim', as = 'tokyonight'},
+    {'catppuccin/nvim', as = 'catppuccin'},
+    {'Mofiqul/dracula.nvim', as = 'dracula'},
+    {'EdenEast/nightfox.nvim', as = 'nightfox'},
+    {'rebelot/kanagawa.nvim', as = 'kanagawa'},
+    {'rose-pine/neovim', as = 'rose-pine'},
+    {'Shatur/neovim-ayu', as = 'ayu'},
 })
 
 

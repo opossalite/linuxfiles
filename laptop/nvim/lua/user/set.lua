@@ -20,7 +20,6 @@ vim.opt.incsearch = true
 vim.opt.termguicolors = true
 
 vim.opt.scrolloff = 8
-vim.g.mapleader = " "
 
 vim.cmd("autocmd FileType * set formatoptions-=cro")
 
