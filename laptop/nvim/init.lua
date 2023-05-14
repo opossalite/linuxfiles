@@ -52,13 +52,13 @@ require('lazy').setup({
         end
     },
     {'nvim-treesitter/playground'},
-    {'mrcjkb/haskell-tools.nvim',
-        branch = '1.x.x',
-        dependencies = {
-            {'nvim-lua/plenary.nvim'},
-            {'nvim-telescope/telescope.nvim'},
-        }
-    },
+    --{'mrcjkb/haskell-tools.nvim',
+    --    branch = '1.x.x',
+    --    dependencies = {
+    --        {'nvim-lua/plenary.nvim'},
+    --        {'nvim-telescope/telescope.nvim'},
+    --    }
+    --},
     --{'mfussenegger/nvim-lint'},
     --{'mfussenegger/nvim-dap'},
 
@@ -74,9 +74,13 @@ require('lazy').setup({
         config = function() require('nvim-autopairs').setup{} end
     },
     {'voldikss/vim-floaterm'},
-    {'ptzz/lf.vim'},
+    --{'ptzz/lf.vim'},
+    {'stevearc/aerial.nvim'},
+    --{'nvim-tree/nvim-tree.lua'},
+    {'lambdalisue/fern.vim'},
 
     -- Themes
+    {'nvim-lualine/lualine.nvim'},
     {'folke/tokyonight.nvim', as = 'tokyonight'},
     {'catppuccin/nvim', as = 'catppuccin'},
     {'Mofiqul/dracula.nvim', as = 'dracula'},
@@ -132,7 +136,5 @@ cmp.setup({
 
 
 lsp.setup()
-
-
 
 
