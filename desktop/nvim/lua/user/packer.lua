@@ -19,6 +19,8 @@ return require('packer').startup(function(use)
   use('theprimeagen/harpoon')
   use('mbbill/undotree')
   use('tpope/vim-fugitive')
+  --use('HiPhish/nvim-ts-rainbow2')
+  use('p00f/nvim-ts-rainbow')
 
 
   -- Themes
