@@ -78,9 +78,26 @@ require('lazy').setup({
     {'stevearc/aerial.nvim'},
     --{'nvim-tree/nvim-tree.lua'},
     {'lambdalisue/fern.vim'},
+    {'ggandor/leap.nvim',
+        dependencies = {
+            {'tpope/vim-repeat'}
+        }
+    },
 
     -- Themes
     {'nvim-lualine/lualine.nvim'},
+    --{'folke/styler.nvim',
+    --    config = function()
+    --        require("styler").setup {
+    --            themes = {
+    --                rust = {colorscheme = "ayu-mirage", disable_background = true},
+    --                python = {colorscheme = "ayu-mirage", disable_background = true},
+    --                haskell = {colorscheme = "nightfox", disable_background = true},
+    --                lua = {colorscheme ="kanagawa", disable_background = true},
+    --            }
+    --        }
+    --    end
+    --},
     {'folke/tokyonight.nvim', as = 'tokyonight'},
     {'catppuccin/nvim', as = 'catppuccin'},
     {'Mofiqul/dracula.nvim', as = 'dracula'},
@@ -88,6 +105,14 @@ require('lazy').setup({
     {'rebelot/kanagawa.nvim', as = 'kanagawa'},
     {'rose-pine/neovim', as = 'rose-pine'},
     {'Shatur/neovim-ayu', as = 'ayu'},
+    {'navarasu/onedark.nvim', as = 'onedark'},
+    {'marko-cerovac/material.nvim', as = 'material'},
+    {'mcchrish/zenbones.nvim', as = 'zenbones',
+        dependencies = {
+            {'rktjmp/lush.nvim'}
+        }
+    },
+    {'bluz71/vim-nightfly-colors', as = 'nightfly'},
 })
 
 
@@ -98,9 +123,6 @@ local lsp = require('lsp-zero').preset({})
 lsp.on_attach(function(client, bufnr)
     lsp.default_keymaps({buffer = bufnr})
 end)
-
-require('lspconfig').lua_ls.setup(lsp.nvim_lua_ls())
-require'lspconfig'.hls.setup{}
 
 lsp.on_attach(function(client, bufnr)
 	local opts = {buffer = bufnr, remap = false}
@@ -133,6 +155,10 @@ cmp.setup({
     ['<C-b>'] = cmp_action.luasnip_jump_backward(),
   }
 })
+
+
+require('lspconfig').lua_ls.setup(lsp.nvim_lua_ls())
+require'lspconfig'.hls.setup{}
 
 
 lsp.setup()
