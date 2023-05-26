@@ -46,3 +46,6 @@ export EDITOR=nvim
 
 #xset r rate 330 25
 
+export PATH=/home/terrior/.local/bin:$PATH
+export PATH=/home/terrior/.ghcup/bin:$PATH
+

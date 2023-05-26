@@ -44,24 +44,13 @@ class KeyboardSwitcher(base.InLoopPollText):
         self.font = defaults['font']
         self.fontsize = defaults['fontsize']
         self.add_defaults(KeyboardSwitcher.defaults)
-        #self.current = self.configured_keyboards[0]
         self.configured_keyboards = configured_keyboards
         self.display_map = display_map
         self.current = configured_keyboards[0]
-        #self.current = str(len(display_map))
         self.index: int = 0
-        #self.tick()
         
     def _configure(self, qtile, bar):
-        #base.InLoopPollText._configure(self, qtile, bar)
         super()._configure(qtile, bar)
-        #self.set_keymap = qtile.core.cmd_set_keymap  # type: ignore
-        #self.current = str(type(qtile))[1:-1]
-        #self.set_keymap = qtile.
-        #test = subprocess.Popen(["ping","-W","2","-c", "1", "192.168.1.70"], stdout=subprocess.PIPE)
-        #output = test.communicate()[0]
-        #pass
-        #self.set_keymap = qtile.core.cmd_set_keymap
 
     def poll(self):
         return self.current
@@ -70,9 +59,6 @@ class KeyboardSwitcher(base.InLoopPollText):
         subprocess.Popen(["setxkbmap", keymap])
 
     def left_click(self):
-        #self.current = "left"
-        #self.set_keymap("us", self.options, None)
-        #self.set_keymap("es")
         self.index = (self.index + 1) % len(self.configured_keyboards)
         new_keymap = self.configured_keyboards[self.index]
         if new_keymap in self.display_map:
@@ -83,9 +69,6 @@ class KeyboardSwitcher(base.InLoopPollText):
         self.tick()
 
     def right_click(self):
-        #self.current = str(len(self.configured_keyboards))
-        #self.current = 
-        #self.set_keymap("a")
         self.index = (self.index - 1) % len(self.configured_keyboards)
         new_keymap = self.configured_keyboards[self.index]
         if new_keymap in self.display_map:

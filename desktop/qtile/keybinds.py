@@ -52,7 +52,7 @@ keys = [
     Key([mod, alt], "n", lazy.spawn("thunar"), desc="Run thunar"),
     Key([mod, alt], "m", lazy.spawn("alacritty --command lf"), desc="Run lf"),
     Key([mod, alt], "u", lazy.spawn("spotify"), desc="Run spotify"),
-    Key([mod, alt], "i", lazy.spawn("discord"), desc="Run discord"),
+    Key([mod, alt], "i", lazy.spawn("flatpak run com.discordapp.Discord"), desc="Run discord"),
     Key([mod, alt], "o", lazy.spawn("easyeffects"), desc="Run easyeffects"),
     Key([mod, alt], "p", lazy.spawn("steam"), desc="Run steam"),
     

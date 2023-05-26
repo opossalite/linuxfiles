@@ -21,7 +21,7 @@ layouts = []
 
 mod = "mod4"
 alt = "mod1"
-terminal = "alacritty"
+terminal = "kitty"
 groups = [Group(i) for i in "1234567890"]
 
 

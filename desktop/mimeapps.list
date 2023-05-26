@@ -20,3 +20,5 @@ text/html=brave-browser.desktop;
 application/json=neovide.desktop;firefox.desktop;
 image/jpeg=feh.desktop;
 text/csv=libreoffice-calc.desktop;
+text/x-python=code-oss.desktop;
+

@@ -65,7 +65,7 @@ whereis
 
 FILES
 ~/.config/discord/settings.json
-	Add "SKIP_HOST_UPDATE": true   to disable update checking
+Add "SKIP_HOST_UPDATE": true   to disable update checking
 /etc/default/grub
     GRUB config file
 /etc/environment
