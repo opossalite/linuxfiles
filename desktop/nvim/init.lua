@@ -92,6 +92,7 @@ require('lazy').setup({
             'nvim-tree/nvim-web-devicons'
         }
     },
+    {'lukas-reineke/indent-blankline.nvim'},
     --{'folke/styler.nvim',
     --    config = function()
     --        require("styler").setup {
@@ -173,6 +174,9 @@ cmp.setup({
 
 require('lspconfig').lua_ls.setup(lsp.nvim_lua_ls())
 require'lspconfig'.hls.setup{}
+require'lspconfig'.pyright.setup{}
+require'lspconfig'.rust_analyzer.setup{}
+require'lspconfig'.gopls.setup{}
 
 
 lsp.setup()

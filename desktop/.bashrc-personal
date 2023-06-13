@@ -1,50 +1,130 @@
-
+# To use this file, add this line to .bashrc:
+# [[ -f ~/.bashrc-personal ]] && . ~/.bashrc-personal
 
 #. "$HOME/.cargo/env"
+
 [ -f "/home/terrior/.ghcup/env" ] && source "/home/terrior/.ghcup/env" # ghcup-env
-eval "$(thefuck --alias)"
 
-RESET_="\[$(tput sgr0)\]"
-BOLD_="\[$(tput bold)\]"
-WHITE_="\[$(tput setaf 15)\]"
-BRACKET_="\[$(tput setaf 1)\]"
-USER_="\[$(tput setaf 15)\]"
-HOST_="\[$(tput setaf 15)\]"
-DIR_="\[$(tput setaf 240)\]"
+case $HOSTNAME in
+  ("MonoWolfPC")
+    RESET_="\[$(tput sgr0)\]"
+    BOLD_="\[$(tput bold)\]"
+    WHITE_="\[$(tput setaf 15)\]"
+    BRACKET_="\[$(tput setaf 1)\]"
+    USER_="\[$(tput setaf 15)\]"
+    HOST_="\[$(tput setaf 15)\]"
+    DIR_="\[$(tput setaf 240)\]"
 
-PS1="${BOLD_}${BRACKET_}[${USER_}\u${HOST_}@\h ${DIR_}\w${BRACKET_}]${WHITE_}$ ${RESET_}${WHITE_}"
+    PS1="${BOLD_}${BRACKET_}[${USER_}\u${HOST_}@\h ${DIR_}\w${BRACKET_}]${WHITE_}$ ${RESET_}${WHITE_}"
+    ;;
 
-alias sudo="doas"
+  ("DingoBytePC")
+    RESET_="\[$(tput sgr0)\]"
+    BOLD_="\[$(tput bold)\]"
+    WHITE_="\[$(tput setaf 15)\]"
+    BRACKET_="\[$(tput setaf 21)\]"
+    USER="\[$(tput setaf 240)\]"
+    HOST_="\[$(tput setaf 214)\]"
+    DIR_="\[$(tput setaf 130)\]"
+
+    PS1="${BOLD_}${USER_}\u${HOST_}@\h${WHITE_}:${DIR_}\w${WHITE_}$ ${RESET_}${WHITE_}"
+    ;;
+
+  ("CobraVM.MonoWolfPC")
+    RESET_="\[$(tput sgr0)\]"
+    BOLD_="\[$(tput bold)\]"
+    WHITE_="\[$(tput setaf 15)\]"
+    BRACKET_="\[$(tput setaf 21)\]"
+    USER="\[$(tput setaf 240)\]"
+    HOST_="\[$(tput setaf 2)\]"
+    DIR_="\[$(tput setaf 4)\]"
+
+    PS1="${BOLD_}${USER_}\u${HOST_}@\h${WHITE_}:${DIR_}\w${WHITE_}$ ${RESET_}${WHITE_}"
+    ;;
+
+  (*)
+    echo "How did I get in the middle of nowhere?"
+    echo $HOSTNAME
+    ;;
+esac
+
+
 alias la='ls -a --color=auto'
 alias ls='ls --color=auto'
-alias sleepl="systemctl suspend"
-alias compare="git diff --no-index"
+alias whereami="pwd"
+
 alias commands="cat ~/commands.txt | most"
-alias py="python3"
-alias pya="python3.11"
-alias pyp="pypy3"
-alias pyp2="pypy"
-alias kb="setxkbmap"
-alias nf="neofetch --ascii_distro arcolinux --ascii_colors 6 6 6 6 6 6 --colors 6 7 7 6 7 7"
+alias sleepl="systemctl suspend"
+
+alias nf="neofetch --ascii_colors 8 7 --colors 1 15 8 1 15 15"
 alias nfd="neofetch --ascii_distro"
+
+alias compare="git diff --no-index"
 alias gitconfigw="git config user.name nbalcarc && git config user.email nathan.balcarcel@wsu.edu"
 alias gitconfigp="git config user.name TheTerrior && git config user.email werbird10@gmail.com"
-alias whereami="pwd"
-alias server="ssh -o ServerAliveInterval=60 terrior@73.53.117.90 -p 2200"
-alias fserver="sftp -P 2200 terrior@73.53.117.90"
-alias vim="nvim"
-alias pi="ssh rover@10.219.198.202"
-#alias conda="/home/terrior/miniconda3/bin/conda"
+
+alias server="ssh nathan@24.22.195.38 -p 2200"
+alias serverl="ssh nathan@192.168.1.34 -p 2200"
+alias serverf="sftp -P 2200 nathan@24.22.195.38"
+alias serverlf="sftp -P 2200 nathan@192.168.1.34"
+
+alias serverm-files="sshfs nathan@24.22.195.38:/mnt/mycelium/home /home/terrior/mnt/CrocutaBytePC/ -p 2200 -o IdentityFile=/home/terrior/.ssh/id_rsa_chrysocyon"
+alias serverm-website="sshfs nathan@24.22.195.38:/home/nathan /home/terrior/mnt/NanacatlanVM/ -p 2201"
+alias serverm-minecraft="sshfs nathan@24.22.195.38:/home/nathan /home/terrior/mnt/MinecraftVM/ -p 2202"
+
+alias serverlm-files="sshfs nathan@192.168.1.34:/mnt/mycelium/home /home/terrior/mnt/CrocutaBytePC/ -p 2200 -o IdentityFile=/home/terrior/.ssh/id_rsa_chrysocyon"
+alias serverlm-website="sshfs nathan@192.168.1.33:/home/nathan /home/terrior/mnt/NanacatlanVM/"
+alias serverlm-minecraft="sshfs nathan@192.168.1.32:/home/nathan /home/terrior/mnt/MinecraftVM/"
+
+alias serverum-files="umount -l /home/terrior/mnt/CrocutaBytePC"
+alias serverum-website="umount -l /home/terrior/mnt/NanacatlanVM"
+alias serverum-minecraft="umount -l /home/terrior/mnt/MinecraftVM"
+
+alias py="python3"
 alias venv="source venv/bin/activate"
+alias da="deactivate"
+alias cobra="distrobox enter CobraVM"
+
+#alias pi="ssh rover@10.219.198.202"
+#alias kb="setxkbmap"
+
+mkcd() {
+    mkdir -p $1
+    cd $1
+}
+
+sayhi() {
+    echo hi
+}
+
+pyv() {
+    VENVPATH="${HOME}""/venvs/"$1
+    if [ -d "$VENVPATH" ]; then
+        source "$VENVPATH""/bin/activate"
+    else
+        echo "Could not find virtual environment"
+    fi
+}
+
+cobrav() {
+    VENVPATH="${HOME}""/venvs/"$1
+    if [ -d "$VENVPATH" ]; then
+        distrobox enter CobraVM
+        source "$VENVPATH""/bin/activate"
+    else
+        echo "Could not find virtual environment"
+    fi
+}
+
+
+[ "$TERM" = "xterm-kitty" ] && alias ssh="kitty +kitten ssh"
+
 
 #function con() {
 #    $(nohup $@ >/dev/null 2>&1 &)
 #}
 
-#export -f con
 export EDITOR=nvim
-
-#xset r rate 330 25
 
 export PATH=/home/terrior/.local/bin:$PATH
 export PATH=/home/terrior/.ghcup/bin:$PATH

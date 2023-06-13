@@ -8,9 +8,9 @@ DATE="$(date +"%a %d %H:%M")"
 
 case "$1" in --popup)
     if [[ "$(xdotool search -name yad-calendar)" ]]; then
-	#$(xprop -name yad-calendar _NET_WM_PID | awk '{print $3}' | kill )
-	$(kill $(xprop -name yad-calendar _NET_WM_PID | awk '{print $3}'))
-	exit 0
+        #$(xprop -name yad-calendar _NET_WM_PID | awk '{print $3}' | kill )
+        $(kill $(xprop -name yad-calendar _NET_WM_PID | awk '{print $3}'))
+        exit 0
     fi
 
     if [ "$(xdotool getwindowfocus getwindowname)" = "yad-calendar" ]; then
@@ -22,13 +22,13 @@ case "$1" in --popup)
     # GAPS=$(awk '{ print $3}' rice_config.txt)
 
     if [ $X -gt 1920 ]; then
-	: $((pos_x = 220 - YAD_WIDTH)) #second monitor
-	: $((pos_y = 130 - YAD_HEIGHT - BAR_HEIGHT))
-# 	: $(dunstify "gt $X")
+        : $((pos_x = 220 - YAD_WIDTH)) #second monitor
+        : $((pos_y = 130 - YAD_HEIGHT - BAR_HEIGHT))
+    # 	: $(dunstify "gt $X")
     else
-	: $((pos_x = WIDTH - YAD_WIDTH - 46)) #main monitor
-	: $((pos_y = HEIGHT - YAD_HEIGHT - BAR_HEIGHT - 6))
-#	: $(dunstify "lt $X")
+        : $((pos_x = WIDTH - YAD_WIDTH - 46)) #main monitor
+        : $((pos_y = HEIGHT - YAD_HEIGHT - BAR_HEIGHT - 6))
+    #	: $(dunstify "lt $X")
     fi
     echo "hi"
     yad --calendar --undecorated --fixed --close-on-unfocus --no-buttons \

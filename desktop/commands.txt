@@ -36,12 +36,16 @@ pacman -Q
 	Search locally installed programs
 pacman -Qtdq | pacman -Rns -
 	Remove all orphans
+pactl list sinks <short>
+    Lists all the audio inputs, short is optional
 PATH=$PATH:_
 	Adds _ to path
 pavucontrol
 	Volume control GUI
 pgrep
 	Check if a process is running
+pw-top
+    Shows the different audio connections in pipewire
 qtile cmd-obj -o cmd -f restart
 	Restart Qtile
 rm -R /var/lib/pacman/sync
@@ -116,4 +120,9 @@ echo ${@: 2:1};            #"p2"
 echo ${@: 2:2};            #"p2" "p3"
 echo ${@: -2};                       #"p4" "p5"
 echo ${@: -2:1};                     #"p4"
+
+
+Bashrc:
+[[ -f ~/.bashrc-personal ]] && . ~/.bashrc-personal
+
 
