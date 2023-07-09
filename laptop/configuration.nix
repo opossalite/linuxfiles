@@ -173,6 +173,7 @@
     clang-tools
     libclang
     glibc
+    gnumake
   ];
 
 
@@ -258,6 +259,7 @@
       go
       gopls
       lua-language-server
+      julia-bin
 
 
       # desktop programs (user gui programs with few system dependencies)
