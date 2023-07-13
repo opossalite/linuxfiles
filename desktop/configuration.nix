@@ -1,6 +1,8 @@
 { config, pkgs, ... }:
 
-{
+let
+  unstable = import <nixos-unstable> { config = { allowUnfree = true; }; };
+in {
   imports =
     [
       ./hardware-configuration.nix
@@ -8,7 +10,9 @@
     ];
 
 
-  ### Things I don't understand
+
+  ### Fix for NixOS 23.05
+
   nixpkgs.overlays = with pkgs; [
     (self: super: {
       fcitx-engines = fcitx5;
@@ -16,12 +20,12 @@
   ];
 
 
+
   ### Bootloader
 
   boot.loader.grub.enable = true;
   boot.loader.grub.device = "/dev/sda";
   boot.loader.grub.useOSProber = true;
-  #boot.kernelPackages = pkgs.linuxPackages_4_19;
 
 
 
@@ -32,7 +36,7 @@
     enable = true;
   };
   networking.hostName = "MonoWolfPC";
-  users.users.terrior = {  #define a user account, don't forget to set a password with 'passwd'
+  users.users.terrior = {
     isNormalUser = true;
     description = "terrior";
     extraGroups = [ "networkmanager" "wheel" "storage" "docker" ];
@@ -90,10 +94,16 @@
     layout = "us";
     xkbVariant = "";
     videoDrivers = [ "nvidia" ];
-    #displayManager.gdm.enable = true;  #use GDM as the login manager
-    displayManager.lightdm.enable = true;  #use LightDM as the login manager
-    desktopManager.gnome.enable = true;  #enable GNOME desktop environment
-    windowManager.qtile.enable = true;  #enable Qtile window manager
+    displayManager.lightdm.enable = true;
+    desktopManager.gnome.enable = true;
+    windowManager.qtile.enable = true;
+    windowManager.awesome = {
+      enable = true;
+      luaModules = with pkgs.luaPackages; [
+        luarocks  #package manager for Lua modules
+	luadbi-mysql  #database abstraction layer
+      ];
+    };
   };
   hardware.opengl.driSupport32Bit = true;
 
@@ -112,36 +122,16 @@
     jack.enable = true;
   };
 
-  #"context.properties": [
-  #    "module.x11.bell": "false")
-  #];
-
 
 
   ### Virtualization
+
   virtualisation = {
-    docker = {
-      enable = true;
-    };
     podman = {
       enable = true;
-
-      # Create a `docker` alias for podman, to use it as a drop-in replacement
-      #dockerCompat = true;
-
-      # Required for containers under podman-compose to be able to talk to each other.
       defaultNetwork.settings.dns_enabled = true;
-      # For Nixos version > 22.11
-      #defaultNetwork.settings = {
-      #  dns_enabled = true;
-      #};
     };
   };
-
-
-
-  ### Flatpak
-  services.flatpak.enable = true;
 
 
 
@@ -151,22 +141,24 @@
   ################
 
 
+
+  ### Enabling Extras
+
+  services.flatpak.enable = true;
   nixpkgs.config = {
-    # Allow unfree packages
     allowUnfree = true;
 
-    # Allow insecure packages
     permittedInsecurePackages = [
       "electron-12.2.3"
+      "openssl-1.1.1u"
     ];
   };
 
 
 
-  # List packages installed in system profile. To search, run:
-  # $ nix search wget
+  ### System Packages
+
   environment.systemPackages = with pkgs; [
-    vim
     wget
     neovim
     git
@@ -174,14 +166,26 @@
     python3
     xorg.libxcb.dev
     udevil
+
+    gcc_multi
+    clang_multi
+    clang-tools
+    libclang
+    glibc
+    gnumake
   ];
 
 
-  # Fonts
+
+  ### Fonts
+
   fonts.fonts = with pkgs; [
     (nerdfonts.override { fonts = ["SourceCodePro"]; })
   ];
 
+
+
+  ### User Packages (with Home Manager)
 
   home-manager.useGlobalPkgs = true;
   home-manager.users.terrior = { pkgs, ... }: {
@@ -193,7 +197,6 @@
       neofetch
       htop
       btop
-      nvtop
       lolcat
       nms
       xdotool
@@ -204,6 +207,10 @@
       zip
       unzip
       sshfs
+      xorg.xmodmap
+
+      nvtop
+
 
 
       # system utilities (makes the system run smoothly internally)
@@ -212,6 +219,7 @@
       xclip
       cifs-utils
       samba
+      dunst
 
 
       # desktop utilities (programs to make the system usable from the user's perspective)
@@ -219,7 +227,7 @@
       rofi
       pavucontrol
       pasystray
-      easyeffects
+      unstable.easyeffects
       flameshot
       cinnamon.nemo
       nitrogen
@@ -235,8 +243,6 @@
 
 
       # development utilities (packages that help compile or develop code)
-      gcc_multi
-      glibc
       rustc
       cargo
       rust-analyzer
@@ -247,32 +253,28 @@
       nodePackages.pyright
       go
       gopls
+      lua-language-server
+      julia-bin
 
 
       # desktop programs (user gui programs with few system dependencies)
       librewolf
       brave
       tor-browser-bundle-bin
-      discord
       spotify
-      #vscodium-fhs
       vscode
       audacity
+      libreoffice
+
       amberol
-      #libsForQt5.elisa
       strawberry
       audacious
-      #lollypop
+
+      discord
       
 
       # games
       minecraft
-      #prismlauncher
-
-
-      # fonts
-      #source-code-pro
-      #nerdfonts
 
     ];
   };
