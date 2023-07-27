@@ -1,7 +1,7 @@
 { config, pkgs, ... }:
 
 let
-  unstable = import <nixos-unstable> { config = { allowUnfree = true; }; };
+  unstable = import <nixos-unstable> { config = { allowUnfree = true;}; };
 in {
   imports =
     [
@@ -89,6 +89,7 @@ in {
 
   ### Display Server
 
+  hardware.opengl.enable = true;
   services.xserver = {
     enable = true;
     layout = "us";
@@ -147,6 +148,7 @@ in {
   services.flatpak.enable = true;
   nixpkgs.config = {
     allowUnfree = true;
+    #cudaSupport = true;
 
     permittedInsecurePackages = [
       "electron-12.2.3"
@@ -208,6 +210,10 @@ in {
       unzip
       sshfs
       xorg.xmodmap
+      cmus
+      killall
+      lshw
+      dmidecode
 
       nvtop
 
@@ -255,9 +261,13 @@ in {
       gopls
       lua-language-server
       julia-bin
+      cudaPackages.cudatoolkit
+      cudaPackages.cudnn
+      #python311Packages.torch
 
 
       # desktop programs (user gui programs with few system dependencies)
+      #firefox
       librewolf
       brave
       tor-browser-bundle-bin

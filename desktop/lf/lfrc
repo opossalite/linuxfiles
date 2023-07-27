@@ -27,7 +27,7 @@ map om ${{
     nohup alacritty --command nvim $PWD >/dev/null 2>&1 &
 }}
 
-map <esc> quit
+#map <esc> quit
 
 # default values from dircolors
 # (entries with a leading # are not implemented in lf)
