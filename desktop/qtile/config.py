@@ -396,7 +396,7 @@ screens = [
                     font = defaults['font'],
                     fontsize = defaults['fontsize'],
                     update_interval=1,
-                    func=lambda: subprocess.getoutput("ip addr | grep inet | grep enp37s0 | awk '{print $2}'")
+                    func=lambda: subprocess.getoutput("ip addr | grep inet | grep enp9s0 | awk '{print $2}'")
                 ),
                 widget.Spacer(),
                 widget.Sep(
