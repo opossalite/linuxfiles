@@ -181,6 +181,7 @@ keys = [
 
     Key([mod], "Return", lazy.spawn("kitty"), desc="Launch terminal"),
     Key([mod], "space", lazy.spawn("rofi -show run -theme oni"), desc="Run rofi"),
+    Key([mod], "o", lazy.spawn("gsimplecal"), desc="Run gsimplecal"),
     Key([mod], "Tab", lazy.next_layout(), desc="Toggle between layouts"),
     Key([mod], "s", lazy.window.toggle_floating(), desc="Toggle floating"),
     Key([mod, "shift"], "z", lazy.window.kill(), desc="Kill focused window"),
@@ -436,7 +437,8 @@ screens = [
                     fontsize = defaults['fontsize'],
                     format="%m/%d/%Y %a %I:%M %p",
                     mouse_callbacks = {
-                        'Button1': lazy.function(open_calendar),
+                        #'Button1': lazy.function(open_calendar),
+                        'Button1': lazy.spawn("gsimplecal"),
                     }
                 ),
             ],
@@ -486,7 +488,8 @@ screens = [
                     fontsize = defaults['fontsize'],
                     format="%m/%d/%Y %a %I:%M %p",
                     mouse_callbacks = {
-                        'Button1': lazy.function(open_calendar),
+                        #'Button1': lazy.function(open_calendar),
+                        'Button1': lazy.spawn("gsimplecal"),
                     }
                 ),
             ],

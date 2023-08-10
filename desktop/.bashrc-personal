@@ -24,12 +24,24 @@ case $HOSTNAME in
     PS1="${BOLD_}${BRACKET_}[${USER_}\u${HOST_}@\h ${DIR_}\w${BRACKET_}]${WHITE_}$ ${RESET_}${WHITE_}"
     ;;
 
+  ("VulpesKrovPC")
+    RESET_="\[$(tput sgr0)\]"
+    BOLD_="\[$(tput bold)\]"
+    WHITE_="\[$(tput setaf 15)\]"
+    BRACKET_="\[$(tput setaf 1)\]"
+    USER_="\[$(tput setaf 15)\]"
+    HOST_="\[$(tput setaf 15)\]"
+    DIR_="\[$(tput setaf 240)\]"
+
+    PS1="${BOLD_}${BRACKET_}[${USER_}\u${HOST_}@\h ${DIR_}\w${BRACKET_}]${WHITE_}$ ${RESET_}${WHITE_}"
+    ;;
+
   ("DingoBytePC")
     RESET_="\[$(tput sgr0)\]"
     BOLD_="\[$(tput bold)\]"
     WHITE_="\[$(tput setaf 15)\]"
     BRACKET_="\[$(tput setaf 21)\]"
-    USER="\[$(tput setaf 240)\]"
+    USER_="\[$(tput setaf 240)\]"
     HOST_="\[$(tput setaf 214)\]"
     DIR_="\[$(tput setaf 130)\]"
 
@@ -41,11 +53,23 @@ case $HOSTNAME in
     BOLD_="\[$(tput bold)\]"
     WHITE_="\[$(tput setaf 15)\]"
     BRACKET_="\[$(tput setaf 21)\]"
-    USER="\[$(tput setaf 240)\]"
+    USER_="\[$(tput setaf 240)\]"
     HOST_="\[$(tput setaf 2)\]"
     DIR_="\[$(tput setaf 4)\]"
 
-    PS1="${BOLD_}${USER_}\u${HOST_}@\h${WHITE_}:${DIR_}\w${WHITE_}$ ${RESET_}${WHITE_}"
+    PS1="${BOLD_}${WHITE_}\u${HOST_}@\h${WHITE_}:${DIR_}\w${WHITE_}$ ${RESET_}${WHITE_}"
+    ;;
+
+  ("CobraVM.VulpesKrovPC")
+    RESET_="\[$(tput sgr0)\]"
+    BOLD_="\[$(tput bold)\]"
+    WHITE_="\[$(tput setaf 15)\]"
+    BRACKET_="\[$(tput setaf 21)\]"
+    USER_="\[$(tput setaf 240)\]"
+    HOST_="\[$(tput setaf 2)\]"
+    DIR_="\[$(tput setaf 4)\]"
+
+    PS1="${BOLD_}${WHITE_}\u${HOST_}@\h${WHITE_}:${DIR_}\w${WHITE_}$ ${RESET_}${WHITE_}"
     ;;
 
   (*)
@@ -69,30 +93,28 @@ alias compare="git diff --no-index"
 alias gitconfigw="git config user.name nbalcarc && git config user.email nathan.balcarcel@wsu.edu"
 alias gitconfigp="git config user.name TheTerrior && git config user.email werbird10@gmail.com"
 
-alias server="ssh nathan@24.22.195.38 -p 2200"
-alias server-files="ssh nathan@24.22.195.38 -p 2200"
-alias server-website="ssh nathan@24.22.195.38 -p 2201"
+alias server-mycelium="ssh nathan@24.22.195.38 -p 2200"
+alias server-nanacatlan="ssh nathan@24.22.195.38 -p 2201"
 alias server-minecraft="ssh nathan@24.22.195.38 -p 2202"
 
-alias serverl="ssh nathan@192.168.1.34 -p 2200"
-alias serverl-files="ssh nathan@192.168.1.34 -p 2200"
-alias serverl-website="ssh nathan@192.168.1.33"
+alias serverl-mycelium="ssh nathan@192.168.1.34 -p 2200"
+alias serverl-nanacatlan="ssh nathan@192.168.1.33"
 alias serverl-minecraft="ssh nathan@192.168.1.32"
 
 alias serverf="sftp -P 2200 nathan@24.22.195.38"
 alias serverlf="sftp -P 2200 nathan@192.168.1.34"
 
-alias serverm-files="sshfs nathan@24.22.195.38:/mnt/mycelium/home /home/terrior/mnt/CrocutaBytePC/ -p 2200 -o IdentityFile=/home/terrior/.ssh/id_rsa_chrysocyon"
-alias serverm-website="sshfs nathan@24.22.195.38:/home/nathan /home/terrior/mnt/NanacatlanVM/ -p 2201"
+alias serverm-mycelium="sshfs nathan@24.22.195.38:/mnt/mycelium/home /home/terrior/mnt/mycelium/ -p 2200 -o IdentityFile=/home/terrior/.ssh/id_rsa_chrysocyon"
+alias serverm-nanacatlan="sshfs nathan@24.22.195.38:/home/nathan /home/terrior/mnt/NanacatlanVM/ -p 2201"
 alias serverm-minecraft="sshfs nathan@24.22.195.38:/home/nathan /home/terrior/mnt/MinecraftVM/ -p 2202"
 
-alias serverlm-files="sshfs nathan@192.168.1.34:/mnt/mycelium/home /home/terrior/mnt/CrocutaBytePC/ -p 2200 -o IdentityFile=/home/terrior/.ssh/id_rsa_chrysocyon"
-alias serverlm-website="sshfs nathan@192.168.1.33:/home/nathan /home/terrior/mnt/NanacatlanVM/"
+alias serverlm-mycelium="sshfs nathan@192.168.1.34:/mnt/mycelium/home /home/terrior/mnt/mycelium/ -p 2200 -o IdentityFile=/home/terrior/.ssh/id_rsa_chrysocyon"
+alias serverlm-nanacatlan="sshfs nathan@192.168.1.33:/home/nathan /home/terrior/mnt/NanacatlanVM/"
 alias serverlm-minecraft="sshfs nathan@192.168.1.32:/home/nathan /home/terrior/mnt/MinecraftVM/"
 
-alias serverum-files="umount -l /home/terrior/mnt/CrocutaBytePC"
-alias serverum-website="umount -l /home/terrior/mnt/NanacatlanVM"
-alias serverum-minecraft="umount -l /home/terrior/mnt/MinecraftVM"
+alias serverum-mycelium="fusermount3 -u /home/terrior/mnt/mycelium"
+alias serverum-nanacatlan="fusermount3 -u /home/terrior/mnt/NanacatlanVM"
+alias serverum-minecraft="fusermount3 -u /home/terrior/mnt/MinecraftVM"
 
 alias py="python3"
 alias venv="source venv/bin/activate"

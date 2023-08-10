@@ -1,93 +1,97 @@
 acpi
-	Battery info
+    Battery info
 alsamixer
-	Volume control TUI
+    Volume control TUI
 amixer
-	Volume control CONSOLE
+    Volume control CONSOLE
 awk
-	Text cutting and partitioning
+    Text cutting and partitioning
 chmod u+x <>
-	Give a file executable permissions
+    Give a file executable permissions
+dmidecode --type 17
+    Print RAM info
 git diff --no-index {} {}
-	Compares two files anywhere on the system and runs "most"
+    Compares two files anywhere on the system and runs "most"
 git remote add origin <>
-	Syncs local repo to the specified repo
+    Syncs local repo to the specified repo
 git remote set-url origin <>
-	Changes a git url, useful for switching between https and ssh
+    Changes a git url, useful for switching between https and ssh
 git submodule init
-	Downloads the submodules
+    Downloads the submodules
 git submodule foreach git pull origin main
-	Updates all the submodules to each of their latest versions
+    Updates all the submodules to each of their latest versions
 git submodule update --recursive --remote
-	Updates all submodules in a git directory
+    Updates all submodules in a git directory
 grub-mkconfig -o /boot/grub/grub.cfg
     Update GRUB config
+hostname
+    Retrieves the current hostname. Can also change hostname like this: "sudo hostname [new_hostname]"
 iwctl
-	Network configuration for iwd
+    Network configuration for iwd
 mount -t ntfs-3g /dev/nvme0n1p2 /mnt/ntfs
-	Mounts an NTFS partition to the specified location
+    Mounts an NTFS partition to the specified location
 nmcli
-	Network configuration for NetworkManager
+    Network configuration for NetworkManager
 pacman -Scc
-	Clear all cache (omit second c to clear uninstalled)
+    Clear all cache (omit second c to clear uninstalled)
 pacman -Ss
-	Search the online repo
+    Search the online repo
 pacman -Q
-	Search locally installed programs
+    Search locally installed programs
 pacman -Qtdq | pacman -Rns -
-	Remove all orphans
+    Remove all orphans
 pactl list sinks <short>
     Lists all the audio inputs, short is optional
 PATH=$PATH:_
-	Adds _ to path
+    Adds _ to path
 pavucontrol
-	Volume control GUI
+    Volume control GUI
 pgrep
-	Check if a process is running
+    Check if a process is running
 pw-top
     Shows the different audio connections in pipewire
 qtile cmd-obj -o cmd -f restart
-	Restart Qtile
+    Restart Qtile
 rm -R /var/lib/pacman/sync
-	Fixes pacman when getting "error: GPGME error: No data"
+    Fixes pacman when getting "error: GPGME error: No data"
 ssh-keygen
-	Generates a new RSA pair, in ~/.ssh/id_rsa.pub
+    Generates a new RSA pair, in ~/.ssh/id_rsa.pub
 steam steam://rungameid/<id>
-	Runs the steam game whose id was provided (to get the id go into steam, the game, settings, updates, app id)
+    Runs the steam game whose id was provided (to get the id go into steam, the game, settings, updates, app id)
 usermod -aG [group] [user]
-	Adds the user to the group
+    Adds the user to the group
 xev
-	Returns info about keyboard keys clicked
+    Returns info about keyboard keys clicked
 xprop
-	Returns info about the chosen window
+    Returns info about the chosen window
 xsel
-	If piped into, will put text into the clipboard. Use -s for selection (middle mouse) or -b for clipboard (ctrl+v)
+    If piped into, will put text into the clipboard. Use -s for selection (middle mouse) or -b for clipboard (ctrl+v)
 whereis
-	Self explanatory
+    Self explanatory
 
 
 
 FILES
 ~/.config/discord/settings.json
-Add "SKIP_HOST_UPDATE": true   to disable update checking
+    Add "SKIP_HOST_UPDATE": true   to disable update checking
 /etc/default/grub
     GRUB config file
 /etc/environment
-	Contains environment variables
+    Contains environment variables
 /etc/greetd/config.toml
-	Config for greetd
+    Config for greetd
 /etc/lightdm/lightdm.conf
     LightDM config
 /etc/lightdm/lightdm.conf
     LightDM Webkit config
 /etc/pacman.d/mirrorlist
-	Sets the mirrors for pacman
+    Sets the mirrors for pacman
 /etc/systemd/logind.conf.d/*.conf
-	Set HandleLidSwitch=suspend to suspend laptop upon closing
+    Set HandleLidSwitch=suspend to suspend laptop upon closing
 /etc/X11/xorg.conf.d/20-amdgpu.conf
-	Config file for AMD graphics settings
+    Config file for AMD graphics settings
 /opt/discord/resources/build_info.json
-	Edit this to say the correct version to trick discord
+    Edit this to say the correct version to trick discord
 
 
 
@@ -95,9 +99,9 @@ FOLDERS
 ~/.local/bin
     Directory in system path, for the user to place personal executables
 /usr/bin
-	Directory in sysetm path, executables accessible by all users
+    Directory in sysetm path, executables accessible by all users
 /usr/lib/*
-	Contains files associated with executables, or simply files associated with a program
+    Contains files associated with executables, or simply files associated with a program
 /usr/share/X11/xkb/symbols/
     Contains keymaps that can be applied with setxkbmap
 
