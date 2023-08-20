@@ -24,7 +24,7 @@
                     "q": 2.0,
                     "slope": "x1",
                     "solo": false,
-                    "type": "Off"
+                    "type": "Bell"
                 },
                 "band2": {
                     "frequency": 5000.0,
@@ -61,7 +61,7 @@
                     "q": 2.0,
                     "slope": "x1",
                     "solo": false,
-                    "type": "Off"
+                    "type": "Bell"
                 },
                 "band2": {
                     "frequency": 5000.0,

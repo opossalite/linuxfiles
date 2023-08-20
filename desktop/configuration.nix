@@ -35,7 +35,7 @@ in {
   system.autoUpgrade = {
     enable = true;
   };
-  networking.hostName = "MonoWolfPC";
+  networking.hostName = "VulpesKrovPC";
   users.users.terrior = {
     isNormalUser = true;
     description = "terrior";
@@ -87,9 +87,17 @@ in {
 
 
 
+  ### Environment
+  environment.variables = {
+    #GDK_SCALE = "0.5";
+    #GDK_DPI_SCALE = "0.5";
+    #_JAVA_OPTIONS = "-Dsun.java2d.uiScale=0.5";
+  };
+
+
+
   ### Display Server
 
-  hardware.opengl.enable = true;
   services.xserver = {
     enable = true;
     layout = "us";
@@ -105,8 +113,18 @@ in {
 	luadbi-mysql  #database abstraction layer
       ];
     };
+    libinput = {
+      mouse.accelProfile = "flat";
+      touchpad.accelProfile = "flat";
+    };
+    #dpi = 96; #too big
+    #dpi = 60; #way too small
+    #dpi = 80; #maybe too small?
+    dpi = 90;
   };
+  hardware.opengl.enable = true;
   hardware.opengl.driSupport32Bit = true;
+  #hardware.video.hidpi.enable = false;
 
 
 
@@ -203,20 +221,21 @@ in {
       nms
       xdotool
       xorg.xkill
-      yad
       redshift
       distrobox
       zip
       unzip
       sshfs
       xorg.xmodmap
-      cmus
       killall
       lshw
       dmidecode
+      tty-clock
+      trash-cli
+      texlive.combined.scheme-basic
+      xorg.xkbcomp
 
       nvtop
-
 
 
       # system utilities (makes the system run smoothly internally)
@@ -246,6 +265,8 @@ in {
       pcmanfm
       libsForQt5.dolphin
       easytag
+      #gnome.gnome-calendar
+      gsimplecal
 
 
       # development utilities (packages that help compile or develop code)
@@ -263,11 +284,9 @@ in {
       julia-bin
       cudaPackages.cudatoolkit
       cudaPackages.cudnn
-      #python311Packages.torch
 
 
       # desktop programs (user gui programs with few system dependencies)
-      #firefox
       librewolf
       brave
       tor-browser-bundle-bin
@@ -275,16 +294,15 @@ in {
       vscode
       audacity
       libreoffice
-
-      amberol
-      strawberry
+      krita
       audacious
+      libsForQt5.falkon
 
       discord
       
 
       # games
-      minecraft
+      #minecraft
 
     ];
   };
