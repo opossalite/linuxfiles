@@ -67,7 +67,9 @@ xkb_symbols "pc+us+inet(evdev)+terminate(ctrl_alt_bksp)" {
     key <BKSL> {         [       backslash,             bar ] };
     //key <AE11> {         [           minus,      underscore ] };
     //key <CAPS> {         [       Caps_Lock ] };
-    key <CAPS> {         [           minus,      underscore ] };
+    key <CAPS> {         [           minus,      underscore ],
+        actions[Group1]= [      NoAction(),       NoAction()]
+    };
     key <AC01> {
         type= "ALPHABETIC",
         symbols[Group1]= [               s,               S ]
