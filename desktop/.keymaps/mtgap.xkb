@@ -27,121 +27,123 @@ xkb_symbols "pc+us+inet(evdev)+terminate(ctrl_alt_bksp)" {
     key  <TAB> {         [             Tab,    ISO_Left_Tab ] };
     key <AD01> {
         type= "ALPHABETIC",
-        symbols[Group1]= [               q,               Q ]
+        symbols[Group1]= [               y,               Y ]
     };
     key <AD02> {
         type= "ALPHABETIC",
-        symbols[Group1]= [               w,               W ]
+        symbols[Group1]= [               p,               P ]
     };
     key <AD03> {
         type= "ALPHABETIC",
-        symbols[Group1]= [               e,               E ]
+        symbols[Group1]= [               o,               O ]
     };
     key <AD04> {
         type= "ALPHABETIC",
-        symbols[Group1]= [               r,               R ]
+        symbols[Group1]= [               u,               U ]
     };
     key <AD05> {
         type= "ALPHABETIC",
-        symbols[Group1]= [               t,               T ]
+        symbols[Group1]= [               j,               J ]
     };
     key <AD06> {
         type= "ALPHABETIC",
-        symbols[Group1]= [               y,               Y ]
+        symbols[Group1]= [               k,               K ]
     };
     key <AD07> {
         type= "ALPHABETIC",
-        symbols[Group1]= [               u,               U ]
+        symbols[Group1]= [               d,               D ]
     };
     key <AD08> {
         type= "ALPHABETIC",
-        symbols[Group1]= [               i,               I ]
+        symbols[Group1]= [               l,               L ]
     };
     key <AD09> {
         type= "ALPHABETIC",
-        symbols[Group1]= [               o,               O ]
+        symbols[Group1]= [               c,               C ]
     };
     key <AD10> {
         type= "ALPHABETIC",
-        symbols[Group1]= [               p,               P ]
+        symbols[Group1]= [               w,               W ]
     };
     key <AD11> {         [     bracketleft,       braceleft ] };
     key <AD12> {         [    bracketright,      braceright ] };
     key <BKSL> {         [       backslash,             bar ] };
     //key <AE11> {         [           minus,      underscore ] };
     //key <CAPS> {         [       Caps_Lock ] };
-    key <CAPS> {         [           minus,      underscore ] };
+    key <CAPS> {         [           minus,      underscore ],
+        actions[Group1]= [      NoAction(),       NoAction()]
+    };
     key <AC01> {
         type= "ALPHABETIC",
-        symbols[Group1]= [               a,               A ]
+        symbols[Group1]= [               i,               I ]
     };
     key <AC02> {
         type= "ALPHABETIC",
-        symbols[Group1]= [               s,               S ]
+        symbols[Group1]= [               n,               N ]
     };
     key <AC03> {
         type= "ALPHABETIC",
-        symbols[Group1]= [               d,               D ]
+        symbols[Group1]= [               e,               E ]
     };
     key <AC04> {
         type= "ALPHABETIC",
-        symbols[Group1]= [               f,               F ]
+        symbols[Group1]= [               a,               A ]
     };
-    key <AC05> {
-        type= "ALPHABETIC",
-        symbols[Group1]= [               g,               G ]
-    };
+    key <AC05> {         [           comma,       semicolon ] };
     key <AC06> {
         type= "ALPHABETIC",
-        symbols[Group1]= [               h,               H ]
+        symbols[Group1]= [               m,               M ]
     };
     key <AC07> {
         type= "ALPHABETIC",
-        symbols[Group1]= [               j,               J ]
+        symbols[Group1]= [               h,               H ]
     };
     key <AC08> {
         type= "ALPHABETIC",
-        symbols[Group1]= [               k,               K ]
+        symbols[Group1]= [               t,               T ]
     };
     key <AC09> {
         type= "ALPHABETIC",
-        symbols[Group1]= [               l,               L ]
+        symbols[Group1]= [               s,               S ]
     };
-    key <AC10> {         [       semicolon,           colon ] };
+    key <AC10> {         
+        type= "ALPHABETIC",
+        symbols[Group1]= [               r,               R ] 
+    };
     key <AC11> {         [      apostrophe,        quotedbl ] };
     key <RTRN> {         [          Return ] };
     key <LFSH> {         [         Shift_L ] };
     key <AB01> {
         type= "ALPHABETIC",
-        symbols[Group1]= [               z,               Z ]
+        symbols[Group1]= [               q,               Q ]
     };
     key <AB02> {
         type= "ALPHABETIC",
-        symbols[Group1]= [               x,               X ]
+        symbols[Group1]= [               z,               Z ]
     };
-    key <AB03> {
-        type= "ALPHABETIC",
-        symbols[Group1]= [               c,               C ]
-    };
-    key <AB04> {
-        type= "ALPHABETIC",
-        symbols[Group1]= [               v,               V ]
-    };
-    key <AB05> {
+    key <AB03> {         [           slash,            less ] };
+    key <AB04> {         [          period,         greater ] };
+    key <AB05> {         [           colon,        question ] };
+    key <AB06> {
         type= "ALPHABETIC",
         symbols[Group1]= [               b,               B ]
     };
-    key <AB06> {
-        type= "ALPHABETIC",
-        symbols[Group1]= [               n,               N ]
-    };
     key <AB07> {
         type= "ALPHABETIC",
-        symbols[Group1]= [               m,               M ]
+        symbols[Group1]= [               f,               F ]
     };
-    key <AB08> {         [           comma,            less ] };
-    key <AB09> {         [          period,         greater ] };
-    key <AB10> {         [           slash,        question ] };
+    key <AB08> {
+        type= "ALPHABETIC",
+        symbols[Group1]= [               g,               G ]
+    };
+    key <AB09> {
+        type= "ALPHABETIC",
+        symbols[Group1]= [               v,               V ]
+    };
+    key <AB10> {
+        type= "ALPHABETIC",
+        symbols[Group1]= [               x,               X ]
+    };
     key <RTSH> {         [         Shift_R ] };
 
 
