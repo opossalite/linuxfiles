@@ -285,26 +285,7 @@ extension_defaults = widget_defaults.copy()
 
 class KeyboardSwitcher(base.InLoopPollText):
 
-    defaults = [
-        ("update_interval", 1, "Update time in seconds."),
-        (
-            "configured_keyboards",
-            ["us"],
-            "A list of predefined keyboard layouts "
-            "represented as strings. For example: "
-            "['us', 'us colemak', 'es', 'fr'].",
-        ),
-        (
-            "display_map",
-            {},
-            "Custom display of layout. Key should be in format "
-            "'layout variant'. For example: "
-            "{'us': 'us', 'lt sgs': 'sgs', 'ru phonetic': 'ru'}",
-        ),
-        ("option", None, "string of setxkbmap option. Ex., 'compose:menu,grp_led:scroll'"),
-    ]
-
-    def __init__(self, configured_keyboards = ["us"], display_map = dict()):
+    def __init__(self, configured_keyboards: list[tuple[str, str]] = [("us", "us")]):
         widget.TextBox.__init__(self)
         self.add_callbacks(
             {
@@ -314,40 +295,36 @@ class KeyboardSwitcher(base.InLoopPollText):
         )
         self.font = defaults['font']
         self.fontsize = defaults['fontsize']
-        self.add_defaults(KeyboardSwitcher.defaults)
+        #self.add_defaults(KeyboardSwitcher.defaults)
+        #self.display_map = display_map
+        #self.configured_keyboards = list(map(lambda x: x[0], configured_keyboards))
         self.configured_keyboards = configured_keyboards
-        self.display_map = display_map
-        self.current = configured_keyboards[0]
         self.index: int = 0
         
     def _configure(self, qtile, bar):
         super()._configure(qtile, bar)
 
     def poll(self):
-        return self.current
+        return self.configured_keyboards[self.index][1]
     
-    def set_keymap(self, keymap: str):
-        subprocess.Popen(["setxkbmap", keymap])
+    def set_keymap(self):
+        global home
+        keymap = self.configured_keyboards[self.index][0]
+        #to turn the current layout into a config, run this: xkbcomp -xkb $DISPLAY xkbmap
+        #subprocess.Popen(["setxkbmap", keymap])
+        file_loc = home + "/.keymaps/" + keymap + ".xkb"
+        subprocess.Popen(["xkbcomp", "-w", "0", file_loc, ":0"])  #apparently $DISPLAY is :0
 
     def left_click(self):
         self.index = (self.index + 1) % len(self.configured_keyboards)
-        new_keymap = self.configured_keyboards[self.index]
-        if new_keymap in self.display_map:
-            self.current = self.display_map[new_keymap]
-        else:
-            self.current = new_keymap
-        self.set_keymap(new_keymap)
+        self.set_keymap()
         self.tick()
 
     def right_click(self):
         self.index = (self.index - 1) % len(self.configured_keyboards)
-        new_keymap = self.configured_keyboards[self.index]
-        if new_keymap in self.display_map:
-            self.current = self.display_map[new_keymap]
-        else:
-            self.current = new_keymap
-        self.set_keymap(new_keymap)
+        self.set_keymap()
         self.tick()
+
 
 
 screens = [
@@ -413,15 +390,14 @@ screens = [
                     padding = 6,
                 ),
                 KeyboardSwitcher(
-                    configured_keyboards = ['us', 'es', 'semimak-jq', 'mtgap', 'colemak-dh'],
-                    display_map = { #makes everything lowercase
-                        'us': 'us',
-                        'es': 'es',
-                        'workman': 'wm',
-                        'semimak-jq': 'sm',
-                        'mtgap': 'mt',
-                        'colemak-dh': 'cm',
-                    }
+                    configured_keyboards = [
+                        ("us", "us"),
+                        ("es", "es"),
+                        ("semimak-jq", "sm"),
+                        ("mtgap", "mt"),
+                        ("colemak-dh", "cm"),
+                    ]
+
                 ),
                 widget.Sep(
                     linewidth = 0,
