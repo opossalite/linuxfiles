@@ -1,29 +1,3 @@
-# Copyright (c) 2010 Aldo Cortesi
-# Copyright (c) 2010, 2014 dequis
-# Copyright (c) 2012 Randall Ma
-# Copyright (c) 2012-2014 Tycho Andersen
-# Copyright (c) 2012 Craig Barnes
-# Copyright (c) 2013 horsik
-# Copyright (c) 2013 Tao Sauvage
-#
-# Permission is hereby granted, free of charge, to any person obtaining a copy
-# of this software and associated documentation files (the "Software"), to deal
-# in the Software without restriction, including without limitation the rights
-# to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-# copies of the Software, and to permit persons to whom the Software is
-# furnished to do so, subject to the following conditions:
-#
-# The above copyright notice and this permission notice shall be included in
-# all copies or substantial portions of the Software.
-#
-# THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-# IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-# FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-# AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-# LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-# OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-# SOFTWARE.
-
 import os
 import subprocess
 from typing import List
@@ -31,15 +5,18 @@ from typing import List
 from libqtile import qtile, bar, layout, widget, hook, backend
 from libqtile.config import Click, Drag, Group, Key, Match, Screen, KeyChord
 from libqtile.lazy import lazy
-from libqtile.utils import guess_terminal
 from libqtile.command import lazy
-from xcffib.xproto import EventMask
+from libqtile.widget import base
+#from libqtile.utils import guess_terminal
+#from xcffib.xproto import EventMask
 
 #from pynput.mouse import Button, Controller
 
 home = os.path.expanduser('~')
 #mouse_pynput = Controller()
 mouse_positions = []
+mod = "mod4"
+alt = "mod1"
 
 # Run at Qtile start
 @hook.subscribe.startup_once
@@ -168,10 +145,6 @@ def determine_monitor(qtile, coords):
     return screen_index
     
 
-mod = "mod4"
-alt = "mod1"
-terminal = "alacritty"
-
 keys = [
     # A list of available commands that can be bound to keys can be found
     # at https://docs.qtile.org/en/latest/manual/config/lazy.html
@@ -215,17 +188,19 @@ keys = [
     # Open programs
     #Key([mod, alt], "Semicolon", lazy.spawn("code"), desc="Run code"),
     #Key([mod, alt], "p", lazy.spawn("steam"), desc="Run steam"),
-    Key([mod], "Return", lazy.spawn(terminal), desc="Launch terminal"),
+    Key([mod], "Return", lazy.spawn("kitty"), desc="Launch terminal"),
     Key([mod], "space", lazy.spawn("rofi -show run -theme cobalt"), desc="Run dmenu"),
-    Key([mod], "d", lazy.spawn("dmenu_run -nb '#2A2A2A' -sf '#2288ff' -sb '#464646' -nf '#bbbbbb'"), desc="Run dmenu"),
+    #Key([mod], "d", lazy.spawn("dmenu_run -nb '#2A2A2A' -sf '#2288ff' -sb '#464646' -nf '#bbbbbb'"), desc="Run dmenu"),
+
     Key([mod, alt], "h", lazy.spawn("code"), desc="Run code"),
-    Key([mod, alt], "j", lazy.spawn("flatpak run org.mozilla.firefox"), desc="Run firefox"),
-    Key([mod, alt], "k", lazy.spawn("flatpak run io.gitlab.librewolf-community"), desc="Run librewolf"),
-    Key([mod, alt], "l", lazy.spawn("flatpak run com.brave.Browser"), desc="Run brave"),
+    Key([mod, alt], "j", lazy.spawn("firefox"), desc="Run firefox"),
+    Key([mod, alt], "k", lazy.spawn("librewolf"), desc="Run librewolf"),
+    Key([mod, alt], "l", lazy.spawn("brave"), desc="Run brave"),
     Key([mod, alt], "n", lazy.spawn("thunar"), desc="Run thunar"),
-    Key([mod, alt], "m", lazy.spawn("alacritty --command lf"), desc="Run lf"),
+    Key([mod, alt], "m", lazy.spawn("kitty -e lf"), desc="Run lf"),
+    Key([mod, alt], "y", lazy.spawn("flatpak run com.mojang.Minecraft"), desc="Run minecraft"),
     Key([mod, alt], "u", lazy.spawn("spotify"), desc="Run spotify"),
-    Key([mod, alt], "i", lazy.spawn("discord"), desc="Run discord"),
+    Key([mod, alt], "i", lazy.spawn("flatpak run com.discordapp.Discord"), desc="Run discord"),
     Key([mod, alt], "o", lazy.spawn("easyeffects"), desc="Run easyeffects"),
     
     # Restart Applications
@@ -339,6 +314,50 @@ defaults = {
     'fontsize': 15,
 }
 
+
+class KeyboardSwitcher(base.InLoopPollText):
+
+    def __init__(self, configured_keyboards: list[tuple[str, str]] = [("us", "us")]):
+        widget.TextBox.__init__(self)
+        self.add_callbacks(
+            {
+                "Button1": self.left_click,
+                "Button3": self.right_click,
+            }
+        )
+        self.font = defaults['font']
+        self.fontsize = defaults['fontsize']
+        #self.add_defaults(KeyboardSwitcher.defaults)
+        #self.display_map = display_map
+        #self.configured_keyboards = list(map(lambda x: x[0], configured_keyboards))
+        self.configured_keyboards = configured_keyboards
+        self.index: int = 0
+        
+    def _configure(self, qtile, bar):
+        super()._configure(qtile, bar)
+
+    def poll(self):
+        return self.configured_keyboards[self.index][1]
+    
+    def set_keymap(self):
+        global home
+        keymap = self.configured_keyboards[self.index][0]
+        #to turn the current layout into a config, run this: xkbcomp -xkb $DISPLAY xkbmap
+        #subprocess.Popen(["setxkbmap", keymap])
+        file_loc = home + "/.keymaps/" + keymap + ".xkb"
+        subprocess.Popen(["xkbcomp", "-w", "0", file_loc, ":0"])  #apparently $DISPLAY is :0
+
+    def left_click(self):
+        self.index = (self.index + 1) % len(self.configured_keyboards)
+        self.set_keymap()
+        self.tick()
+
+    def right_click(self):
+        self.index = (self.index - 1) % len(self.configured_keyboards)
+        self.set_keymap()
+        self.tick()
+
+
 screens = [
     Screen(
         bottom=bar.Bar(
@@ -423,14 +442,25 @@ screens = [
                 #widget.TextBox("Press &lt;M-r&gt; to spawn", foreground="#d75f5f"),
                 #widget.Net(interface="enp37s0"),
                 #widget.GenPollText(update_interval=1, func=lambda: subprocess.check_output("sh /path/to/foo.sh").decode("utf-8")),
-                widget.KeyboardLayout(
-                    font = defaults['font'],
-                    fontsize = defaults['fontsize'],
-                    configured_keyboards = ['us', 'es'],
-                    display_map = {
-                        'us': 'us',
-                        'es': 'es',
-                    }
+                #widget.KeyboardLayout(
+                #    font = defaults['font'],
+                #    fontsize = defaults['fontsize'],
+                #    configured_keyboards = ['us', 'es'],
+                #    display_map = {
+                #        'us': 'us',
+                #        'es': 'es',
+                #    }
+                #),
+                KeyboardSwitcher(
+                    configured_keyboards = [
+                        ("us", "us"),
+                        ("es", "es"),
+                        ("colemak-dha", "cm"),
+                        #("colemak-dh", "cm"),
+                        ("semimak-jq", "sm"),
+                        ("mtgap", "mt"),
+                    ]
+
                 ),
                 widget.Sep(
                     linewidth = 0,
