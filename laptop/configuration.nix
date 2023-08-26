@@ -29,6 +29,12 @@
   boot.loader.efi.canTouchEfiVariables = true;
   boot.loader.efi.efiSysMountPoint = "/boot/efi";
   boot.loader.systemd-boot.configurationLimit = 1;
+  
+
+
+  #boot.initrd.kernelModules = [ "wl" ];
+  #boot.kernelModules = [ "kvm-intel" "wl" ];
+  #boot.extraModulePackages = [ config.boot.kernelPackages.broadcom_sta ];
 
 
 
@@ -47,6 +53,21 @@
       firefox
     ];
   };
+
+
+
+  systemd.services.wpa_supplicant.environment.OPENSSL_CONF = pkgs.writeText"openssl.cnf"''
+  openssl_conf = openssl_init
+  [openssl_init]
+  ssl_conf = ssl_sect
+  [ssl_sect]
+  system_default = system_default_sect
+  [system_default_sect]
+  Options = UnsafeLegacyRenegotiation
+  [system_default_sect]
+  CipherString = Default:@SECLEVEL=0
+  ''
+  ;
 
 
 
@@ -71,7 +92,11 @@
   ### System Services
 
   networking.networkmanager.enable = true;
-  #networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
+  #networking.wireless.enable = false;
+  #networking.wireless.networks.wlp0s20f3.psk = "<psk>";
+  #networking.wireless.wifi.backend = "iwd";
+  #networking.useDHCP = false;
+  #networking.interfaces.eno1.useDHCP = true;
   # networking.firewall.allowedTCPPorts = [ ... ]; #open ports in the firewall
   # networking.firewall.allowedUDPPorts = [ ... ];
   # networking.firewall.enable = false;
@@ -150,7 +175,7 @@
 
     permittedInsecurePackages = [
       "electron-12.2.3"
-      "openssl-1.1.1u"
+      "openssl-1.1.1v"
     ];
   };
   #buildInputs = [ stdenv.cc.cc.lib ];
@@ -210,6 +235,8 @@
       sshfs
       brightnessctl
       xorg.xmodmap
+      trash-cli
+      xorg.xkbcomp
 
 
       # system utilities (makes the system run smoothly internally)
@@ -260,6 +287,7 @@
       gopls
       lua-language-server
       julia-bin
+      arduino
 
 
       # desktop programs (user gui programs with few system dependencies)
@@ -272,6 +300,8 @@
       element-desktop
       cinny-desktop
       libreoffice
+      krita
+      libsForQt5.falkon
       
     ];
   };
