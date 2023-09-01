@@ -109,6 +109,25 @@ def mouse_to_next_screen(qtile, move_focus = False):
     #    qtile.cmd_next_screen() #will need to remove the cmd_ in the future
 
 
+def swap_workspaces(qtile, target):
+    '''Swap all windows in the current and target workspaces.'''
+    cur_group = qtile.current_group
+    cur_windows = qtile.current_group.windows.copy()
+    target_group = [x for x in qtile.groups if x.name == target.name][0]
+    target_windows = target_group.windows.copy()
+    for cur_win in cur_windows:
+        cur_win.togroup(target_group.name)
+    for target_win in target_windows:
+        target_win.togroup(cur_group.name)
+
+
+def all_to_workspace(qtile, target):
+    '''Move all current windows to the target workspace.'''
+    cur_windows = qtile.current_group.windows.copy()
+    for cur_win in cur_windows:
+        cur_win.togroup(target.name)
+
+
 # Initialize mouse positions    
 def initialize_mouse_positions(qtile):
     global mouse_positions
@@ -251,23 +270,16 @@ for i in groups:
     keys.extend(
         [
             # mod1 + letter of group = switch to group
-            Key(
-                [mod],
-                i.name,
-                lazy.group[i.name].toscreen(),
-                desc="Switch to group {}".format(i.name),
-            ),
+            Key([mod], i.name, lazy.group[i.name].toscreen(), desc="Switch to group {}".format(i.name)),
             # mod1 + shift + letter of group = switch to & move focused window to group
-            Key(
-                [mod, "shift"],
-                i.name,
-                lazy.window.togroup(i.name, switch_group=True),
-                desc="Switch to & move focused window to group {}".format(i.name),
-            ),
+            Key([mod, "shift"], i.name, lazy.window.togroup(i.name, switch_group=True), desc="Switch to & move focused window to group {}".format(i.name)),
             # Or, use below if you prefer not to switch to that group.
             # mod1 + shift + letter of group = move focused window to group
-            Key([mod, "control"], i.name, lazy.window.togroup(i.name),
-                desc="Move focused window to group {}".format(i.name)),
+            Key([mod, "control"], i.name, lazy.window.togroup(i.name), desc="Move focused window to group {}".format(i.name)),
+
+            Key([mod, "shift", "control"], i.name, lazy.function(swap_workspaces, target = i), desc="Swaps two workspaces"),
+            Key([mod, "mod1", "control"], i.name, lazy.function(all_to_workspace, target = i), desc=f"Moves all current windows to workspace {i.name}"),
+
         ]
     )
 
