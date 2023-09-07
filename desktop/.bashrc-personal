@@ -92,6 +92,7 @@ alias nfd="neofetch --ascii_distro"
 alias compare="git diff --no-index"
 alias gitconfigw="git config user.name nbalcarc && git config user.email nathan.balcarcel@wsu.edu"
 alias gitconfigp="git config user.name TheTerrior && git config user.email werbird10@gmail.com"
+alias gitconfigm="git config user.name horprus && git config user.email horprus@proton.me"
 
 alias server-mycelium="ssh nathan@24.22.195.38 -p 2200"
 alias server-nanacatlan="ssh nathan@24.22.195.38 -p 2201"
@@ -142,14 +143,32 @@ pyv() {
     fi
 }
 
-cobrav() {
-    VENVPATH="${HOME}""/venvs/"$1
-    if [ -d "$VENVPATH" ]; then
-        distrobox enter CobraVM
-        source "$VENVPATH""/bin/activate"
+nixv() {
+    VENVPATH="${HOME}""/shells/"$1".nix"
+    if [ -f "$VENVPATH" ]; then
+        #source "$VENVPATH""/bin/activate"
+        nix-shell "$VENVPATH"
     else
         echo "Could not find virtual environment"
     fi
+}
+
+#cobrav() {
+#    VENVPATH="${HOME}""/venvs/"$1
+#    if [ -d "$VENVPATH" ]; then
+#        distrobox enter CobraVM
+#        source "$VENVPATH""/bin/activate"
+#    else
+#        echo "Could not find virtual environment"
+#    fi
+#}
+
+comptex() {
+    filename="${1%%.*}"
+    #echo $filename
+    pdflatex $1
+    trash $filename.log
+    trash $filename.aux
 }
 
 

@@ -219,7 +219,8 @@ keys = [
     Key([mod], "r", lazy.spawncmd(), desc="Spawn a command using a prompt widget"),
     Key([mod, "shift"], "b", lazy.spawn("nitrogen --restore"), desc="Restart background"),
 
-    Key([mod, alt], "h", lazy.spawn("codium"), desc="Run vscodium"),
+    #Key([mod, alt], "h", lazy.spawn("codium"), desc="Run vscodium"),
+    Key([mod, alt], "h", lazy.spawn("code"), desc="Run vscode"),
     Key([mod, alt], "j", lazy.spawn("firefox"), desc="Run firefox"),
     Key([mod, alt], "k", lazy.spawn("librewolf"), desc="Run librewolf"),
     Key([mod, alt], "l", lazy.spawn("brave"), desc="Run brave"),

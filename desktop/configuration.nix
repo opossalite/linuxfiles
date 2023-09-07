@@ -44,6 +44,17 @@ in {
       firefox
     ];
   };
+  systemd.services.wpa_supplicant.environment.OPENSSL_CONF = pkgs.writeText"openssl.cnf"''
+  openssl_conf = openssl_init
+  [openssl_init]
+  ssl_conf = ssl_sect
+  [ssl_sect]
+  system_default = system_default_sect
+  [system_default_sect]
+  Options = UnsafeLegacyRenegotiation
+  [system_default_sect]
+  CipherString = Default:@SECLEVEL=0
+  '';
 
 
 
@@ -183,7 +194,7 @@ in {
     neovim
     git
     qtile
-    python3
+    python3Full
     xorg.libxcb.dev
     udevil
 
@@ -245,6 +256,7 @@ in {
       cifs-utils
       samba
       dunst
+      xorg.xev
 
 
       # desktop utilities (programs to make the system usable from the user's perspective)
@@ -267,6 +279,7 @@ in {
       easytag
       #gnome.gnome-calendar
       gsimplecal
+      conky
 
 
       # development utilities (packages that help compile or develop code)
@@ -284,6 +297,7 @@ in {
       julia-bin
       cudaPackages.cudatoolkit
       cudaPackages.cudnn
+      rstudio
 
 
       # desktop programs (user gui programs with few system dependencies)
@@ -297,6 +311,7 @@ in {
       krita
       audacious
       libsForQt5.falkon
+      #zoom-us
 
       discord
       
