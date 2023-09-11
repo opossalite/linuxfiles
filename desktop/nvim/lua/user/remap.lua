@@ -31,3 +31,16 @@ vim.keymap.set('n', '<C-j>', '<C-w>j')
 vim.keymap.set('n', '<C-k>', '<C-w>k')
 vim.keymap.set('n', '<C-l>', '<C-w>l')
 
+vim.g.wrap = false
+vim.keymap.set('n', 'L', function()
+    if vim.g.wrap == true then
+        vim.cmd [[ set nowrap ]]
+        vim.cmd [[ nnoremap <expr> k (v:count == 0 ? 'gk' : 'k') ]]
+        vim.cmd [[ nnoremap <expr> j (v:count == 0 ? 'gj' : 'j') ]]
+        vim.g.wrap = false
+    else
+        vim.cmd [[ set wrap ]]
+        vim.g.wrap = true
+    end
+end)
+

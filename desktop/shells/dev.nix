@@ -14,10 +14,5 @@
     #];
     shellHook = "
         export names=$names:dev
-        arrIN=(\${names//:/ })
-        arrSTR=\${arrIN[@]}
-        export PS1=\"$(tput sgr0)$(tput bold)$(tput setaf 15)\\u$(tput setaf 6) in \\
-$(tput setaf 15)($arrSTR) $(tput setaf 4)\\w$(tput setaf 15)$(tput sgr0)\\n$(tput setaf 15)$ \"
-
     ";
 }

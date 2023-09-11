@@ -11,14 +11,8 @@ pkgs.mkShell {
         xorg.libXext xorg.libX11 xorg.libXv xorg.libXrandr zlib 
         ncurses5 stdenv.cc binutils
     ];
-    shellHook = "
+    shellHook = ''
         export names=$names:cuda
-        arrIN=(\${names//:/ })
-        arrSTR=\${arrIN[@]}
-        export PS1=\"$(tput sgr0)$(tput bold)$(tput setaf 15)\\u$(tput setaf 6) in \\
-$(tput setaf 15)($arrSTR) $(tput setaf 4)\\w$(tput setaf 15)$(tput sgr0)\\n$(tput setaf 15)$ \"
-
-    " + ''
         export CUDA_PATH=${pkgs.cudatoolkit}
         # export LD_LIBRARY_PATH=${pkgs.linuxPackages.nvidia_x11}/lib:${pkgs.ncurses5}/lib
         export EXTRA_LDFLAGS="-L/lib -L${pkgs.linuxPackages.nvidia_x11}/lib"

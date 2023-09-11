@@ -1,0 +1,143 @@
+# To use this file, add this line to .bashrc:
+# [[ -f ~/.bashrc-personal ]] && . ~/.bashrc-personal
+
+#. "$HOME/.cargo/env"
+
+[ -f "/home/terrior/.ghcup/env" ] && source "/home/terrior/.ghcup/env" # ghcup-env
+
+if [ -e /run/opengl-driver ]; then
+    cuda_dir=$(readlink /run/opengl-driver)
+    cuda_dir=$cuda_dir"/lib/libcuda.so"
+    export LD_PRELOAD=$cuda_dir
+fi
+
+if [ "$IN_NIX_SHELL" != "impure" ]; then
+    case $HOST in
+        ("VulpesKrovPC")
+            PS1=$'%B%F{1}[%F{15}%n@%m %F{8}%~%F{1}]%F{15}$%b%f '
+            ;;
+
+        ("CobaltCanidPC")
+            PS1=$'%B%F{21}[%F{15}%n%F{75}@%m %F{141}%~%F{21}]%F{15}$%b%f '
+            ;;
+
+        (*)
+            echo "How did I get in the middle of nowhere?"
+            echo $HOSTNAME
+            ;;
+    esac
+else
+    #PS1=$'%B%F{21}[%F{15}%n%F{75}@%m %F{141}%~%F{21}]%F{15}$%b%f '
+    arrIN=(${names//:/ })
+    arrSTR=${arrIN[@]}
+    arrSTR1="${arrSTR:1}"
+    PS1="%B%F{15}%n %F{6}in %F{15}($arrSTR1) %F{4}%~ %F{15}$%b%f "
+fi
+
+
+
+alias la='ls -a --color=auto'
+alias ls='ls --color=auto'
+alias whereami="pwd"
+
+alias commands="cat ~/commands.txt | most"
+alias sleepl="systemctl suspend"
+
+alias nf="neofetch --ascii_colors 8 7 --colors 1 15 8 1 15 15"
+alias nfd="neofetch --ascii_distro"
+
+alias compare="git diff --no-index"
+alias gitconfigw="git config user.name nbalcarc && git config user.email nathan.balcarcel@wsu.edu"
+alias gitconfigp="git config user.name TheTerrior && git config user.email werbird10@gmail.com"
+alias gitconfigm="git config user.name horprus && git config user.email horprus@proton.me"
+
+alias server-mycelium="ssh nathan@24.22.195.38 -p 2200"
+alias server-nanacatlan="ssh nathan@24.22.195.38 -p 2201"
+alias server-minecraft="ssh nathan@24.22.195.38 -p 2202"
+
+alias serverl-mycelium="ssh nathan@192.168.1.34 -p 2200"
+alias serverl-nanacatlan="ssh nathan@192.168.1.33"
+alias serverl-minecraft="ssh nathan@192.168.1.32"
+
+alias serverf="sftp -P 2200 nathan@24.22.195.38"
+alias serverlf="sftp -P 2200 nathan@192.168.1.34"
+
+alias serverm-mycelium="sshfs nathan@24.22.195.38:/mnt/mycelium/home /home/terrior/mnt/mycelium/ -p 2200 -o IdentityFile=/home/terrior/.ssh/id_rsa_chrysocyon"
+alias serverm-nanacatlan="sshfs nathan@24.22.195.38:/home/nathan /home/terrior/mnt/NanacatlanVM/ -p 2201"
+alias serverm-minecraft="sshfs nathan@24.22.195.38:/home/nathan /home/terrior/mnt/MinecraftVM/ -p 2202"
+
+alias serverlm-mycelium="sshfs nathan@192.168.1.34:/mnt/mycelium/home /home/terrior/mnt/mycelium/ -p 2200 -o IdentityFile=/home/terrior/.ssh/id_rsa_chrysocyon"
+alias serverlm-nanacatlan="sshfs nathan@192.168.1.33:/home/nathan /home/terrior/mnt/NanacatlanVM/"
+alias serverlm-minecraft="sshfs nathan@192.168.1.32:/home/nathan /home/terrior/mnt/MinecraftVM/"
+
+alias serverum-mycelium="fusermount3 -u /home/terrior/mnt/mycelium"
+alias serverum-nanacatlan="fusermount3 -u /home/terrior/mnt/NanacatlanVM"
+alias serverum-minecraft="fusermount3 -u /home/terrior/mnt/MinecraftVM"
+
+alias py="python3"
+alias venv="source venv/bin/activate"
+alias da="deactivate"
+alias cobra="distrobox enter CobraVM"
+
+#alias pi="ssh rover@10.219.198.202"
+#alias kb="setxkbmap"
+
+mkcd() {
+    mkdir -p $1
+    cd $1
+}
+
+sayhi() {
+    echo hi
+}
+
+pyv() {
+    VENVPATH="${HOME}""/venvs/"$1
+    if [ -d "$VENVPATH" ]; then
+        source "$VENVPATH""/bin/activate"
+    else
+        echo "Could not find virtual environment"
+    fi
+}
+
+nixv() {
+    VENVPATH="${HOME}""/shells/"$1".nix"
+    if [ -f "$VENVPATH" ]; then
+        #source "$VENVPATH""/bin/activate"
+        nix-shell "$VENVPATH" --command zsh
+    else
+        echo "Could not find virtual environment"
+    fi
+}
+
+#cobrav() {
+#    VENVPATH="${HOME}""/venvs/"$1
+#    if [ -d "$VENVPATH" ]; then
+#        distrobox enter CobraVM
+#        source "$VENVPATH""/bin/activate"
+#    else
+#        echo "Could not find virtual environment"
+#    fi
+#}
+
+comptex() {
+    filename="${1%%.*}"
+    #echo $filename
+    pdflatex $1
+    trash $filename.log
+    trash $filename.aux
+}
+
+
+[ "$TERM" = "xterm-kitty" ] && alias ssh="kitty +kitten ssh"
+
+
+#function con() {
+#    $(nohup $@ >/dev/null 2>&1 &)
+#}
+
+export EDITOR=nvim
+
+export PATH=/home/terrior/.local/bin:$PATH
+export PATH=/home/terrior/.ghcup/bin:$PATH
+

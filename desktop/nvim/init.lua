@@ -177,6 +177,7 @@ require'lspconfig'.hls.setup{}
 require'lspconfig'.pyright.setup{}
 require'lspconfig'.rust_analyzer.setup{}
 require'lspconfig'.gopls.setup{}
+require'lspconfig'.clangd.setup{}
 
 
 lsp.setup()

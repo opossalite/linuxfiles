@@ -40,6 +40,7 @@ in {
     isNormalUser = true;
     description = "terrior";
     extraGroups = [ "networkmanager" "wheel" "storage" "docker" ];
+    shell = pkgs.zsh;
     packages = with pkgs; [  #ensure some packages are installed for the user, even if home-manager isn't working correctly
       firefox
     ];
@@ -103,6 +104,11 @@ in {
     #GDK_SCALE = "0.5";
     #GDK_DPI_SCALE = "0.5";
     #_JAVA_OPTIONS = "-Dsun.java2d.uiScale=0.5";
+  };
+  programs.zsh = {
+    enable = true;
+    histSize = 10000;
+    #histFile = "${config.xdg.dataHome}/zsh/history";
   };
 
 

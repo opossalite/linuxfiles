@@ -1,0 +1,16 @@
+
+[audacious]
+output_bit_depth=32
+output_buffer_size=2000
+show_numbers_in_pl=TRUE
+
+[audqt]
+icon_theme=audacious-flat-dark
+theme=dark
+
+[qtui]
+autoscroll=FALSE
+column_widths=25,25,275,175,50,175,175,47,100,25,75,275,275,275,75,275,175
+player_height=995
+player_width=1276
+playlist_columns=playing track title artist album length
