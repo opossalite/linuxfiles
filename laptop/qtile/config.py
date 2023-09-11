@@ -219,7 +219,7 @@ keys = [
     Key([mod, alt], "m", lazy.spawn("kitty -e lf"), desc="Run lf"),
     Key([mod, alt], "y", lazy.spawn("flatpak run com.mojang.Minecraft"), desc="Run minecraft"),
     Key([mod, alt], "u", lazy.spawn("spotify"), desc="Run spotify"),
-    Key([mod, alt], "i", lazy.spawn("flatpak run com.discordapp.Discord"), desc="Run discord"),
+    Key([mod, alt], "i", lazy.spawn("discord"), desc="Run discord"),
     Key([mod, alt], "o", lazy.spawn("easyeffects"), desc="Run easyeffects"),
     
     # Restart Applications

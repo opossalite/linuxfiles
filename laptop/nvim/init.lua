@@ -75,7 +75,9 @@ require('lazy').setup({
     },
     {'voldikss/vim-floaterm'},
     --{'ptzz/lf.vim'},
-    {'stevearc/aerial.nvim'},
+    {'stevearc/aerial.nvim',
+        attach_mode = "window",
+    },
     --{'nvim-tree/nvim-tree.lua'},
     {'lambdalisue/fern.vim'},
     {'ggandor/leap.nvim',
@@ -85,15 +87,20 @@ require('lazy').setup({
     },
 
     -- Themes
-    {'nvim-lualine/lualine.nvim'},
+    {'nvim-lualine/lualine.nvim',
+        dependencies = {
+            'nvim-tree/nvim-web-devicons'
+        }
+    },
+    {'lukas-reineke/indent-blankline.nvim'},
     --{'folke/styler.nvim',
     --    config = function()
     --        require("styler").setup {
     --            themes = {
-    --                rust = {colorscheme = "ayu-mirage", disable_background = true},
-    --                python = {colorscheme = "ayu-mirage", disable_background = true},
-    --                haskell = {colorscheme = "nightfox", disable_background = true},
-    --                lua = {colorscheme ="kanagawa", disable_background = true},
+    --                rust = {colorscheme = "ayu-mirage"},
+    --                python = {colorscheme = "tokyonight-night"},
+    --                haskell = {colorscheme = "tokyobones"},
+    --                lua = {colorscheme = "catppuccin-mocha"},
     --            }
     --        }
     --    end
@@ -127,10 +134,18 @@ end)
 lsp.on_attach(function(client, bufnr)
 	local opts = {buffer = bufnr, remap = false}
 
-	vim.keymap.set("n", "gd", function() vim.lsp.buf.definition() end, opts)
-	vim.keymap.set("n", "K", function() vim.lsp.buf.hover() end, opts)
+	vim.keymap.set("n", "gd", function()
+        vim.lsp.buf.definition()
+    end, opts)
+	vim.keymap.set("n", "K", function()
+        vim.g.color_freeze = true
+        vim.lsp.buf.hover()
+    end, opts)
 	--vim.keymap.set("n", "<leader>vk", function() vim.diagnostic.open_float() end, opts)
-	vim.keymap.set("n", "N", function() vim.diagnostic.open_float() end, opts)
+	vim.keymap.set("n", "N", function()
+        vim.g.color_freeze = true
+        vim.diagnostic.open_float()
+    end, opts)
     vim.opt.signcolumn = "yes"
     client.server_capabilities.semanticTokensProvider = nil
 end)
@@ -159,6 +174,11 @@ cmp.setup({
 
 require('lspconfig').lua_ls.setup(lsp.nvim_lua_ls())
 require'lspconfig'.hls.setup{}
+require'lspconfig'.pyright.setup{}
+require'lspconfig'.rust_analyzer.setup{}
+require'lspconfig'.gopls.setup{}
+require'lspconfig'.clangd.setup{}
+require'lspconfig'.julials.setup{}
 
 
 lsp.setup()

@@ -10,5 +10,5 @@ augroup fern-custom
     autocmd FileType fern call s:init_fern()
 augroup END
 
-nnoremap <leader>f :Fern . -reveal=% -drawer -toggle<CR>
+"nnoremap <leader>f :Fern . -reveal=% -drawer -toggle<CR>
 

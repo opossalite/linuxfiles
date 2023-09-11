@@ -34,13 +34,29 @@ vim.opt.termguicolors = true
 
 function ColorRefresh(theme)
 
-    print("Setting color scheme to", theme)
+    --if vim.g.colors_name == theme then
+    --    print("Already have this color scheme!")
+    --    return
+    --end
+    --print("Setting color scheme to", theme)
 
+    if vim.g.color_freeze == true then
+        vim.g.color_freeze = false
+        return
+    end
 
 
     -- Apply theme and disable background
     --vim.cmd.colorscheme('ayu-mirage')
+    --require('lualine').refresh()
+    --vim.cmd("hi clear")
+    --vim.cmd("colorscheme " .. theme)
+    --require('lualine').refresh()
+
+    vim.cmd("hi clear")
     vim.cmd.colorscheme(theme)
+    vim.cmd [[ doautocmd ColorScheme ]]
+
     --vim.api.nvim_set_hl(0, "Normal", {bg = "none", ctermbg = "none"})
     --vim.api.nvim_set_hl(0, "NormalFloat", {bg = "none", ctermbg = "none"})
     --print("test")
@@ -59,10 +75,20 @@ function ColorRefresh(theme)
 
 end
 
-ColorRefresh('ayu-mirage')
+--ColorRefresh("dracula")
 
 --vim.api.nvim_create_autocmd("BufEnter", command = ":hi Normal guibg=none ctermbg=none")
 --vim.api.nvim_create_autocmd("BufEnter", command = ":hi NormalFloat guibg=none ctermbg=none")
+vim.api.nvim_create_autocmd("BufWinEnter", {pattern = "*", callback = function() ColorRefresh("dracula") end})
+vim.api.nvim_create_autocmd({"BufEnter", "BufWinEnter"}, {pattern = "*.rs", callback = function() ColorRefresh("ayu-mirage") end})
+vim.api.nvim_create_autocmd({"BufEnter", "BufWinEnter"}, {pattern = "*.py", callback = function() ColorRefresh("tokyonight-night") end})
+vim.api.nvim_create_autocmd({"BufEnter", "BufWinEnter"}, {pattern = "*.hs", callback = function() ColorRefresh("tokyobones") end})
+
+
+--vim.api.nvim_create_autocmd("ColorScheme", {pattern = "*", callback = function()
+--    print("updated")
+--    require('lualine').refresh()
+--end})
 
 --vim.api.nvim_set_hl(0, "Normal", {bg = "none"})
 --vim.api.nvim_set_hl(0, "NormalFloat", {bg = "none"})

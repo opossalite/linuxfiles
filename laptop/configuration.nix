@@ -1,10 +1,8 @@
-# Edit this configuration file to define what should be installed on
-# your system.  Help is available in the configuration.nix(5) man page
-# and in the NixOS manual (accessible by running ‘nixos-help’).
-
 { config, pkgs, ... }:
 
-{
+let
+  unstable = import <nixos-unstable> { config = { allowUnfree = true;}; };
+in {
   imports =
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
@@ -13,7 +11,7 @@
 
 
 
-  ### Random fix for NixOS 23.05
+  ### Fix for NixOS 23.05
 
   nixpkgs.overlays = with pkgs; [
     (self: super: {
@@ -32,12 +30,6 @@
   
 
 
-  #boot.initrd.kernelModules = [ "wl" ];
-  #boot.kernelModules = [ "kvm-intel" "wl" ];
-  #boot.extraModulePackages = [ config.boot.kernelPackages.broadcom_sta ];
-
-
-
   ### System Settings
 
   system.stateVersion = "22.11";
@@ -49,13 +41,15 @@
     isNormalUser = true;
     description = "terrior";
     extraGroups = [ "networkmanager" "wheel" "storage" "docker"];
+    shell = pkgs.zsh;
     packages = with pkgs; [ #ensure some packages are installed for the user, even if home-manager isn't working correctly
       firefox
     ];
   };
-
-
-
+  programs.zsh = {
+    enable = true;
+    histSize = 10000;
+  };
   systemd.services.wpa_supplicant.environment.OPENSSL_CONF = pkgs.writeText"openssl.cnf"''
   openssl_conf = openssl_init
   [openssl_init]
@@ -101,8 +95,9 @@
   # networking.firewall.allowedUDPPorts = [ ... ];
   # networking.firewall.enable = false;
   services.printing.enable = true; #printing via CUPS
-  services.xserver.libinput.enable = true; #enable touchpad support
   # services.openssh.enable = true;
+  hardware.bluetooth.enable = true;
+  services.blueman.enable = true;
 
 
 
@@ -123,7 +118,6 @@
     xkbVariant = "";
     #displayManager.gdm.enable = true;
     displayManager.lightdm.enable = true;
-    displayManager.defaultSession = "none+qtile";
     desktopManager.gnome.enable = true;
     windowManager.qtile.enable = true;
     windowManager.awesome = {
@@ -133,7 +127,13 @@
 	luadbi-mysql #database abstraction layer
       ];
     };
+    libinput = {
+      enable = true; #enable touchpad support
+      mouse.accelProfile = "flat";
+      touchpad.accelProfile = "flat";
+    };
   };
+  hardware.opengl.enable = true;
   hardware.opengl.driSupport32Bit = true;
 
 
@@ -169,6 +169,10 @@
   ### Packages ###
   ################
 
+
+
+  ### Enabling Extras
+
   services.flatpak.enable = true;
   nixpkgs.config = {
     allowUnfree = true;
@@ -178,25 +182,23 @@
       "openssl-1.1.1v"
     ];
   };
-  #buildInputs = [ stdenv.cc.cc.lib ];
 
 
 
-  # List packages installed in system profile. To search, run:
-  # $ nix search wget
+  ### System Packages
   environment.systemPackages = with pkgs; [
-    wget
-    neovim
     git
+    neovim
+    python3Full
     qtile
-    python3
-    xorg.libxcb.dev
     udevil
+    wget
+    xorg.libxcb.dev
 
-    gcc_multi
-    clang_multi
     clang-tools
+    clang_multi
     libclang
+    gcc_multi
     glibc
     gnumake
   ];
@@ -219,90 +221,106 @@
     home.packages = with pkgs; [
       
       # command-line programs (programs that run in the terminal)
-      lf
-      neofetch
-      htop
       btop
-      lolcat
-      nms
-      xdotool
-      xorg.xkill
-      yad
-      redshift
       distrobox
-      zip
-      unzip
+      dmidecode
+      htop
+      killall
+      lf
+      lolcat
+      lshw
+      neofetch
+      nms
+      redshift
       sshfs
-      brightnessctl
-      xorg.xmodmap
+      texlive.combined.scheme-basic
       trash-cli
+      tty-clock
+      unzip
+      xdotool
       xorg.xkbcomp
+      xorg.xkill
+      xorg.xmodmap
+      yad
+      zip
+
+      brightnessctl
 
 
       # system utilities (makes the system run smoothly internally)
-      ntfs3g
-      exfat
-      xclip
       cifs-utils
-      samba
       dunst
+      exfat
+      ntfs3g
+      samba
+      xclip
+      xorg.xev
 
 
       # desktop utilities (programs to make the system usable from the user's perspective)
-      kitty
       alacritty
-      rxvt-unicode-emoji
-      mlterm
-      st
-      rofi
-      pavucontrol
-      pasystray
-      easyeffects
-      flameshot
-      nitrogen
-      picom-jonaburg
-      networkmanagerapplet
-      copyq
-      lxappearance
-      etcher
-      cinnamon.nemo
-      xfce.thunar
-      pcmanfm
-      libsForQt5.dolphin
-      easytag
+      arandr
       baobab
       cbatticon
+      cinnamon.nemo
+      conky
+      copyq
+      unstable.easyeffects
+      easytag
+      etcher
+      gsimplecal
+      flameshot
+      kitty
+      libsForQt5.dolphin
+      lxappearance
+      mlterm
+      networkmanagerapplet
+      nitrogen
+      pasystray
+      pavucontrol
+      pcmanfm
+      picom-jonaburg
+      rofi
+      rxvt-unicode-emoji
+      st
+      xfce.thunar
 
 
       # development utilities (packages that help compile or develop code other than c)
-      rustc
       cargo
-      rust-analyzer
-      maturin
+      cudaPackages.cudatoolkit
+      cudaPackages.cudnn
       ghc
-      haskell-language-server
-      mypy
-      nodePackages.pyright
       go
       gopls
-      lua-language-server
+      haskell-language-server
       julia-bin
+      lua-language-server
+      maturin
+      mypy
+      nodePackages.pyright
+      R
+      rstudio
+      rust-analyzer
+      rustc
+
       arduino
 
 
       # desktop programs (user gui programs with few system dependencies)
-      librewolf
+      audacious
+      audacity
       brave
+      discord
+      krita
+      libreoffice
+      librewolf
+      libsForQt5.falkon
       tor-browser-bundle-bin
       spotify
       vscode
-      audacity
-      element-desktop
-      cinny-desktop
-      libreoffice
-      krita
-      libsForQt5.falkon
-      
+
+      superTuxKart
     ];
   };
 
