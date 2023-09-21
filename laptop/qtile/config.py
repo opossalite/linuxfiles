@@ -247,6 +247,8 @@ keys = [
     # Toggle between different layouts as defined below
     Key([mod], "Tab", lazy.next_layout(), desc="Toggle between layouts"),
 
+    Key([mod], "o", lazy.spawn("gsimplecal"), desc="Run gsimplecal"),
+
     # Open programs
     #Key([mod, alt], "Semicolon", lazy.spawn("code"), desc="Run code"),
     #Key([mod, alt], "p", lazy.spawn("steam"), desc="Run steam"),
@@ -535,7 +537,8 @@ screens = [
                     fontsize = defaults['fontsize'],
                     format="%m/%d/%Y %a %I:%M %p",
                     mouse_callbacks = {
-                        'Button1': lazy.function(open_calendar),
+                        #'Button1': lazy.function(open_calendar),
+                        'Button1': lazy.spawn("gsimplecal"),
                     }
                 ),
                 #widget.QuickExit(),
