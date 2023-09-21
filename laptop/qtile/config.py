@@ -1,38 +1,94 @@
 import os
 import subprocess
-from typing import List
 
 from libqtile import qtile, bar, layout, widget, hook, backend
 from libqtile.config import Click, Drag, Group, Key, Match, Screen, KeyChord
 from libqtile.lazy import lazy
 from libqtile.command import lazy
 from libqtile.widget import base
-#from libqtile.utils import guess_terminal
-#from xcffib.xproto import EventMask
 
-#from pynput.mouse import Button, Controller
 
 home = os.path.expanduser('~')
-#mouse_pynput = Controller()
-mouse_positions = []
 mod = "mod4"
 alt = "mod1"
 
-# Run at Qtile start
+mouse_positions: list[tuple[int, int]] = []
+monitors: list[tuple[int, int, int, int]] = []
+
+
+def debug_write(message):
+    """Writes into ~/.debug_qtile.txt"""
+    with open(home + "/debug_qtile.txt", "w") as file:
+        file.write(str(message))
+       
+
+def debug_notif(message):
+    """Shows a notification via dunst"""
+    message = str(message).replace("<", '').replace(">", '')
+    subprocess.run([f"dunstify --timeout=2000 debug \"{message}\"" ], shell=True)
+
+
+def extract_resolution(monitor: bytes) -> tuple[int, int, int, int]:
+    """I think this converts one monitor's string into a resolution and position"""
+    loc = monitor.find(b'/') #where the first num ends
+    width = int(monitor[:loc])
+
+    loc1 = monitor.find(b'x', loc) + 1 #where the second num starts
+    loc2 = monitor.find(b'/', loc1) #where the second num ends
+    height = int(monitor[loc1:loc2])
+
+    splitted = monitor[monitor.find(b'+', loc2) + 1:].split(b'+')
+    x = int(splitted[0])
+    y = int(splitted[1])
+
+    return (width, height, x, y)
+
+
+def initialize_monitors():
+    """Retrieves monitor resolutions and positions"""
+    global monitors
+    monitors_raw = subprocess.check_output(['xrandr', '--listmonitors']).splitlines()[1:]
+    monitors = list(map(lambda x: extract_resolution(x.split()[2]), monitors_raw)) #grab string resolution and extract ints
+
+
+def initialize_mouse_positions(monitors: list[tuple[int, int, int, int]]):
+    """Initializes mouse position for each screen"""
+    global mouse_positions
+    mouse_positions = []
+    for monitor in monitors:
+        mouse_positions.append((monitor[2] + round(monitor[0] / 2), monitor[3] + round(monitor[1] / 2)))
+
+
+def get_cur_screen(mouse_pos: tuple[int, int], monitors: list[tuple[int, int, int, int]]) -> int:
+    """Get the current screen the mouse is on"""
+    for i in range(len(monitors)):
+        monitor = monitors[i]
+        if mouse_pos[0] < monitor[2] or mouse_pos[1] < monitor[3]: #mouse not far enough in x nor y
+            continue
+        elif mouse_pos[0] >= monitor[2] + monitor[0]: #mouse is too far in the x direction
+            continue
+        elif mouse_pos[1] >= monitor[3] + monitor[1]: #mouse is too far in the y direction
+            continue
+        else:
+            return i #our mouse is within the bounds of the monitor
+    return -1 #should be impossible to reach
+
+
 @hook.subscribe.startup_once
 def autostart():
-    global mouse_positions
+    """Run at Qtile start"""
+    global home 
+    initialize_monitors()
+    initialize_mouse_positions(monitors)
     subprocess.run([home + "/autorun.sh"], shell=True)
-    
-  
-# Focus newly spawned windows, not working currently 
-#@hook.subscribe.client_managed
-#def client_new(client):
-#    client.cmd_focus()
-#    hook.fire("focus_change") 
-    
 
-# MARKED FOR UPDATING, refactor this code
+    
+@hook.subscribe.startup
+def startup():
+    initialize_monitors()
+    initialize_mouse_positions(monitors)
+
+# MARKED FOR UPDATING, refactor this code, make it actually respect the mouse position
 # On a new client, spawn on the same screen as the mouse initially, otherwise follow the rules 
 @hook.subscribe.client_new
 def client_new(client: backend.base.Window):
@@ -63,54 +119,15 @@ def client_new(client: backend.base.Window):
     hook.fire("focus_change")
 
 
-# MARKED FOR DEPRECATION
-def window_to_previous_screen(qtile, switch_group=False, switch_screen=False):
-    i = qtile.screens.index(qtile.current_screen)
-    if i != 0:
-        group = qtile.screens[i - 1].group.name
-        qtile.current_window.togroup(group, switch_group=switch_group)
-        if switch_screen == True:
-            qtile.cmd_to_screen(i - 1)
-            mouse_to_next_screen(qtile)
-    else:
-        window_to_next_screen(qtile, switch_group, switch_screen)
-
-
-# MARKED FOR UPDATING: absorb above function and also implement wrapping
-def window_to_next_screen(qtile, switch_group=False, switch_screen=False):
-    i = qtile.screens.index(qtile.current_screen)
-    if len(qtile.screens) < 2:
-        return
-    if i + 1 != len(qtile.screens):
-        group = qtile.screens[i + 1].group.name
-        qtile.current_window.togroup(group, switch_group=switch_group)
-        if switch_screen == True:
-            qtile.cmd_to_screen(i + 1) #will need to remove the cmd_ in the future
-            mouse_to_next_screen(qtile)
-    else:
-        window_to_previous_screen(qtile, switch_group, switch_screen)
-        
-
-# Focus the next screen and bring mouse with it 
-def mouse_to_next_screen(qtile, move_focus = False):
-    global mouse_positions, mouse_pynput
-    
-    if len(mouse_positions) == 0: #initialize mouse_positions if necessary
-        initialize_mouse_positions(qtile)
-        
-    mouse_pos = qtile.core.get_mouse_position()
-    screen_index = determine_monitor(qtile, mouse_pos) #determine the current monitor
-    
-    mouse_positions[screen_index] = mouse_pos #save the current mouse position before switching
-    
-    #switch focus and mouse position
-    #mouse_pynput.position = mouse_positions[(screen_index + 1) % len(qtile.screens)]
-    #if move_focus == True:
-    #    qtile.cmd_next_screen() #will need to remove the cmd_ in the future
+def float_to_front(qtile):
+    """Bring all floating windows of the group to front"""
+    for window in qtile.current_group.windows:
+        if window.floating:
+            window.cmd_bring_to_front()
 
 
 def swap_workspaces(qtile, target):
-    '''Swap all windows in the current and target workspaces.'''
+    """Swap all windows in the current and target workspaces"""
     cur_group = qtile.current_group
     cur_windows = qtile.current_group.windows.copy()
     target_group = [x for x in qtile.groups if x.name == target.name][0]
@@ -122,46 +139,72 @@ def swap_workspaces(qtile, target):
 
 
 def all_to_workspace(qtile, target):
-    '''Move all current windows to the target workspace.'''
+    """Move all current windows to the target workspace"""
     cur_windows = qtile.current_group.windows.copy()
     for cur_win in cur_windows:
         cur_win.togroup(target.name)
 
-
-# Initialize mouse positions    
-def initialize_mouse_positions(qtile):
-    global mouse_positions
-    mouse_positions = [0]*len(qtile.screens) #set the right size
-    screen_offset = 0   #consider the size of each screen
-    for i, screen in enumerate(qtile.screens): #iterate through all screens
-        mouse_positions[i] = (screen.width / 2 + screen_offset, screen.height / 2) #set the initial place to the center of each monitor
-        screen_offset += screen.width
-    
-
-# Simple way to debug a message by writing it into ~/debug_qtile.txt
-def debug_write(message):
-    with open(home + "/debug_qtile.txt", "w") as file:
-        file.write(str(message))
-       
 
 # Open the popup calendar 
 def open_calendar(qtile):
     subprocess.run([home + "/.config/qtile/popup-calendar.sh --popup"], shell=True)
    
 
-# Given a set of coordinates, determine which monitor we're on 
-def determine_monitor(qtile, coords):
-    screen_index = 0
-    screen_offset = 0 #considers each monitor's width
+#Move the mouse to an adjacent screen, move_focus asks if the window focus should follow
+def mouse_cycle_screen(qtile, clockwise: bool):
+    """Move the mouse to the next or previous screen"""
+    global mouse_positions, monitors
 
-    for screen in qtile.screens:
-        if coords[0] > screen.width + screen_offset:
-            screen_index += 1
-            screen_offset += screen.width
+    if len(qtile.screens) < 2:
+        return
+
+    mouse_pos = qtile.core.get_mouse_position()
+    cur = get_cur_screen(mouse_pos, monitors)
+
+    if clockwise:
+        if cur + 1 < len(qtile.screens):
+            target = cur + 1 #valid clockwise
         else:
-            break
+            target = 0 #reset clockwise
+    else:
+        if cur > 0:
+            target = cur - 1 #valid counterclockwise
+        else:
+            target = len(qtile.screens) - 1 #reset counterclockwise
+
+    mouse_positions[cur] = mouse_pos
+    new_pos = mouse_positions[target]
+    subprocess.call(["xdotool", "mousemove", str(new_pos[0]), str(new_pos[1])])
+    qtile.cmd_to_screen(target)
+
+
+
+def window_cycle_screen(qtile, clockwise: bool, switch_screen: bool):
+    """Move focused window to next or previous screen, also asks if mouse should follow"""
+    if len(qtile.screens) < 2:
+        return
+    cur = qtile.screens.index(qtile.current_screen)
+
+    if clockwise:
+        if cur + 1 < len(qtile.screens):
+            target = cur + 1 #valid clockwise
+        else:
+            target = 0 #reset clockwise
+    else:
+        if cur > 0:
+            target = cur - 1 #valid counterclockwise
+        else:
+            target = len(qtile.screens) - 1 #reset counterclockwise
+
+    group = qtile.screens[target].group.name
+    qtile.current_window.togroup(group)
+    if switch_screen:
+        #mouse_cycle_screen(qtile)
+        #debug_write(f"{now_win}, {cur_win}, {qtile.current_window}, {new_win}")
+        #qtile.current_window.cmd_focus() #this shit aint working, supposed to focus the moved window
+        qtile.cmd_to_screen(target)
         
-    return screen_index
+
     
 
 keys = [
@@ -174,9 +217,9 @@ keys = [
     Key([mod], "j", lazy.layout.down(), desc="Move focus down"),
     Key([mod], "k", lazy.layout.up(), desc="Move focus up"),
     #Key([mod], "i", lazy.next_screen(), desc='Focus next monitor'),
-    Key([mod], "i", lazy.function(mouse_to_next_screen, move_focus = True), desc="Focus next monitor"),
-    Key([mod, "shift"], "i", lazy.function(window_to_next_screen, switch_screen = True), desc="Follow window to next monitor"),
-    Key([mod, "control"], "i", lazy.function(window_to_next_screen), desc="Move window to next monitor"),
+    Key([mod], "i", lazy.function(mouse_cycle_screen, clockwise = True), desc="Focus next monitor"),
+    Key([mod, "shift"], "i", lazy.function(window_cycle_screen, clockwise = True, switch_screen = True), desc="Follow window to next monitor"),
+    Key([mod, "control"], "i", lazy.function(window_cycle_screen, clockwise = True, switch_screen = False), desc="Move window to next monitor"),
     #Key([mod], "space", lazy.layout.next(), desc="Move window focus to other window"),
     
     # Move windows between left/right columns or move up/down in current stack.
