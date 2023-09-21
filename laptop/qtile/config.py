@@ -2,9 +2,10 @@ import os
 import subprocess
 
 from libqtile import qtile, bar, layout, widget, hook, backend
-from libqtile.config import Click, Drag, Group, Key, Match, Screen, KeyChord
+from libqtile.config import Click, Drag, Group, Key, Match, Screen
 from libqtile.lazy import lazy
 from libqtile.command import lazy
+from libqtile.utils import send_notification
 from libqtile.widget import base
 
 
@@ -85,38 +86,37 @@ def autostart():
     
 @hook.subscribe.startup
 def startup():
+    """Runs any time Qtile is restarted"""
     initialize_monitors()
     initialize_mouse_positions(monitors)
 
-# MARKED FOR UPDATING, refactor this code, make it actually respect the mouse position
-# On a new client, spawn on the same screen as the mouse initially, otherwise follow the rules 
+
 @hook.subscribe.client_new
 def client_new(client: backend.base.Window):
-    #backend.x11.window.Window
-    #backend.base.Window
-    #with open(home + "/temp.txt", 'w') as file:
-    #    file.write(client.name + str(client.get_wm_role()) + str(client.get_wm_type()))
-    #with open(home + "/temp.txt", 'w') as file:
-    #    file.write(qtile.core.get)
-
-    # have newly opening windows respect the mouse position
-    mouse_xpos = qtile.core.get_mouse_position()[0]
-    if mouse_xpos <= 1920:  #NOTE: this must be changed for every monitor
-        client.cmd_toscreen(0)
-    else:
-        client.cmd_toscreen(1)
-
-    # move windows to their correct workspace
+    """Runs when a client is spawned, moves clients to their correct workspaces"""
     classes = client.get_wm_class()
-    if 'code-oss' in classes:
+
+    if 'code' in classes:
         client.togroup('1')
-    #if client.name == None: #workaround for spotify, but may affect other programs too
-    #    client.togroup('9')
-    if 'discord' in classes:
+    elif 'discord' in classes:
         client.togroup('8')
-    
+    #if client.name == None: #workaround for spotify, but affects other programs too
+    #    client.togroup('9')
+    else: #no assigned window, so spawn on current screen
+        mouse_pos = qtile.core.get_mouse_position()
+        cur = get_cur_screen(mouse_pos, monitors)
+        client.cmd_toscreen(cur)
+
     client.cmd_focus()
     hook.fire("focus_change")
+
+
+@hook.subscribe.screen_change
+def screens_reconfigured(event):
+    """Runs when screen configuration is changed"""
+    initialize_monitors()
+    initialize_mouse_positions(monitors)
+
 
 
 def float_to_front(qtile):
@@ -254,7 +254,6 @@ keys = [
     #Key([mod, alt], "p", lazy.spawn("steam"), desc="Run steam"),
     Key([mod], "Return", lazy.spawn("kitty"), desc="Launch terminal"),
     Key([mod], "space", lazy.spawn("rofi -show run -theme cobalt"), desc="Run dmenu"),
-    #Key([mod], "d", lazy.spawn("dmenu_run -nb '#2A2A2A' -sf '#2288ff' -sb '#464646' -nf '#bbbbbb'"), desc="Run dmenu"),
 
     Key([mod, alt], "h", lazy.spawn("code"), desc="Run code"),
     Key([mod, alt], "j", lazy.spawn("firefox"), desc="Run firefox"),
@@ -537,7 +536,6 @@ screens = [
                     fontsize = defaults['fontsize'],
                     format="%m/%d/%Y %a %I:%M %p",
                     mouse_callbacks = {
-                        #'Button1': lazy.function(open_calendar),
                         'Button1': lazy.spawn("gsimplecal"),
                     }
                 ),
@@ -582,7 +580,7 @@ screens = [
                 widget.Clock(
                     format="%m/%d/%Y %a %I:%M %p",
                     mouse_callbacks = {
-                        'Button1': lazy.function(open_calendar),
+                        'Button1': lazy.spawn("gsimplecal"),
                     }
                 ),
                 #widget.QuickExit(),
