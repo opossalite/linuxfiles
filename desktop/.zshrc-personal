@@ -38,6 +38,7 @@ fi
 
 alias la='ls -a --color=auto'
 alias ls='ls --color=auto'
+alias cp='cp -i'
 alias whereami="pwd"
 
 alias commands="cat ~/commands.txt | most"
@@ -83,7 +84,7 @@ alias cobra="distrobox enter CobraVM"
 #alias pi="ssh rover@10.219.198.202"
 #alias kb="setxkbmap"
 
-mkcd() {
+cdmk() {
     mkdir -p $1
     cd $1
 }
@@ -107,6 +108,14 @@ ns() {
         nix-shell "$VENVPATH" --command zsh
     else
         echo "Could not find virtual environment"
+    fi
+}
+
+move() {
+    if [ $# != 2 ]; then
+        echo "move: exactly two arguments are required"
+    else
+        cp -i $1 $2 && trash $1
     fi
 }
 

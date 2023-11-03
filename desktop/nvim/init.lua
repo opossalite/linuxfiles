@@ -85,6 +85,7 @@ require('lazy').setup({
             {'tpope/vim-repeat'}
         }
     },
+    {'mfussenegger/nvim-jdtls'},
 
     -- Themes
     {'nvim-lualine/lualine.nvim',
@@ -112,7 +113,7 @@ require('lazy').setup({
     {'rebelot/kanagawa.nvim', as = 'kanagawa'},
     {'rose-pine/neovim', as = 'rose-pine'},
     {'Shatur/neovim-ayu', as = 'ayu'},
-    {'navarasu/onedark.nvim', as = 'onedark'},
+    --{'navarasu/onedark.nvim', as = 'onedark'},
     {'marko-cerovac/material.nvim', as = 'material'},
     {'mcchrish/zenbones.nvim', as = 'zenbones',
         dependencies = {
@@ -120,6 +121,12 @@ require('lazy').setup({
         }
     },
     {'bluz71/vim-nightfly-colors', as = 'nightfly'},
+    {'jacoborus/tender.vim', as = 'tender'},
+    --{'NTBBloodbath/doom-one.nvim', as = 'doom-one'},
+    --{'drewtempelmeyer/palenight.vim', as = 'palenight'},
+    {'shaunsingh/moonlight.nvim', as = 'moonlight'},
+    {'oxfist/night-owl.nvim', as = 'night-owl'},
+    {'talha-akram/noctis.nvim', as = 'noctis'},
 })
 
 
@@ -178,6 +185,8 @@ require'lspconfig'.pyright.setup{}
 require'lspconfig'.rust_analyzer.setup{}
 require'lspconfig'.gopls.setup{}
 require'lspconfig'.clangd.setup{}
+--require'lspconfig'.arduino_language_server.setup{}
+--require'lspconfig'.jdtls.setup{}
 
 
 lsp.setup()

@@ -12,9 +12,9 @@ require('catppuccin').setup({
 require('kanagawa').setup({
     theme = "lotus", --wave, dragon, lotus
 })
-require('onedark').setup {
-    style = 'cool'
-}
+--require('onedark').setup {
+--    style = 'cool'
+--}
 require('ayu').setup({
     mirage = true, -- Set to `true` to use `mirage` variant instead of `dark` for dark background.
     overrides = { -- A dictionary of group names, each associated with a dictionary of parameters (`bg`, `fg`, `sp` and `style`) and colors in hex.
@@ -54,6 +54,8 @@ function ColorRefresh(theme)
     --require('lualine').refresh()
 
     vim.cmd("hi clear")
+    --vim.cmd [[ colorscheme default ]]
+    --vim.cmd [[ set background=dark ]]
     vim.cmd.colorscheme(theme)
     vim.cmd [[ doautocmd ColorScheme ]]
 
@@ -82,7 +84,14 @@ end
 vim.api.nvim_create_autocmd("BufWinEnter", {pattern = "*", callback = function() ColorRefresh("dracula") end})
 vim.api.nvim_create_autocmd({"BufEnter", "BufWinEnter"}, {pattern = "*.rs", callback = function() ColorRefresh("ayu-mirage") end})
 vim.api.nvim_create_autocmd({"BufEnter", "BufWinEnter"}, {pattern = "*.py", callback = function() ColorRefresh("tokyonight-night") end})
+vim.api.nvim_create_autocmd({"BufEnter", "BufWinEnter"}, {pattern = "*.go", callback = function() ColorRefresh("rose-pine") end})
 vim.api.nvim_create_autocmd({"BufEnter", "BufWinEnter"}, {pattern = "*.hs", callback = function() ColorRefresh("tokyobones") end})
+vim.api.nvim_create_autocmd({"BufEnter", "BufWinEnter"}, {pattern = "*.zig", callback = function() ColorRefresh("tender") end})
+vim.api.nvim_create_autocmd({"BufEnter", "BufWinEnter"}, {pattern = "*.cu", callback = function() ColorRefresh("tokyobones") end})
+--vim.api.nvim_create_autocmd({"BufEnter", "BufWinEnter"}, {pattern = "*.cu", callback = function()
+--        vim.g.material_style = "deep ocean"
+--        ColorRefresh('material')
+--    end})
 
 
 --vim.api.nvim_create_autocmd("ColorScheme", {pattern = "*", callback = function()
@@ -98,17 +107,13 @@ vim.keymap.set('n', '<A-2>', function() ColorRefresh('tokyonight-night') end)
 vim.keymap.set('n', '<A-3>', function() ColorRefresh('catppuccin-mocha') end)
 vim.keymap.set('n', '<A-4>', function() ColorRefresh('rose-pine') end)
 vim.keymap.set('n', '<A-5>', function() ColorRefresh('dracula') end)
-vim.keymap.set('n', '<A-6>', function() ColorRefresh('onedark') end)
-vim.keymap.set('n', '<A-7>', function()
-    vim.g.material_style = "deep ocean"
-    ColorRefresh('material')
-end)
-vim.keymap.set('n', '<A-8>', function()
-    vim.g.material_style = "palenight"
-    ColorRefresh('material')
-end)
-
-vim.keymap.set('n', '<A-9>', function() ColorRefresh('neobones') end)
+--vim.keymap.set('n', '<A-6>', function()
+--    vim.g.material_style = "deep ocean"
+--    ColorRefresh('material')
+--end)
+--vim.keymap.set('n', '<A-7>', function() ColorRefresh('noctis_uva') end)
+vim.keymap.set('n', '<A-8>', function() ColorRefresh('moonlight') end)
+vim.keymap.set('n', '<A-9>', function() ColorRefresh('night-owl') end)
 vim.keymap.set('n', '<A-0>', function() ColorRefresh('rosebones') end)
 vim.keymap.set('n', '<A-->', function() ColorRefresh('tokyobones') end)
 vim.keymap.set('n', '<A-=>', function() ColorRefresh('nightfly') end)

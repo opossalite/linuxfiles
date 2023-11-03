@@ -2,15 +2,10 @@
   pkgs.mkShell {
     # nativeBuildInputs is usually what you want -- tools you need to run
     #nativeBuildInputs = with pkgs.buildPackages; [ ruby_3_2 ];
-    name = "py";
+    name = "qtile";
     packages = [
-        (pkgs.python310.withPackages (ps: [
-            ps.matplotlib
-            ps.numpy
-            ps.pandas
+        (pkgs.python3.withPackages (ps: [
             ps.qtile
-            ps.scikit-learn
-            ps.torch
             ps.pynput
         ]))
     ];
@@ -19,6 +14,6 @@
     #    python311Packages.pip
     #];
     shellHook = "
-        export names=$names:py
+        export names=$names:qtile
     ";
 }
