@@ -15,40 +15,10 @@
                     "slope": "x1",
                     "solo": false,
                     "type": "Lo-shelf"
-                },
-                "band1": {
-                    "frequency": 1800.0,
-                    "gain": 2.0,
-                    "mode": "RLC (BT)",
-                    "mute": false,
-                    "q": 2.0,
-                    "slope": "x1",
-                    "solo": false,
-                    "type": "Off"
-                },
-                "band2": {
-                    "frequency": 3500.0,
-                    "gain": -4.0,
-                    "mode": "RLC (BT)",
-                    "mute": false,
-                    "q": 2.0,
-                    "slope": "x1",
-                    "solo": false,
-                    "type": "Off"
-                },
-                "band3": {
-                    "frequency": 16000.0,
-                    "gain": -4.0,
-                    "mode": "RLC (BT)",
-                    "mute": false,
-                    "q": 2.0,
-                    "slope": "x1",
-                    "solo": false,
-                    "type": "Off"
                 }
             },
             "mode": "IIR",
-            "num-bands": 4,
+            "num-bands": 1,
             "output-gain": 0.0,
             "pitch-left": 0.0,
             "pitch-right": 0.0,
@@ -62,36 +32,6 @@
                     "slope": "x1",
                     "solo": false,
                     "type": "Lo-shelf"
-                },
-                "band1": {
-                    "frequency": 1800.0,
-                    "gain": 2.0,
-                    "mode": "RLC (BT)",
-                    "mute": false,
-                    "q": 2.0,
-                    "slope": "x1",
-                    "solo": false,
-                    "type": "Off"
-                },
-                "band2": {
-                    "frequency": 3500.0,
-                    "gain": -4.0,
-                    "mode": "RLC (BT)",
-                    "mute": false,
-                    "q": 2.0,
-                    "slope": "x1",
-                    "solo": false,
-                    "type": "Off"
-                },
-                "band3": {
-                    "frequency": 16000.0,
-                    "gain": -4.0,
-                    "mode": "RLC (BT)",
-                    "mute": false,
-                    "q": 2.0,
-                    "slope": "x1",
-                    "solo": false,
-                    "type": "Off"
                 }
             },
             "split-channels": false
