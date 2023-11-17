@@ -1,8 +1,11 @@
-{ pkgs ? import <nixpkgs> {} }:
+let
+    shell_name = "r";
+in { pkgs ? import <nixpkgs> {} }:
   pkgs.mkShell {
     # nativeBuildInputs is usually what you want -- tools you need to run
     #nativeBuildInputs = with pkgs.buildPackages; [ ruby_3_2 ];
-    name = "qtile";
+    name = "${shell_name}";
+
     packages = [
         (pkgs.python3.withPackages (ps: [
             ps.qtile

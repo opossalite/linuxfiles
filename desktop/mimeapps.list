@@ -6,8 +6,10 @@ audio/flac=audacious.desktop
 audio/x-wavpack=deadbeef.desktop
 audio/x-wav=deadbeef.desktop
 audio/mp4=deadbeef.desktop
-image/png=org.gnome.Loupe.desktop
+image/png=org.gnome.eog.desktop
 image/jpeg=org.gnome.eog.desktop
+image/webp=org.gnome.eog.desktop
+image/gif=org.gnome.eog.desktop
 
 [Added Associations]
 audio/flac=easytag.desktop;deadbeef.desktop;audacious.desktop;
@@ -23,3 +25,6 @@ application/json=neovide.desktop;firefox.desktop;
 image/jpeg=feh.desktop;org.gnome.eog.desktop;
 text/csv=libreoffice-calc.desktop;
 text/x-python=code-oss.desktop;
+image/webp=org.gnome.eog.desktop;
+image/gif=org.gnome.eog.desktop;
+text/plain=calc.desktop;writer.desktop;
