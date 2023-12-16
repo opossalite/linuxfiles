@@ -18,10 +18,12 @@ in {
   nixpkgs.config.allowUnfree = true;
   nixpkgs.config.permittedInsecurePackages = [
     "electron-12.2.3"
+    "electron-19.1.9"
   ];
   home.packages = with pkgs; [
 
     hello
+    jupyter
 
     # command-line programs (programs that run in the terminal)
     btop

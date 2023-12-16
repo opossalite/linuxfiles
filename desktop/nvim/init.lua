@@ -64,12 +64,17 @@ require('lazy').setup({
 
     -- Tools
     {'nvim-telescope/telescope.nvim',
-        tag = '0.1.1',
+        tag = '0.1.5',
         dependencies = {
             {'nvim-lua/plenary.nvim'}
         }
     },
-    {'theprimeagen/harpoon'},
+    {'theprimeagen/harpoon',
+        branch = "master",
+        dependencies = {
+            {"nvim-lua/plenary.nvim"}
+        }
+    },
     {'windwp/nvim-autopairs',
         config = function() require('nvim-autopairs').setup{} end
     },
@@ -93,7 +98,15 @@ require('lazy').setup({
             'nvim-tree/nvim-web-devicons'
         }
     },
-    {'lukas-reineke/indent-blankline.nvim'},
+    {'lukas-reineke/indent-blankline.nvim',
+        main = "ibl",
+        opts = {
+            --scope = {
+                --enabled = true,
+                --highlight = { "SpecialKey", "SpecialKey", "SpecialKey" },
+            --}
+        }
+    },
     --{'folke/styler.nvim',
     --    config = function()
     --        require("styler").setup {
