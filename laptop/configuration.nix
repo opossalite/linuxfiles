@@ -21,6 +21,17 @@ in {
 
 
 
+  ### Keep shell packages
+  nix.extraOptions = ''
+    keep-outputs = true
+    keep-derivations = true
+  '';
+
+
+  ### Auto Optimize
+  nix.settings.auto-optimise-store = true;
+
+
   ### Bootloader
 
   boot.loader.systemd-boot.enable = true;
@@ -40,7 +51,7 @@ in {
   users.users.terrior = {
     isNormalUser = true;
     description = "terrior";
-    extraGroups = [ "networkmanager" "wheel" "storage" "docker"];
+    extraGroups = [ "networkmanager" "wheel" "storage" "docker" "input"];
     shell = pkgs.zsh;
     packages = with pkgs; [ #ensure some packages are installed for the user, even if home-manager isn't working correctly
       firefox
@@ -48,6 +59,8 @@ in {
   };
   programs.zsh = {
     enable = true;
+    autosuggestions.enable = true;
+    enableCompletion = true;
     histSize = 10000;
   };
   systemd.services.wpa_supplicant.environment.OPENSSL_CONF = pkgs.writeText"openssl.cnf"''
@@ -98,6 +111,7 @@ in {
   # services.openssh.enable = true;
   hardware.bluetooth.enable = true;
   services.blueman.enable = true;
+  #hardware.enableAllFirmware = true;
 
 
 
@@ -187,9 +201,11 @@ in {
 
   ### System Packages
   environment.systemPackages = with pkgs; [
+    home-manager 
+
     git
     neovim
-    python3Full
+    python310Full
     qtile
     udevil
     wget
@@ -199,135 +215,22 @@ in {
     clang_multi
     libclang
     gcc_multi
-    glibc
+    glibc_multi
     gnumake
+    libstdcxx5
   ];
 
+
+  #environment.sessionVariables = rec {
+  #  XDG_DATA_DIRS="$HOME/desktop:$XDG_DATA_DIRS";
+  #};
 
 
   ### Fonts
 
-  fonts.fonts = with pkgs; [
+  fonts.packages = with pkgs; [
     (nerdfonts.override { fonts = ["SourceCodePro"]; })
   ];
-
-
-
-  ### Home Manager Packages
-
-  home-manager.useGlobalPkgs = true;
-  home-manager.users.terrior = { pkgs, ...}: {
-    home.stateVersion = "22.11";
-    home.packages = with pkgs; [
-      
-      # command-line programs (programs that run in the terminal)
-      btop
-      distrobox
-      dmidecode
-      htop
-      killall
-      lf
-      lolcat
-      lshw
-      neofetch
-      nms
-      redshift
-      sshfs
-      texlive.combined.scheme-basic
-      trash-cli
-      tty-clock
-      unzip
-      xdotool
-      xorg.xkbcomp
-      xorg.xkill
-      xorg.xmodmap
-      yad
-      zip
-
-      brightnessctl
-
-
-      # system utilities (makes the system run smoothly internally)
-      cifs-utils
-      dunst
-      exfat
-      ntfs3g
-      samba
-      xclip
-      xorg.xev
-
-
-      # desktop utilities (programs to make the system usable from the user's perspective)
-      alacritty
-      arandr
-      baobab
-      cbatticon
-      cinnamon.nemo
-      conky
-      copyq
-      unstable.easyeffects
-      easytag
-      etcher
-      gsimplecal
-      flameshot
-      kitty
-      libsForQt5.dolphin
-      lxappearance
-      mlterm
-      networkmanagerapplet
-      nitrogen
-      pasystray
-      pavucontrol
-      pcmanfm
-      picom-jonaburg
-      rofi
-      rxvt-unicode-emoji
-      st
-      xfce.thunar
-
-
-      # development utilities (packages that help compile or develop code other than c)
-      cargo
-      cudaPackages.cudatoolkit
-      cudaPackages.cudnn
-      ghc
-      go
-      gopls
-      haskell-language-server
-      julia-bin
-      lua-language-server
-      maturin
-      mypy
-      nodePackages.pyright
-      R
-      rstudio
-      rust-analyzer
-      rustc
-
-      arduino
-
-
-      # desktop programs (user gui programs with few system dependencies)
-      audacious
-      audacity
-      brave
-      discord
-      krita
-      libreoffice
-      librewolf
-      libsForQt5.falkon
-      tor-browser-bundle-bin
-      spotify
-      vscode
-
-      superTuxKart
-    ];
-  };
-
-
-
-
-
 
 
   # Some programs need SUID wrappers, can be configured further or are
