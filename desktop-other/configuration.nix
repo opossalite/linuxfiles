@@ -138,6 +138,14 @@ in {
       histSize = 1000;
   };
 
+  ### Virtualization
+  virtualisation = {
+    podman = {
+      enable = true;
+      defaultNetwork.settings.dns_enabled = true;
+    };
+  };
+
   # Allow unfree packages
   #nixpkgs.config.allowUnfree = true;
 

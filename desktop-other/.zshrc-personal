@@ -25,6 +25,10 @@ if [ "$IN_NIX_SHELL" != "impure" ]; then
             PS1=$'%B%F{15}%n%F{214}@%m%F{15}:%F{130}%~%F{15}$%b%f '
             ;;
 
+        ("CobraVM"*)
+            PS1=$'%B%F{15}%n%F{2}@%m%F{15}:%F{4}%~%F{15}$%b%f '
+            ;;
+
         (*)
             echo "How did I get in the middle of nowhere?"
             echo $HOSTNAME
