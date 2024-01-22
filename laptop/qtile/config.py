@@ -3,9 +3,9 @@ import subprocess
 
 from libqtile import qtile, bar, layout, widget, hook, backend
 from libqtile.config import Click, Drag, Group, Key, Match, Screen
-from libqtile.lazy import lazy
+#from libqtile.lazy import lazy
 from libqtile.command import lazy
-from libqtile.utils import send_notification
+#from libqtile.utils import send_notification
 from libqtile.widget import base
 
 
@@ -15,6 +15,83 @@ alt = "mod1"
 
 mouse_positions: list[tuple[int, int]] = []
 monitors: list[tuple[int, int, int, int]] = []
+
+strict_workspaces = False #only enforce strict workspaces, any not listed are dynamic
+strict_map = [
+    { #two monitors
+        8: 0,
+        9: 0,
+    },
+    { #three monitors
+        8: 0,
+        9: 0,
+    },
+]
+
+
+def initialize_strict_workspaces():
+    global strict_map, strict
+    monitors_num = len(subprocess.check_output(['xrandr', '--listmonitors']).splitlines()[1:])
+    if monitors_num > len(strict_map): #strict_map doesn't have this num of monitors
+        strict = {}
+    else:
+        strict = strict_map[monitors_num-1]
+
+
+def get_strict_workspace_screen(qtile, workspace: int) -> int:
+    """Get the screen a workspace is assigned to. Returns the current screen if none."""
+    global strict
+    num = strict.get(workspace)
+    if num == None:
+        mouse_pos = qtile.core.get_mouse_position()
+        cur = get_cur_screen(mouse_pos, monitors)
+        return cur
+    else:
+        return num
+
+
+def mouse_to_screen(qtile, screen: int):
+    """Move the mouse to the next or previous screen"""
+    global mouse_positions, monitors
+
+    if len(qtile.screens) < 2:
+        return
+
+    mouse_pos = qtile.core.get_mouse_position()
+    cur = get_cur_screen(mouse_pos, monitors)
+
+    if screen >= len(qtile.screens):
+        debug_notif(f"Invalid screen: {screen}")
+        return
+
+    mouse_positions[cur] = mouse_pos
+    new_pos = mouse_positions[screen]
+    subprocess.call(["xdotool", "mousemove", str(new_pos[0]), str(new_pos[1])])
+    qtile.cmd_to_screen(screen)
+
+
+def get_methods(obj) -> list[str]:
+    return [method_name for method_name in dir(obj) if callable(getattr(obj, method_name))]
+
+
+def launch_thing(qtile):
+    debug_notif("hi")
+    try:
+        #subprocess.run(["nix-shell ~/shells/r.nix --command rstudio"], shell=False)
+        subprocess.Popen(["nix-shell shells/r.nix --command rstudio"], shell=True) #this works but freezes qtile for a sec
+        #subprocess.Popen(["~/scripts/rstudio.sh"], shell=True) #same thing
+    except Exception as e:
+        debug_notif(e)
+    debug_notif("hi1")
+
+
+def fix_config(qtile):
+    #debug_notif("clicked")
+    #subprocess.run(["xrandr --output eDP-1 --primary --mode 1920x1080 --rate 60 --output HDMI-1 --mode 1920x1080 --rate 60 --above eDP-1"], shell = True)
+    #subprocess.run(["feh --bg-fill ~/gits/linuxfiles/wallpapers/blue.png ~/gits/linuxfiles/wallpapers/minimalism-ai-art-simple-background-landscape-mountains-night-2202267-wallhere.com.jpg"], shell = True)
+    #debug_notif("clicked1")
+    #subprocess.run
+    subprocess.run([home + "/autorun.sh --reload"], shell=True)
 
 
 def debug_write(message):
@@ -48,8 +125,15 @@ def extract_resolution(monitor: bytes) -> tuple[int, int, int, int]:
 def initialize_monitors():
     """Retrieves monitor resolutions and positions"""
     global monitors
+    initialize_strict_workspaces()
     monitors_raw = subprocess.check_output(['xrandr', '--listmonitors']).splitlines()[1:]
     monitors = list(map(lambda x: extract_resolution(x.split()[2]), monitors_raw)) #grab string resolution and extract ints
+    # subprocess.check_output(["xrandr", "--query"], shell = True)
+    # list(filter(lambda x: " connected" in x, x.decode("utf-8").splitlines()))
+    temp = subprocess.check_output(['xrandr', '--query'])
+    y = list(filter(lambda x: " connected" in x, temp.decode("utf-8").splitlines()))
+    if len(monitors) != len(y):
+        debug_notif(f"Lengths are not equal! {len(monitors)} vs {len(y)}")
 
 
 def initialize_mouse_positions(monitors: list[tuple[int, int, int, int]]):
@@ -72,7 +156,7 @@ def get_cur_screen(mouse_pos: tuple[int, int], monitors: list[tuple[int, int, in
             continue
         else:
             return i #our mouse is within the bounds of the monitor
-    return -1 #should be impossible to reach
+    return -1 #unreachable code
 
 
 @hook.subscribe.startup_once
@@ -89,6 +173,7 @@ def startup():
     """Runs any time Qtile is restarted"""
     initialize_monitors()
     initialize_mouse_positions(monitors)
+    subprocess.run([home + "/autorun.sh -r"], shell=True)
 
 
 @hook.subscribe.client_new
@@ -148,7 +233,20 @@ def all_to_workspace(qtile, target):
 # Open the popup calendar 
 def open_calendar(qtile):
     subprocess.run([home + "/.config/qtile/popup-calendar.sh --popup"], shell=True)
-   
+
+
+def focus_cur_screen(qtile, update_mouse: bool):
+    """Focuses the screen the mouse is on."""
+    global mouse_positions
+
+    mouse_pos = qtile.core.get_mouse_position()
+    cur = get_cur_screen(mouse_pos, monitors)
+    qtile.cmd_to_screen(cur)
+    if update_mouse:
+        mouse_positions[cur] = mouse_pos
+        subprocess.call(["xdotool", "mousemove", str(mouse_pos[0]), str(mouse_pos[1])])
+
+
 
 #Move the mouse to an adjacent screen, move_focus asks if the window focus should follow
 def mouse_cycle_screen(qtile, clockwise: bool):
@@ -265,9 +363,11 @@ keys = [
     Key([mod, alt], "u", lazy.spawn("spotify"), desc="Run spotify"),
     Key([mod, alt], "i", lazy.spawn("discord"), desc="Run discord"),
     Key([mod, alt], "o", lazy.spawn("easyeffects"), desc="Run easyeffects"),
+    #Key([mod, alt], "p", lazy.spawn("nix-shell ~/shells/r.nix --command rstudio"), desc="Run rstudio"),
+    Key([mod, alt], "p", lazy.function(launch_thing), desc="Run rstudio"),
     
     # Restart Applications
-    Key([mod, "shift"], "b", lazy.spawn("nitrogen --restore"), desc="Restart background"),
+    Key([mod, "shift"], "b", lazy.function(fix_config), desc="Fix config things, run autorun.sh again"),
     #Key([mod, "shift"], "p", lazy.spawn("./.config/polybar/launch.sh"), desc="Restart polybar"),
     Key([mod, "shift"], "r", lazy.reload_config(), desc="Reload the config"),
 
@@ -310,18 +410,48 @@ keys = [
 
 groups = [Group(i) for i in "1234567890"]
 
+def switch_to_workspace(qtile, workspace):
+    if strict_workspaces:
+        workspace_num = int(workspace.name)
+        target_screen = get_strict_workspace_screen(qtile, workspace_num) #see if it's tied to a screen
+        mouse_to_screen(qtile, target_screen)
+    focus_cur_screen(qtile, update_mouse = True) #ensure mouse position stays
+    qtile.groups[int(workspace.name)-1].cmd_toscreen() #moves the workspace to the current screen #TEST REMOVING cmd_
+
+
+#def window_to_group(qtile, workspace, follow: bool):
+#    if not follow: #just move window over there
+#        qtile.cmd_togroup(workspace.name, switch_group = False)
+#    elif strict_workspaces: #following and respecting strict workspaces
+#        workspace_num = int(workspace.name)
+#        target_screen = get_strict_workspace_screen(qtile, workspace_num) #see if it's tied to a screen
+#        qtile.cmd_togroup(workspace.name, switch_group = False) #moves the workspace to the current screen
+#        mouse_to_screen(qtile, target_screen)
+#        focus_cur_screen(qtile, update_mouse = True) #ensure mouse position stays
+#    else: #following without respecting strict workspaces
+#        debug_notif("a")
+#        #qtile.cmd_togroup(workspace.name, switch_group = True) #moves the workspace to the current screen
+#        qtile.current_window.togroup(qtile.groups[i + 1].name)
+#        debug_notif("b")
+#qtile.current_screen.set_group(qtile.groups_map[SOMETHING])
+#qtile.current_screen.index
+#qtile.groups_map[name].toscreen() #brings a workspace to this screen
+
+
 for i in groups:
     keys.extend(
         [
             # mod1 + letter of group = switch to group
-            Key([mod], i.name, lazy.group[i.name].toscreen(), desc="Switch to group {}".format(i.name)),
+            #Key([mod], i.name, lazy.group[i.name].toscreen(), desc="Switch to group {}".format(i.name)),
+            Key([mod], i.name, lazy.function(switch_to_workspace, workspace = i), desc="Switch to group {}".format(i.name)),
             # mod1 + shift + letter of group = switch to & move focused window to group
-            Key([mod, "shift"], i.name, lazy.window.togroup(i.name, switch_group=True), desc="Switch to & move focused window to group {}".format(i.name)),
+            Key([mod, "shift"], i.name, lazy.window.togroup(i.name, switch_group = True), desc="Switch to & move focused window to group {}".format(i.name)),
+            #Key([mod, "shift"], i.name, lazy.function(window_to_group, workspace = i.name, follow = True), desc="Switch to & move focused window to group {}".format(i.name)),
             # Or, use below if you prefer not to switch to that group.
             # mod1 + shift + letter of group = move focused window to group
-            Key([mod, "control"], i.name, lazy.window.togroup(i.name), desc="Move focused window to group {}".format(i.name)),
+            Key([mod, "control"], i.name, lazy.window.togroup(i.name, switch_group = False), desc="Move focused window to group {}".format(i.name)),
 
-            Key([mod, "shift", "control"], i.name, lazy.function(swap_workspaces, target = i), desc="Swaps two workspaces"),
+            Key([mod, alt], i.name, lazy.function(swap_workspaces, target = i), desc="Swaps two workspaces"),
             Key([mod, "mod1", "control"], i.name, lazy.function(all_to_workspace, target = i), desc=f"Moves all current windows to workspace {i.name}"),
 
         ]
@@ -509,8 +639,9 @@ screens = [
                 #),
                 KeyboardSwitcher(
                     configured_keyboards = [
-                        ("us", "us"),
+                        ("us-enhanced", "us"),
                         ("es", "es"),
+                        ("universal", "uv"),
                         ("colemak-dha", "cm"),
                         #("colemak-dh", "cm"),
                         ("semimak-jq", "sm"),

@@ -14,7 +14,7 @@ vim.opt.backup = false
 vim.opt.undodir = os.getenv("HOME") .. "/.vim/undodir"
 vim.opt.undofile = true
 
-vim.opt.hlsearch = false
+vim.opt.hlsearch = true
 vim.opt.incsearch = true
 
 vim.opt.termguicolors = true
@@ -25,6 +25,13 @@ vim.cmd("autocmd FileType * set formatoptions-=cro")
 
 vim.g.lf_width = 1920
 vim.g.lf_height = 1080
+
+vim.opt.colorcolumn = "81"
+vim.opt.cursorline = true
+
+--vim.api.nvim_create_autocmd('ColorScheme', {
+--  command = [[highlight CursorLine guibg=NONE cterm=underline]]
+--})
 
 
 

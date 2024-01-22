@@ -24,7 +24,7 @@ require('lazy').setup({
 
     -- LSP
     {'VonHeikemen/lsp-zero.nvim',
-        branch = 'v2.x',
+        branch = 'v2.*',
         dependencies = {
             -- LSP Support
             {'neovim/nvim-lspconfig'},             -- Required
@@ -39,7 +39,10 @@ require('lazy').setup({
             -- Autocompletion
             {'hrsh7th/nvim-cmp'},     -- Required
             {'hrsh7th/cmp-nvim-lsp'}, -- Required
-            {'L3MON4D3/LuaSnip'},     -- Required
+            {'L3MON4D3/LuaSnip',
+                version = "v2.*",
+                build = "make install_jsregexp"
+            },     -- Required
         }
     },
     {'nvim-treesitter/nvim-treesitter',
@@ -64,7 +67,7 @@ require('lazy').setup({
 
     -- Tools
     {'nvim-telescope/telescope.nvim',
-        tag = '0.1.1',
+        tag = '0.1.5',
         dependencies = {
             {'nvim-lua/plenary.nvim'}
         }
@@ -179,6 +182,7 @@ require'lspconfig'.rust_analyzer.setup{}
 require'lspconfig'.gopls.setup{}
 require'lspconfig'.clangd.setup{}
 require'lspconfig'.julials.setup{}
+require'lspconfig'.zls.setup{}
 
 
 lsp.setup()
