@@ -1,5 +1,5 @@
 format 11
-transport /nix/store/5z2fk7vw7mpzgm4vnj7mzqn60j0d04zm-audacious-4.3.1/lib/audacious/Transport/gio.so
+transport /nix/store/ird9g9gswx1m8112fc56nxi373d0hmhk-audacious-4.3.1/lib/audacious/Transport/gio.so
 stamp 1
 version 48
 flags 0
@@ -13,7 +13,7 @@ scheme ftp
 scheme sftp
 scheme smb
 scheme mtp
-transport /nix/store/5z2fk7vw7mpzgm4vnj7mzqn60j0d04zm-audacious-4.3.1/lib/audacious/Transport/mms.so
+transport /nix/store/ird9g9gswx1m8112fc56nxi373d0hmhk-audacious-4.3.1/lib/audacious/Transport/mms.so
 stamp 1
 version 48
 flags 0
@@ -24,7 +24,7 @@ about 0
 config 0
 enabled 1
 scheme mms
-transport /nix/store/5z2fk7vw7mpzgm4vnj7mzqn60j0d04zm-audacious-4.3.1/lib/audacious/Transport/neon.so
+transport /nix/store/ird9g9gswx1m8112fc56nxi373d0hmhk-audacious-4.3.1/lib/audacious/Transport/neon.so
 stamp 1
 version 48
 flags 0
@@ -36,7 +36,7 @@ config 0
 enabled 1
 scheme http
 scheme https
-playlist /nix/store/5z2fk7vw7mpzgm4vnj7mzqn60j0d04zm-audacious-4.3.1/lib/audacious/Container/asx.so
+playlist /nix/store/ird9g9gswx1m8112fc56nxi373d0hmhk-audacious-4.3.1/lib/audacious/Container/asx.so
 stamp 1
 version 48
 flags 0
@@ -48,7 +48,7 @@ config 0
 enabled 1
 ext asx
 saves 0
-playlist /nix/store/5z2fk7vw7mpzgm4vnj7mzqn60j0d04zm-audacious-4.3.1/lib/audacious/Container/asx3.so
+playlist /nix/store/ird9g9gswx1m8112fc56nxi373d0hmhk-audacious-4.3.1/lib/audacious/Container/asx3.so
 stamp 1
 version 48
 flags 0
@@ -60,7 +60,7 @@ config 0
 enabled 1
 ext asx
 saves 1
-playlist /nix/store/5z2fk7vw7mpzgm4vnj7mzqn60j0d04zm-audacious-4.3.1/lib/audacious/Container/audpl.so
+playlist /nix/store/ird9g9gswx1m8112fc56nxi373d0hmhk-audacious-4.3.1/lib/audacious/Container/audpl.so
 stamp 1
 version 48
 flags 0
@@ -72,7 +72,7 @@ config 0
 enabled 1
 ext audpl
 saves 1
-playlist /nix/store/5z2fk7vw7mpzgm4vnj7mzqn60j0d04zm-audacious-4.3.1/lib/audacious/Container/cue.so
+playlist /nix/store/ird9g9gswx1m8112fc56nxi373d0hmhk-audacious-4.3.1/lib/audacious/Container/cue.so
 stamp 1
 version 48
 flags 0
@@ -84,7 +84,7 @@ config 0
 enabled 1
 ext cue
 saves 0
-playlist /nix/store/5z2fk7vw7mpzgm4vnj7mzqn60j0d04zm-audacious-4.3.1/lib/audacious/Container/m3u.so
+playlist /nix/store/ird9g9gswx1m8112fc56nxi373d0hmhk-audacious-4.3.1/lib/audacious/Container/m3u.so
 stamp 1
 version 48
 flags 0
@@ -97,7 +97,7 @@ enabled 1
 ext m3u
 ext m3u8
 saves 1
-playlist /nix/store/5z2fk7vw7mpzgm4vnj7mzqn60j0d04zm-audacious-4.3.1/lib/audacious/Container/pls.so
+playlist /nix/store/ird9g9gswx1m8112fc56nxi373d0hmhk-audacious-4.3.1/lib/audacious/Container/pls.so
 stamp 1
 version 48
 flags 0
@@ -109,7 +109,7 @@ config 0
 enabled 1
 ext pls
 saves 1
-playlist /nix/store/5z2fk7vw7mpzgm4vnj7mzqn60j0d04zm-audacious-4.3.1/lib/audacious/Container/xspf.so
+playlist /nix/store/ird9g9gswx1m8112fc56nxi373d0hmhk-audacious-4.3.1/lib/audacious/Container/xspf.so
 stamp 1
 version 48
 flags 0
@@ -121,7 +121,7 @@ config 0
 enabled 1
 ext xspf
 saves 1
-input /nix/store/5z2fk7vw7mpzgm4vnj7mzqn60j0d04zm-audacious-4.3.1/lib/audacious/Input/xsf.so
+input /nix/store/ird9g9gswx1m8112fc56nxi373d0hmhk-audacious-4.3.1/lib/audacious/Input/xsf.so
 stamp 1
 version 48
 flags 0
@@ -135,7 +135,7 @@ scheme 2sf
 scheme mini2sf
 subtunes 0
 writes 0
-input /nix/store/5z2fk7vw7mpzgm4vnj7mzqn60j0d04zm-audacious-4.3.1/lib/audacious/Input/aac-raw.so
+input /nix/store/ird9g9gswx1m8112fc56nxi373d0hmhk-audacious-4.3.1/lib/audacious/Input/aac-raw.so
 stamp 1
 version 48
 flags 0
@@ -149,7 +149,7 @@ scheme aac
 ext audio/aac
 subtunes 0
 writes 0
-input /nix/store/5z2fk7vw7mpzgm4vnj7mzqn60j0d04zm-audacious-4.3.1/lib/audacious/Input/amidi-plug.so
+input /nix/store/ird9g9gswx1m8112fc56nxi373d0hmhk-audacious-4.3.1/lib/audacious/Input/amidi-plug.so
 stamp 1
 version 48
 flags 0
@@ -166,7 +166,7 @@ scheme rmid
 ext audio/midi
 subtunes 0
 writes 0
-input /nix/store/5z2fk7vw7mpzgm4vnj7mzqn60j0d04zm-audacious-4.3.1/lib/audacious/Input/cdaudio-ng.so
+input /nix/store/ird9g9gswx1m8112fc56nxi373d0hmhk-audacious-4.3.1/lib/audacious/Input/cdaudio-ng.so
 stamp 1
 version 48
 flags 0
@@ -179,7 +179,7 @@ enabled 1
 mime cdda
 subtunes 2
 writes 0
-input /nix/store/5z2fk7vw7mpzgm4vnj7mzqn60j0d04zm-audacious-4.3.1/lib/audacious/Input/console.so
+input /nix/store/ird9g9gswx1m8112fc56nxi373d0hmhk-audacious-4.3.1/lib/audacious/Input/console.so
 stamp 1
 version 48
 flags 0
@@ -202,7 +202,7 @@ scheme vgm
 scheme vgz
 subtunes 2
 writes 0
-input /nix/store/5z2fk7vw7mpzgm4vnj7mzqn60j0d04zm-audacious-4.3.1/lib/audacious/Input/madplug.so
+input /nix/store/ird9g9gswx1m8112fc56nxi373d0hmhk-audacious-4.3.1/lib/audacious/Input/madplug.so
 stamp 1
 version 48
 flags 0
@@ -222,7 +222,7 @@ ext audio/x-mp3
 ext audio/x-mpeg
 subtunes 0
 writes 1
-input /nix/store/5z2fk7vw7mpzgm4vnj7mzqn60j0d04zm-audacious-4.3.1/lib/audacious/Input/openmpt.so
+input /nix/store/ird9g9gswx1m8112fc56nxi373d0hmhk-audacious-4.3.1/lib/audacious/Input/openmpt.so
 stamp 1
 version 48
 flags 0
@@ -275,7 +275,7 @@ scheme xm
 scheme xpk
 subtunes 0
 writes 0
-input /nix/store/5z2fk7vw7mpzgm4vnj7mzqn60j0d04zm-audacious-4.3.1/lib/audacious/Input/psf2.so
+input /nix/store/ird9g9gswx1m8112fc56nxi373d0hmhk-audacious-4.3.1/lib/audacious/Input/psf2.so
 stamp 1
 version 48
 flags 0
@@ -293,7 +293,7 @@ scheme spu
 scheme spx
 subtunes 0
 writes 0
-input /nix/store/5z2fk7vw7mpzgm4vnj7mzqn60j0d04zm-audacious-4.3.1/lib/audacious/Input/opus.so
+input /nix/store/ird9g9gswx1m8112fc56nxi373d0hmhk-audacious-4.3.1/lib/audacious/Input/opus.so
 stamp 1
 version 48
 flags 0
@@ -310,7 +310,7 @@ ext audio/opus
 ext audio/x-opus+ogg
 subtunes 0
 writes 0
-input /nix/store/5z2fk7vw7mpzgm4vnj7mzqn60j0d04zm-audacious-4.3.1/lib/audacious/Input/sid.so
+input /nix/store/ird9g9gswx1m8112fc56nxi373d0hmhk-audacious-4.3.1/lib/audacious/Input/sid.so
 stamp 1
 version 48
 flags 0
@@ -324,7 +324,7 @@ scheme sid
 scheme psid
 subtunes 2
 writes 0
-input /nix/store/5z2fk7vw7mpzgm4vnj7mzqn60j0d04zm-audacious-4.3.1/lib/audacious/Input/metronom.so
+input /nix/store/ird9g9gswx1m8112fc56nxi373d0hmhk-audacious-4.3.1/lib/audacious/Input/metronom.so
 stamp 1
 version 48
 flags 0
@@ -337,7 +337,7 @@ enabled 1
 mime tact
 subtunes 0
 writes 0
-input /nix/store/5z2fk7vw7mpzgm4vnj7mzqn60j0d04zm-audacious-4.3.1/lib/audacious/Input/tonegen.so
+input /nix/store/ird9g9gswx1m8112fc56nxi373d0hmhk-audacious-4.3.1/lib/audacious/Input/tonegen.so
 stamp 1
 version 48
 flags 0
@@ -350,7 +350,7 @@ enabled 1
 mime tone
 subtunes 0
 writes 0
-input /nix/store/5z2fk7vw7mpzgm4vnj7mzqn60j0d04zm-audacious-4.3.1/lib/audacious/Input/vtx.so
+input /nix/store/ird9g9gswx1m8112fc56nxi373d0hmhk-audacious-4.3.1/lib/audacious/Input/vtx.so
 stamp 1
 version 48
 flags 0
@@ -363,7 +363,7 @@ enabled 1
 scheme vtx
 subtunes 0
 writes 0
-input /nix/store/5z2fk7vw7mpzgm4vnj7mzqn60j0d04zm-audacious-4.3.1/lib/audacious/Input/wavpack.so
+input /nix/store/ird9g9gswx1m8112fc56nxi373d0hmhk-audacious-4.3.1/lib/audacious/Input/wavpack.so
 stamp 1
 version 48
 flags 0
@@ -377,7 +377,7 @@ scheme wv
 ext audio/x-wavpack
 subtunes 0
 writes 1
-input /nix/store/5z2fk7vw7mpzgm4vnj7mzqn60j0d04zm-audacious-4.3.1/lib/audacious/Input/flacng.so
+input /nix/store/ird9g9gswx1m8112fc56nxi373d0hmhk-audacious-4.3.1/lib/audacious/Input/flacng.so
 stamp 1
 version 48
 flags 0
@@ -395,7 +395,7 @@ ext audio/ogg
 ext application/ogg
 subtunes 0
 writes 1
-input /nix/store/5z2fk7vw7mpzgm4vnj7mzqn60j0d04zm-audacious-4.3.1/lib/audacious/Input/modplug.so
+input /nix/store/ird9g9gswx1m8112fc56nxi373d0hmhk-audacious-4.3.1/lib/audacious/Input/modplug.so
 stamp 1
 version 48
 flags 0
@@ -427,7 +427,7 @@ scheme psm
 scheme ft2
 subtunes 2
 writes 0
-input /nix/store/5z2fk7vw7mpzgm4vnj7mzqn60j0d04zm-audacious-4.3.1/lib/audacious/Input/vorbis.so
+input /nix/store/ird9g9gswx1m8112fc56nxi373d0hmhk-audacious-4.3.1/lib/audacious/Input/vorbis.so
 stamp 1
 version 48
 flags 0
@@ -446,7 +446,7 @@ ext audio/ogg
 ext audio/x-vorbis+ogg
 subtunes 0
 writes 1
-input /nix/store/5z2fk7vw7mpzgm4vnj7mzqn60j0d04zm-audacious-4.3.1/lib/audacious/Input/sndfile.so
+input /nix/store/ird9g9gswx1m8112fc56nxi373d0hmhk-audacious-4.3.1/lib/audacious/Input/sndfile.so
 stamp 1
 version 48
 flags 0
@@ -464,7 +464,7 @@ ext audio/wav
 ext audio/x-wav
 subtunes 0
 writes 0
-input /nix/store/5z2fk7vw7mpzgm4vnj7mzqn60j0d04zm-audacious-4.3.1/lib/audacious/Input/ffaudio.so
+input /nix/store/ird9g9gswx1m8112fc56nxi373d0hmhk-audacious-4.3.1/lib/audacious/Input/ffaudio.so
 stamp 1
 version 48
 flags 0
@@ -502,7 +502,7 @@ ext audio/mp4
 ext audio/ogg
 subtunes 0
 writes 1
-effect /nix/store/5z2fk7vw7mpzgm4vnj7mzqn60j0d04zm-audacious-4.3.1/lib/audacious/Effect/bs2b.so
+effect /nix/store/ird9g9gswx1m8112fc56nxi373d0hmhk-audacious-4.3.1/lib/audacious/Effect/bs2b.so
 stamp 1
 version 48
 flags 0
@@ -512,7 +512,7 @@ priority 0
 about 0
 config 1
 enabled 0
-effect /nix/store/5z2fk7vw7mpzgm4vnj7mzqn60j0d04zm-audacious-4.3.1/lib/audacious/Effect/bitcrusher.so
+effect /nix/store/ird9g9gswx1m8112fc56nxi373d0hmhk-audacious-4.3.1/lib/audacious/Effect/bitcrusher.so
 stamp 1
 version 48
 flags 0
@@ -522,7 +522,7 @@ priority 0
 about 0
 config 1
 enabled 0
-effect /nix/store/5z2fk7vw7mpzgm4vnj7mzqn60j0d04zm-audacious-4.3.1/lib/audacious/Effect/crystalizer.so
+effect /nix/store/ird9g9gswx1m8112fc56nxi373d0hmhk-audacious-4.3.1/lib/audacious/Effect/crystalizer.so
 stamp 1
 version 48
 flags 0
@@ -532,7 +532,7 @@ priority 0
 about 0
 config 1
 enabled 0
-effect /nix/store/5z2fk7vw7mpzgm4vnj7mzqn60j0d04zm-audacious-4.3.1/lib/audacious/Effect/compressor.so
+effect /nix/store/ird9g9gswx1m8112fc56nxi373d0hmhk-audacious-4.3.1/lib/audacious/Effect/compressor.so
 stamp 1
 version 48
 flags 0
@@ -542,7 +542,7 @@ priority 0
 about 1
 config 1
 enabled 0
-effect /nix/store/5z2fk7vw7mpzgm4vnj7mzqn60j0d04zm-audacious-4.3.1/lib/audacious/Effect/echo.so
+effect /nix/store/ird9g9gswx1m8112fc56nxi373d0hmhk-audacious-4.3.1/lib/audacious/Effect/echo.so
 stamp 1
 version 48
 flags 0
@@ -552,7 +552,7 @@ priority 0
 about 1
 config 1
 enabled 0
-effect /nix/store/5z2fk7vw7mpzgm4vnj7mzqn60j0d04zm-audacious-4.3.1/lib/audacious/Effect/stereo.so
+effect /nix/store/ird9g9gswx1m8112fc56nxi373d0hmhk-audacious-4.3.1/lib/audacious/Effect/stereo.so
 stamp 1
 version 48
 flags 0
@@ -562,7 +562,7 @@ priority 0
 about 1
 config 1
 enabled 0
-effect /nix/store/5z2fk7vw7mpzgm4vnj7mzqn60j0d04zm-audacious-4.3.1/lib/audacious/Effect/silence-removal.so
+effect /nix/store/ird9g9gswx1m8112fc56nxi373d0hmhk-audacious-4.3.1/lib/audacious/Effect/silence-removal.so
 stamp 1
 version 48
 flags 0
@@ -572,7 +572,7 @@ priority 0
 about 1
 config 1
 enabled 0
-effect /nix/store/5z2fk7vw7mpzgm4vnj7mzqn60j0d04zm-audacious-4.3.1/lib/audacious/Effect/speed-pitch.so
+effect /nix/store/ird9g9gswx1m8112fc56nxi373d0hmhk-audacious-4.3.1/lib/audacious/Effect/speed-pitch.so
 stamp 1
 version 48
 flags 0
@@ -582,7 +582,7 @@ priority 0
 about 0
 config 1
 enabled 0
-effect /nix/store/5z2fk7vw7mpzgm4vnj7mzqn60j0d04zm-audacious-4.3.1/lib/audacious/Effect/voice_removal.so
+effect /nix/store/ird9g9gswx1m8112fc56nxi373d0hmhk-audacious-4.3.1/lib/audacious/Effect/voice_removal.so
 stamp 1
 version 48
 flags 0
@@ -592,7 +592,7 @@ priority 0
 about 0
 config 0
 enabled 0
-effect /nix/store/5z2fk7vw7mpzgm4vnj7mzqn60j0d04zm-audacious-4.3.1/lib/audacious/Effect/mixer.so
+effect /nix/store/ird9g9gswx1m8112fc56nxi373d0hmhk-audacious-4.3.1/lib/audacious/Effect/mixer.so
 stamp 1
 version 48
 flags 0
@@ -602,7 +602,7 @@ priority 2
 about 1
 config 1
 enabled 0
-effect /nix/store/5z2fk7vw7mpzgm4vnj7mzqn60j0d04zm-audacious-4.3.1/lib/audacious/Effect/resample.so
+effect /nix/store/ird9g9gswx1m8112fc56nxi373d0hmhk-audacious-4.3.1/lib/audacious/Effect/resample.so
 stamp 1
 version 48
 flags 0
@@ -612,7 +612,7 @@ priority 2
 about 1
 config 1
 enabled 0
-effect /nix/store/5z2fk7vw7mpzgm4vnj7mzqn60j0d04zm-audacious-4.3.1/lib/audacious/Effect/sox-resampler.so
+effect /nix/store/ird9g9gswx1m8112fc56nxi373d0hmhk-audacious-4.3.1/lib/audacious/Effect/sox-resampler.so
 stamp 1
 version 48
 flags 0
@@ -622,7 +622,7 @@ priority 2
 about 1
 config 1
 enabled 0
-effect /nix/store/5z2fk7vw7mpzgm4vnj7mzqn60j0d04zm-audacious-4.3.1/lib/audacious/Effect/crossfade.so
+effect /nix/store/ird9g9gswx1m8112fc56nxi373d0hmhk-audacious-4.3.1/lib/audacious/Effect/crossfade.so
 stamp 1
 version 48
 flags 0
@@ -632,7 +632,7 @@ priority 5
 about 1
 config 1
 enabled 0
-output /nix/store/5z2fk7vw7mpzgm4vnj7mzqn60j0d04zm-audacious-4.3.1/lib/audacious/Output/pipewire.so
+output /nix/store/ird9g9gswx1m8112fc56nxi373d0hmhk-audacious-4.3.1/lib/audacious/Output/pipewire.so
 stamp 1
 version 48
 flags 0
@@ -642,7 +642,7 @@ priority 2
 about 1
 config 0
 enabled 1
-output /nix/store/5z2fk7vw7mpzgm4vnj7mzqn60j0d04zm-audacious-4.3.1/lib/audacious/Output/pulse_audio.so
+output /nix/store/ird9g9gswx1m8112fc56nxi373d0hmhk-audacious-4.3.1/lib/audacious/Output/pulse_audio.so
 stamp 1
 version 48
 flags 0
@@ -652,7 +652,7 @@ priority 2
 about 1
 config 1
 enabled 0
-output /nix/store/5z2fk7vw7mpzgm4vnj7mzqn60j0d04zm-audacious-4.3.1/lib/audacious/Output/alsa.so
+output /nix/store/ird9g9gswx1m8112fc56nxi373d0hmhk-audacious-4.3.1/lib/audacious/Output/alsa.so
 stamp 1
 version 48
 flags 0
@@ -662,7 +662,7 @@ priority 5
 about 1
 config 1
 enabled 0
-output /nix/store/5z2fk7vw7mpzgm4vnj7mzqn60j0d04zm-audacious-4.3.1/lib/audacious/Output/oss4.so
+output /nix/store/ird9g9gswx1m8112fc56nxi373d0hmhk-audacious-4.3.1/lib/audacious/Output/oss4.so
 stamp 1
 version 48
 flags 0
@@ -672,7 +672,7 @@ priority 6
 about 1
 config 1
 enabled 0
-output /nix/store/5z2fk7vw7mpzgm4vnj7mzqn60j0d04zm-audacious-4.3.1/lib/audacious/Output/qtaudio.so
+output /nix/store/ird9g9gswx1m8112fc56nxi373d0hmhk-audacious-4.3.1/lib/audacious/Output/qtaudio.so
 stamp 1
 version 48
 flags 0
@@ -682,7 +682,7 @@ priority 9
 about 1
 config 0
 enabled 0
-output /nix/store/5z2fk7vw7mpzgm4vnj7mzqn60j0d04zm-audacious-4.3.1/lib/audacious/Output/filewriter.so
+output /nix/store/ird9g9gswx1m8112fc56nxi373d0hmhk-audacious-4.3.1/lib/audacious/Output/filewriter.so
 stamp 1
 version 48
 flags 0
@@ -692,7 +692,7 @@ priority 10
 about 1
 config 1
 enabled 0
-output /nix/store/5z2fk7vw7mpzgm4vnj7mzqn60j0d04zm-audacious-4.3.1/lib/audacious/Output/jack-ng.so
+output /nix/store/ird9g9gswx1m8112fc56nxi373d0hmhk-audacious-4.3.1/lib/audacious/Output/jack-ng.so
 stamp 1
 version 48
 flags 0
@@ -702,7 +702,7 @@ priority 10
 about 0
 config 1
 enabled 0
-vis /nix/store/5z2fk7vw7mpzgm4vnj7mzqn60j0d04zm-audacious-4.3.1/lib/audacious/Visualization/blur_scope-qt.so
+vis /nix/store/ird9g9gswx1m8112fc56nxi373d0hmhk-audacious-4.3.1/lib/audacious/Visualization/blur_scope-qt.so
 stamp 1
 version 48
 flags 2
@@ -712,7 +712,7 @@ priority 0
 about 0
 config 1
 enabled 0
-vis /nix/store/5z2fk7vw7mpzgm4vnj7mzqn60j0d04zm-audacious-4.3.1/lib/audacious/Visualization/gl-spectrum-qt.so
+vis /nix/store/ird9g9gswx1m8112fc56nxi373d0hmhk-audacious-4.3.1/lib/audacious/Visualization/gl-spectrum-qt.so
 stamp 1
 version 48
 flags 2
@@ -722,7 +722,7 @@ priority 0
 about 1
 config 0
 enabled 0
-vis /nix/store/5z2fk7vw7mpzgm4vnj7mzqn60j0d04zm-audacious-4.3.1/lib/audacious/Visualization/qt-spectrum.so
+vis /nix/store/ird9g9gswx1m8112fc56nxi373d0hmhk-audacious-4.3.1/lib/audacious/Visualization/qt-spectrum.so
 stamp 1
 version 48
 flags 2
@@ -732,7 +732,7 @@ priority 0
 about 0
 config 0
 enabled 0
-vis /nix/store/5z2fk7vw7mpzgm4vnj7mzqn60j0d04zm-audacious-4.3.1/lib/audacious/Visualization/vumeter-qt.so
+vis /nix/store/ird9g9gswx1m8112fc56nxi373d0hmhk-audacious-4.3.1/lib/audacious/Visualization/vumeter-qt.so
 stamp 1
 version 48
 flags 2
@@ -742,7 +742,7 @@ priority 0
 about 1
 config 1
 enabled 0
-general /nix/store/5z2fk7vw7mpzgm4vnj7mzqn60j0d04zm-audacious-4.3.1/lib/audacious/General/albumart-qt.so
+general /nix/store/ird9g9gswx1m8112fc56nxi373d0hmhk-audacious-4.3.1/lib/audacious/General/albumart-qt.so
 stamp 1
 version 48
 flags 2
@@ -752,7 +752,7 @@ priority 0
 about 0
 config 0
 enabled 1
-general /nix/store/5z2fk7vw7mpzgm4vnj7mzqn60j0d04zm-audacious-4.3.1/lib/audacious/General/cd-menu-items.so
+general /nix/store/ird9g9gswx1m8112fc56nxi373d0hmhk-audacious-4.3.1/lib/audacious/General/cd-menu-items.so
 stamp 1
 version 48
 flags 0
@@ -762,7 +762,7 @@ priority 0
 about 0
 config 0
 enabled 1
-general /nix/store/5z2fk7vw7mpzgm4vnj7mzqn60j0d04zm-audacious-4.3.1/lib/audacious/General/delete-files.so
+general /nix/store/ird9g9gswx1m8112fc56nxi373d0hmhk-audacious-4.3.1/lib/audacious/General/delete-files.so
 stamp 1
 version 48
 flags 0
@@ -772,7 +772,7 @@ priority 0
 about 0
 config 1
 enabled 0
-general /nix/store/5z2fk7vw7mpzgm4vnj7mzqn60j0d04zm-audacious-4.3.1/lib/audacious/General/notify.so
+general /nix/store/ird9g9gswx1m8112fc56nxi373d0hmhk-audacious-4.3.1/lib/audacious/General/notify.so
 stamp 1
 version 48
 flags 0
@@ -782,7 +782,7 @@ priority 0
 about 1
 config 1
 enabled 0
-general /nix/store/5z2fk7vw7mpzgm4vnj7mzqn60j0d04zm-audacious-4.3.1/lib/audacious/General/qthotkey.so
+general /nix/store/ird9g9gswx1m8112fc56nxi373d0hmhk-audacious-4.3.1/lib/audacious/General/qthotkey.so
 stamp 1
 version 48
 flags 2
@@ -792,7 +792,7 @@ priority 0
 about 1
 config 1
 enabled 0
-general /nix/store/5z2fk7vw7mpzgm4vnj7mzqn60j0d04zm-audacious-4.3.1/lib/audacious/General/lirc.so
+general /nix/store/ird9g9gswx1m8112fc56nxi373d0hmhk-audacious-4.3.1/lib/audacious/General/lirc.so
 stamp 1
 version 48
 flags 0
@@ -802,7 +802,7 @@ priority 0
 about 1
 config 1
 enabled 0
-general /nix/store/5z2fk7vw7mpzgm4vnj7mzqn60j0d04zm-audacious-4.3.1/lib/audacious/General/lyricwiki-qt.so
+general /nix/store/ird9g9gswx1m8112fc56nxi373d0hmhk-audacious-4.3.1/lib/audacious/General/lyricwiki-qt.so
 stamp 1
 version 48
 flags 2
@@ -812,7 +812,7 @@ priority 0
 about 0
 config 1
 enabled 0
-general /nix/store/5z2fk7vw7mpzgm4vnj7mzqn60j0d04zm-audacious-4.3.1/lib/audacious/General/mpris2.so
+general /nix/store/ird9g9gswx1m8112fc56nxi373d0hmhk-audacious-4.3.1/lib/audacious/General/mpris2.so
 stamp 1
 version 48
 flags 0
@@ -822,7 +822,7 @@ priority 0
 about 0
 config 0
 enabled 1
-general /nix/store/5z2fk7vw7mpzgm4vnj7mzqn60j0d04zm-audacious-4.3.1/lib/audacious/General/playlist-manager-qt.so
+general /nix/store/ird9g9gswx1m8112fc56nxi373d0hmhk-audacious-4.3.1/lib/audacious/General/playlist-manager-qt.so
 stamp 1
 version 48
 flags 2
@@ -832,7 +832,7 @@ priority 0
 about 0
 config 0
 enabled 0
-general /nix/store/5z2fk7vw7mpzgm4vnj7mzqn60j0d04zm-audacious-4.3.1/lib/audacious/General/scrobbler.so
+general /nix/store/ird9g9gswx1m8112fc56nxi373d0hmhk-audacious-4.3.1/lib/audacious/General/scrobbler.so
 stamp 1
 version 48
 flags 0
@@ -842,7 +842,7 @@ priority 0
 about 1
 config 1
 enabled 0
-general /nix/store/5z2fk7vw7mpzgm4vnj7mzqn60j0d04zm-audacious-4.3.1/lib/audacious/General/search-tool-qt.so
+general /nix/store/ird9g9gswx1m8112fc56nxi373d0hmhk-audacious-4.3.1/lib/audacious/General/search-tool-qt.so
 stamp 1
 version 48
 flags 2
@@ -852,7 +852,7 @@ priority 0
 about 0
 config 1
 enabled 0
-general /nix/store/5z2fk7vw7mpzgm4vnj7mzqn60j0d04zm-audacious-4.3.1/lib/audacious/General/song_change.so
+general /nix/store/ird9g9gswx1m8112fc56nxi373d0hmhk-audacious-4.3.1/lib/audacious/General/song_change.so
 stamp 1
 version 48
 flags 0
@@ -862,7 +862,7 @@ priority 0
 about 0
 config 1
 enabled 0
-general /nix/store/5z2fk7vw7mpzgm4vnj7mzqn60j0d04zm-audacious-4.3.1/lib/audacious/General/song-info-qt.so
+general /nix/store/ird9g9gswx1m8112fc56nxi373d0hmhk-audacious-4.3.1/lib/audacious/General/song-info-qt.so
 stamp 1
 version 48
 flags 2
@@ -872,7 +872,7 @@ priority 0
 about 0
 config 0
 enabled 0
-general /nix/store/5z2fk7vw7mpzgm4vnj7mzqn60j0d04zm-audacious-4.3.1/lib/audacious/General/statusicon-qt.so
+general /nix/store/ird9g9gswx1m8112fc56nxi373d0hmhk-audacious-4.3.1/lib/audacious/General/statusicon-qt.so
 stamp 1
 version 48
 flags 2
@@ -882,7 +882,7 @@ priority 0
 about 1
 config 1
 enabled 0
-iface /nix/store/5z2fk7vw7mpzgm4vnj7mzqn60j0d04zm-audacious-4.3.1/lib/audacious/General/qtui.so
+iface /nix/store/ird9g9gswx1m8112fc56nxi373d0hmhk-audacious-4.3.1/lib/audacious/General/qtui.so
 stamp 1
 version 48
 flags 2
@@ -892,7 +892,7 @@ priority 0
 about 0
 config 1
 enabled 1
-iface /nix/store/5z2fk7vw7mpzgm4vnj7mzqn60j0d04zm-audacious-4.3.1/lib/audacious/General/skins-qt.so
+iface /nix/store/ird9g9gswx1m8112fc56nxi373d0hmhk-audacious-4.3.1/lib/audacious/General/skins-qt.so
 stamp 1
 version 48
 flags 2

@@ -13,6 +13,9 @@ map rr reload
 map rn rename
 map ot ${{
     nohup kitty --working-directory=$PWD >/dev/null 2>&1 &
+    #nohup wezterm start --cwd $PWD >/dev/null 2>&1 &
+    #wezterm --cwd $PWD
+    #nohup contour --working-directory=$PWD >/dev/null 2>&1 &
 }}
 map oh ${{
     nohup code $PWD >/dev/null 2>&1 &

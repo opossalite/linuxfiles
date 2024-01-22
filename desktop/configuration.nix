@@ -20,6 +20,12 @@ in {
   ];
 
 
+  ### Keep shell packages
+  nix.extraOptions = ''
+    keep-outputs = true
+    keep-derivations = true
+  '';
+
 
   ### Bootloader
 
@@ -29,17 +35,18 @@ in {
 
 
 
-  ### System Settings
+  ### System Settings, including auto update and optimize
 
   system.stateVersion = "22.11";
   system.autoUpgrade = {
     enable = true;
   };
+  nix.optimise.automatic = true;
   networking.hostName = "VulpesKrovPC";
   users.users.terrior = {
     isNormalUser = true;
     description = "terrior";
-    extraGroups = [ "networkmanager" "wheel" "storage" "docker" ];
+    extraGroups = [ "networkmanager" "wheel" "storage" "docker" "dialout"];
     shell = pkgs.zsh;
     packages = with pkgs; [  #ensure some packages are installed for the user, even if home-manager isn't working correctly
       firefox
@@ -87,6 +94,7 @@ in {
   services.printing.enable = true;  #printing via CUPS
   # services.xserver.libinput.enable = true;  #enable touchpad support
   # services.openssh.enable = true;  #OpenSSH daemon
+  services.blueman.enable = true;
 
 
 
@@ -107,6 +115,7 @@ in {
   };
   programs.zsh = {
     enable = true;
+    autosuggestions.enable = true;
     histSize = 10000;
     #histFile = "${config.xdg.dataHome}/zsh/history";
   };
@@ -196,136 +205,31 @@ in {
   ### System Packages
 
   environment.systemPackages = with pkgs; [
-    wget
-    neovim
-    git
-    qtile
-    python3Full
-    xorg.libxcb.dev
-    udevil
+    home-manager
 
-    gcc_multi
+    git
+    neovim
+    python3Full
+    qtile
+    udevil
+    wget
+    xorg.libxcb.dev
+
     clang_multi
     clang-tools
-    libclang
+    gcc_multi
     glibc
     gnumake
+    libclang
   ];
 
 
 
   ### Fonts
 
-  fonts.fonts = with pkgs; [
+  fonts.packages = with pkgs; [
     (nerdfonts.override { fonts = ["SourceCodePro"]; })
   ];
 
-
-
-  ### User Packages (with Home Manager)
-
-  home-manager.useGlobalPkgs = true;
-  home-manager.users.terrior = { pkgs, ... }: {
-    home.stateVersion = "22.11";
-    home.packages = with pkgs; [
-
-      # command-line programs (programs that run in the terminal)
-      lf
-      neofetch
-      htop
-      btop
-      lolcat
-      nms
-      xdotool
-      xorg.xkill
-      redshift
-      distrobox
-      zip
-      unzip
-      sshfs
-      xorg.xmodmap
-      killall
-      lshw
-      dmidecode
-      tty-clock
-      trash-cli
-      texlive.combined.scheme-basic
-      xorg.xkbcomp
-
-      nvtop
-
-
-      # system utilities (makes the system run smoothly internally)
-      ntfs3g
-      exfat
-      xclip
-      cifs-utils
-      samba
-      dunst
-      xorg.xev
-
-
-      # desktop utilities (programs to make the system usable from the user's perspective)
-      kitty
-      rofi
-      pavucontrol
-      pasystray
-      unstable.easyeffects
-      flameshot
-      cinnamon.nemo
-      nitrogen
-      picom-jonaburg
-      networkmanagerapplet
-      copyq
-      lxappearance
-      etcher
-      xfce.thunar
-      pcmanfm
-      libsForQt5.dolphin
-      easytag
-      #gnome.gnome-calendar
-      gsimplecal
-      conky
-
-
-      # development utilities (packages that help compile or develop code)
-      rustc
-      cargo
-      rust-analyzer
-      maturin
-      ghc
-      haskell-language-server
-      mypy
-      nodePackages.pyright
-      go
-      gopls
-      lua-language-server
-      julia-bin
-      cudaPackages.cudatoolkit
-      cudaPackages.cudnn
-      rstudio
-
-
-      # desktop programs (user gui programs with few system dependencies)
-      librewolf
-      brave
-      tor-browser-bundle-bin
-      spotify
-      vscode
-      audacity
-      libreoffice
-      krita
-      audacious
-      libsForQt5.falkon
-      #zoom-us
-
-      discord
-      
-
-      # games
-      #minecraft
-
-    ];
-  };
 }
 

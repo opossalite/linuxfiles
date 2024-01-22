@@ -47,6 +47,7 @@ in {
     xorg.xkbcomp
     xorg.xkill
     xorg.xmodmap
+    xorg.xcbproto
     zip
     zlib
 
@@ -69,6 +70,8 @@ in {
     arandr
     cinnamon.nemo
     conky
+    contour
+    cool-retro-term
     copyq
     easytag
     etcher
@@ -86,6 +89,7 @@ in {
     picom-jonaburg
     rofi
     unstable.easyeffects
+    wezterm
     xfce.thunar
 
 
@@ -123,6 +127,7 @@ in {
     librewolf
     libsForQt5.falkon
     spotify
+    steam
     tor-browser-bundle-bin
     vlc
     vscode

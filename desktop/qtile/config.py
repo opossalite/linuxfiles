@@ -33,6 +33,7 @@ keyboard_switcher = widgets.KeyboardSwitcher(
         #("us", "us"),
         ("us-enhanced", "us"),
         ("es", "es"),
+        ("universal", "un"),
         ("colemak-dha", "cm"),
         ("semimak-jq", "sm"),
         ("mtgap", "mt"),
@@ -319,6 +320,8 @@ floating_layout = layout.Floating(
         Match(title="branchdialog"),  # gitk
         Match(title="pinentry"),  # GPG key password entry
         Match(title="Tor Browser"),  # Needs a fixed window size to avoid fingerprinting by screen size
+        #Match(title="Edit Text"),  # krita popup
+        #Match(lambda x: x == "a"),  # krita popup
     ]
 )
 auto_fullscreen = True

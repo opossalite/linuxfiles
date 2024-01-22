@@ -4,14 +4,25 @@
         "equalizer#0": {
             "balance": 0.0,
             "bypass": false,
-            "input-gain": -3.0,
+            "input-gain": -5.0,
             "left": {
                 "band0": {
-                    "frequency": 120.0,
+                    "frequency": 21.0,
                     "gain": 3.0,
                     "mode": "RLC (BT)",
                     "mute": false,
-                    "q": 0.71,
+                    "q": 1.41,
+                    "slope": "x1",
+                    "solo": false,
+                    "type": "Bell",
+                    "width": 4.0
+                },
+                "band1": {
+                    "frequency": 60.0,
+                    "gain": 2.0,
+                    "mode": "RLC (BT)",
+                    "mute": false,
+                    "q": 0.7,
                     "slope": "x1",
                     "solo": false,
                     "type": "Lo-shelf",
@@ -19,17 +30,28 @@
                 }
             },
             "mode": "IIR",
-            "num-bands": 1,
+            "num-bands": 2,
             "output-gain": 0.0,
             "pitch-left": 0.0,
             "pitch-right": 0.0,
             "right": {
                 "band0": {
-                    "frequency": 120.0,
+                    "frequency": 21.0,
                     "gain": 3.0,
                     "mode": "RLC (BT)",
                     "mute": false,
-                    "q": 0.71,
+                    "q": 1.41,
+                    "slope": "x1",
+                    "solo": false,
+                    "type": "Bell",
+                    "width": 4.0
+                },
+                "band1": {
+                    "frequency": 60.0,
+                    "gain": 2.0,
+                    "mode": "RLC (BT)",
+                    "mute": false,
+                    "q": 0.7,
                     "slope": "x1",
                     "solo": false,
                     "type": "Lo-shelf",
