@@ -8,6 +8,8 @@ awk
     Text cutting and partitioning
 brave --disable-gpu
     In case hardware acceleration can't be turned on from within the menu, allows you to open normally
+cd $(nix-build --no-out-link '<nixpkgs>' -A xorg.xkeyboardconfig)/etc/X11/xkb/ (apparently lots of xbs here)
+    Print keyboard files on NixOS
 chmod u+x <>
     Give a file executable permissions
 dmidecode --type 17
@@ -32,6 +34,16 @@ iwctl
     Network configuration for iwd
 mount -t ntfs-3g /dev/nvme0n1p2 /mnt/ntfs
     Mounts an NTFS partition to the specified location
+nix-channel --add https://nixos.org/channels/nixos-23.11 nixos
+    Update the Nix repo
+nix-channel --add https://github.com/nix-community/home-manager/archive/release-23.11.tar.gz home-manager
+    Update Home Manager repo
+nix-channel --update
+    Update the channels after the last two commands above
+nix-collect-garbage -d
+    Garbage collection
+nix-store --optimise
+    Optimize space usage
 nmcli
     Network configuration for NetworkManager
 pacman -Scc
@@ -92,6 +104,8 @@ FILES
     Main configuration file for NixOS
 /etc/pacman.d/mirrorlist
     Sets the mirrors for pacman
+/etc/ssh/sshd_config
+    A file that contains all ssh configurations
 /etc/systemd/logind.conf.d/*.conf
     Set HandleLidSwitch=suspend to suspend laptop upon closing
 /etc/X11/xorg.conf.d/20-amdgpu.conf
@@ -110,6 +124,12 @@ FOLDERS
     Contains files associated with executables, or simply files associated with a program
 /usr/share/X11/xkb/symbols/
     Contains keymaps that can be applied with setxkbmap
+
+
+
+LINKS
+https://unix.stackexchange.com/questions/699507/how-can-i-install-java-8-on-debian-11-bullseye
+	Instructions on downloading jdk8
 
 
 
