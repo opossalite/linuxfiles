@@ -1,0 +1,7 @@
+alacritty
+    text size and cursor color
+configuration.nix
+    too many system settings that must be different
+
+
+
