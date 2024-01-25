@@ -30,6 +30,7 @@ in {
         lf
         lolcat
         lshw
+        most
         neofetch
         nms
         nvtop

@@ -16,6 +16,7 @@ alt = "mod1"
 mouse_positions: list[tuple[int, int]] = []
 monitors: list[tuple[int, int, int, int]] = []
 
+
 match hostname:
     case "VulpesKrovPC":
         border_focus = "#881111"
@@ -24,8 +25,22 @@ match hostname:
         other_screen_tag = "#77DDDD"
         bar_height = 25
         bar_background = "#00000000"
-        floating_border_focus = "#881111",
-        floating_border_default = "#000022",
+        floating_border_focus = "#0000FF"
+        floating_border_default = "#000022"
+        rofi_theme = "oni"
+        strict_workspaces = True #only enforce strict workspaces, any not listed are dynamic
+        strict_map = [
+            { #two monitors
+                8: 1, #workspace: screen
+                9: 1,
+                0: 1,
+            },
+            { #three monitors
+                8: 1,
+                9: 1,
+                0: 1,
+            },
+        ]
     case "CobaltCanidPC":
         border_focus = "#2254e2"
         border_normal = "#000022"
@@ -33,8 +48,21 @@ match hostname:
         other_screen_tag = "#AF87FF"
         bar_height = 30,
         bar_background = "#2A2A2AFF"
-        floating_border_focus = "#5294e2",
-        floating_border_default = "#000022",
+        floating_border_focus = "#5294e2"
+        floating_border_default = "#000022"
+        rofi_theme = "cobalt"
+        strict_workspaces = False #only enforce strict workspaces, any not listed are dynamic
+        strict_map = [
+            { #two monitors
+                8: 0, #workspace: screen
+                9: 0,
+            },
+            { #three monitors
+                8: 0,
+                9: 0,
+            },
+        ]
+
     case _:
         border_focus = "#881111"
         border_normal = "#220000"
@@ -42,8 +70,11 @@ match hostname:
         other_screen_tag = "#77DDDD"
         bar_height = 25
         bar_background = "#00000000"
-        floating_border_focus = "#881111",
+        floating_border_focus = "#0000FF",
         floating_border_default = "#000022",
+        rofi_theme = "oni"
+        strict_workspaces = False
+        strict_map = []
 
 defaults = {
     "font": "mono",
@@ -57,20 +88,8 @@ defaults = {
     "bar_background": bar_background, #color + opacity
     "floating_border_focus": floating_border_focus, #color
     "floating_border_default": floating_border_default, #color
+    "rofi_theme": rofi_theme,
 }
-
-
-strict_workspaces = False #only enforce strict workspaces, any not listed are dynamic
-strict_map = [
-    { #two monitors
-        8: 0, #workspace: screen
-        9: 0,
-    },
-    { #three monitors
-        8: 0,
-        9: 0,
-    },
-]
 
 
 class KeyboardSwitcher(base.InLoopPollText):
@@ -399,7 +418,7 @@ def window_cycle_screen(qtile, clockwise: bool, switch_screen: bool):
     group = qtile.screens[target].group.name
     qtile.current_window.togroup(group)
     if switch_screen:
-        #mouse_cycle_screen(qtile)
+        mouse_cycle_screen(qtile, clockwise)
         #debug_write(f"{now_win}, {cur_win}, {qtile.current_window}, {new_win}")
         #qtile.current_window.cmd_focus() #this shit aint working, supposed to focus the moved window
         qtile.cmd_to_screen(target)
@@ -424,7 +443,7 @@ def switch_to_workspace(qtile, workspace):
 
 
 
-        
+
 '''
 ########## KEYBINDS ##########
 '''
@@ -454,7 +473,7 @@ keys = [
     Key([mod, "control"], "l", lazy.layout.grow_right(), desc="Grow window to the right"),
     Key([mod], "n", lazy.layout.normalize(), desc="Reset all window sizes"),
 
-    Key([mod], "space", lazy.spawn("rofi -show run -theme cobalt"), desc="Run dmenu"),
+    Key([mod], "space", lazy.spawn(f"rofi -show run -theme {defaults['rofi_theme']}"), desc="Run dmenu"),
     Key([mod], "Return", lazy.spawn("kitty"), desc="Launch terminal"),
     Key([mod], "o", lazy.spawn("gsimplecal"), desc="Run gsimplecal"),
     Key([mod, alt], "h", lazy.spawn("code"), desc="Run vscode"),

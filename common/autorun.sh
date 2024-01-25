@@ -15,7 +15,7 @@ else
     copyq &
     flameshot &
 
-    if [[$HOST == "CobaltCanidPC"]]; then
+    if [[ $HOSTNAME == "CobaltCanidPC" ]]; then
         cbatticon -n &
     fi
 fi
@@ -26,8 +26,8 @@ fi
 #laptop: xrandr --output eDP-1 --primary --mode 1920x1080 --rate 60 --output HDMI-1 --mode 1920x1080 --rate 60 --above eDP-1
 xinput set-prop "SINOWEALTH Wired Gaming Mouse" "libinput Accel Profile Enabled" 0, 1 &
 xinput set-prop "SINOWEALTH Wired Gaming Mouse" "libinput Accel Speed" 0 &
-xinput set-prop "Logitech MX Vertical" "libinput Accel Profile Enabled" 0, 1 &
-xinput set-prop "Logitech MX Vertical" "libinput Accel Speed" 0 &
+xinput set-prop "pointer:Logitech MX Vertical" "libinput Accel Profile Enabled" 0, 1 &
+xinput set-prop "pointer:Logitech MX Vertical" "libinput Accel Speed" 0 &
 xinput set-prop "MSFT0001:01 04F3:3140 Touchpad" "libinput Natural Scrolling Enabled" 1 &
 xinput set-prop "MSFT0001:01 04F3:3140 Touchpad" "libinput Accel Profile Enabled" 0, 1 &
 xinput set-prop "MSFT0001:01 04F3:3140 Touchpad" "libinput Scrolling Pixel Distance" 50 &
@@ -41,7 +41,7 @@ echo $num_monitors
 
 if [[ $num_monitors == "1" ]]; then # ONE MONITOR
     echo "One monitor!"
-    case $HOST in
+    case $HOSTNAME in
         ("VulpesKrovPC")
             xrandr --auto
             feh --bg-fill ~/gits/linuxfiles/wallpapers/nix-wallpaper-mine.png &
@@ -55,12 +55,14 @@ if [[ $num_monitors == "1" ]]; then # ONE MONITOR
             ;;
 
         (*)
+            echo "Where tf are we!"
+            xrandr --auto
             # no background if we don't know what pc we're on
             ;;
     esac
 else # MULTIPLE MONITORS
     echo "Multiple monitors!"
-    case $HOST in
+    case $HOSTNAME in
         ("VulpesKrovPC")
             xrandr --output DP-4 --primary --mode 1920x1080 --rate 165 --output HDMI-0 --mode 1280x1024 --rate 75
             feh --bg-fill ~/gits/linuxfiles/wallpapers/nix-wallpaper-mine.png ~/gits/linuxfiles/wallpapers/nix-wallpaper-mine.png &
@@ -72,6 +74,10 @@ else # MULTIPLE MONITORS
             ;;
 
         (*)
+            echo "Where tf are we!"
+            echo $HOST
+            echo $HOSTNAME
+            xrandr --auto
             # no background if we don't know what pc we're on
             ;;
     esac
@@ -84,7 +90,7 @@ xset r rate 330 25 &
 xkbcomp -w 0 ~/.keymaps/us-enhanced.xkb :0 & #handles caps_lock underscore
 #xmodmap ~/.Xmodmap & #used to handle caps_lock underscore
 
-if [[$HOST == "CobaltCanidPC"]]; then
+if [[ $HOST == "CobaltCanidPC" ]]; then
     libinput-gestures &
 fi
 

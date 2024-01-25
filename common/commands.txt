@@ -130,6 +130,8 @@ FOLDERS
 LINKS
 https://unix.stackexchange.com/questions/699507/how-can-i-install-java-8-on-debian-11-bullseye
 	Instructions on downloading jdk8
+https://wiki.archlinux.org/title/PRIME
+    Instructions for using multiple GPUs
 
 
 
