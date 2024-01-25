@@ -64,6 +64,8 @@ pgrep
     Check if a process is running
 pw-top
     Shows the different audio connections in pipewire
+qtile cmd-obj -o cmd -f reload_config
+    Reload Qtile config
 qtile cmd-obj -o cmd -f restart
     Restart Qtile
 rm -R /var/lib/pacman/sync

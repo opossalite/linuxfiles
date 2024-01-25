@@ -46,7 +46,7 @@ match hostname:
         border_normal = "#000022"
         this_screen_tag = "#2288ff"
         other_screen_tag = "#AF87FF"
-        bar_height = 30,
+        bar_height = 30
         bar_background = "#2A2A2AFF"
         floating_border_focus = "#5294e2"
         floating_border_default = "#000022"
@@ -62,7 +62,6 @@ match hostname:
                 9: 0,
             },
         ]
-
     case _:
         border_focus = "#881111"
         border_normal = "#220000"
@@ -70,8 +69,8 @@ match hostname:
         other_screen_tag = "#77DDDD"
         bar_height = 25
         bar_background = "#00000000"
-        floating_border_focus = "#0000FF",
-        floating_border_default = "#000022",
+        floating_border_focus = "#0000FF"
+        floating_border_default = "#000022"
         rofi_theme = "oni"
         strict_workspaces = False
         strict_map = []
@@ -140,6 +139,7 @@ keyboard_switcher = KeyboardSwitcher(
 )
 keyboard_switcher.font = defaults['font']
 keyboard_switcher.fontsize = defaults['fontsize']
+
 
 
 '''
@@ -354,11 +354,6 @@ def all_to_workspace(qtile, target):
         cur_win.togroup(target.name)
 
 
-def open_calendar(qtile):
-    """Open the popup calendar."""
-    subprocess.run([home + "/.config/qtile/popup-calendar.sh --popup"], shell=True)
-
-
 def focus_cur_screen(qtile, update_mouse: bool):
     """Focuses the screen the mouse is on."""
     global mouse_positions
@@ -440,7 +435,6 @@ def switch_to_workspace(qtile, workspace):
         mouse_to_screen(qtile, target_screen)
     focus_cur_screen(qtile, update_mouse = True) #ensure mouse position stays
     qtile.groups[int(workspace.name)-1].cmd_toscreen() #moves the workspace to the current screen #TEST REMOVING cmd_
-
 
 
 
@@ -561,6 +555,7 @@ for i in groups:
         ]
     )
 
+
 layouts = [
     layout.Columns(
         #border_focus_stack=["#d75f5f", "#8f3d3d"],
@@ -598,6 +593,7 @@ layouts = [
 ]
 
 #extension_defaults = widget_defaults.copy()
+
 
 screens = [
     Screen(
@@ -799,6 +795,7 @@ screens = [
     #    ),
     #),
 ]
+
 
 # Drag floating layouts. EXPERIMENT WITH THIS, SO WINDOWS ARENT FORCED INTO FLOATING
 mouse = [

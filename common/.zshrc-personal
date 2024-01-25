@@ -5,16 +5,21 @@
 
 [ -f "/home/terrior/.ghcup/env" ] && source "/home/terrior/.ghcup/env" # ghcup-env
 
-if [ -e /run/opengl-driver ]; then
-    cuda_dir=$(readlink /run/opengl-driver)
-    cuda_dir=$cuda_dir"/lib/libcuda.so"
-    export LD_PRELOAD=$cuda_dir
-fi
+
+cuda_things () {
+    if [ -e /run/opengl-driver ]; then
+        cuda_dir=$(readlink /run/opengl-driver)
+        cuda_dir=$cuda_dir"/lib/libcuda.so"
+        export LD_PRELOAD=$cuda_dir
+    fi
+}
+
 
 if [ "$IN_NIX_SHELL" != "impure" ]; then
     case $HOST in
         ("VulpesKrovPC")
             PS1=$'%B%F{1}[%F{15}%n@%m %F{8}%~%F{1}]%F{15}$%b%f '
+            cuda_things
             ;;
 
         ("CobaltCanidPC")
