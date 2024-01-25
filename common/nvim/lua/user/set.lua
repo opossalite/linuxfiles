@@ -26,5 +26,7 @@ vim.cmd("autocmd FileType * set formatoptions-=cro")
 vim.g.lf_width = 1920
 vim.g.lf_height = 1080
 
+vim.opt.colorcolumn = "81"
+vim.opt.cursorline = true
 
 

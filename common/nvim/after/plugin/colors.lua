@@ -1,4 +1,3 @@
-
 local ayu_colors = require('ayu.colors')
 ayu_colors.generate(true) -- Pass `true` to enable mirage
 
@@ -54,8 +53,6 @@ function ColorRefresh(theme)
     --require('lualine').refresh()
 
     vim.cmd("hi clear")
-    --vim.cmd [[ colorscheme default ]]
-    --vim.cmd [[ set background=dark ]]
     vim.cmd.colorscheme(theme)
     vim.cmd [[ doautocmd ColorScheme ]]
 
@@ -77,17 +74,57 @@ function ColorRefresh(theme)
 
 end
 
---ColorRefresh("dracula")
 
---vim.api.nvim_create_autocmd("BufEnter", command = ":hi Normal guibg=none ctermbg=none")
---vim.api.nvim_create_autocmd("BufEnter", command = ":hi NormalFloat guibg=none ctermbg=none")
-vim.api.nvim_create_autocmd("BufWinEnter", {pattern = "*", callback = function() ColorRefresh("dracula") end})
-vim.api.nvim_create_autocmd({"BufEnter", "BufWinEnter"}, {pattern = "*.rs", callback = function() ColorRefresh("ayu-mirage") end})
-vim.api.nvim_create_autocmd({"BufEnter", "BufWinEnter"}, {pattern = "*.py", callback = function() ColorRefresh("tokyonight-night") end})
-vim.api.nvim_create_autocmd({"BufEnter", "BufWinEnter"}, {pattern = "*.go", callback = function() ColorRefresh("rose-pine") end})
-vim.api.nvim_create_autocmd({"BufEnter", "BufWinEnter"}, {pattern = "*.hs", callback = function() ColorRefresh("tokyobones") end})
-vim.api.nvim_create_autocmd({"BufEnter", "BufWinEnter"}, {pattern = "*.zig", callback = function() ColorRefresh("tender") end})
-vim.api.nvim_create_autocmd({"BufEnter", "BufWinEnter"}, {pattern = "*.cu", callback = function() ColorRefresh("tokyobones") end})
+---- Color Settings Per FileType (to show all colors do :highlight)
+
+-- Default
+vim.api.nvim_create_autocmd("BufWinEnter", {pattern = "*", callback = function()
+    ColorRefresh("dracula")
+    vim.api.nvim_create_autocmd('ColorScheme', {
+      command = [[highlight CursorLine guibg=NONE]]
+    })
+end})
+
+-- Rust
+vim.api.nvim_create_autocmd({"BufEnter", "BufWinEnter"}, {pattern = "*.rs", callback = function()
+    ColorRefresh("ayu-mirage")
+    --vim.api.nvim_create_autocmd('ColorScheme', {
+    --  command = [[highlight CursorLine guibg=#191e2a]]
+    --})
+    vim.api.nvim_command(":highlight CursorLine guibg=#1a1f29")
+    vim.api.nvim_command(":highlight ColorColumn guibg=#383e4c")
+end})
+
+-- Python
+vim.api.nvim_create_autocmd({"BufEnter", "BufWinEnter"}, {pattern = "*.py", callback = function()
+    ColorRefresh("tokyonight-night")
+end})
+
+-- Go
+vim.api.nvim_create_autocmd({"BufEnter", "BufWinEnter"}, {pattern = "*.go", callback = function()
+    ColorRefresh("rose-pine")
+end})
+
+-- Haskell
+vim.api.nvim_create_autocmd({"BufEnter", "BufWinEnter"}, {pattern = "*.hs", callback = function()
+    ColorRefresh("tokyobones")
+end})
+
+-- Zig
+vim.api.nvim_create_autocmd({"BufEnter", "BufWinEnter"}, {pattern = "*.zig", callback = function()
+    ColorRefresh("tender")
+end})
+
+-- CUDA
+vim.api.nvim_create_autocmd({"BufEnter", "BufWinEnter"}, {pattern = "*.cu", callback = function()
+    ColorRefresh("tokyobones")
+end})
+
+
+
+
+
+
 --vim.api.nvim_create_autocmd({"BufEnter", "BufWinEnter"}, {pattern = "*.cu", callback = function()
 --        vim.g.material_style = "deep ocean"
 --        ColorRefresh('material')

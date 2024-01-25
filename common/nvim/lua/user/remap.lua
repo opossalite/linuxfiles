@@ -44,3 +44,7 @@ vim.keymap.set('n', 'L', function()
     end
 end)
 
+vim.keymap.set('n', 'Y', function()
+    print(vim.api.nvim_buf_get_name(0))
+end)
+
