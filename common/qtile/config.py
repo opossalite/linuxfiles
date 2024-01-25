@@ -16,17 +16,48 @@ alt = "mod1"
 mouse_positions: list[tuple[int, int]] = []
 monitors: list[tuple[int, int, int, int]] = []
 
+match hostname:
+    case "VulpesKrovPC":
+        border_focus = "#881111"
+        border_normal = "#220000"
+        this_screen_tag = "#FF5555"
+        other_screen_tag = "#77DDDD"
+        bar_height = 25
+        bar_background = "#00000000"
+        floating_border_focus = "#881111",
+        floating_border_default = "#000022",
+    case "CobaltCanidPC":
+        border_focus = "#2254e2"
+        border_normal = "#000022"
+        this_screen_tag = "#2288ff"
+        other_screen_tag = "#AF87FF"
+        bar_height = 30,
+        bar_background = "#2A2A2AFF"
+        floating_border_focus = "#5294e2",
+        floating_border_default = "#000022",
+    case _:
+        border_focus = "#881111"
+        border_normal = "#220000"
+        this_screen_tag = "#FF5555"
+        other_screen_tag = "#77DDDD"
+        bar_height = 25
+        bar_background = "#00000000"
+        floating_border_focus = "#881111",
+        floating_border_default = "#000022",
 
 defaults = {
-    'font': "mono",
-    'fontsize': 15,
+    "font": "mono",
+    "fontsize": 15,
+    "gap": 0, #gap between windows
+    "border_focus": border_focus, #color
+    "border_normal": border_normal, #color
+    "this_screen_tag": this_screen_tag, #color
+    "other_screen_tag": other_screen_tag, #color
+    "bar_height": bar_height,
+    "bar_background": bar_background, #color + opacity
+    "floating_border_focus": floating_border_focus, #color
+    "floating_border_default": floating_border_default, #color
 }
-widget_defaults = dict(
-    font="sans",
-    fontsize=12,
-    padding=3,
-)
-gap = 0
 
 
 strict_workspaces = False #only enforce strict workspaces, any not listed are dynamic
@@ -518,8 +549,13 @@ layouts = [
         #border_focus = "#5294e2",
         #border_focus = "#2222BB",
         #border_focus = "#5fafff",
-        border_focus = "#2254e2",
-        border_normal = "#000022",
+
+        border_focus = defaults["border_focus"],
+        border_normal = defaults["border_normal"],
+
+        #border_focus = "#2254e2",
+        #border_normal = "#000022",
+        ##220000, #881111
         border_width = 2,
         border_on_single = True,
         
@@ -542,18 +578,18 @@ layouts = [
     # layout.Zoomy(),
 ]
 
-extension_defaults = widget_defaults.copy()
+#extension_defaults = widget_defaults.copy()
 
 screens = [
     Screen(
-        top=bar.Gap(gap),
-        left=bar.Gap(gap),
-        right=bar.Gap(gap),
+        top=bar.Gap(defaults["gap"]),
+        left=bar.Gap(defaults["gap"]),
+        right=bar.Gap(defaults["gap"]),
         bottom=bar.Bar(
             [
                 widget.GroupBox(
                     font = defaults['font'],
-                    fontsize = defaults['fontsize'] + 2,
+                    fontsize = defaults['fontsize'] + (2 if hostname == "CobaltCanidPC" else 0),
                     
                     highlight_method = "line",
                     highlight_color = ["#464646FF", "#464646FF"], #gradient
@@ -563,8 +599,8 @@ screens = [
                     inactive = "#767676",   #font color for workspaces without windows, always affects this focused tab when other screen focused
                     
                     #this_current_screen_border = "#5fafff",     #highlight current screen when current screen in focus
-                    this_current_screen_border = "#2288ff",     #highlight current screen when current screen in focus
-                    other_screen_border = "#77DDDD",            #highlight other screen when current screen in focus
+                    this_current_screen_border = defaults["this_screen_tag"],     #highlight current screen when current screen in focus
+                    other_screen_border = defaults["other_screen_tag"],            #highlight other screen when current screen in focus
                     
                     this_screen_border = "#FF5555",             #highlight this screen when other screens in focus
                     other_current_screen_border = "#77DDDD",    #highlight other screens when other screens in focus
@@ -572,15 +608,20 @@ screens = [
                     disable_drag = True, #disable dragging workspaces around
                     borderwidth = 4, #border of weird things, but affects tag width and highlight height
                 ),
+                widget.WidgetBox(widgets = [
+                    widget.TaskList(
+                        #parse_text = lambda _: "",
+                    )
+                ]),
                 widget.Prompt(),
                 #widget.WindowName(),
-                widget.Spacer(),
                 widget.Chord(
                     chords_colors={
                         "launch": ("#ff0000", "#ffffff"),
                     },
                     name_transform=lambda name: name.upper(),
                 ),
+                widget.Spacer(),
                 widget.CPU(
                     font = defaults['font'],
                     fontsize = defaults['fontsize'],
@@ -591,21 +632,21 @@ screens = [
                     format = ' Memory {MemUsed:.1f}{mm}/{MemTotal:.1f}{mm}', #the .1f means one digit after the dot
                     measure_mem = 'G',
                 ),
+                widget.Spacer(),
                 widget.Sep(
                     linewidth = 0,
                     padding = 6,
                 ),
-                widget.GenPollText(
-                    font = defaults['font'],
-                    fontsize = defaults['fontsize'],
-                    update_interval=1,
-                    func=lambda: subprocess.getoutput("ip addr | grep inet | grep enp37s0 | awk '{print $2}'")
-                ),
+                #widget.GenPollText(
+                #    font = defaults['font'],
+                #    fontsize = defaults['fontsize'],
+                #    update_interval=1,
+                #    func=lambda: subprocess.getoutput("ip addr | grep inet | grep enp37s0 | awk '{print $2}'")
+                #),
                 #widget.Sep(
                 #    linewidth = 0,
                 #    padding = 6,
                 #),
-                widget.Spacer(),
                 widget.CurrentLayout(
                     font = defaults['font'],
                     fontsize = defaults['fontsize'],
@@ -627,27 +668,12 @@ screens = [
                 #        'es': 'es',
                 #    }
                 #),
-                KeyboardSwitcher(
-                    configured_keyboards = [
-                        ("us-enhanced", "us"),
-                        ("es", "es"),
-                        ("universal", "uv"),
-                        ("colemak-dha", "cm"),
-                        #("colemak-dh", "cm"),
-                        ("semimak-jq", "sm"),
-                        ("mtgap", "mt"),
-                    ]
-
-                ),
+                keyboard_switcher, #use the KeyboardSwitcher defined at top of config
                 widget.Sep(
                     linewidth = 0,
                     padding = 6,
                 ),
                 widget.Systray(),
-                widget.Sep(
-                    linewidth = 0,
-                    padding = 6,
-                ),
                 widget.Sep(
                     linewidth = 0,
                     padding = 6,
@@ -662,19 +688,26 @@ screens = [
                 ),
                 #widget.QuickExit(),
             ],
-            30,
+            #30,
+            defaults["bar_height"],
             # border_width=[2, 0, 2, 0],  # Draw top and bottom borders
             # border_color=["ff00ff", "000000", "ff00ff", "000000"]  # Borders are magenta
             #border_color=["ff00ff", "000000", "ff00ff", "000000"],  # Borders are magenta
             #background = "#282A2EFF",
-            background = "#2A2A2AFF",
+            #background = "#2A2A2AFF",
+            background = defaults["bar_background"],
+            margin = [defaults["gap"], 0, 0, 0],
         ),
     ),
     Screen(
+        top=bar.Gap(defaults["gap"]),
+        left=bar.Gap(defaults["gap"]),
+        right=bar.Gap(defaults["gap"]),
         bottom=bar.Bar(
             [
                 widget.GroupBox(
-                    fontsize = 15,
+                    font = defaults["font"],
+                    fontsize = defaults["fontsize"],
                     
                     highlight_method = "line",
                     highlight_color = ["#464646FF", "#464646FF"], #gradient
@@ -683,8 +716,8 @@ screens = [
                     active = "#FFFFFF",     #font color for workspaces with windows
                     inactive = "#767676",   #font color for workspaces without windows, always affects this focused tab when other screen focused
                     
-                    this_current_screen_border = "#77DDDD",     #highlight current screen when current screen in focus
-                    other_screen_border = "#FF5555",            #highlight other screen when current screen in focus
+                    this_current_screen_border = defaults["other_screen_tag"],     #highlight current screen when current screen in focus
+                    other_screen_border = defaults["this_screen_tag"],            #highlight other screen when current screen in focus
                     
                     this_screen_border = "#77DDDD",             #highlight this screen when other screens in focus
                     other_current_screen_border = "#FF5555",    #highlight other screens when other screens in focus
@@ -692,13 +725,23 @@ screens = [
                     disable_drag = True, #disable dragging workspaces around
                     borderwidth = 4, #border of weird things, but affects tag width and highlight height
                 ),
-                widget.Prompt(),
+                widget.TaskList(),
+                #widget.Prompt(),
                 #widget.WindowName(),
                 widget.Spacer(),
-                widget.CurrentLayout(),
+                widget.CurrentLayout(
+                    font = defaults["font"],
+                    fontsize = defaults["fontsize"],
+                ),
+                widget.Sep(
+                    linewidth = 0,
+                    padding = 6,
+                ),
                 #widget.TextBox("default config", name="default"),
                 #widget.TextBox("Press &lt;M-r&gt; to spawn", foreground="#d75f5f"),
                 widget.Clock(
+                    font = defaults["font"],
+                    fontsize = defaults["fontsize"],
                     format="%m/%d/%Y %a %I:%M %p",
                     mouse_callbacks = {
                         'Button1': lazy.spawn("gsimplecal"),
@@ -706,10 +749,11 @@ screens = [
                 ),
                 #widget.QuickExit(),
             ],
-            25,
+            defaults["bar_height"],
             # border_width=[2, 0, 2, 0],  # Draw top and bottom borders
             # border_color=["ff00ff", "000000", "ff00ff", "000000"]  # Borders are magenta
-            background = "#00000000",
+            background = defaults["bar_background"],
+            margin = [defaults["gap"], 0, 0, 0],
         ),
     ),
     #Screen(
@@ -737,7 +781,7 @@ screens = [
     #),
 ]
 
-# Drag floating layouts.
+# Drag floating layouts. EXPERIMENT WITH THIS, SO WINDOWS ARENT FORCED INTO FLOATING
 mouse = [
     Drag([mod], "Button1", lazy.window.set_position_floating(), start=lazy.window.get_position()),
     Drag([mod], "Button3", lazy.window.set_size_floating(), start=lazy.window.get_size()),
@@ -762,10 +806,12 @@ floating_layout = layout.Floating(
         Match(title="Tor Browser"),  # Needs a fixed window size to avoid fingerprinting by screen size.
     ],
     #border_focus = "#881111",
-    border_focus = "#5294e2",
+    #border_focus = "#5294e2",
     #border_default = "#220000",
-    border_default = "#000022",
-    border_width = 1,
+    #border_default = "#000022",
+    border_focus = defaults["floating_border_focus"],
+    border_default = defaults["floating_border_default"],
+    #border_width = 1,
 )
 auto_fullscreen = True
 focus_on_window_activation = "smart"
