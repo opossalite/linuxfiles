@@ -22,6 +22,7 @@ in {
         # command-line programs (programs that run in the terminal)
         brightnessctl
         btop
+        colordiff
         distrobox
         dmidecode
         htop
@@ -40,6 +41,7 @@ in {
         trash-cli
         tty-clock
         unzip
+        vim
         xdotool
         xorg.xcbproto
         xorg.xev
