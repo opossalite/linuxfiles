@@ -1,32 +1,23 @@
 home="${HOME}"
 
 
+# param1: file name, param2: path from home (optional)
 verify_file () {
-    if [ -f $home"/""${1}" ]; then
+    if [ -f $home"${2}""/""${1}" ]; then
         #colordiff --unified=0 "./"$1 $home"/"$1
-        git diff "./"$1 $home"/""${1}"
+        git diff "./"$1 $home"${2}""/""${1}"
     else
-        echo $home"/"$1 does not exist!
+        echo $home"${2}""/"$1 does not exist!
     fi
 }
 
 
+# param1: directory name, param2: path from home (optional)
 verify_directory () {
-    if [ -d $home"/""${1}" ]; then
-        #colordiff --unified=0 "./"$1 $home"/"$1
-        git diff "./"$1 $home"/""${1}"
+    if [ -d $home"${2}""/""${1}" ]; then
+        git diff "./"$1 $home"${2}""/""${1}"
     else
-        echo $home"/"$1 does not exist!
-    fi
-}
-
-
-verify_directory_config () {
-    if [ -d $home"/.config/""${1}" ]; then
-        #colordiff --unified=0 "./"$1 $home"/.config/"$1
-        git diff "./"$1 $home"/.config/""${1}"
-    else
-        echo $home"/"$1 does not exist!
+        echo $home"${2}""/""${1}" does not exist!
     fi
 }
 
@@ -38,20 +29,20 @@ verify_file "commands.txt"
 verify_directory "keymaps"
 verify_directory "shells"
 
-verify_directory_config "alacritty"
-verify_directory_config "awesome"
-verify_directory_config "bspwm"
-verify_directory_config "Code - OSS"
-verify_directory_config "copyq"
-verify_directory_config "easyeffects"
-verify_directory_config "gsimplecal"
-verify_directory_config "home-manager"
-verify_directory_config "kitty"
-verify_directory_config "lf"
-verify_directory_config "nixpkgs"
-verify_directory_config "nvim"
-verify_directory_config "picom"
-verify_directory_config "qtile"
-verify_directory_config "rofi"
+verify_directory "alacritty" "/.config"
+verify_directory "awesome" "/.config"
+verify_directory "bspwm" "/.config"
+verify_directory "Code" "/.config"
+verify_directory "copyq" "/.config"
+verify_directory "easyeffects" "/.config"
+verify_directory "gsimplecal" "/.config"
+verify_directory "home-manager" "/.config"
+verify_directory "kitty" "/.config"
+verify_directory "lf" "/.config"
+verify_directory "nixpkgs" "/.config"
+verify_directory "nvim" "/.config"
+verify_directory "picom" "/.config"
+verify_directory "qtile" "/.config"
+verify_directory "rofi" "/.config"
 
 

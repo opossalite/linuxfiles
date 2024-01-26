@@ -6,6 +6,7 @@ set ignorecase true
 map gp cd ~/Programming
 map gc cd ~/.config
 map gu cd ~/Uni
+map gl cd ~/gits/linuxfiles
 
 # keymaps
 map r
