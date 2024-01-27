@@ -65,8 +65,8 @@ xkb_symbols "universal" {
     //key <FK14> {         [       dead_acute, dead_diaeresis, bracketleft, dead_abovering ] };
     //key <AD11> {         [     bracketleft,       braceleft ] };
     key <AD11> {         [       dead_acute, dead_diaeresis, bracketleft, dead_abovering ] };
-    key <AD12> {         [    bracketright,      braceright ] };
-    //key <AD12> {         [    ssharp,      EuroSign ] };
+    //key <AD12> {         [    bracketright,      braceright ] };
+    key <AD12> {         [    ssharp,      EuroSign ] };
     key <BKSL> {         [       backslash,             bar ] };
     //key <CAPS> {         [       Caps_Lock ] };
     key <CAPS> {         [           minus,      underscore ],

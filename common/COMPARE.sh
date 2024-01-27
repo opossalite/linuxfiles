@@ -15,7 +15,11 @@ verify_file () {
 # param1: directory name, param2: path from home (optional)
 verify_directory () {
     if [ -d $home"${2}""/""${1}" ]; then
-        git diff "./"$1 $home"${2}""/""${1}"
+        #git diff "./"$1 $home"${2}""/""${1}"
+        #git diff "./"$1 $home"${2}""/""${1}" -- . "':!"$home"${2}""'"
+        #git diff --no-index "./"$1 -- $home"${2}""/""${1}" "':!*.pyc'" 
+        #git diff --no-index "./"$1 $home"${2}""/""${1}"
+        git diff --no-index "./"$1 $home"${2}""/""${1}"
     else
         echo $home"${2}""/""${1}" does not exist!
     fi
