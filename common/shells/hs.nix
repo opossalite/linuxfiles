@@ -6,8 +6,7 @@ pkgs.mkShell {
     nativeBuildInputs = with pkgs.buildPackages; [
         ghc
         haskell-language-server
-        haskellPackages.split
-        haskellPackages.Cabal
+        haskellPackages.cabal-install
     ];
     shellHook = "
         export names=$names:${shell_name}
