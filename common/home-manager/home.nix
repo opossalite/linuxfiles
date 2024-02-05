@@ -2,6 +2,9 @@
 
 let
     unstable = import <nixos-unstable> { config = { allowUnfree = true; }; };
+    deadbeef_ = pkgs.deadbeef.override {
+        wavpackSupport = true;
+    };
 in {
     home.username = "terrior";
     home.homeDirectory = "/home/terrior";
@@ -19,9 +22,23 @@ in {
     ];
     home.packages = with pkgs; [
 
+        # system utilities (makes the system run smoothly internally)
+        cifs-utils
+        curl
+        dunst
+        exfat
+        libinput-gestures
+        ntfs3g
+        samba
+        webp-pixbuf-loader
+        wmctrl
+        xclip
+
+
         # command-line programs (programs that run in the terminal)
         brightnessctl
         btop
+        cli-visualizer
         colordiff
         distrobox
         dmidecode
@@ -52,19 +69,6 @@ in {
         zlib
 
 
-        # system utilities (makes the system run smoothly internally)
-        cifs-utils
-        curl
-        dunst
-        exfat
-        libinput-gestures
-        ntfs3g
-        samba
-        webp-pixbuf-loader
-        wmctrl
-        xclip
-
-
         # desktop utilities (programs to make the system usable from the user's perspective)
         alacritty
         arandr
@@ -75,6 +79,7 @@ in {
         contour
         cool-retro-term
         copyq
+        deadbeef_
         easyeffects
         easytag
         etcher
