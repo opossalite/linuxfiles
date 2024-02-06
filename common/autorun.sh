@@ -6,7 +6,6 @@ else
     echo "Starting"
 
     # applications
-    picom --experimental-backends -b &
     easyeffects --gapplication-service &
 
     #system tray
@@ -16,7 +15,10 @@ else
     flameshot &
 
     if [[ $HOSTNAME == "CobaltCanidPC" ]]; then
+        picom -b &
         cbatticon -n &
+    else
+        picom --experimental-backends -b &
     fi
 fi
 

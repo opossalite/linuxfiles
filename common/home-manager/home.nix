@@ -29,6 +29,7 @@ in {
         exfat
         libinput-gestures
         ntfs3g
+        oh-my-zsh
         samba
         webp-pixbuf-loader
         wmctrl
@@ -42,6 +43,8 @@ in {
         colordiff
         distrobox
         dmidecode
+        fzf
+        fzf-zsh
         htop
         jupyter
         killall

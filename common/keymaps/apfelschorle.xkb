@@ -1,5 +1,5 @@
 xkb_keymap {
-xkb_symbols "universal" {
+xkb_symbols "apfelschorle" {
     name[group1]="English (US)";
 
 

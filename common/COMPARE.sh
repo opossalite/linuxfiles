@@ -36,7 +36,7 @@ verify_directory "shells"
 verify_directory "alacritty" "/.config"
 verify_directory "awesome" "/.config"
 verify_directory "bspwm" "/.config"
-verify_directory "Code" "/.config"
+#verify_directory "Code" "/.config"  #too much trash
 verify_directory "copyq" "/.config"
 verify_directory "deadbeef" "/.config"
 verify_directory "easyeffects" "/.config"
