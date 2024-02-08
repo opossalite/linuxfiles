@@ -15,7 +15,7 @@ in {
     programs.home-manager.enable = true;
 
 
-        home.sessionVariables = {
+    home.sessionVariables = {
         QT_QPA_PLATFORMTHEME = "qt5ct";
         EDITOR = "nvim";
     };
@@ -29,30 +29,11 @@ in {
         enable = true; #verify these names in lxappearance but don't use it
         theme.name = "Materia-dark";
         iconTheme.name = "Vimix-Black-dark";
-        #theme = { 
-            #package = pkgs.arc-theme;
-            #package = pkgs.ubuntu-themes;
-            #name = "Arc-Dark";
-            #name = "ubuntu-mono-dark";
-            #package = pkgs.materia-theme;
-            #name = "Materia-dark";
-        #};
-        #iconTheme = {
-            #package = pkgs.maia-icon-theme;
-            #name = "maia-dark";
-            #name = "Vimix-Black-dark";
-        #};
     };
     qt = { #use qt5ct to configure icons, kvantum to configure theme!
         enable = true;
         platformTheme = "qtct";
-        #platformTheme = "kde";
-        #style = {
-            #package = pkgs.materia-kde-theme;
-            #name = "Materia-dark";
-        #};
     };
-
 
 
     nixpkgs.config.allowUnfree = true;
@@ -61,7 +42,7 @@ in {
         "electron-19.1.9"
     ];
     home.packages = with pkgs; [
-    
+
         # themes
         materia-theme
         materia-kde-theme
@@ -76,7 +57,6 @@ in {
         exfat
         libinput-gestures
         ntfs3g
-        oh-my-zsh
         samba
         webp-pixbuf-loader
         wmctrl
@@ -90,8 +70,7 @@ in {
         colordiff
         distrobox
         dmidecode
-        fzf
-        fzf-zsh
+        ffmpegthumbnailer
         htop
         jupyter
         killall
@@ -138,6 +117,14 @@ in {
         gsimplecal
         kitty
         libsForQt5.dolphin
+        libsForQt5.dolphin-plugins
+        libsForQt5.ffmpegthumbs
+        libsForQt5.gwenview
+        libsForQt5.kio-extras
+        libsForQt5.phonon-backend-vlc
+        libsForQt5.qt5ct
+        libsForQt5.qtstyleplugin-kvantum
+        libsForQt5.kdegraphics-thumbnailers
         lxappearance
         networkmanagerapplet
         nitrogen
@@ -146,7 +133,6 @@ in {
         pcmanfm
         picom-jonaburg
         rofi
-        wezterm
         xfce.thunar
 
 
@@ -187,7 +173,6 @@ in {
         vlc
         vscode
         #zoom-us
-
 
         # games
         #minecraft

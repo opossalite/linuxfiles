@@ -135,6 +135,7 @@ keyboard_switcher = KeyboardSwitcher(
         ("colemak-dh", "cm"),
         ("semimak-jq", "sm"),
         ("mtgap", "mt"),
+        ("apfelschorle", "ap")
     ]
 )
 keyboard_switcher.font = defaults['font']
@@ -468,14 +469,14 @@ keys = [
     Key([mod], "n", lazy.layout.normalize(), desc="Reset all window sizes"),
 
     Key([mod], "space", lazy.spawn(f"rofi -show run -theme {defaults['rofi_theme']}"), desc="Run dmenu"),
-    Key([mod], "Return", lazy.spawn("kitty"), desc="Launch terminal"),
+    Key([mod], "Return", lazy.spawn("contour early-exit-threshold 0"), desc="Launch terminal"),
     Key([mod], "o", lazy.spawn("gsimplecal"), desc="Run gsimplecal"),
     Key([mod, alt], "h", lazy.spawn("code"), desc="Run vscode"),
     Key([mod, alt], "j", lazy.spawn("firefox"), desc="Run firefox"),
     Key([mod, alt], "k", lazy.spawn("librewolf"), desc="Run librewolf"),
     Key([mod, alt], "l", lazy.spawn("brave"), desc="Run brave"),
-    Key([mod, alt], "n", lazy.spawn("thunar"), desc="Run thunar"),
-    Key([mod, alt], "m", lazy.spawn("kitty -e lf"), desc="Run lf"),
+    Key([mod, alt], "n", lazy.spawn("dolphin"), desc="Run dolphin"),
+    Key([mod, alt], "m", lazy.spawn("contour early-exit-threshold 0 -e lf"), desc="Run lf"),
     #Key([mod, alt], "y", lazy.spawn("flatpak run com.mojang.Minecraft"), desc="Run minecraft"),
     Key([mod, alt], "u", lazy.spawn("spotify"), desc="Run spotify"),
     Key([mod, alt], "i", lazy.spawn("discord"), desc="Run discord"),
@@ -617,8 +618,8 @@ screens = [
                     this_current_screen_border = defaults["this_screen_tag"],     #highlight current screen when current screen in focus
                     other_screen_border = defaults["other_screen_tag"],            #highlight other screen when current screen in focus
                     
-                    this_screen_border = defaults["this_screen_tag"],             #highlight this screen when other screens in focus
-                    other_current_screen_border = defaults["other_screen_tag"],    #highlight other screens when other screens in focus
+                    this_screen_border = "#FF5555",             #highlight this screen when other screens in focus
+                    other_current_screen_border = "#77DDDD",    #highlight other screens when other screens in focus
                     
                     disable_drag = True, #disable dragging workspaces around
                     borderwidth = 4, #border of weird things, but affects tag width and highlight height
@@ -731,11 +732,11 @@ screens = [
                     active = "#FFFFFF",     #font color for workspaces with windows
                     inactive = "#767676",   #font color for workspaces without windows, always affects this focused tab when other screen focused
                     
-                    this_current_screen_border = defaults["this_screen_tag"],     #highlight current screen when current screen in focus
-                    other_screen_border = defaults["other_screen_tag"],            #highlight other screen when current screen in focus
+                    this_current_screen_border = defaults["other_screen_tag"],     #highlight current screen when current screen in focus
+                    other_screen_border = defaults["this_screen_tag"],            #highlight other screen when current screen in focus
                     
-                    this_screen_border = defaults["this_screen_tag"],             #highlight this screen when other screens in focus
-                    other_current_screen_border = defaults["other_screen_tag"],    #highlight other screens when other screens in focus
+                    this_screen_border = "#77DDDD",             #highlight this screen when other screens in focus
+                    other_current_screen_border = "#FF5555",    #highlight other screens when other screens in focus
                     
                     disable_drag = True, #disable dragging workspaces around
                     borderwidth = 4, #border of weird things, but affects tag width and highlight height
