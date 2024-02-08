@@ -15,12 +15,59 @@ in {
     programs.home-manager.enable = true;
 
 
+        home.sessionVariables = {
+        QT_QPA_PLATFORMTHEME = "qt5ct";
+        EDITOR = "nvim";
+    };
+
+
+    # Theming
+    
+    #qogir, ultimate-maia, juno, ant themes, equilux
+
+    gtk = {
+        enable = true; #verify these names in lxappearance but don't use it
+        theme.name = "Materia-dark";
+        iconTheme.name = "Vimix-Black-dark";
+        #theme = { 
+            #package = pkgs.arc-theme;
+            #package = pkgs.ubuntu-themes;
+            #name = "Arc-Dark";
+            #name = "ubuntu-mono-dark";
+            #package = pkgs.materia-theme;
+            #name = "Materia-dark";
+        #};
+        #iconTheme = {
+            #package = pkgs.maia-icon-theme;
+            #name = "maia-dark";
+            #name = "Vimix-Black-dark";
+        #};
+    };
+    qt = { #use qt5ct to configure icons, kvantum to configure theme!
+        enable = true;
+        platformTheme = "qtct";
+        #platformTheme = "kde";
+        #style = {
+            #package = pkgs.materia-kde-theme;
+            #name = "Materia-dark";
+        #};
+    };
+
+
+
     nixpkgs.config.allowUnfree = true;
     nixpkgs.config.permittedInsecurePackages = [
         "electron-12.2.3"
         "electron-19.1.9"
     ];
     home.packages = with pkgs; [
+    
+        # themes
+        materia-theme
+        materia-kde-theme
+        maia-icon-theme
+        vimix-icon-theme
+
 
         # system utilities (makes the system run smoothly internally)
         cifs-utils
