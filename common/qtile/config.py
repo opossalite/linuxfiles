@@ -135,7 +135,7 @@ keyboard_switcher = KeyboardSwitcher(
         ("colemak-dh", "cm"),
         ("semimak-jq", "sm"),
         ("mtgap", "mt"),
-        ("apfelschorle", "ap")
+        ("apfelschorle", "ap"),
     ]
 )
 keyboard_switcher.font = defaults['font']
@@ -618,8 +618,8 @@ screens = [
                     this_current_screen_border = defaults["this_screen_tag"],     #highlight current screen when current screen in focus
                     other_screen_border = defaults["other_screen_tag"],            #highlight other screen when current screen in focus
                     
-                    this_screen_border = "#FF5555",             #highlight this screen when other screens in focus
-                    other_current_screen_border = "#77DDDD",    #highlight other screens when other screens in focus
+                    this_screen_border = defaults["this_screen_tag"],             #highlight this screen when other screens in focus
+                    other_current_screen_border = defaults["other_screen_tag"],    #highlight other screens when other screens in focus
                     
                     disable_drag = True, #disable dragging workspaces around
                     borderwidth = 4, #border of weird things, but affects tag width and highlight height
@@ -732,11 +732,11 @@ screens = [
                     active = "#FFFFFF",     #font color for workspaces with windows
                     inactive = "#767676",   #font color for workspaces without windows, always affects this focused tab when other screen focused
                     
-                    this_current_screen_border = defaults["other_screen_tag"],     #highlight current screen when current screen in focus
-                    other_screen_border = defaults["this_screen_tag"],            #highlight other screen when current screen in focus
+                    this_current_screen_border = defaults["this_screen_tag"],     #highlight current screen when current screen in focus
+                    other_screen_border = defaults["other_screen_tag"],            #highlight other screen when current screen in focus
                     
-                    this_screen_border = "#77DDDD",             #highlight this screen when other screens in focus
-                    other_current_screen_border = "#FF5555",    #highlight other screens when other screens in focus
+                    this_screen_border = defaults["this_screen_tag"],             #highlight this screen when other screens in focus
+                    other_current_screen_border = defaults["other_screen_tag"],    #highlight other screens when other screens in focus
                     
                     disable_drag = True, #disable dragging workspaces around
                     borderwidth = 4, #border of weird things, but affects tag width and highlight height

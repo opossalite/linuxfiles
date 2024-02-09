@@ -57,6 +57,7 @@ in {
         exfat
         libinput-gestures
         ntfs3g
+        oh-my-zsh
         samba
         webp-pixbuf-loader
         wmctrl
@@ -71,6 +72,8 @@ in {
         distrobox
         dmidecode
         ffmpegthumbnailer
+        fzf
+        fzf-zsh
         htop
         jupyter
         killall
