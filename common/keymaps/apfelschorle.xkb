@@ -200,58 +200,56 @@ xkb_symbols "universal" {
     //
 
 
-    //key <AE01> {         [               asciitilde ] };  //usually 1
-    //key <AE02> {         [               percent ] };  //usually 2
-    //key <AE03> {         [               exclam ] };  //usually 3
-    //key <AE04> {         [               question ] };  //usually 4
-    //key <AE05> {         [               dollar ] };  //usually 5
-    //key <AE06> {         [               grave ] };  //usually 6
-    //key <AE07> {         [               bar ] };  //usually 7
-    //key <AE08> {         [               plus ] };  //usually 8
-    //key <AE09> {         [               parenleft ] };  //usually 9
-    //key <AE10> {         [               parenright ] };  //usually 0
-    key <AE12> {         [           ntilde, Ntilde ] };  //usually equals
-
-
+    // MIDDLE ROW
     key  <KP1> {         [               asciitilde ] };  //usually np_1
     key  <KP2> {         [               percent ] };  //usually np_2
     key  <KP3> {         [               exclam ] };  //usually np_3
     key  <KP4> {         [               question ] };  //usually np_4
     key  <KP5> {         [               dollar ] };  //usually np_5
-    key  <KP6> {         [               grave ] };  //usually np_6
-    key  <KP7> {         [               bar ] };  //usually np_7
+    key  <KP6> {         [               bar ] };  //usually np_6
+    key  <KP7> {         [               grave ] };  //usually np_7
     key  <KP8> {         [               plus ] };  //usually np_8
-    key  <KP9> {         [               parenleft ] };  //usually np_9
-    key  <KP0> {         [               parenright ] };  //usually np_0
+    key  <KP9> {         [               bracketleft ] };  //usually np_9
+    key  <KP0> {         [               bracketright ] };  //usually np_0
+    key <AE12> {         [           ntilde, Ntilde ] };  //usually equals
 
 
-    key <FK13> {         [       asciicircum ] };
-    key <FK14> {         [       asterisk ] };
-    key <FK15> {         [     less ] };
-    key <FK16> {         [     greater ] };
-    key <FK17> {         [     bracketleft ] };
-    key <FK18> {         [     braceleft ] };
-    key <FK19> {         [ braceright ] };
-    //key <FK20> {         [ bracketright ],
-    //    actions[Group1]= [       NoAction(), NoAction() ]
+    // BOTTOM ROW
+    key <FK13> {         [       less ] };
+    key <FK14> {         [       greater ] };
+    key <FK15> {         [     EuroSign ] };
+
+    key <FK16> {         [     asciicircum ] };
+    key <FK17> {         [     braceleft ] };
+    key <FK18> {         [     braceright ] };
+
+
+    // TOP ROW
+    //key <AD11> {         [      at ] };  //usually opening bracket
+    //key <AD12> {         [    EuroSign ] };  //usually closing bracket
+    //key <KPDV> {
+    //    type= "CTRL+ALT",
+    //    symbols[Group1]= [       backslash ]
     //};
-    key <FK21> {         [ bracketright ]};
+    //key <KPMU> {
+    //    type= "CTRL+ALT",
+    //    symbols[Group1]= [     semicolon ]
+    //};
+    //key <KPSU> {
+    //    type= "CTRL+ALT",
+    //    symbols[Group1]= [     ssharp ]
+    //};
 
-    key <TLDE> {         [          ampersand ] };  //usually grave
-    key <AD11> {         [      at ] };  //usually opening bracket
-    key <AD12> {         [    EuroSign ] };  //usually closing bracket
-    key <KPDV> {
-        type= "CTRL+ALT",
-        symbols[Group1]= [       backslash ]
-    };
-    key <KPMU> {
-        type= "CTRL+ALT",
-        symbols[Group1]= [     semicolon ]
-    };
-    key <KPSU> {
-        type= "CTRL+ALT",
-        symbols[Group1]= [     ssharp ]
-    };
+
+    key <FK19> {         [ at ] };
+    key <FK21> {         [ asterisk ]};
+    key <FK22> {         [ backslash ]};
+
+    key <FK23> {         [ ampersand ]};
+    key <FK24> {         [ semicolon ]};
+    key <TLDE> {         [          ssharp ] };  //usually grave
+
+
 
 
 

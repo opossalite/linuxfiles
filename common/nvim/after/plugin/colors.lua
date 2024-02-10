@@ -108,6 +108,8 @@ end})
 -- Haskell
 vim.api.nvim_create_autocmd({"BufEnter", "BufWinEnter"}, {pattern = "*.hs", callback = function()
     ColorRefresh("tokyobones")
+    vim.api.nvim_command(":highlight CursorLine guibg=#2a2b3a")
+    vim.api.nvim_command(":highlight ColorColumn guibg=#2a2b3a")
 end})
 
 -- Zig

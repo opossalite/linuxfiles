@@ -2,8 +2,8 @@ local lsp = require('lsp-zero')
 lsp.preset('recommended')
 
 --lsp.ensure_installed({
---	--'eslint',
---	--'sumneko_lua',
+--    --'eslint',
+--    --'sumneko_lua',
 --    'julials',
 --})
 

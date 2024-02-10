@@ -13,10 +13,11 @@ map r
 map rr reload
 map rn rename
 map ot ${{
-    nohup kitty --working-directory=$PWD >/dev/null 2>&1 &
+    #nohup kitty --working-directory=$PWD >/dev/null 2>&1 &
     #nohup wezterm start --cwd $PWD >/dev/null 2>&1 &
+
     #wezterm --cwd $PWD
-    #nohup contour --working-directory=$PWD >/dev/null 2>&1 &
+    nohup contour early-exit-threshold 0 --working-directory=$PWD >/dev/null 2>&1 &
 }}
 map oh ${{
     nohup code $PWD >/dev/null 2>&1 &
@@ -25,10 +26,10 @@ map or ${{
     nohup rider $PWD >/dev/null 2>&1 &
 }}
 map on ${{
-    nohup thunar $PWD >/dev/null 2>&1 &
+    nohup dolphin $PWD >/dev/null 2>&1 &
 }}
 map om ${{
-    nohup alacritty --command nvim $PWD >/dev/null 2>&1 &
+    nohup contour early-exit-threshold 0 -e nvim $PWD >/dev/null 2>&1 &
 }}
 
 #map <esc> quit
