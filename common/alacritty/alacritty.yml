@@ -14,7 +14,7 @@
 # Any items in the `env` entry below will be added as
 # environment variables. Some entries may override variables
 # set by alacritty itself.
-#env:
+env:
   # TERM variable
   #
   # This value is used to set the `$TERM` environment variable for
@@ -22,6 +22,8 @@
   # check the local terminfo database and use `alacritty` if it is
   # available, otherwise `xterm-256color` is used.
   #TERM: alacritty
+
+  WINIT_X11_SCALE_FACTOR: "1.0"
 
 window:
   # Window dimensions (changes require restart)
@@ -187,7 +189,7 @@ font:
   #builtin_box_drawing: true
 
 # If `true`, bold text is drawn using the bright color variants.
-draw_bold_text_with_bright_colors: true
+draw_bold_text_with_bright_colors: false
 
 # Colors (Tomorrow Night)
 colors:
@@ -357,7 +359,7 @@ colors:
   # Whether or not `window.opacity` applies to all cell backgrounds or only to
   # the default background. When set to `true` all cells will be transparent
   # regardless of their background color.
-  transparent_background_colors: true
+  transparent_background_colors: false
 
 # Bell
 #
@@ -417,7 +419,7 @@ cursor:
     #   - ▇ Block
     #   - _ Underline
     #   - | Beam
-    shape: Beam
+    shape: Block
 
     # Cursor blinking state
     #
@@ -427,6 +429,7 @@ cursor:
     #   - On: Enable blinking by default
     #   - Always: Force the cursor to always blink
     #blinking: Off
+    blinking: On
 
   # Vi mode cursor style
   #
@@ -441,11 +444,12 @@ cursor:
 
   # If this is `true`, the cursor will be rendered as a hollow box when the
   # window is not focused.
-  unfocused_hollow: false
+  unfocused_hollow: true
 
   # Thickness of the cursor relative to the cell width as floating point number
   # from `0.0` to `1.0`.
   #thickness: 0.15
+  thickness: 0.1
 
 # Live config reload (changes require restart)
 #live_config_reload: true

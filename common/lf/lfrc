@@ -17,7 +17,8 @@ map ot ${{
     #nohup wezterm start --cwd $PWD >/dev/null 2>&1 &
 
     #wezterm --cwd $PWD
-    nohup contour early-exit-threshold 0 --working-directory=$PWD >/dev/null 2>&1 &
+    #nohup contour early-exit-threshold 0 --working-directory=$PWD >/dev/null 2>&1 &
+    nohup alacritty --working-directory=$PWD >/dev/null 2>&1 &
 }}
 map oh ${{
     nohup code $PWD >/dev/null 2>&1 &

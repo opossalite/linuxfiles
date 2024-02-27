@@ -742,43 +742,44 @@ input_mapping:
     - { mods: [],               mouse: Middle,      action: PasteSelection }
     - { mods: [],               mouse: WheelDown,   action: ScrollDown }
     - { mods: [],               mouse: WheelUp,     action: ScrollUp }
-    - { mods: [Alt],            key: Enter,         action: ToggleFullscreen }
-    - { mods: [Alt],            mouse: WheelDown,   action: DecreaseOpacity }
-    - { mods: [Alt],            mouse: WheelUp,     action: IncreaseOpacity }
-    - { mods: [Control, Alt],   key: S,             action: ScreenshotVT }
-    - { mods: [Control, Shift], key: Plus,          action: IncreaseFontSize }
+    #- { mods: [Alt],            key: Enter,         action: ToggleFullscreen }
+    #- { mods: [Alt],            mouse: WheelDown,   action: DecreaseOpacity }
+    #- { mods: [Alt],            mouse: WheelUp,     action: IncreaseOpacity }
+    #- { mods: [Control, Alt],   key: S,             action: ScreenshotVT }
+    - { mods: [Control],        key: Equal,          action: IncreaseFontSize }
+    - { mods: [Control],        key: Minus,         action: DecreaseFontSize }
     - { mods: [Control],        key: '0',           action: ResetFontSize }
-    - { mods: [Control, Shift], key: Minus,         action: DecreaseFontSize }
-    - { mods: [Control, Shift], key: '_',           action: DecreaseFontSize }
-    - { mods: [Control, Shift], key: N,             action: NewTerminal }
+    #- { mods: [Control, Shift], key: '_',           action: DecreaseFontSize }
+    #- { mods: [Control, Shift], key: N,             action: NewTerminal }
     - { mods: [Control, Shift], key: V,             action: PasteClipboard, strip: false }
-    - { mods: [Control, Alt],   key: V,             action: PasteClipboard, strip: true }
-    - { mods: [Control],        key: C,             action: CopySelection, mode: 'Select|Insert' }
-    - { mods: [Control],        key: C,             action: CancelSelection, mode: 'Select|Insert' }
-    - { mods: [Control],        key: V,             action: PasteClipboard, strip: false, mode: 'Select|Insert' }
-    - { mods: [Control],        key: V,             action: CancelSelection, mode: 'Select|Insert' }
+    #- { mods: [Control, Alt],   key: V,             action: PasteClipboard, strip: true }
+    #- { mods: [Control],        key: C,             action: CopySelection, mode: 'Select|Insert' }
+    - { mods: [Control, Shift], key: C,             action: CopySelection, mode: 'Select|Insert' }
+    #- { mods: [Control],        key: C,             action: CancelSelection, mode: 'Select|Insert' }
+    #- { mods: [Control],        key: V,             action: PasteClipboard, strip: false, mode: 'Select|Insert' }
+    #- { mods: [Control],        key: V,             action: CancelSelection, mode: 'Select|Insert' }
     - { mods: [],               key: Escape,        action: CancelSelection, mode: 'Select|Insert' }
     - { mods: [Control, Shift], key: Space,         action: ViNormalMode, mode: 'Insert' }
-    - { mods: [Control, Shift], key: Comma,         action: OpenConfiguration }
-    - { mods: [Control, Shift], key: Q,             action: Quit }
-    - { mods: [Control],        mouse: WheelDown,   action: DecreaseFontSize }
-    - { mods: [Control],        mouse: WheelUp,     action: IncreaseFontSize }
-    - { mods: [Shift],          key: DownArrow,     action: ScrollOneDown }
-    - { mods: [Shift],          key: End,           action: ScrollToBottom }
-    - { mods: [Shift],          key: Home,          action: ScrollToTop }
-    - { mods: [Shift],          key: PageDown,      action: ScrollPageDown }
-    - { mods: [Shift],          key: PageUp,        action: ScrollPageUp }
-    - { mods: [Shift],          key: UpArrow,       action: ScrollOneUp }
-    - { mods: [Control, Alt],   key: K,             action: ScrollMarkUp,   mode: "~Alt"}
-    - { mods: [Control, Alt],   key: J,             action: ScrollMarkDown, mode: "~Alt"}
-    - { mods: [Shift],          mouse: WheelDown,   action: ScrollPageDown }
-    - { mods: [Shift],          mouse: WheelUp,     action: ScrollPageUp }
-    - { mods: [Control, Alt],   key: O,             action: OpenFileManager }
-    - { mods: [Control, Alt],   key: '.',           action: ToggleStatusLine }
+    #- { mods: [Control, Shift], key: Comma,         action: OpenConfiguration }
+    #- { mods: [Control, Shift], key: Q,             action: Quit }
+    #- { mods: [Control],        mouse: WheelDown,   action: DecreaseFontSize }
+    #- { mods: [Control],        mouse: WheelUp,     action: IncreaseFontSize }
+    #- { mods: [Shift],          key: DownArrow,     action: ScrollOneDown }
+    #- { mods: [Shift],          key: End,           action: ScrollToBottom }
+    #- { mods: [Shift],          key: Home,          action: ScrollToTop }
+    #- { mods: [Shift],          key: PageDown,      action: ScrollPageDown }
+    #- { mods: [Shift],          key: PageUp,        action: ScrollPageUp }
+    #- { mods: [Shift],          key: UpArrow,       action: ScrollOneUp }
+    #- { mods: [Control, Alt],   key: K,             action: ScrollMarkUp,   mode: "~Alt"}
+    #- { mods: [Control, Alt],   key: J,             action: ScrollMarkDown, mode: "~Alt"}
+    #- { mods: [Shift],          mouse: WheelDown,   action: ScrollPageDown }
+    #- { mods: [Shift],          mouse: WheelUp,     action: ScrollPageUp }
+    #- { mods: [Control, Alt],   key: O,             action: OpenFileManager }
+    #- { mods: [Control, Alt],   key: '.',           action: ToggleStatusLine }
     - { mods: [Control, Shift], key: 'F',           action: SearchReverse }
-    - { mods: [Control, Shift], key: 'H',           action: NoSearchHighlight }
-    - { mods: [],               key: 'F3',          action: FocusNextSearchMatch }
-    - { mods: [Shift],          key: 'F3',          action: FocusPreviousSearchMatch }
+    #- { mods: [Control, Shift], key: 'H',           action: NoSearchHighlight }
+    #- { mods: [],               key: 'F3',          action: FocusNextSearchMatch }
+    #- { mods: [Shift],          key: 'F3',          action: FocusPreviousSearchMatch }
 
 #   - { mods: [Control, Meta],  key: 'E',           action: TraceEnter,             mode: "~Trace" }
 #   - { mods: [Control, Meta],  key: 'E',           action: TraceLeave,             mode: "Trace" }

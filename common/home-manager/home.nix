@@ -75,6 +75,7 @@ in {
         fzf
         fzf-zsh
         htop
+        imagemagick
         jupyter
         killall
         lf
@@ -86,7 +87,8 @@ in {
         nvtop
         redshift
         sshfs
-        texlive.combined.scheme-basic
+        #texlive.combined.scheme-basic
+        texliveMedium
         trash-cli
         tty-clock
         unzip
@@ -94,6 +96,7 @@ in {
         xdotool
         xorg.xcbproto
         xorg.xev
+        xorg.xhost
         xorg.xkbcomp
         xorg.xkill
         xorg.xmodmap
@@ -116,18 +119,23 @@ in {
         easytag
         etcher
         feh
+        filelight
         flameshot
         gsimplecal
+        helvum
         kitty
         libsForQt5.dolphin
         libsForQt5.dolphin-plugins
         libsForQt5.ffmpegthumbs
+        #libsForQt5.kglobalaccel
         libsForQt5.gwenview
+        libsForQt5.kdegraphics-thumbnailers
         libsForQt5.kio-extras
         libsForQt5.phonon-backend-vlc
+        #libsForQt5.plasma-workspace
         libsForQt5.qt5ct
         libsForQt5.qtstyleplugin-kvantum
-        libsForQt5.kdegraphics-thumbnailers
+        #libsForQt5.spectacle
         lxappearance
         networkmanagerapplet
         nitrogen

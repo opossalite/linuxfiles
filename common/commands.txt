@@ -12,6 +12,8 @@ cd $(nix-build --no-out-link '<nixpkgs>' -A xorg.xkeyboardconfig)/etc/X11/xkb/ (
     Print keyboard files on NixOS
 chmod u+x <>
     Give a file executable permissions
+curl -sSL https://raw.githubusercontent.com/alacritty/alacritty/master/extra/alacritty.info | tic -x -
+    Adds support for alacritty terminal in ssh, run on remote machine
 dmidecode --type 17
     Print RAM info
 git diff --no-index {} {}
@@ -60,6 +62,8 @@ PATH=$PATH:_
     Adds _ to path
 pavucontrol
     Volume control GUI
+pdfjam --angle 180 [FILE(S)]
+    Rotates the pdfs by 180 degrees
 pgrep
     Check if a process is running
 pw-top

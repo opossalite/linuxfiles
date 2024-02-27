@@ -2,17 +2,20 @@
 # run every time the script is run
 if [[ $1 == "-r" || $1 == "--reload" ]]; then
     echo "Reloading"
+    # don't do anything special for reloading
 else
     echo "Starting"
 
     # applications
-    easyeffects --gapplication-service &
+    #easyeffects --gapplication-service &
 
     #system tray
     nm-applet &
     pasystray --notify=none --notify=systray_action -g -m 100 &
     copyq &
+    #klipper &
     flameshot &
+    xhost + &
 
     if [[ $HOSTNAME == "CobaltCanidPC" ]]; then
         picom -b &
