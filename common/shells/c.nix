@@ -16,6 +16,29 @@ pkgs.mkShell {
         #gtkmm4
         pkg-config
         sqlite
+
+        bison
+        flex
+        ncurses
+        #_9base
+        bc
+        libelf
+        #libelfin
+        elfutils
+        bmake
+        eflio
+        #gnused
+        coreutils-full
+        kmod
+        cpio
+        gettext
+        graphviz
+        imagemagick
+        pahole
+        perl
+        python3
+        sphinx
+        xz
     ];
     shellHook = "
         export names=$names:${shell_name}

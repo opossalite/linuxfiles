@@ -56,9 +56,12 @@ in {
         dunst
         exfat
         libinput-gestures
+        libvirt
         ntfs3g
         oh-my-zsh
+        qemu
         samba
+        virt-manager
         webp-pixbuf-loader
         wmctrl
         xclip
