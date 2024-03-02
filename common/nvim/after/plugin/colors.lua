@@ -104,6 +104,8 @@ end})
 -- Go
 vim.api.nvim_create_autocmd({"BufEnter", "BufWinEnter"}, {pattern = "*.go", callback = function()
     ColorRefresh("rose-pine")
+    --vim.api.nvim_command(":highlight CursorLine guibg=#1f1f2e")
+    vim.api.nvim_command(":highlight CursorLine guibg=#3d2e36")
 end})
 
 -- Haskell

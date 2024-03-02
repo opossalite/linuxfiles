@@ -58,7 +58,6 @@ if [[ $num_monitors == "1" ]]; then # ONE MONITOR
             #xrandr --output eDP-1 --primary --mode 1920x1080 --rate 60 --output HDMI-1 --mode 1920x1080 --rate 60 --above eDP-1
             #feh --bg-fill ~/gits/linuxfiles/wallpapers/blue.png &
             feh --bg-fill ~/gits/linuxfiles/wallpapers/nix-wallpaper-mine.png &
-
             ;;
 
         (*)

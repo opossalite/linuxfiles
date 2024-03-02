@@ -26,7 +26,7 @@ pkgs.mkShell {
         #libelfin
         elfutils
         bmake
-        eflio
+        elfio
         #gnused
         coreutils-full
         kmod
