@@ -156,18 +156,18 @@ in {
         #arduino-language-server
         cudaPackages.cudatoolkit
         cudaPackages.cudnn
-        go
-        gopls
-        julia-bin
-        lua-language-server
-        mypy
-        nodePackages.pyright
-        R
-        rstudio
-        rust-analyzer
-        rustc
-        zig
-        zls
+        ##go
+        ##gopls
+        ##julia-bin
+        ##lua-language-server
+        ##mypy
+        ##nodePackages.pyright
+        ##R
+        ##rstudio
+        ##rust-analyzer
+        ##rustc
+        ##zig
+        ##zls
         zulu
 
 
