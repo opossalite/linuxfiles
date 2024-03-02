@@ -2,15 +2,30 @@ flatpak packages:
     minecraft
 
 cobra packages:
-    cabal-install
+    #cabal-install
     cargo
     elfio-devel
     elfutils-devel
     elfutils-libelf
+    gcc
+    gcc-c++
+    gmp
+    gmp-devel
     go
+    #haskell-platform
+    make
+    ncurses
+    ncurses-compat-libs
+    npm
     openssl-devel
+    perl
     python3
     python3-pip
+    rust-analyzer
+    xz
+
+    ghcup via the website:
+        curl --proto '=https' --tlsv1.2 -sSf https://get-ghcup.haskell.org | sh
 
 
 acpi
