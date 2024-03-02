@@ -80,9 +80,11 @@ end
 -- Default
 vim.api.nvim_create_autocmd("BufWinEnter", {pattern = "*", callback = function()
     ColorRefresh("dracula")
-    vim.api.nvim_create_autocmd('ColorScheme', {
-      command = [[highlight CursorLine guibg=NONE]]
-    })
+    --vim.api.nvim_create_autocmd('ColorScheme', {
+    --  command = [[highlight CursorLine guibg=NONE]]
+    --})
+    vim.api.nvim_command(":highlight CursorLine guibg=#323443")
+    vim.api.nvim_command(":highlight ColorColumn guibg=#242630")
 end})
 
 -- Rust
@@ -92,7 +94,7 @@ vim.api.nvim_create_autocmd({"BufEnter", "BufWinEnter"}, {pattern = "*.rs", call
     --  command = [[highlight CursorLine guibg=#191e2a]]
     --})
     vim.api.nvim_command(":highlight CursorLine guibg=#1a1f29")
-    vim.api.nvim_command(":highlight ColorColumn guibg=#383e4c")
+    vim.api.nvim_command(":highlight ColorColumn guibg=#141925")
 end})
 
 -- Python
@@ -104,15 +106,14 @@ end})
 -- Go
 vim.api.nvim_create_autocmd({"BufEnter", "BufWinEnter"}, {pattern = "*.go", callback = function()
     ColorRefresh("rose-pine")
-    --vim.api.nvim_command(":highlight CursorLine guibg=#1f1f2e")
-    vim.api.nvim_command(":highlight CursorLine guibg=#3d2e36")
+    vim.api.nvim_command(":highlight CursorLine guibg=#2e2733")
 end})
 
 -- Haskell
 vim.api.nvim_create_autocmd({"BufEnter", "BufWinEnter"}, {pattern = "*.hs", callback = function()
     ColorRefresh("tokyobones")
-    vim.api.nvim_command(":highlight CursorLine guibg=#2a2b3a")
-    vim.api.nvim_command(":highlight ColorColumn guibg=#2a2b3a")
+    vim.api.nvim_command(":highlight ColorColumn guibg=#171825")
+    vim.api.nvim_command(":highlight CursorLine guibg=#1f2130")
 end})
 
 -- Zig
