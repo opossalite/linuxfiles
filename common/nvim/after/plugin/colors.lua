@@ -83,8 +83,8 @@ vim.api.nvim_create_autocmd("BufWinEnter", {pattern = "*", callback = function()
     --vim.api.nvim_create_autocmd('ColorScheme', {
     --  command = [[highlight CursorLine guibg=NONE]]
     --})
-    vim.api.nvim_command(":highlight CursorLine guibg=#323443")
-    vim.api.nvim_command(":highlight ColorColumn guibg=#242630")
+    --vim.api.nvim_command(":highlight CursorLine guibg=#323443")
+    --vim.api.nvim_command(":highlight ColorColumn guibg=#242630")
 end})
 
 -- Rust

@@ -57,6 +57,7 @@ in {
         exfat
         libinput-gestures
         libvirt
+        nfs-utils
         ntfs3g
         oh-my-zsh
         qemu
@@ -68,6 +69,7 @@ in {
 
 
         # command-line programs (programs that run in the terminal)
+        ark
         brightnessctl
         btop
         cli-visualizer
@@ -87,6 +89,8 @@ in {
         most
         neofetch
         nms
+        #nvidia-podman
+        unstable.nvidia-container-toolkit
         nvtop
         redshift
         sshfs
@@ -94,6 +98,7 @@ in {
         texliveMedium
         trash-cli
         tty-clock
+        unrar
         unzip
         vim
         xdotool
@@ -114,7 +119,7 @@ in {
         cbatticon
         cinnamon.nemo
         conky
-        contour
+        #contour
         cool-retro-term
         copyq
         deadbeef_
@@ -175,12 +180,15 @@ in {
         audacious
         audacity
         brave
+        #unstable.discord
         discord
+        gimp
         inkscape
         krita
         libreoffice
         librewolf
         libsForQt5.falkon
+        obs-studio
         spotify
         steam
         tor-browser-bundle-bin
