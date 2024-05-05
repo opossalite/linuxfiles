@@ -28,6 +28,21 @@ cobra packages:
         curl --proto '=https' --tlsv1.2 -sSf https://get-ghcup.haskell.org | sh
 
 
+mamba packages: (distrobox create --nvidia --name MambaVM --image ubuntu:latest)
+    cargo
+    build-essential
+
+    #language-pack-en
+    #nvidia-driver-535
+
+    #cuda as such:
+    #    wget https://developer.download.nvidia.com/compute/cuda/repos/ubuntu2204/x86_64/cuda-keyring_1.1-1_all.deb
+    #    sudo dpkg -i cuda-keyring_1.1-1_all.deb
+    #    sudo apt-get update
+    #    sudo apt-get -y install cuda
+
+
+
 acpi
     Battery info
 alsamixer
@@ -41,7 +56,7 @@ brave --disable-gpu
 cabal install --lib [lib]
     Installs a package for Haskell
 cd $(nix-build --no-out-link '<nixpkgs>' -A xorg.xkeyboardconfig)/etc/X11/xkb/ (apparently lots of xbs here)
-    Print keyboard files on NixOS
+    Print keyboard files on NixOS, apparently lots of xkbs there
 chmod u+x <>
     Give a file executable permissions
 curl -sSL https://raw.githubusercontent.com/alacritty/alacritty/master/extra/alacritty.info | tic -x -

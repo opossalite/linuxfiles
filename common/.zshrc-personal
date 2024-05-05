@@ -34,6 +34,16 @@ if [ "$IN_NIX_SHELL" != "impure" ]; then
             PS1=$'%B%F{15}%n%F{2}@%m%F{15}:%F{4}%~%F{15}$%b%f '
             ;;
 
+        ("MambaVM"*)
+            #PS1=$'%B%F{15}%n%F{60}@%m%F{15}:%F{96}%~%F{15}$%b%f '
+            #PS1=$'%B%F{15}%n%F{102}@%m%F{15}:%F{60}%~%F{15}$%b%f '
+            #PS1=$'%B%F{15}%n%F{97}@%m%F{15}:%F{187}%~%F{15}$%b%f '
+            #PS1=$'%B%F{15}%n%F{140}@%m%F{15}:%F{189}%~%F{15}$%b%f '
+            #PS1=$'%B%F{15}%n%F{140}@%m%F{15}:%F{180}%~%F{15}$%b%f '
+            PS1=$'%B%F{15}%n%F{140}@%m%F{15}:%F{242}%~%F{15}$%b%f '
+            TERM=linux
+            ;;
+
         (*)
             echo "How did I get in the middle of nowhere?"
             echo $HOSTNAME
@@ -93,7 +103,9 @@ alias py="python3"
 alias venv="source venv/bin/activate"
 alias da="deactivate"
 alias cobra="distrobox enter CobraVM"
+alias mamba="distrobox enter MambaVM"
 alias rstud="nix-shell ~/shells/r.nix --command rstudio"
+alias ssd="sudo mount /dev/nvme0n1p2 ~/mnt/ssd"
 
 #alias pi="ssh rover@10.219.198.202"
 #alias kb="setxkbmap"

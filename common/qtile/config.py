@@ -105,6 +105,7 @@ class KeyboardSwitcher(base.InLoopPollText):
         self.configured_keyboards = configured_keyboards
         self.index: int = 0
         self.keymap_location = home + "/keymaps/"
+        self.set_keymap()
         
     def _configure(self, qtile, bar):
         super()._configure(qtile, bar)
@@ -117,16 +118,17 @@ class KeyboardSwitcher(base.InLoopPollText):
         keymap = self.configured_keyboards[self.index][0]
         file_loc = self.keymap_location + keymap + ".xkb"
         subprocess.Popen(["xkbcomp", "-w", "0", file_loc, ":0"])  #apparently $DISPLAY is :0
+        self.tick()
 
     def left_click(self):
         self.index = (self.index + 1) % len(self.configured_keyboards)
         self.set_keymap()
-        self.tick()
+        #self.tick()
 
     def right_click(self):
         self.index = (self.index - 1) % len(self.configured_keyboards)
         self.set_keymap()
-        self.tick()
+        #self.tick()
 
 keyboard_switcher = KeyboardSwitcher(
     configured_keyboards = [
@@ -155,6 +157,7 @@ def autostart():
     initialize_monitors()
     initialize_mouse_positions(monitors)
     subprocess.run([home + "/autorun.sh"], shell = True)
+    keyboard_switcher.set_keymap()
 
     
 @hook.subscribe.startup
