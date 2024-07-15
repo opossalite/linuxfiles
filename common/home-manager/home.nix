@@ -32,7 +32,7 @@ in {
     };
     qt = { #use qt5ct to configure icons, kvantum to configure theme!
         enable = true;
-        platformTheme = "qtct";
+        platformTheme.name = "qtct";
     };
 
 
@@ -57,6 +57,7 @@ in {
         exfat
         libinput-gestures
         libvirt
+        mpv
         nfs-utils
         ntfs3g
         oh-my-zsh
@@ -64,6 +65,8 @@ in {
         samba
         virt-manager
         webp-pixbuf-loader
+        wineWowPackages.stable
+        winetricks
         wmctrl
         xclip
 
@@ -91,7 +94,7 @@ in {
         nms
         #nvidia-podman
         unstable.nvidia-container-toolkit
-        nvtop
+        nvtopPackages.full
         redshift
         sshfs
         #texlive.combined.scheme-basic
@@ -125,7 +128,7 @@ in {
         deadbeef_
         easyeffects
         easytag
-        etcher
+        #etcher
         feh
         filelight
         flameshot
@@ -138,6 +141,7 @@ in {
         #libsForQt5.kglobalaccel
         libsForQt5.gwenview
         libsForQt5.kdegraphics-thumbnailers
+        libsForQt5.kdenlive
         libsForQt5.kio-extras
         libsForQt5.phonon-backend-vlc
         #libsForQt5.plasma-workspace
@@ -150,17 +154,19 @@ in {
         pasystray
         pavucontrol
         pcmanfm
-        picom-jonaburg
+        #picom-jonaburg
+        picom-pijulius
         rofi
         xfce.thunar
 
 
         # development utilities (packages that help compile or develop code)
+        autoAddDriverRunpath
         #arduino
         #arduino-cli
         #arduino-language-server
         cudaPackages.cudatoolkit
-        cudaPackages.cudnn
+        #cudaPackages.cudnn
         ##go
         ##gopls
         ##julia-bin
@@ -177,6 +183,7 @@ in {
 
 
         # desktop programs (user gui programs with few system dependencies)
+        anki-bin
         audacious
         audacity
         brave

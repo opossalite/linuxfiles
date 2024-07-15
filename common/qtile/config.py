@@ -12,6 +12,7 @@ hostname = socket.gethostname()
 home = os.path.expanduser('~')
 mod = "mod4"
 alt = "mod1"
+iso = "mod5"
 
 mouse_positions: list[tuple[int, int]] = []
 monitors: list[tuple[int, int, int, int]] = []
@@ -118,6 +119,7 @@ class KeyboardSwitcher(base.InLoopPollText):
         keymap = self.configured_keyboards[self.index][0]
         file_loc = self.keymap_location + keymap + ".xkb"
         subprocess.Popen(["xkbcomp", "-w", "0", file_loc, ":0"])  #apparently $DISPLAY is :0
+        #xkbcomp -w 0 ~/keymaps/_ :0
         self.tick()
 
     def left_click(self):
@@ -132,12 +134,18 @@ class KeyboardSwitcher(base.InLoopPollText):
 
 keyboard_switcher = KeyboardSwitcher(
     configured_keyboards = [
+        ("apfelschorle", "ap"),
         ("us-enhanced", "us"),
         ("universal", "un"),
-        ("colemak-dh", "cm"),
+        ("es", "es"),
         ("semimak-jq", "sm"),
-        ("mtgap", "mt"),
-        ("apfelschorle", "ap"),
+        ("gallium-v2", "ga"),
+        #("es-test", "et"),
+        #("us-test1", "ut1"),
+        #("us-test", "ut"),
+        #("de", "de"),
+        #("colemak-dh", "cm"),
+        #("mtgap", "mt"),
     ]
 )
 keyboard_switcher.font = defaults['font']
@@ -157,7 +165,6 @@ def autostart():
     initialize_monitors()
     initialize_mouse_positions(monitors)
     subprocess.run([home + "/autorun.sh"], shell = True)
-    keyboard_switcher.set_keymap()
 
     
 @hook.subscribe.startup
@@ -166,6 +173,7 @@ def startup():
     initialize_monitors()
     initialize_mouse_positions(monitors)
     subprocess.run([home + "/autorun.sh -r"], shell = True)
+    keyboard_switcher.set_keymap()
 
 
 @hook.subscribe.client_new
@@ -446,6 +454,16 @@ def switch_to_workspace(qtile, workspace):
 ########## KEYBINDS ##########
 '''
 
+def dumb_function1(qtile):
+    debug_notif(f"int + d")
+
+def dumb_function2(qtile):
+    debug_notif(f"win + int + d")
+
+def dumb_function3(qtile):
+    debug_notif(f"win + d")
+
+lettermap = "uxcvsdfwer"
 
 keys = [
     # A list of available commands that can be bound to keys can be found
@@ -500,7 +518,7 @@ keys = [
 
     Key([mod, "shift"], "r", lazy.reload_config(), desc="Reload the config"),
     Key([mod, "shift"], "b", lazy.function(reload_autorun), desc="Fix config things, run autorun.sh again"),
-    Key([mod], "d", lazy.function(switch_keyboard_layout, keyboard_switcher, clockwise = False), desc="Previous keyboard layout"),
+    #Key([mod], "d", lazy.function(switch_keyboard_layout, keyboard_switcher, clockwise = False), desc="Previous keyboard layout"),
     Key([mod], "f", lazy.function(switch_keyboard_layout, keyboard_switcher, clockwise = True), desc="Next keyboard layout"),
     Key([mod], "r", lazy.spawncmd(), desc="Spawn a command using a prompt widget"),
     #Key([mod], "Tab", lazy.next_layout(), desc="Toggle between layouts"),
@@ -515,6 +533,25 @@ keys = [
     Key([mod, "control"], "KP_Up", lazy.spawn("redshift -P -O 3500"), desc="Redshift 1"),
     Key([mod, "control"], "KP_Left", lazy.spawn("redshift -P -O 2500"), desc="Redshift 2"),
     Key([mod, "control"], "KP_Right", lazy.spawn("redshift -P -O 1500"), desc="Redshift 3"),
+
+    #Key([mod, iso], lettermap[int("5")], lazy.function(dumb_function2), desc="Dumb test"),
+    #Key([mod, iso], "d", lazy.function(dumb_function2), desc="Dumb test"),
+
+    #Key(["mod4", "mod5"], "d", lazy.function(dumb_function2), desc="Dumb test"),
+
+    Key(["mod4", "mod5"], "d", lazy.function(dumb_function2), desc="Dumb test"),
+
+    #Key([mod, iso], "d", lazy.function(dumb_function2), desc="Dumb test"),
+    #Key([iso, mod], "d", lazy.function(dumb_function2), desc="Dumb test"),
+
+    #Key([mod, "mod3"], "d", lazy.function(dumb_function2), desc="Dumb test"),
+    #Key([mod, "mod4"], "d", lazy.function(dumb_function2), desc="Dumb test"),
+
+    #Key(["mod3"], "d", lazy.function(dumb_function2), desc="Dumb test"),
+    #Key(["mod2"], "d", lazy.function(dumb_function2), desc="Dumb test"),
+
+    #Key([mod], "d", lazy.function(dumb_function3), desc="Dumb test"),
+    #Key([iso], "d", lazy.function(dumb_function1), desc="Dumb test"),
 
     # Toggle between split and unsplit sides of stack.
     # Split = all windows displayed
@@ -545,6 +582,15 @@ groups = [Group(i) for i in "1234567890"]
 #qtile.groups_map[name].toscreen() #brings a workspace to this screen
 
 
+# represents 0123456789 as letters on apfelschorle layout
+lettermap = "uxcvsdfwer"
+
+
+def dumb_function(qtile, workspace):
+    debug_notif(f"dumb functioning, {workspace}")
+    switch_to_workspace(qtile, i)
+
+
 for i in groups:
     keys.extend(
         [
@@ -558,9 +604,17 @@ for i in groups:
 
             Key([mod, alt], i.name, lazy.function(swap_workspaces, target = i), desc="Swaps two workspaces"),
             Key([mod, alt, "control"], i.name, lazy.function(all_to_workspace, target = i), desc=f"Moves all current windows to workspace {i.name}"),
+
+            #Key([mod, iso], lettermap[int(i.name)], lazy.function(dumb_function, workspace = i), desc="Switch to group {}".format(i.name)),
+            #Key([mod], i.name, lazy.function(dumb_function, workspace = i), desc="Switch to group {}".format(i.name)),
+
+            #Key([mod, iso], lettermap[int(i.name)], lazy.function(switch_to_workspace, workspace = i), desc="Switch to group {}".format(i.name)),
+            #Key([mod, iso, "shift"], lettermap[int(i.name)], lazy.window.togroup(i.name, switch_group = True), desc="Switch to & move focused window to group {}".format(i.name)),
+            #Key([mod, iso, "control"], lettermap[int(i.name)], lazy.window.togroup(i.name, switch_group = False), desc="Move focused window to group {}".format(i.name)),
+            #Key([mod, iso, alt], lettermap[int(i.name)], lazy.function(swap_workspaces, target = i), desc="Swaps two workspaces"),
+            #Key([mod, iso, alt, "control"], lettermap[int(i.name)], lazy.function(all_to_workspace, target = i), desc=f"Moves all current windows to workspace {i.name}"),
         ]
     )
-
 
 layouts = [
     layout.Columns(

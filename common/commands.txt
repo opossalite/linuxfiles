@@ -93,6 +93,8 @@ nix-collect-garbage -d
     Garbage collection
 nix-store --optimise
     Optimize space usage
+nixos-rebuild switch --upgrade
+    Upgrade to new version
 nmcli
     Network configuration for NetworkManager
 pacman -Scc
@@ -115,6 +117,8 @@ pgrep
     Check if a process is running
 pw-top
     Shows the different audio connections in pipewire
+python3 -m ensurepip
+    Ensures pip is installed if nothing else works.
 qtile cmd-obj -o cmd -f reload_config
     Reload Qtile config
 qtile cmd-obj -o cmd -f restart
@@ -131,6 +135,8 @@ usermod -aG [group] [user]
     Adds the user to the group
 xev
     Returns info about keyboard keys clicked
+xkbcomp -w 0 [FILE] :0
+    Sets the file as the current keyboard layout, ex: xkbcomp -w 0 /home/terrior/keymaps/apfelschorle.xkb :0
 xprop
     Returns info about the chosen window
 xsel
@@ -185,6 +191,8 @@ https://unix.stackexchange.com/questions/699507/how-can-i-install-java-8-on-debi
 	Instructions on downloading jdk8
 https://wiki.archlinux.org/title/PRIME
     Instructions for using multiple GPUs
+https://askubuntu.com/questions/1111426/how-can-i-run-exe-files-in-dolphin-on-kubuntu
+    Enable wine as a thing to run
 
 
 

@@ -20,7 +20,7 @@ xkb_symbols "apfelschorle" {
 
     key <AD01> {
         type= "ALPHABETIC",
-        symbols[Group1]= [               f,               F,              at,     Greek_OMEGA ]
+        symbols[Group1]= [               b,               B,              at,     Greek_OMEGA ]
     };
     key <AD02> {
         type= "ALPHABETIC",
@@ -28,35 +28,35 @@ xkb_symbols "apfelschorle" {
     };
     key <AD03> {
         type= "ALPHABETIC",
-        symbols[Group1]= [               h,               H,        EuroSign,            cent ]
+        symbols[Group1]= [               d,               D,        EuroSign,            cent ]
     };
     key <AD04> {
         type= "ALPHABETIC",
-        symbols[Group1]= [               v,               V,       paragraph,      registered ]
+        symbols[Group1]= [               c,               C,       paragraph,      registered ]
     };
     key <AD05> {
         type= "ALPHABETIC",
-        symbols[Group1]= [               z,               Z,          tslash,          Tslash ]
+        symbols[Group1]= [               v,               V,          tslash,          Tslash ]
     };
     key <AD06> {
         type= "ALPHABETIC",
-        symbols[Group1]= [      apostrophe,        quotedbl,       leftarrow,             yen ]
+        symbols[Group1]= [               j,               J,       leftarrow,             yen ]
     };
     key <AD07> {
         type= "ALPHABETIC",
-        symbols[Group1]= [               w,               W,       downarrow,         uparrow ]
+        symbols[Group1]= [               f,               F,       downarrow,         uparrow ]
     };
     key <AD08> {
         type= "ALPHABETIC",
-        symbols[Group1]= [               u,               U,      rightarrow,        idotless ]
+        symbols[Group1]= [               o,               O,      rightarrow,        idotless ]
     };
     key <AD09> {
         type= "ALPHABETIC",
-        symbols[Group1]= [               o,               O,          oslash,          Oslash ]
+        symbols[Group1]= [               u,               U,          oslash,          Oslash ]
     };
     key <AD10> {
         type= "ALPHABETIC",
-        symbols[Group1]= [               y,               Y,           thorn,           THORN ]
+        symbols[Group1]= [           comma,            less,           thorn,           THORN ]
     };
     //key <AD11> {         [      at ] };  //usually opening bracket
     //key <AD12> {         [    EuroSign ] };  //usually closing bracket
@@ -73,7 +73,7 @@ xkb_symbols "apfelschorle" {
     key <AE11> {         [           underscore,      minus ] };
     key <AC01> {
         type= "ALPHABETIC",
-        symbols[Group1]= [               s,               S,              ae,              AE ]
+        symbols[Group1]= [               n,               N,              ae,              AE ]
     };
     key <AC02> {
         type= "ALPHABETIC",
@@ -81,65 +81,65 @@ xkb_symbols "apfelschorle" {
     };
     key <AC03> {
         type= "ALPHABETIC",
-        symbols[Group1]= [               n,               N,             eth,             ETH ]
+        symbols[Group1]= [               t,               T,             eth,             ETH ]
     };
     key <AC04> {
         type= "ALPHABETIC",
-        symbols[Group1]= [               t,               T,         dstroke,     ordfeminine ]
+        symbols[Group1]= [               s,               S,         dstroke,     ordfeminine ]
     };
     key <AC05> {
         type= "ALPHABETIC",
-        symbols[Group1]= [               k,               K,             eng,             ENG ]
+        symbols[Group1]= [               g,               G,             eng,             ENG ]
     };
     key <AC06> {
         type= "ALPHABETIC",
-        symbols[Group1]= [               c,               C,         hstroke,         Hstroke ]
+        symbols[Group1]= [               y,               Y,         hstroke,         Hstroke ]
     };
     key <AC07> {
         type= "ALPHABETIC",
-        symbols[Group1]= [               d,               D,       dead_hook,       dead_horn ]
+        symbols[Group1]= [               h,               H,       dead_hook,       dead_horn ]
     };
     key <AC08> {
         type= "ALPHABETIC",
-        symbols[Group1]= [               e,               E,             kra,       ampersand ]
+        symbols[Group1]= [               a,               A,             kra,       ampersand ]
     };
     key <AC09> {
         type= "ALPHABETIC",
-        symbols[Group1]= [               a,               A,         lstroke,         Lstroke ]
+        symbols[Group1]= [               e,               E,         lstroke,         Lstroke ]
     };
     key <AC10> {         [               i,               I ] };  //usually semicolon
-    key <AC11> {         [           colon,       semicolon ] };  //usually apostrophe
+    key <AC11> {         [           slash,        question ] };  //usually apostrophe
     key <AB01> {
         type= "ALPHABETIC",
         symbols[Group1]= [               x,               X,   guillemotleft,            less ]
     };
     key <AB02> {
         type= "ALPHABETIC",
-        symbols[Group1]= [               j,               J,  guillemotright,         greater ]
+        symbols[Group1]= [               q,               Q,  guillemotright,         greater ]
     };
     key <AB03> {
         type= "ALPHABETIC",
-        symbols[Group1]= [               b,               B,            cent,       copyright ]
+        symbols[Group1]= [               m,               M,            cent,       copyright ]
     };
     key <AB04> {
         type= "ALPHABETIC",
-        symbols[Group1]= [               m,               M, leftdoublequotemark, leftsinglequotemark ]
+        symbols[Group1]= [               w,               W, leftdoublequotemark, leftsinglequotemark ]
     };
     key <AB05> {
         type= "ALPHABETIC",
-        symbols[Group1]= [               q,               Q, rightdoublequotemark, rightsinglequotemark ]
+        symbols[Group1]= [               z,               Z, rightdoublequotemark, rightsinglequotemark ]
     };
     key <AB06> {
         type= "ALPHABETIC",
-        symbols[Group1]= [               p,               P,               n,               N ]
+        symbols[Group1]= [               k,               K,               n,               N ]
     };
     key <AB07> {
         type= "ALPHABETIC",
-        symbols[Group1]= [               g,               G,              mu,       masculine ]
+        symbols[Group1]= [               p,               P,              mu,       masculine ]
     };
-    key <AB08> {         [           comma,            less ] };  //usually comma
-    key <AB09> {         [          period,         greater ] };  //usually period
-    key <AB10> {         [           slash,        question ] };  //usually slash
+    key <AB08> {         [      apostrophe,        quotedbl ] };  //usually comma
+    key <AB09> {         [           colon,       semicolon ] };  //usually period
+    key <AB10> {         [          period,         greater ] };  //usually slash
 
 
 

@@ -41,7 +41,7 @@ if [ "$IN_NIX_SHELL" != "impure" ]; then
             #PS1=$'%B%F{15}%n%F{140}@%m%F{15}:%F{189}%~%F{15}$%b%f '
             #PS1=$'%B%F{15}%n%F{140}@%m%F{15}:%F{180}%~%F{15}$%b%f '
             PS1=$'%B%F{15}%n%F{140}@%m%F{15}:%F{242}%~%F{15}$%b%f '
-            TERM=linux
+            #TERM=linux
             ;;
 
         (*)
@@ -72,7 +72,7 @@ alias nfd="neofetch --ascii_distro"
 
 alias compare="git diff --no-index"
 alias gitconfigw="git config user.name nbalcarc && git config user.email nathan.balcarcel@wsu.edu"
-alias gitconfigp="git config user.name TheTerrior && git config user.email werbird10@gmail.com"
+alias gitconfigp="git config user.name opossalite && git config user.email werbird10@gmail.com"
 alias gitconfigm="git config user.name horprus && git config user.email horprus@proton.me"
 
 #alias server-mycelium="ssh nathan@73.221.194.82 -p 2200"
@@ -177,4 +177,6 @@ export EDITOR=nvim
 export PATH=/home/terrior/.local/bin:$PATH
 export PATH=/home/terrior/.ghcup/bin:$PATH
 export XDG_DATA_DIRS="$HOME/desktop:$XDG_DATA_DIRS"
+
+#export GIT_SSH="/usr/bin/ssh"
 

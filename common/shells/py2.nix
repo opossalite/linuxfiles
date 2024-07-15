@@ -1,5 +1,5 @@
 let
-    shell_name = "py";
+    shell_name = "py2";
 in { pkgs ? import <nixpkgs> {} }:
 pkgs.mkShell {
     name = "${shell_name}";
@@ -10,11 +10,12 @@ pkgs.mkShell {
             ps.pandas
             ps.pynput
             ps.qtile
+            ps.tensorflow
             ps.scikit-learn
             ps.scipy
-            ps.torch
-            ps.torchvision
-            ps.tensorflow
+            ps.keras
+            #ps.torch
+            #ps.torchvision
         ]))
     ];
     nativeBuildInputs = with pkgs.buildPackages; [

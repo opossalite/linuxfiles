@@ -18,10 +18,10 @@ else
     xhost + &
 
     if [[ $HOSTNAME == "CobaltCanidPC" ]]; then
-        picom -b &
+        #picom -b &
         cbatticon -n &
-    else
-        picom --experimental-backends -b &
+    #else
+        #picom --experimental-backends -b &
     fi
 fi
 

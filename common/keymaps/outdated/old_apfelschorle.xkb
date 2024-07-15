@@ -3,260 +3,6 @@ xkb_symbols "apfelschorle" {
     name[group1]="English (US)";
 
 
-
-
-
-
-
-
-
-
-
-
-    //
-    // ##### DEFAULT LAYER #####
-    //
-
-
-    key <AD01> {
-        type= "ALPHABETIC",
-        symbols[Group1]= [               f,               F,              at,     Greek_OMEGA ]
-    };
-    key <AD02> {
-        type= "ALPHABETIC",
-        symbols[Group1]= [               l,               L,         lstroke,         Lstroke ]
-    };
-    key <AD03> {
-        type= "ALPHABETIC",
-        symbols[Group1]= [               h,               H,        EuroSign,            cent ]
-    };
-    key <AD04> {
-        type= "ALPHABETIC",
-        symbols[Group1]= [               v,               V,       paragraph,      registered ]
-    };
-    key <AD05> {
-        type= "ALPHABETIC",
-        symbols[Group1]= [               z,               Z,          tslash,          Tslash ]
-    };
-    key <AD06> {
-        type= "ALPHABETIC",
-        symbols[Group1]= [      apostrophe,        quotedbl,       leftarrow,             yen ]
-    };
-    key <AD07> {
-        type= "ALPHABETIC",
-        symbols[Group1]= [               w,               W,       downarrow,         uparrow ]
-    };
-    key <AD08> {
-        type= "ALPHABETIC",
-        symbols[Group1]= [               u,               U,      rightarrow,        idotless ]
-    };
-    key <AD09> {
-        type= "ALPHABETIC",
-        symbols[Group1]= [               o,               O,          oslash,          Oslash ]
-    };
-    key <AD10> {
-        type= "ALPHABETIC",
-        symbols[Group1]= [               y,               Y,           thorn,           THORN ]
-    };
-    //key <AD11> {         [      at ] };  //usually opening bracket
-    //key <AD12> {         [    EuroSign ] };  //usually closing bracket
-    key <AD11> {         [      bracketleft ] };  //usually opening bracket
-    key <AD12> {         [    bracketright ] };  //usually closing bracket
-    //key <BKSL> {         [       backslash,             bar ] };  //usually backslash
-    //key <BKSL> {         [       dead_acute,             dead_diaeresis ] };  //usually backslash
-    key <BKSL> {         [       dead_diaeresis,             dead_acute ] };  //usually backslash
-    key <CAPS> {         [       Caps_Lock ] };
-    //key <CAPS> {         [      underscore,           minus ],
-    //    actions[Group1]= [      NoAction(),      NoAction() ]  //this disables caps lock
-    //};
-    //key <AE11> {         [           minus,      underscore ] };
-    key <AE11> {         [           underscore,      minus ] };
-    key <AC01> {
-        type= "ALPHABETIC",
-        symbols[Group1]= [               s,               S,              ae,              AE ]
-    };
-    key <AC02> {
-        type= "ALPHABETIC",
-        symbols[Group1]= [               r,               R,          ssharp,         section , ssharp, ssharp, ssharp, ssharp]
-    };
-    key <AC03> {
-        type= "ALPHABETIC",
-        symbols[Group1]= [               n,               N,             eth,             ETH ]
-    };
-    key <AC04> {
-        type= "ALPHABETIC",
-        symbols[Group1]= [               t,               T,         dstroke,     ordfeminine ]
-    };
-    key <AC05> {
-        type= "ALPHABETIC",
-        symbols[Group1]= [               k,               K,             eng,             ENG ]
-    };
-    key <AC06> {
-        type= "ALPHABETIC",
-        symbols[Group1]= [               c,               C,         hstroke,         Hstroke ]
-    };
-    key <AC07> {
-        type= "ALPHABETIC",
-        symbols[Group1]= [               d,               D,       dead_hook,       dead_horn ]
-    };
-    key <AC08> {
-        type= "ALPHABETIC",
-        symbols[Group1]= [               e,               E,             kra,       ampersand ]
-    };
-    key <AC09> {
-        type= "ALPHABETIC",
-        symbols[Group1]= [               a,               A,         lstroke,         Lstroke ]
-    };
-    key <AC10> {         [               i,               I ] };  //usually semicolon
-    key <AC11> {         [           colon,       semicolon ] };  //usually apostrophe
-    key <AB01> {
-        type= "ALPHABETIC",
-        symbols[Group1]= [               x,               X,   guillemotleft,            less ]
-    };
-    key <AB02> {
-        type= "ALPHABETIC",
-        symbols[Group1]= [               j,               J,  guillemotright,         greater ]
-    };
-    key <AB03> {
-        type= "ALPHABETIC",
-        symbols[Group1]= [               b,               B,            cent,       copyright ]
-    };
-    key <AB04> {
-        type= "ALPHABETIC",
-        symbols[Group1]= [               m,               M, leftdoublequotemark, leftsinglequotemark ]
-    };
-    key <AB05> {
-        type= "ALPHABETIC",
-        symbols[Group1]= [               q,               Q, rightdoublequotemark, rightsinglequotemark ]
-    };
-    key <AB06> {
-        type= "ALPHABETIC",
-        symbols[Group1]= [               p,               P,               n,               N ]
-    };
-    key <AB07> {
-        type= "ALPHABETIC",
-        symbols[Group1]= [               g,               G,              mu,       masculine ]
-    };
-    key <AB08> {         [           comma,            less ] };  //usually comma
-    key <AB09> {         [          period,         greater ] };  //usually period
-    key <AB10> {         [           slash,        question ] };  //usually slash
-
-
-
-
-
-    //
-    // ##### SYMBOL LAYER #####
-    //
-
-
-    key <TLDE> {         [          grave, asciitilde ] };  //usually grave
-    key <AE12> {         [           equal,            plus ] };
-
-
-
-    key <FK13> {         [       asciicircum ] };
-    key <FK14> {         [       bar ] };
-    key <FK15> {         [     percent ] };
-
-    key <FK16> {         [     ssharp ] };
-    //key <FK17> {         [     braceleft ] };
-    key <FK17> {         [       dead_acute,             dead_diaeresis ] };  //usually backslash
-    key <FK18> {         [     asciitilde ] };
-
-    key <FK19> {         [ dollar ] };
-    key <FK21> {         [ exclam ]};
-    key <FK22> {         [ plus ]};
-
-    key <FK23> {         [ parenleft ]};
-    key <FK24> {         [ parenright ]};
-
-
-    key  <KP1> {         [               ntilde, Ntilde ] };  //usually np_1
-    key  <KP2> {         [               ampersand ] };  //usually np_2
-    key  <KP3> {         [               EuroSign ] };  //usually np_3
-    key  <KP4> {         [               asterisk ] };  //usually np_4
-    key  <KP5> {         [               numbersign ] };  //usually np_5
-    key  <KP6> {         [               braceleft ] };  //usually np_6
-    key  <KP7> {         [               braceright ] };  //usually np_7
-    key  <KP8> {         [               at ] };  //usually np_8
-    //key  <KP9> {         [               bracketleft ] };  //usually np_9
-    //key  <KP0> {         [               bracketright ] };  //usually np_0
-
-
-
-    // TOP ROW
-    //key <KPDV> {
-    //    type= "CTRL+ALT",
-    //    symbols[Group1]= [       backslash ]
-    //};
-    //key <KPMU> {
-    //    type= "CTRL+ALT",
-    //    symbols[Group1]= [     semicolon ]
-    //};
-    //key <KPSU> {
-    //    type= "CTRL+ALT",
-    //    symbols[Group1]= [     ssharp ]
-    //};
-
-
-
-
-
-
-
-
-
-    //
-    // ##### NAVIGATION AND NUMBER LAYER #####
-    //
-
-
-    //key  <KP1> {         [               1] };  //usually np_1
-    //key  <KP2> {         [               2] };  //usually np_2
-    //key  <KP3> {         [               3] };  //usually np_3
-    //key  <KP4> {         [               4] };  //usually np_4
-    //key  <KP5> {         [               5] };  //usually np_5
-    //key  <KP6> {         [               6] };  //usually np_6
-    //key  <KP7> {         [               7] };  //usually np_7
-    //key  <KP8> {         [               8] };  //usually np_8
-    //key  <KP9> {         [               9] };  //usually np_9
-    //key  <KP0> {         [               0] };  //usually np_0
-
-
-    key <AE01> {         [               1 ] };  //usually 1
-    key <AE02> {         [               2 ] };  //usually 2
-    key <AE03> {         [               3 ] };  //usually 3
-    key <AE04> {         [               4 ] };  //usually 4
-    key <AE05> {         [               5 ] };  //usually 5
-    key <AE06> {         [               6 ] };  //usually 6
-    key <AE07> {         [               7 ] };  //usually 7
-    key <AE08> {         [               8 ] };  //usually 8
-    key <AE09> {         [               9 ] };  //usually 9
-    key <AE10> {         [               0 ] };  //usually 0
-
-
-
-
-
-
-
-
-
-
-
-
-    // ========================================
-    // ========================================
-    // ========================================
-    // ========================================
-    // ========================================
-    // ========================================
-    // ========================================
-    // ========================================
-    // ========================================
-    // ========================================
-
     key  <ESC> {         [          Escape ] };
     key <BKSP> {
         type= "CTRL+ALT",
@@ -319,6 +65,249 @@ xkb_symbols "apfelschorle" {
 
 
 
+
+
+
+
+
+
+
+    //
+    // ##### DEFAULT LAYER #####
+    //
+
+
+    key <AD01> {
+        type= "ALPHABETIC",
+        symbols[Group1]= [               q,               Q,              at,     Greek_OMEGA ]
+    };
+    key <AD02> {
+        type= "ALPHABETIC",
+        symbols[Group1]= [               w,               W,         lstroke,         Lstroke ]
+    };
+    key <AD03> {
+        type= "ALPHABETIC",
+        symbols[Group1]= [               e,               E,        EuroSign,            cent ]
+    };
+    key <AD04> {
+        type= "ALPHABETIC",
+        symbols[Group1]= [               r,               R,       paragraph,      registered ]
+    };
+    key <AD05> {
+        type= "ALPHABETIC",
+        symbols[Group1]= [               t,               T,          tslash,          Tslash ]
+    };
+    key <AD06> {
+        type= "ALPHABETIC",
+        symbols[Group1]= [               y,               Y,       leftarrow,             yen ]
+    };
+    key <AD07> {
+        type= "ALPHABETIC",
+        symbols[Group1]= [               u,               U,       downarrow,         uparrow ]
+    };
+    key <AD08> {
+        type= "ALPHABETIC",
+        symbols[Group1]= [               i,               I,      rightarrow,        idotless ]
+    };
+    key <AD09> {
+        type= "ALPHABETIC",
+        symbols[Group1]= [               o,               O,          oslash,          Oslash ]
+    };
+    key <AD10> {
+        type= "ALPHABETIC",
+        symbols[Group1]= [               p,               P,           thorn,           THORN ]
+    };
+    key <BKSL> {         [       dead_acute,             dead_diaeresis ] };  //usually backslash
+    key <CAPS> {         [      underscore,           minus ],
+        actions[Group1]= [      NoAction(),      NoAction() ]  //this disables caps lock
+    };
+    key <AC01> {
+        type= "ALPHABETIC",
+        symbols[Group1]= [               a,               A,              ae,              AE ]
+    };
+    key <AC02> {
+        type= "ALPHABETIC",
+        symbols[Group1]= [               s,               S,          ssharp,         section , ssharp, ssharp, ssharp, ssharp]
+    };
+    key <AC03> {
+        type= "ALPHABETIC",
+        symbols[Group1]= [               d,               D,             eth,             ETH ]
+    };
+    key <AC04> {
+        type= "ALPHABETIC",
+        symbols[Group1]= [               f,               F,         dstroke,     ordfeminine ]
+    };
+    key <AC05> {
+        type= "ALPHABETIC",
+        symbols[Group1]= [               g,               G,             eng,             ENG ]
+    };
+    key <AC06> {
+        type= "ALPHABETIC",
+        symbols[Group1]= [               h,               H,         hstroke,         Hstroke ]
+    };
+    key <AC07> {
+        type= "ALPHABETIC",
+        symbols[Group1]= [               j,               J,       dead_hook,       dead_horn ]
+    };
+    key <AC08> {
+        type= "ALPHABETIC",
+        symbols[Group1]= [               k,               K,             kra,       ampersand ]
+    };
+    key <AC09> {
+        type= "ALPHABETIC",
+        symbols[Group1]= [               l,               L,         lstroke,         Lstroke ]
+    };
+    key <AC10> {         [       colon,           equal ] };  //usually semicolon
+    key <AC11> {         [      apostrophe,        quotedbl ] };  //usually apostrophe
+    key <AB01> {
+        type= "ALPHABETIC",
+        symbols[Group1]= [               z,               Z,   guillemotleft,            less ]
+    };
+    key <AB02> {
+        type= "ALPHABETIC",
+        symbols[Group1]= [               x,               X,  guillemotright,         greater ]
+    };
+    key <AB03> {
+        type= "ALPHABETIC",
+        symbols[Group1]= [               c,               C,            cent,       copyright ]
+    };
+    key <AB04> {
+        type= "ALPHABETIC",
+        symbols[Group1]= [               v,               V, leftdoublequotemark, leftsinglequotemark ]
+    };
+    key <AB05> {
+        type= "ALPHABETIC",
+        symbols[Group1]= [               b,               B, rightdoublequotemark, rightsinglequotemark ]
+    };
+    key <AB06> {
+        type= "ALPHABETIC",
+        symbols[Group1]= [               n,               N,               n,               N ]
+    };
+    key <AB07> {
+        type= "ALPHABETIC",
+        symbols[Group1]= [               m,               M,              mu,       masculine ]
+    };
+    key <AB08> {         [           comma,            parenleft ] };  //usually comma
+    key <AB09> {         [          period,         parenright ] };  //usually period
+    key <AB10> {         [           slash,        numbersign ] };  //usually slash
+
+
+
+
+
+    //
+    // ##### SYMBOL LAYER #####
+    //
+
+
+    // MIDDLE ROW
+    key  <KP1> {         [               asciitilde ] };  //usually np_1
+    key  <KP2> {         [               percent ] };  //usually np_2
+    key  <KP3> {         [               exclam ] };  //usually np_3
+    key  <KP4> {         [               question ] };  //usually np_4
+    key  <KP5> {         [               dollar ] };  //usually np_5
+    key  <KP6> {         [               bar ] };  //usually np_6
+    key  <KP7> {         [               grave ] };  //usually np_7
+    key  <KP8> {         [               plus ] };  //usually np_8
+    key  <KP9> {         [               bracketleft ] };  //usually np_9
+    key  <KP0> {         [               bracketright ] };  //usually np_0
+    key <AE12> {         [           ntilde, Ntilde ] };  //usually equals
+
+
+    // BOTTOM ROW
+    key <FK13> {         [       less ] };
+    key <FK14> {         [       greater ] };
+    key <FK15> {         [     EuroSign ] };
+
+    key <FK16> {         [     asciicircum ] };
+    key <FK17> {         [     braceleft ] };
+    key <FK18> {         [     braceright ] };
+
+
+    // TOP ROW
+    //key <AD11> {         [      at ] };  //usually opening bracket
+    //key <AD12> {         [    EuroSign ] };  //usually closing bracket
+    //key <KPDV> {
+    //    type= "CTRL+ALT",
+    //    symbols[Group1]= [       backslash ]
+    //};
+    //key <KPMU> {
+    //    type= "CTRL+ALT",
+    //    symbols[Group1]= [     semicolon ]
+    //};
+    //key <KPSU> {
+    //    type= "CTRL+ALT",
+    //    symbols[Group1]= [     ssharp ]
+    //};
+
+
+    key <FK19> {         [ at ] };
+    key <FK21> {         [ asterisk ]};
+    key <FK22> {         [ backslash ]};
+
+    key <FK23> {         [ ampersand ]};
+    key <FK24> {         [ semicolon ]};
+    key <TLDE> {         [          ssharp ] };  //usually grave
+
+
+
+
+
+
+
+    //
+    // ##### NAVIGATION AND NUMBER LAYER #####
+    //
+
+
+    //key  <KP1> {         [               1] };  //usually np_1
+    //key  <KP2> {         [               2] };  //usually np_2
+    //key  <KP3> {         [               3] };  //usually np_3
+    //key  <KP4> {         [               4] };  //usually np_4
+    //key  <KP5> {         [               5] };  //usually np_5
+    //key  <KP6> {         [               6] };  //usually np_6
+    //key  <KP7> {         [               7] };  //usually np_7
+    //key  <KP8> {         [               8] };  //usually np_8
+    //key  <KP9> {         [               9] };  //usually np_9
+    //key  <KP0> {         [               0] };  //usually np_0
+
+
+    key <AE01> {         [               1 ] };  //usually 1
+    key <AE02> {         [               2 ] };  //usually 2
+    key <AE03> {         [               3 ] };  //usually 3
+    key <AE04> {         [               4 ] };  //usually 4
+    key <AE05> {         [               5 ] };  //usually 5
+    key <AE06> {         [               6 ] };  //usually 6
+    key <AE07> {         [               7 ] };  //usually 7
+    key <AE08> {         [               8 ] };  //usually 8
+    key <AE09> {         [               9 ] };  //usually 9
+    key <AE10> {         [               0 ] };  //usually 0
+
+
+
+
+
+
+
+
+
+
+
+
+    // ========================================
+    // ========================================
+    // ========================================
+    // ========================================
+    // ========================================
+    // ========================================
+    // ========================================
+    // ========================================
+    // ========================================
+    // ========================================
+
+
+
+
     //key <AD11> {         [       dead_acute, dead_diaeresis, bracketleft, dead_abovering ] };
 
     //key  <KP0> {         [       KP_Insert,            KP_0 ] };
@@ -332,6 +321,7 @@ xkb_symbols "apfelschorle" {
     //key  <KP8> {         [           KP_Up,            KP_8 ] };
     //key  <KP9> {         [        KP_Prior,            KP_9 ] };
 
+    //key <BKSL> {         [       backslash,             bar ] };  //usually backslash
 
     //key <FK13> {         [       XF86Tools ] };
     //key <FK14> {         [     XF86Launch5 ] };
@@ -339,6 +329,7 @@ xkb_symbols "apfelschorle" {
     //key <FK14> {         [       F14 ] };
 
     //key <TLDE> {         [           grave,      ssharp ] };
+    //key <AE11> {         [           minus,      underscore ] };
 
     //key <FK21> {         [ XF86TouchpadToggle ] };
     //key <FK22> {         [  XF86TouchpadOn ] };

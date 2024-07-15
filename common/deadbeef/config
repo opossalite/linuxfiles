@@ -19,7 +19,7 @@ artwork.save_to_music_folders_relative_path cover.jpg
 chip.voices 0
 cli_add_playlist_name Default
 close_send_to_tray 0
-deadbeef_version 1.9.5
+deadbeef_version 1.9.6
 filechooser.playlist.lastdir file:///home/terrior/Music/.things
 gtkui.color.bar_foreground 65535 21331 21331
 gtkui.columns.playlist [{"title":"♫","id":"1","format":"%playstatus%","sort_format":"","size":"25","align":"0","color_override":"0","color":"#ff000000"},{"title":"Artist","id":"-1","format":"$if(%artist%,%artist%,Unknown Artist)","sort_format":"","size":"195","align":"0","color_override":"0","color":"#ff000000"},{"title":"Track No","id":"-1","format":"%tracknumber%","sort_format":"","size":"29","align":"1","color_override":"0","color":"#ff000000"},{"title":"Title","id":"-1","format":"%title%","sort_format":"","size":"275","align":"0","color_override":"0","color":"#ff000000"},{"title":"Duration","id":"-1","format":"%length%","sort_format":"","size":"86","align":"0","color_override":"0","color":"#ff000000"}]
@@ -31,7 +31,7 @@ gtkui.hide_tray_icon 1
 gtkui.italic_current_track 0
 gtkui.italic_selected_tracks 0
 gtkui.last_playlist_save_name /home/terrior/Music/.things/quarter_life.dbpl
-gtkui.layout.1.9.0 {"type":"vsplitter","legacy_params":" locked=0 ratio=0.979592 pos=0 size2=0","children":[{"type":"vsplitter","legacy_params":" locked=0 ratio=0.712054 pos=0 size2=0","children":[{"type":"hsplitter","legacy_params":" locked=0 ratio=0.496082 pos=0 size2=0","children":[{"type":"tabs","settings":{"active":"0","num_tabs":"4","tab000":"Playlists","tab001":"Selection properties","tab002":"Splitter (left and right)","tab003":"placeholder"},"children":[{"type":"vsplitter","legacy_params":" locked=0 ratio=0.382155 pos=0 size2=0","children":[{"type":"pltbrowser"},{"type":"playlist","legacy_params":" hideheaders=0 width=949"}]},{"type":"selproperties","settings":{"section":"properties,metadata","showheaders":"0"}},{"type":"hsplitter","legacy_params":" locked=0 ratio=0.500000 pos=0 size2=0","children":[{"type":"pltbrowser"},{"type":"placeholder"}]},{"type":"placeholder"}]},{"type":"coverart","settings":{"mode":"playing"}}]},{"type":"vsplitter","legacy_params":" locked=0 ratio=0.857143 pos=0 size2=0","children":[{"type":"musical_spectrum"},{"type":"waveform_seekbar"}]}]},{"type":"hsplitter","legacy_params":" locked=0 ratio=0.087500 pos=0 size2=0","children":[{"type":"customizable_toolbar","legacy_params":" layout=\"stop|0|media-playback-stop,play|0|media-playback-start,toggle_pause|0|media-playback-pause,prev|0|media-skip-backward,next|0|media-skip-forward\""},{"type":"hsplitter","legacy_params":" locked=0 ratio=0.935652 pos=0 size2=0","children":[{"type":"playback_status"},{"type":"volumebar","settings":{"scale":"db"}}]}]}]}
+gtkui.layout.1.9.0 {"type":"vsplitter","legacy_params":" locked=0 ratio=0.979592 pos=0 size2=0","children":[{"type":"vsplitter","legacy_params":" locked=0 ratio=0.712054 pos=0 size2=0","children":[{"type":"hsplitter","legacy_params":" locked=0 ratio=0.854384 pos=0 size2=0","children":[{"type":"tabs","settings":{"active":"0","num_tabs":"3","tab000":"Splitter (left and right)","tab001":"Album art display","tab002":"placeholder"},"children":[{"type":"hsplitter","legacy_params":" locked=0 ratio=0.220930 pos=0 size2=0","children":[{"type":"pltbrowser"},{"type":"playlist","legacy_params":" hideheaders=0 width=628"}]},{"type":"coverart","settings":{"mode":"selected"}},{"type":"placeholder"}]},{"type":"selproperties","settings":{"section":"properties,metadata","showheaders":"0"}}]},{"type":"vsplitter","legacy_params":" locked=0 ratio=0.857143 pos=0 size2=0","children":[{"type":"musical_spectrum"},{"type":"waveform_seekbar"}]}]},{"type":"hsplitter","legacy_params":" locked=0 ratio=0.087500 pos=0 size2=0","children":[{"type":"customizable_toolbar","legacy_params":" layout=\"stop|0|media-playback-stop,play|0|media-playback-start,toggle_pause|0|media-playback-pause,prev|0|media-skip-backward,next|0|media-skip-forward\""},{"type":"hsplitter","legacy_params":" locked=0 ratio=0.935652 pos=0 size2=0","children":[{"type":"playback_status"},{"type":"volumebar","settings":{"scale":"db"}}]}]}]}
 gtkui.override_bar_colors 1
 gtkui.override_tabstrip_colors 0
 gtkui.playlist.group_by_tf 
@@ -86,8 +86,8 @@ logwindow.geometry.w 956
 logwindow.geometry.x 960
 logwindow.geometry.y 0
 mainwin.geometry.h 1171
-mainwin.geometry.w 1916
-mainwin.geometry.x 0
+mainwin.geometry.w 956
+mainwin.geometry.x 960
 mainwin.geometry.y 0
 musical_spectrum.alignment 2
 musical_spectrum.amp_max 0
@@ -143,7 +143,7 @@ musical_spectrum.spacing 1
 musical_spectrum.transpose 0
 musical_spectrum.window 2
 network.proxy.port 8080
-output_plugin pipewire
+output_plugin alsa
 pipewire.properties 
 pipewire.remotename 
 pipewire.volumecontrol 1
@@ -155,26 +155,30 @@ playback_status.format.02 %artist% - %title%  |  %playback_time% / %length% (-%p
 playback_status.format.03 %artist% - %title
 playback_status.num_lines 1
 playback_status.refresh_interval 100
-playlist.current 0
-playlist.cursor.0 1
+playlist.current 7
+playlist.cursor.0 0
 playlist.cursor.1 0
 playlist.cursor.10 0
 playlist.cursor.11 0
 playlist.cursor.12 0
 playlist.cursor.13 0
-playlist.cursor.14 4
+playlist.cursor.14 0
 playlist.cursor.15 0
-playlist.cursor.16 7
-playlist.cursor.17 6
-playlist.cursor.18 0
+playlist.cursor.16 0
+playlist.cursor.17 0
+playlist.cursor.18 4
 playlist.cursor.19 0
 playlist.cursor.2 17
-playlist.cursor.20 12
-playlist.cursor.21 0
-playlist.cursor.22 9
+playlist.cursor.20 7
+playlist.cursor.21 6
+playlist.cursor.22 0
 playlist.cursor.23 0
-playlist.cursor.24 0
+playlist.cursor.24 12
 playlist.cursor.25 0
+playlist.cursor.26 9
+playlist.cursor.27 0
+playlist.cursor.28 0
+playlist.cursor.29 0
 playlist.cursor.3 0
 playlist.cursor.4 0
 playlist.cursor.5 0
@@ -188,19 +192,23 @@ playlist.scroll.10 0
 playlist.scroll.11 0
 playlist.scroll.12 0
 playlist.scroll.13 0
-playlist.scroll.14 -4
+playlist.scroll.14 0
 playlist.scroll.15 0
-playlist.scroll.16 -7
-playlist.scroll.17 -3
-playlist.scroll.18 0
+playlist.scroll.16 0
+playlist.scroll.17 0
+playlist.scroll.18 -4
 playlist.scroll.19 0
 playlist.scroll.2 0
-playlist.scroll.20 -10
-playlist.scroll.21 0
-playlist.scroll.22 -9
+playlist.scroll.20 -7
+playlist.scroll.21 -3
+playlist.scroll.22 0
 playlist.scroll.23 0
-playlist.scroll.24 0
+playlist.scroll.24 -10
 playlist.scroll.25 0
+playlist.scroll.26 -9
+playlist.scroll.27 0
+playlist.scroll.28 0
+playlist.scroll.29 0
 playlist.scroll.3 0
 playlist.scroll.4 0
 playlist.scroll.5 0
@@ -216,35 +224,39 @@ playlist.tab.00002 Baby Queen - Quarter Life Crisis (Deluxe)
 playlist.tab.00003 Baby Queen - Ride Or Die
 playlist.tab.00004 Blankz - Ice Queen
 playlist.tab.00005 Blankz - Nakama
-playlist.tab.00006 DeathbyRomy - City of Angels
-playlist.tab.00007 DeathbyRomy - Day I Die
-playlist.tab.00008 DeathbyRomy - Kiss Me Goodbye
-playlist.tab.00009 DeathbyRomy - Late Nights
-playlist.tab.00010 DeathbyRomy - Problems
-playlist.tab.00011 DeathbyRomy - SAINT
-playlist.tab.00012 DeathbyRomy & AWAY - I Kill Everything
-playlist.tab.00013 DeathbyRomy & Jazmin Bean - Hellhound
-playlist.tab.00014 Kailee Morgue - Girl Next Door
-playlist.tab.00015 LØLØ - u turn me on (but u give me depression)
-playlist.tab.00016 MACROSS 82-99 - A Million Miles Away
-playlist.tab.00017 Magdalena Bay - Mercurial World
-playlist.tab.00018 mazie - blotter baby
-playlist.tab.00019 mazie - spinnin
-playlist.tab.00020 Melanie Martinez - PORTALS
-playlist.tab.00021 MOTHICA - Sirens (feat. Sophie Powers)
-playlist.tab.00022 Taylor Swift - Midnights (3am Edition)
-playlist.tab.00023 Taylor Swift - You're Losing Me
-playlist.tab.00024 V.I.C - Maybe
-playlist.tab.00025 YUNG BAE - Japanese Disco Edits
+playlist.tab.00006 Charli XCX - 360
+playlist.tab.00007 Charli XCX - how i'm feeling now
+playlist.tab.00008 Charli XCX - Speed Drive
+playlist.tab.00009 Charli XCX - Von dutch
+playlist.tab.00010 DeathbyRomy - City of Angels
+playlist.tab.00011 DeathbyRomy - Day I Die
+playlist.tab.00012 DeathbyRomy - Kiss Me Goodbye
+playlist.tab.00013 DeathbyRomy - Late Nights
+playlist.tab.00014 DeathbyRomy - Problems
+playlist.tab.00015 DeathbyRomy - SAINT
+playlist.tab.00016 DeathbyRomy & AWAY - I Kill Everything
+playlist.tab.00017 DeathbyRomy & Jazmin Bean - Hellhound
+playlist.tab.00018 Kailee Morgue - Girl Next Door
+playlist.tab.00019 LØLØ - u turn me on (but u give me depression)
+playlist.tab.00020 MACROSS 82-99 - A Million Miles Away
+playlist.tab.00021 Magdalena Bay - Mercurial World
+playlist.tab.00022 mazie - blotter baby
+playlist.tab.00023 mazie - spinnin
+playlist.tab.00024 Melanie Martinez - PORTALS
+playlist.tab.00025 MOTHICA - Sirens (feat. Sophie Powers)
+playlist.tab.00026 Taylor Swift - Midnights (3am Edition)
+playlist.tab.00027 Taylor Swift - You're Losing Me
+playlist.tab.00028 V.I.C - Maybe
+playlist.tab.00029 YUNG BAE - Japanese Disco Edits
 prefwin.geometry.h 656
 prefwin.geometry.w 761
 prefwin.geometry.x 417
 prefwin.geometry.y 168
 replaygain.processing_flags 2
 resume.paused 0
-resume.playlist 0
-resume.position 0.0000000
-resume.track 0
+resume.playlist -1
+resume.position -1.000000
+resume.track -1
 resume_last_session 0
 streamer.8_to_16 0
 streamer.samplerate 44100

@@ -2,8 +2,10 @@ xkb_keymap {
 xkb_symbols "pc+us+inet(evdev)+terminate(ctrl_alt_bksp)" {
     name[group1]="English (US)";
 
-    key  <ESC> {         [          Escape ] };
-    key <TLDE> {         [           grave,      asciitilde ] };
+    //key  <ESC> {         [          Escape ] };
+    key  <ESC> {         [           grave ] };
+    //key <TLDE> {         [           grave,      asciitilde ] };
+    key <TLDE> {         [          Escape,      asciitilde ] };
     key <AE01> {         [               1,          exclam ] };
     key <AE02> {         [               2,              at ] };
     key <AE03> {         [               3,      numbersign ] };

@@ -1,273 +1,208 @@
 xkb_keymap {
-xkb_symbols "apfelschorle" {
+xkb_symbols "pc+us+inet(evdev)+terminate(ctrl_alt_bksp)" {
     name[group1]="English (US)";
 
 
 
 
 
-
-
-
-
-
-
-
-    //
-    // ##### DEFAULT LAYER #####
-    //
-
-
-    key <AD01> {
-        type= "ALPHABETIC",
-        symbols[Group1]= [               f,               F,              at,     Greek_OMEGA ]
-    };
-    key <AD02> {
-        type= "ALPHABETIC",
-        symbols[Group1]= [               l,               L,         lstroke,         Lstroke ]
-    };
-    key <AD03> {
-        type= "ALPHABETIC",
-        symbols[Group1]= [               h,               H,        EuroSign,            cent ]
-    };
-    key <AD04> {
-        type= "ALPHABETIC",
-        symbols[Group1]= [               v,               V,       paragraph,      registered ]
-    };
-    key <AD05> {
-        type= "ALPHABETIC",
-        symbols[Group1]= [               z,               Z,          tslash,          Tslash ]
-    };
-    key <AD06> {
-        type= "ALPHABETIC",
-        symbols[Group1]= [      apostrophe,        quotedbl,       leftarrow,             yen ]
-    };
-    key <AD07> {
-        type= "ALPHABETIC",
-        symbols[Group1]= [               w,               W,       downarrow,         uparrow ]
-    };
-    key <AD08> {
-        type= "ALPHABETIC",
-        symbols[Group1]= [               u,               U,      rightarrow,        idotless ]
-    };
-    key <AD09> {
-        type= "ALPHABETIC",
-        symbols[Group1]= [               o,               O,          oslash,          Oslash ]
-    };
-    key <AD10> {
-        type= "ALPHABETIC",
-        symbols[Group1]= [               y,               Y,           thorn,           THORN ]
-    };
-    //key <AD11> {         [      at ] };  //usually opening bracket
-    //key <AD12> {         [    EuroSign ] };  //usually closing bracket
-    key <AD11> {         [      bracketleft ] };  //usually opening bracket
-    key <AD12> {         [    bracketright ] };  //usually closing bracket
-    //key <BKSL> {         [       backslash,             bar ] };  //usually backslash
-    //key <BKSL> {         [       dead_acute,             dead_diaeresis ] };  //usually backslash
-    key <BKSL> {         [       dead_diaeresis,             dead_acute ] };  //usually backslash
-    key <CAPS> {         [       Caps_Lock ] };
-    //key <CAPS> {         [      underscore,           minus ],
-    //    actions[Group1]= [      NoAction(),      NoAction() ]  //this disables caps lock
-    //};
-    //key <AE11> {         [           minus,      underscore ] };
-    key <AE11> {         [           underscore,      minus ] };
-    key <AC01> {
-        type= "ALPHABETIC",
-        symbols[Group1]= [               s,               S,              ae,              AE ]
-    };
-    key <AC02> {
-        type= "ALPHABETIC",
-        symbols[Group1]= [               r,               R,          ssharp,         section , ssharp, ssharp, ssharp, ssharp]
-    };
-    key <AC03> {
-        type= "ALPHABETIC",
-        symbols[Group1]= [               n,               N,             eth,             ETH ]
-    };
-    key <AC04> {
-        type= "ALPHABETIC",
-        symbols[Group1]= [               t,               T,         dstroke,     ordfeminine ]
-    };
-    key <AC05> {
-        type= "ALPHABETIC",
-        symbols[Group1]= [               k,               K,             eng,             ENG ]
-    };
-    key <AC06> {
-        type= "ALPHABETIC",
-        symbols[Group1]= [               c,               C,         hstroke,         Hstroke ]
-    };
-    key <AC07> {
-        type= "ALPHABETIC",
-        symbols[Group1]= [               d,               D,       dead_hook,       dead_horn ]
-    };
-    key <AC08> {
-        type= "ALPHABETIC",
-        symbols[Group1]= [               e,               E,             kra,       ampersand ]
-    };
-    key <AC09> {
-        type= "ALPHABETIC",
-        symbols[Group1]= [               a,               A,         lstroke,         Lstroke ]
-    };
-    key <AC10> {         [               i,               I ] };  //usually semicolon
-    key <AC11> {         [           colon,       semicolon ] };  //usually apostrophe
-    key <AB01> {
-        type= "ALPHABETIC",
-        symbols[Group1]= [               x,               X,   guillemotleft,            less ]
-    };
-    key <AB02> {
-        type= "ALPHABETIC",
-        symbols[Group1]= [               j,               J,  guillemotright,         greater ]
-    };
-    key <AB03> {
-        type= "ALPHABETIC",
-        symbols[Group1]= [               b,               B,            cent,       copyright ]
-    };
-    key <AB04> {
-        type= "ALPHABETIC",
-        symbols[Group1]= [               m,               M, leftdoublequotemark, leftsinglequotemark ]
-    };
-    key <AB05> {
-        type= "ALPHABETIC",
-        symbols[Group1]= [               q,               Q, rightdoublequotemark, rightsinglequotemark ]
-    };
-    key <AB06> {
-        type= "ALPHABETIC",
-        symbols[Group1]= [               p,               P,               n,               N ]
-    };
-    key <AB07> {
-        type= "ALPHABETIC",
-        symbols[Group1]= [               g,               G,              mu,       masculine ]
-    };
-    key <AB08> {         [           comma,            less ] };  //usually comma
-    key <AB09> {         [          period,         greater ] };  //usually period
-    key <AB10> {         [           slash,        question ] };  //usually slash
-
-
-
-
-
-    //
-    // ##### SYMBOL LAYER #####
-    //
-
-
-    key <TLDE> {         [          grave, asciitilde ] };  //usually grave
-    key <AE12> {         [           equal,            plus ] };
-
-
-
-    key <FK13> {         [       asciicircum ] };
-    key <FK14> {         [       bar ] };
-    key <FK15> {         [     percent ] };
-
-    key <FK16> {         [     ssharp ] };
-    //key <FK17> {         [     braceleft ] };
-    key <FK17> {         [       dead_acute,             dead_diaeresis ] };  //usually backslash
-    key <FK18> {         [     asciitilde ] };
-
-    key <FK19> {         [ dollar ] };
-    key <FK21> {         [ exclam ]};
-    key <FK22> {         [ plus ]};
-
-    key <FK23> {         [ parenleft ]};
-    key <FK24> {         [ parenright ]};
-
-
-    key  <KP1> {         [               ntilde, Ntilde ] };  //usually np_1
-    key  <KP2> {         [               ampersand ] };  //usually np_2
-    key  <KP3> {         [               EuroSign ] };  //usually np_3
-    key  <KP4> {         [               asterisk ] };  //usually np_4
-    key  <KP5> {         [               numbersign ] };  //usually np_5
-    key  <KP6> {         [               braceleft ] };  //usually np_6
-    key  <KP7> {         [               braceright ] };  //usually np_7
-    key  <KP8> {         [               at ] };  //usually np_8
-    //key  <KP9> {         [               bracketleft ] };  //usually np_9
-    //key  <KP0> {         [               bracketright ] };  //usually np_0
-
-
-
-    // TOP ROW
-    //key <KPDV> {
-    //    type= "CTRL+ALT",
-    //    symbols[Group1]= [       backslash ]
-    //};
-    //key <KPMU> {
-    //    type= "CTRL+ALT",
-    //    symbols[Group1]= [     semicolon ]
-    //};
-    //key <KPSU> {
-    //    type= "CTRL+ALT",
-    //    symbols[Group1]= [     ssharp ]
-    //};
-
-
-
-
-
-
-
-
-
-    //
-    // ##### NAVIGATION AND NUMBER LAYER #####
-    //
-
-
-    //key  <KP1> {         [               1] };  //usually np_1
-    //key  <KP2> {         [               2] };  //usually np_2
-    //key  <KP3> {         [               3] };  //usually np_3
-    //key  <KP4> {         [               4] };  //usually np_4
-    //key  <KP5> {         [               5] };  //usually np_5
-    //key  <KP6> {         [               6] };  //usually np_6
-    //key  <KP7> {         [               7] };  //usually np_7
-    //key  <KP8> {         [               8] };  //usually np_8
-    //key  <KP9> {         [               9] };  //usually np_9
-    //key  <KP0> {         [               0] };  //usually np_0
-
-
-    key <AE01> {         [               1 ] };  //usually 1
-    key <AE02> {         [               2 ] };  //usually 2
-    key <AE03> {         [               3 ] };  //usually 3
-    key <AE04> {         [               4 ] };  //usually 4
-    key <AE05> {         [               5 ] };  //usually 5
-    key <AE06> {         [               6 ] };  //usually 6
-    key <AE07> {         [               7 ] };  //usually 7
-    key <AE08> {         [               8 ] };  //usually 8
-    key <AE09> {         [               9 ] };  //usually 9
-    key <AE10> {         [               0 ] };  //usually 0
-
-
-
-
-
-
-
-
-
-
-
-
-    // ========================================
-    // ========================================
-    // ========================================
-    // ========================================
-    // ========================================
-    // ========================================
-    // ========================================
-    // ========================================
-    // ========================================
-    // ========================================
-
     key  <ESC> {         [          Escape ] };
+    key <TLDE> {         [           grave,      asciitilde ] };
+    key <AE01> {         [               1,          exclam ] };
+    key <AE02> {         [               2,              at ] };
+    key <AE03> {         [               3,      numbersign ] };
+    key <AE04> {         [               4,          dollar ] };
+    key <AE05> {         [               5,         percent ] };
+    key <AE06> {         [               6,     asciicircum ] };
+    key <AE07> {         [               7,       ampersand ] };
+    key <AE08> {         [               8,        asterisk ] };
+    key <AE09> {         [               9,       parenleft ] };
+    key <AE10> {         [               0,      parenright ] };
+    key <AE11> {         [           minus,      underscore ] };
+    key <AE12> {         [           equal,            plus ] };
     key <BKSP> {
         type= "CTRL+ALT",
         symbols[Group1]= [       BackSpace,       BackSpace,        NoSymbol,        NoSymbol, Terminate_Server ]
     };
     key  <TAB> {         [             Tab,    ISO_Left_Tab ] };
+    key <AD01> {
+        type= "ALPHABETIC",
+        symbols[Group1]= [               f,               F ]
+    };
+    key <AD02> {
+        type= "ALPHABETIC",
+        symbols[Group1]= [               l,               L ]
+    };
+    key <AD03> {
+        type= "ALPHABETIC",
+        symbols[Group1]= [               h,               H ]
+    };
+    key <AD04> {
+        type= "ALPHABETIC",
+        symbols[Group1]= [               v,               V ]
+    };
+    key <AD05> {
+        type= "ALPHABETIC",
+        symbols[Group1]= [               z,               Z ]
+    };
+    key <AD06> {         [      apostrophe,        quotedbl ] };
+    key <AD07> {
+        type= "ALPHABETIC",
+        symbols[Group1]= [               w,               W ]
+    };
+    key <AD08> {
+        type= "ALPHABETIC",
+        symbols[Group1]= [               u,               U ]
+    };
+    key <AD09> {
+        type= "ALPHABETIC",
+        symbols[Group1]= [               o,               O ]
+    };
+    key <AD10> {
+        type= "ALPHABETIC",
+        symbols[Group1]= [               y,               Y ]
+    };
+    key <AD11> {         [     bracketleft,       braceleft ] };
+    key <AD12> {         [    bracketright,      braceright ] };
+    key <BKSL> {         [       backslash,             bar ] };
+    //key <AE11> {         [           minus,      underscore ] };
+    //key <CAPS> {         [       Caps_Lock ] };
+    key <CAPS> {         [           minus,      underscore ],
+        actions[Group1]= [      NoAction(),       NoAction()]
+    };
+    key <AC01> {
+        type= "ALPHABETIC",
+        symbols[Group1]= [               s,               S ]
+    };
+    key <AC02> {
+        type= "ALPHABETIC",
+        symbols[Group1]= [               r,               R ]
+    };
+    key <AC03> {
+        type= "ALPHABETIC",
+        symbols[Group1]= [               n,               N ]
+    };
+    key <AC04> {
+        type= "ALPHABETIC",
+        symbols[Group1]= [               t,               T ]
+    };
+    key <AC05> {
+        type= "ALPHABETIC",
+        symbols[Group1]= [               k,               K ]
+    };
+    key <AC06> {
+        type= "ALPHABETIC",
+        symbols[Group1]= [               c,               C ]
+    };
+    key <AC07> {
+        type= "ALPHABETIC",
+        symbols[Group1]= [               d,               D ]
+    };
+    key <AC08> {
+        type= "ALPHABETIC",
+        symbols[Group1]= [               e,               E ]
+    };
+    key <AC09> {
+        type= "ALPHABETIC",
+        symbols[Group1]= [               a,               A ]
+    };
+    key <AC10> {         
+        type= "ALPHABETIC",
+        symbols[Group1]= [               i,               I ] 
+    };
+    key <AC11> {         [       semicolon,           colon ] };
     key <RTRN> {         [          Return ] };
     key <LFSH> {         [         Shift_L ] };
+    key <AB01> {
+        type= "ALPHABETIC",
+        symbols[Group1]= [               x,               X ]
+    };
+    key <AB02> {
+        type= "ALPHABETIC",
+        symbols[Group1]= [               j,               J ]
+    };
+    key <AB03> {
+        type= "ALPHABETIC",
+        symbols[Group1]= [               b,               B ]
+    };
+    key <AB04> {
+        type= "ALPHABETIC",
+        symbols[Group1]= [               m,               M ]
+    };
+    key <AB05> {
+        type= "ALPHABETIC",
+        symbols[Group1]= [               q,               Q ]
+    };
+    key <AB06> {
+        type= "ALPHABETIC",
+        symbols[Group1]= [               p,               P ]
+    };
+    key <AB07> {
+        type= "ALPHABETIC",
+        symbols[Group1]= [               g,               G ]
+    };
+    key <AB08> {         [           comma,            less ] };
+    key <AB09> {         [          period,         greater ] };
+    key <AB10> {         [           slash,        question ] };
     key <RTSH> {         [         Shift_R ] };
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    // ========================================
+    // ========================================
+    // ========================================
+    // ========================================
+    // ========================================
+    // ========================================
+    // ========================================
+    // ========================================
+    // ========================================
+    // ========================================
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    key <LCTL> {         [       Control_L ] };
+    key <KPMU> {
+        type= "CTRL+ALT",
+        symbols[Group1]= [     KP_Multiply,     KP_Multiply,     KP_Multiply,     KP_Multiply,   XF86ClearGrab ]
+    };
+    key <LALT> {         [           Alt_L,          Meta_L ] };
+    key <SPCE> {         [           space ] };
     key <FK01> {
         type= "CTRL+ALT",
         symbols[Group1]= [              F1,              F1,              F1,              F1, XF86Switch_VT_1 ]
@@ -308,6 +243,32 @@ xkb_symbols "apfelschorle" {
         type= "CTRL+ALT",
         symbols[Group1]= [             F10,             F10,             F10,             F10, XF86Switch_VT_10 ]
     };
+    key <NMLK> {         [        Num_Lock ] };
+    key <SCLK> {         [     Scroll_Lock ] };
+    key  <KP7> {         [         KP_Home,            KP_7 ] };
+    key  <KP8> {         [           KP_Up,            KP_8 ] };
+    key  <KP9> {         [        KP_Prior,            KP_9 ] };
+    key <KPSU> {
+        type= "CTRL+ALT",
+        symbols[Group1]= [     KP_Subtract,     KP_Subtract,     KP_Subtract,     KP_Subtract,  XF86Prev_VMode ]
+    };
+    key  <KP4> {         [         KP_Left,            KP_4 ] };
+    key  <KP5> {         [        KP_Begin,            KP_5 ] };
+    key  <KP6> {         [        KP_Right,            KP_6 ] };
+    key <KPAD> {
+        type= "CTRL+ALT",
+        symbols[Group1]= [          KP_Add,          KP_Add,          KP_Add,          KP_Add,  XF86Next_VMode ]
+    };
+    key  <KP1> {         [          KP_End,            KP_1 ] };
+    key  <KP2> {         [         KP_Down,            KP_2 ] };
+    key  <KP3> {         [         KP_Next,            KP_3 ] };
+    key  <KP0> {         [       KP_Insert,            KP_0 ] };
+    key <KPDL> {         [       KP_Delete,      KP_Decimal ] };
+    key <LVL3> {         [ ISO_Level3_Shift ] };
+    key <LSGT> {
+        type= "FOUR_LEVEL",
+        symbols[Group1]= [            less,         greater,             bar,       brokenbar ]
+    };
     key <FK11> {
         type= "CTRL+ALT",
         symbols[Group1]= [             F11,             F11,             F11,             F11, XF86Switch_VT_11 ]
@@ -316,69 +277,6 @@ xkb_symbols "apfelschorle" {
         type= "CTRL+ALT",
         symbols[Group1]= [             F12,             F12,             F12,             F12, XF86Switch_VT_12 ]
     };
-
-
-
-    //key <AD11> {         [       dead_acute, dead_diaeresis, bracketleft, dead_abovering ] };
-
-    //key  <KP0> {         [       KP_Insert,            KP_0 ] };
-    //key  <KP1> {         [          KP_End,            KP_1 ] };
-    //key  <KP2> {         [         KP_Down,            KP_2 ] };
-    //key  <KP3> {         [         KP_Next,            KP_3 ] };
-    //key  <KP4> {         [         KP_Left,            KP_4 ] };
-    //key  <KP5> {         [        KP_Begin,            KP_5 ] };
-    //key  <KP6> {         [        KP_Right,            KP_6 ] };
-    //key  <KP7> {         [         KP_Home,            KP_7 ] };
-    //key  <KP8> {         [           KP_Up,            KP_8 ] };
-    //key  <KP9> {         [        KP_Prior,            KP_9 ] };
-
-
-    //key <FK13> {         [       XF86Tools ] };
-    //key <FK14> {         [     XF86Launch5 ] };
-    //key <FK13> {         [       F13 ] };
-    //key <FK14> {         [       F14 ] };
-
-    //key <TLDE> {         [           grave,      ssharp ] };
-
-    //key <FK21> {         [ XF86TouchpadToggle ] };
-    //key <FK22> {         [  XF86TouchpadOn ] };
-    //key <FK23> {         [ XF86TouchpadOff ] };
-    //key <FK24> {         [ XF86TouchpadOff ] };
-
-
-
-
-
-
-
-
-
-
-
-
-    key <LCTL> {         [       Control_L ] };
-    //key <KPMU> {
-    //    type= "CTRL+ALT",
-    //    symbols[Group1]= [     KP_Multiply,     KP_Multiply,     KP_Multiply,     KP_Multiply,   XF86ClearGrab ]
-    //};
-    key <LALT> {         [           Alt_L,          Meta_L ] };
-    key <SPCE> {         [           space ] };
-    key <NMLK> {         [        Num_Lock ] };
-    key <SCLK> {         [     Scroll_Lock ] };
-    //key <KPSU> {
-    //    type= "CTRL+ALT",
-    //    symbols[Group1]= [     KP_Subtract,     KP_Subtract,     KP_Subtract,     KP_Subtract,  XF86Prev_VMode ]
-    //};
-    key <KPAD> {
-        type= "CTRL+ALT",
-        symbols[Group1]= [          KP_Add,          KP_Add,          KP_Add,          KP_Add,  XF86Next_VMode ]
-    };
-    key <KPDL> {         [       KP_Delete,      KP_Decimal ] };
-    key <LVL3> {         [ ISO_Level3_Shift ] };
-    key <LSGT> {
-        type= "FOUR_LEVEL",
-        symbols[Group1]= [            less,         greater,             bar,       brokenbar ]
-    };
     key <KATA> {         [        Katakana ] };
     key <HIRA> {         [        Hiragana ] };
     key <HENK> {         [     Henkan_Mode ] };
@@ -386,10 +284,10 @@ xkb_symbols "apfelschorle" {
     key <MUHE> {         [        Muhenkan ] };
     key <KPEN> {         [        KP_Enter ] };
     key <RCTL> {         [       Control_R ] };
-    //key <KPDV> {
-    //    type= "CTRL+ALT",
-    //    symbols[Group1]= [       KP_Divide,       KP_Divide,       KP_Divide,       KP_Divide,      XF86Ungrab ]
-    //};
+    key <KPDV> {
+        type= "CTRL+ALT",
+        symbols[Group1]= [       KP_Divide,       KP_Divide,       KP_Divide,       KP_Divide,      XF86Ungrab ]
+    };
     key <PRSC> {
         type= "PC_ALT_LEVEL2",
         symbols[Group1]= [           Print,         Sys_Req ]
@@ -475,6 +373,16 @@ xkb_symbols "apfelschorle" {
     key <I188> {         [      parenright ] };
     key <I189> {         [         XF86New ] };
     key <I190> {         [            Redo ] };
+    key <FK13> {         [       XF86Tools ] };
+    key <FK14> {         [     XF86Launch5 ] };
+    key <FK15> {         [     XF86Launch6 ] };
+    key <FK16> {         [     XF86Launch7 ] };
+    key <FK17> {         [     XF86Launch8 ] };
+    key <FK18> {         [     XF86Launch9 ] };
+    key <FK20> {         [ XF86AudioMicMute ] };
+    key <FK21> {         [ XF86TouchpadToggle ] };
+    key <FK22> {         [  XF86TouchpadOn ] };
+    key <FK23> {         [ XF86TouchpadOff ] };
     key <MDSW> {         [     Mode_switch ] };
     key  <ALT> {         [        NoSymbol,           Alt_L ] };
     key <META> {         [        NoSymbol,          Meta_L ] };
@@ -2104,4 +2012,3 @@ xkb_geometry "pc(pc104)" {
 };
 
 };
-

@@ -62,14 +62,16 @@ xkb_symbols "apfelschorle" {
     //key <AD12> {         [    EuroSign ] };  //usually closing bracket
     key <AD11> {         [      bracketleft ] };  //usually opening bracket
     key <AD12> {         [    bracketright ] };  //usually closing bracket
-    key <BKSL> {         [       backslash,             bar ] };  //usually backslash
+    //key <BKSL> {         [       backslash,             bar ] };  //usually backslash
     //key <BKSL> {         [       dead_acute,             dead_diaeresis ] };  //usually backslash
+    key <BKSL> {         [       dead_diaeresis,             dead_acute ] };  //usually backslash
     key <CAPS> {         [       Caps_Lock ] };
     //key <CAPS> {         [      underscore,           minus ],
     //    actions[Group1]= [      NoAction(),      NoAction() ]  //this disables caps lock
     //};
     //key <AE11> {         [           minus,      underscore ] };
-    key <AE11> {         [           underscore,      minus ] };
+    //key <AE11> {         [           underscore,      minus ] };
+    key <AE11> {         [           minus,      underscore ] };
     key <AC01> {
         type= "ALPHABETIC",
         symbols[Group1]= [               a,               A,              ae,              AE ]
@@ -106,7 +108,7 @@ xkb_symbols "apfelschorle" {
         type= "ALPHABETIC",
         symbols[Group1]= [               l,               L,         lstroke,         Lstroke ]
     };
-    key <AC10> {         [       colon,           equal ] };  //usually semicolon
+    key <AC10> {         [       colon,           semicolon ] };  //usually semicolon
     key <AC11> {         [      apostrophe,        quotedbl ] };  //usually apostrophe
     key <AB01> {
         type= "ALPHABETIC",
@@ -136,9 +138,9 @@ xkb_symbols "apfelschorle" {
         type= "ALPHABETIC",
         symbols[Group1]= [               m,               M,              mu,       masculine ]
     };
-    key <AB08> {         [           comma,            parenleft ] };  //usually comma
-    key <AB09> {         [          period,         parenright ] };  //usually period
-    key <AB10> {         [           slash,        numbersign ] };  //usually slash
+    key <AB08> {         [           comma,            less ] };  //usually comma
+    key <AB09> {         [          period,         greater ] };  //usually period
+    key <AB10> {         [           slash,        question ] };  //usually slash
 
 
 
