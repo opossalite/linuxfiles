@@ -42,6 +42,12 @@ mamba packages: (distrobox create --nvidia --name MambaVM --image ubuntu:latest)
     #    sudo apt-get -y install cuda
 
 
+openSUSE packages:
+    1. go to yast and install nvidia packages, add the repository first if needed
+    	- will install most things we need, but not this package for some reason:
+    nvidia-utils-G06
+
+
 
 acpi
     Battery info
@@ -213,6 +219,13 @@ echo ${@: 2:1};            #"p2"
 echo ${@: 2:2};            #"p2" "p3"
 echo ${@: -2};                       #"p4" "p5"
 echo ${@: -2:1};                     #"p4"
+
+
+Changing shells with chsh:
+bash->fish: chsh -s $(which fish)
+fish->bash: chsh -s (which bash)
+
+
 
 
 Bashrc:
