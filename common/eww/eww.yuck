@@ -1,0 +1,171 @@
+;strftime and strptime
+
+
+
+
+;(defwidget systemtray []
+;    (box
+;        :orientation "v"
+;        :halign "center"
+;        ;(systray :pack_direction "down" :icon-size 16)
+;        (systray :orientation "vertical" :icon-size 16)
+;    )
+;)
+
+
+
+;(defpoll hour :interval "1s" "date +%H")
+(defpoll hour :interval "1s" "date +%I")
+(defpoll div :interval "1s" "date +%p")
+(defpoll min  :interval "1s" "date +%M")
+(defpoll sec  :interval "1s" "date +%S")
+
+(defpoll day_word :interval "10m" "date +%a") ;date +%a | tr [:upper:] [:lower:]
+(defpoll day      :interval "10m" "date +%d")
+(defpoll month    :interval "1h"  "date +%b") ;%m
+(defpoll year     :interval "1h"  "date +%y")
+
+(defwidget time [] (box
+    :orientation "v" 
+    :class "time"
+
+    hour
+    min
+    div
+    sec
+))
+
+(defwidget date [] (box
+    :orientation "v" 
+    :halign "center" 
+
+    month
+    day
+    year
+
+    ;(label :text " ")
+
+    day_word
+))
+
+
+
+
+
+
+
+(deflisten workspaces "./scripts/workspaces")
+(deflisten keymaps "./scripts/keymaps")
+
+(defwidget workspaces []
+    (literal :content workspaces)
+)
+(defwidget keymaps []
+    (literal :content keymaps)
+)
+
+(defvar power_bool false)
+
+;; Powermenu Widgets ;;
+(defwidget power []
+    (eventbox   :onhover "${EWW_CMD} update power=true"	
+                :onhoverlost "${EWW_CMD} update power=false"
+                :cursor "pointer"
+    (box        :orientation "v"					
+                :space-evenly "false" 	 
+                :vexpand "false" 	
+                :class "powermenu"
+    (revealer   :transition "slideup"				
+                :reveal power_bool			 
+                :duration "550ms"
+    (box        :orientation "v"
+                :space-evenly "false"
+
+    ;(button    ;:style "background-image: url('images/enpass.png');"
+    ;           :class "button-lock" 				
+    ;           :tooltip "Lock Screen"	 
+    ;           :onclick "physlock -d")
+
+    (button     ;:style "background-image: url('images/sys-sleep.png');"
+				:class "button-bspres"  			
+				:tooltip "Suspend computer" 
+				:onclick "systemctl suspend")
+				
+	(button		;:style "background-image: url('images/sys-reboot.png');"
+				:class "button-reb"					
+	  			:tooltip "Reboot"		 
+				:onclick "reboot")
+				
+	(button		
+				;:style "background-image: url('images/sys-poweroff.png');"
+				:class "button-off"					
+				:tooltip "Shutdown"		 
+				:onclick "shutdown now")))
+
+	(button		
+				;:style "background-image: url('images/sys-powermenu.png');"
+				:class "button-powermenu"					
+				:tooltip "Power Menu"))))
+
+
+
+
+
+
+
+(defwidget topcontainer [] (box
+    :orientation "v"
+    :space-evenly "false"
+    :valign "start"
+
+    (workspaces)
+    ;(label :text "S")
+))
+
+
+(defwidget bottomcontainer [] (box
+    :orientation "v"
+    :space-evenly "false"
+    :valign "end"
+
+    (systray
+        :orientation "v"
+        :icon-size 16
+        ;:spacing 10
+    )
+    (label :text "")
+    (date)
+    (label :text "")
+    (time)
+    (power)
+))
+
+
+(defwidget barcontainer [] (box
+    :class "eww_bar"
+    :orientation "v"
+    (topcontainer)
+    (bottomcontainer)
+))
+
+
+(defwindow bar
+    :monitor 0
+    :geometry (geometry
+        :x 0
+        :y 0
+        :width "40px"
+        :height "100%"
+        :anchor "center right"
+    )
+    :stacking "fg"  ;set to "overlay" if on wayland
+    :reserve (struts :distance "40px" :side "right")
+    ;:wm-ignore false
+    ;:windowtype "dock"
+    ;:exclusive true
+    ;(label :text "S")
+    (barcontainer)
+
+)
+
+
