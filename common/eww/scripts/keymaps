@@ -1,6 +1,132 @@
-#!/usr/bin/env bash
+#!/bin/sh
 
-echo "hi"
+
+
+#comms_file="~/.config/eww/scripts/comms_keymaps"
+comms_file=$(cd "$( dirname "$1" )" >/dev/null 2>&1 && pwd)"/scripts/comms_keymaps"
+keymaps_arr=(
+    "us us-enhanced"
+    "ap apfelschorle"
+    "un universal"
+    "es es"
+    "sm semimak-jq"
+    "ga gallium-v2"
+    )
+
+
+
+print_text() {
+    text="hi"
+    #echo "(box :orientation \"v\" (label :text $text)"
+    echo "(box :orientation \"v\" :class \"works\" :halign \"center\" :valign \"center\" :vexpand true :hexpand true \"$text\")"
+}
+
+
+
+switch_keymap() {
+    #echo "counter is now $1"
+    keymap=${keymaps_arr[$1]}
+    keymap_kurz=$(echo $keymap | awk '{print $1}')
+    keymap_name=$(echo $keymap | awk '{print $2}')
+    #echo here
+    xkbcomp -w 0 ~/keymaps/$keymap_name.xkb :0
+    #echo yo
+    #echo $keymap_kurz
+    #echo "(label :text \"$keymap_kurz\")"
+    #widget
+    #echo "(box :orientation \"v\" :class \"keymaps\" :halign \"center\" :valign \"center\" :vexpand true :hexpand true $buf)"
+    echo "(eventbox :cursor \"pointer\" (button :class \"keymaps\" :onclick \"printf n >> $comms_file\" :onrightclick \"printf p >> $comms_file\" \"$keymap_kurz\"))"
+    #notify-send "set to $keymap_kurz $keymap_name"
+
+}
+
+
+
+main() {
+    # create files
+    index=0
+    maplength=${#keymaps_arr[@]} #number of keymaps we have
+    #echo $maplength
+    if [ ! -f $comms_file ]; then
+        touch $comms_file
+    fi
+    echo "" > $comms_file
+
+    # ensure our keymap is set
+    switch_keymap $index
+
+    # main loop
+    while true; do
+
+        # detects changes to comms file
+        #while inotifywait -e close_write $comms_file > /dev/null 2>&1; do clear
+        while [ inotifywait -e close_write $comms_file > /dev/null 2>&1 ] -o [ inotifywait -e modify $comms_file > /dev/null 2>&1 ]; do clear
+        #while inotifywait -e modify $comms_file > /dev/null 2>&1; do echo i
+        done
+
+        # read file
+        contents=$(cat $comms_file)
+        comm_inst=$(echo $contents | awk '{print $1}')
+        #echo $comm_inst
+        #keymap_kurz=$(echo $contents | awk '{print $1}')
+        #keymap_name=$(echo $contents | awk '{print $2}')
+        #echo $keymap_kurz
+        #echo $keymap_name
+
+        # match the case
+        #notify-send "GOING"
+        case $comm_inst in
+            "n")
+                #echo n
+                echo "" > $comms_file
+
+                index=$((index+1))
+                if [ "${index}" -eq "${maplength}" ] || [ "${index}" -gt "${maplength}" ]; then
+                    index=0
+                fi
+                switch_keymap $index
+                ;;
+            "p")
+                #echo p
+                echo "" > $comms_file
+
+                index=$((index-1))
+                if [ "${index}" -lt 0 ]; then
+                    index=$((maplength-1))
+                fi
+                switch_keymap $index
+                ;;
+            "x")
+                echo "" > $comms_file
+
+                exit
+                ;;
+            "")
+                ;;
+            *)
+                notify-send "funk"
+                #echo other
+                echo "" > $comms_file
+
+                ;;
+        esac
+    done
+}
+
+
+
+
+#xkbcomp -w 0 file :0
+
+# startup
+index="0"
+main
+
+
+#print_text
+
+
+
 
 
 

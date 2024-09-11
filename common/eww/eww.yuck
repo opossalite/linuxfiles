@@ -23,7 +23,7 @@
 (defpoll day_word :interval "10m" "date +%a") ;date +%a | tr [:upper:] [:lower:]
 (defpoll day      :interval "10m" "date +%d")
 (defpoll month    :interval "1h"  "date +%b") ;%m
-(defpoll year     :interval "1h"  "date +%y")
+;(defpoll year     :interval "1h"  "date +%y")
 
 (defwidget time [] (box
     :orientation "v" 
@@ -39,13 +39,13 @@
     :orientation "v" 
     :halign "center" 
 
+    day_word
     month
     day
-    year
+    ;year
 
     ;(label :text " ")
 
-    day_word
 ))
 
 
@@ -56,12 +56,14 @@
 
 (deflisten workspaces "./scripts/workspaces")
 (deflisten keymaps "./scripts/keymaps")
+;(defpoll keymaps :interval "1s" "scripts/keymaps")
 
 (defwidget workspaces []
     (literal :content workspaces)
 )
 (defwidget keymaps []
     (literal :content keymaps)
+    ;(label :text keymaps)
 )
 
 (defvar power_bool false)
@@ -130,17 +132,42 @@
 
     (systray
         :orientation "v"
-        :icon-size 16
-        ;:spacing 10
+        :icon-size 20
+        :spacing 10
+        ;:margin 10
+        :class "systray" 
     )
+    (label :text "")
+    (keymaps)
     (label :text "")
     (date)
     (label :text "")
     (time)
-    (power)
+    (label :text "")
+    ;(power)
 ))
 
 
+(defwidget greeter [?text name]
+  (box :orientation "horizontal"
+       :halign "center"
+    text
+    (button :onclick "notify-send 'Hello' 'Hello, ${name}'"
+      "Greet")))
+
+
+(defwindow example
+           ; ... values omitted
+  (greeter :text "Say hello!"
+           :name "Tim"))
+
+
+
+
+
+
+
+; CONTAINER FOR THE BAR
 (defwidget barcontainer [] (box
     :class "eww_bar"
     :orientation "v"
@@ -149,6 +176,9 @@
 ))
 
 
+;
+; BAR
+;
 (defwindow bar
     :monitor 0
     :geometry (geometry
@@ -159,7 +189,7 @@
         :anchor "center right"
     )
     :stacking "fg"  ;set to "overlay" if on wayland
-    :reserve (struts :distance "40px" :side "right")
+    :reserve (struts :distance "39px" :side "right") ;not sure why this has to be one less, but otherwise there's a gap
     ;:wm-ignore false
     ;:windowtype "dock"
     ;:exclusive true
