@@ -197,7 +197,7 @@ cmp.setup({
 
 require('lspconfig').lua_ls.setup(lsp.nvim_lua_ls())
 require'lspconfig'.hls.setup{}
-require'lspconfig'.pyright.setup{}
+--require'lspconfig'.pyright.setup{}
 require'lspconfig'.rust_analyzer.setup{}
 require'lspconfig'.gopls.setup{}
 require'lspconfig'.clangd.setup{}

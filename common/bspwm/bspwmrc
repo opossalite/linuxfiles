@@ -1,8 +1,8 @@
 #! /bin/sh
 
-if [ -f $HOME/.autorun ]; then
-    . $HOME/.autorun
-fi
+#if [ -f $HOME/autorun.sh ]; then
+#    . $HOME/autorun.sh
+#fi
 pgrep -x sxhkd > /dev/null || sxhkd &
 
 #bspc monitor DisplayPort-2 -d 1 2 3 4 5 6 7
@@ -37,7 +37,7 @@ bspc config ignore_ewmh_focus true
 #bspc rule -a code-oss desktop=1
 #bspc rule -a Code desktop=1
 #bspc rule -a VSCodium desktop=1
-bspc rule -a discord desktop=8
+#bspc rule -a discord desktop=8
 #bspc rule -a spotify desktop=9
 #bspc rule -a Spotify desktop=9
 
@@ -48,3 +48,9 @@ bspc rule -a discord desktop=8
 
 # STARTUP
 #/home/terrior/.config/autorun.sh
+
+if [ -f $HOME/autorun.sh ]; then
+    . $HOME/autorun.sh
+fi
+
+

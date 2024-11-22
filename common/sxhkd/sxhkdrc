@@ -8,9 +8,9 @@
 super + Return
     alacritty &
 
-# dmenu
+# rofi
 super + space
-    rofi -show run -theme grey
+    /usr/bin/rofi -show drun -theme grey #whatever the fuck, it was running another executable
 #    dmenu_run -nb '#282828' -sf '#FF5555' -sb '#464646' -nf '#bbbbbb' &
 #			  main back     color text	  higlight box	default text
 #	dmenu_run -nb '#282C34' -sf '#61AFEF' -sb '#3E4451' -nf '#bbbbbb'
@@ -25,11 +25,12 @@ super + alt + j
 
 # brave
 super + alt + l
-    brave &
+    brave-browser &
+    #brave &
 
 # librewolf
-super + alt + k
-    librewolf &
+#super + alt + k
+#    librewolf &
 
 # code
 #super + alt + v
@@ -78,18 +79,18 @@ super + shift + t
 #
 
 # increase
-super + KP_Up
-        brightnessctl set 10%+ &
+#super + KP_Up
+#        brightnessctl set 10%+ &
 
-super + shift + KP_Up
-        brightnessctl set 1%+ &
+#super + shift + KP_Up
+#        brightnessctl set 1%+ &
 
 # decrease
-super + KP_Down
-        brightnessctl set 10%- &
+#super + KP_Down
+#        brightnessctl set 10%- &
 
-super + shift + KP_Down
-        brightnessctl set 1%- &
+#super + shift + KP_Down
+#        brightnessctl set 1%- &
 
 # night mode intensities (6500 off)
 super + ctrl + KP_Right
@@ -118,20 +119,20 @@ super + Next
 #
 
 # increase
-XF86AudioRaiseVolume
-        amixer -M set Master 5%+ &
-shift + XF86AudioRaiseVolume
-        amixer -M set Master 1%+ &
+#XF86AudioRaiseVolume
+#        amixer -M set Master 5%+ &
+#shift + XF86AudioRaiseVolume
+#        amixer -M set Master 1%+ &
 
 # decrease
-XF86AudioLowerVolume
-        amixer -M set Master 5%- &
-shift + XF86AudioLowerVolume
-        amixer -M set Master 1%- &
+#XF86AudioLowerVolume
+#        amixer -M set Master 5%- &
+#shift + XF86AudioLowerVolume
+#        amixer -M set Master 1%- &
 
 # toggle mute
-XF86AudioMute
-        amixer -M set Master toggle &
+#XF86AudioMute
+#        amixer -M set Master toggle &
 
 
 
@@ -148,6 +149,13 @@ super + F1
 super + F2
     systemctl reboot
 
+# logout
+super + F3
+    pkexec --user root pkill -u terrior
+    #sudo pkill -u terrior
+#    bspc quit #for bspwm as the main thing
+#    loginctl terminate-session #for kde as the main thing
+    #loginctl terminate-session && bspc quit
 
 
 
@@ -168,9 +176,6 @@ super + F2
 super + shift + r
     bspc wm -r
 
-# logout
-super + F3
-    bspc quit
 
 
 
@@ -253,7 +258,7 @@ super + {h,j,k,l}
 # move the node in the given direction
 super + shift + {h,j,k,l}
     $HOME/.config/sxhkd/bspwm_smart_move {west,south,north,east}
-#	bspc node -s {west,south,north,east}
+    #bspc node -s {west,south,north,east}
 
 # preselect the direction
 super + {n,m,comma,period}

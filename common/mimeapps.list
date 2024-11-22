@@ -1,39 +1,13 @@
 [Added Associations]
-application/json=neovide.desktop;firefox.desktop;
-application/octet-stream=nvim.desktop;
-application/pdf=brave-browser.desktop;firefox.desktop;
-application/x-ipynb+json=code-oss.desktop;
-audio/flac=easytag.desktop;deadbeef.desktop;audacious.desktop;
-audio/mp4=deadbeef.desktop;
-audio/mpeg=deadbeef.desktop;
-audio/x-wav=deadbeef.desktop;
-audio/x-wavpack=deadbeef.desktop;
-image/gif=org.gnome.eog.desktop;
-image/jpeg=feh.desktop;org.gnome.eog.desktop;org.gnome.Loupe.desktop;
-image/png=org.gnome.eog.desktop;org.gnome.Loupe.desktop;
-image/webp=org.gnome.eog.desktop;
-inode/directory=code-oss.desktop;
+application/pdf=brave-browser.desktop;
+audio/flac=deadbeef.desktop;
 text/csv=libreoffice-calc.desktop;
-text/html=brave-browser.desktop;
-text/plain=calc.desktop;writer.desktop;
-text/x-python=code-oss.desktop;
-video/quicktime=org.kde.gwenview.desktop;
-video/x-matroska=vlc.desktop;com.obsproject.Studio.desktop;
+text/x-csrc=nvim.desktop;
+text/x-python=nvim.desktop;
 
 [Default Applications]
-application/octet-stream=nvim.desktop
 application/pdf=brave-browser.desktop;
-audio/flac=deadbeef.desktop
-audio/mp4=deadbeef.desktop
-audio/mpeg=deadbeef.desktop
-audio/x-wav=deadbeef.desktop
-audio/x-wavpack=deadbeef.desktop
-image/gif=org.gnome.eog.desktop
-image/jpeg=org.gnome.Loupe.desktop
-image/png=org.gnome.eog.desktop
-image/webp=org.gnome.eog.desktop
-video/quicktime=org.kde.gwenview.desktop;
-video/x-matroska=vlc.desktop;
-x-scheme-handler/http=librewolf.desktop
-x-scheme-handler/https=librewolf.desktop
-x-scheme-handler/msteams=teams.desktop
+audio/flac=deadbeef.desktop;
+text/csv=libreoffice-calc.desktop;
+text/x-csrc=nvim.desktop;
+text/x-python=nvim.desktop;

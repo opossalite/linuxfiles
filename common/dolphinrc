@@ -1,13 +1,13 @@
 MenuBar=Disabled
 
-[$Version]
-update_info=dolphin_detailsmodesettings.upd:rename-leading-padding,dolphin_detailsmodesettings.upd:move-content-display
+[ExtractDialog]
+2 screens: Height=540
+2 screens: Width=1260
 
 [General]
 GlobalViewProps=false
-RememberOpenedTabs=false
 Version=202
-ViewPropsTimestamp=2024,2,6,22,11,54.816
+ViewPropsTimestamp=2024,8,4,14,26,29.11
 
 [IconsMode]
 PreviewSize=80
@@ -16,15 +16,9 @@ PreviewSize=80
 Places Icons Auto-resize=false
 Places Icons Static Size=22
 
-[KPropertiesDialog]
-1920x1200 screen: Height=578
-1920x1200 screen: Width=561
-2 screens: Height=470
-2 screens: Width=463
-
 [MainWindow]
 MenuBar=Disabled
 ToolBarsMovable=Disabled
 
 [PreviewSettings]
-Plugins=audiothumbnail,blenderthumbnail,imagethumbnail,jpegthumbnail,kraorathumbnail,mobithumbnail,gsthumbnail,rawthumbnail,svgthumbnail,ffmpegthumbs
+Plugins=audiothumbnail,blenderthumbnail,comicbookthumbnail,djvuthumbnail,ebookthumbnail,exrthumbnail,fontthumbnail,imagethumbnail,jpegthumbnail,kraorathumbnail,windowsexethumbnail,windowsimagethumbnail,mobithumbnail,opendocumentthumbnail,gsthumbnail,quithumbnail,rawthumbnail,svgthumbnail,ffmpegthumbs

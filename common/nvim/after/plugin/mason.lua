@@ -12,12 +12,14 @@ require("mason").setup({
 
 mason_lspconfig.setup({
     ensure_installed = {
+        --"basedpyright",
+        "pyright",
         "clangd",
         "gopls",
         "hls", --haskell-language-server
         "julials", --julia-lsp
         "lua_ls", --lua-language-server
-        "pyright",
+        --"mypy",
         "rust_analyzer", --rust-analyzer
         "zls",
     },
