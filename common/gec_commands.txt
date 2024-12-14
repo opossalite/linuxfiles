@@ -1,0 +1,8 @@
+
+for pyright, you need to install node for some stupid reason
+
+
+
+
+
+

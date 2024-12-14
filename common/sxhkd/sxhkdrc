@@ -25,7 +25,8 @@ super + alt + j
 
 # brave
 super + alt + l
-    brave-browser &
+    flatpak run com.brave.Browser &
+    #brave-browser &
     #brave &
 
 # librewolf
@@ -38,7 +39,8 @@ super + alt + l
 
 # discord
 super + alt + i
-    discord &
+    flatpak run com.discordapp.Discord &
+    #discord &
 
 # lf
 super + alt + m
@@ -46,7 +48,8 @@ super + alt + m
 
 # spotify
 super + alt + u
-    spotify &
+    flatpak run com.spotify.Client &
+    #spotify &
 
 # steam
 #super + alt + t

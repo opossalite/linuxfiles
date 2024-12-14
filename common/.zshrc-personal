@@ -15,6 +15,13 @@ cuda_things () {
 }
 
 
+
+# run fastfetch if enough horizontal space
+    #if [ (tput cols) -ge 77 ] #tput lines
+	#fastfetch -l openSUSE
+    #end
+
+
 if [ "$IN_NIX_SHELL" != "impure" ]; then
     case $HOST in
         ("VulpesKrovPC")
@@ -59,8 +66,9 @@ fi
 
 
 
-alias la='ls -a --color=auto'
 alias ls='ls --color=auto'
+alias la='ls --color=auto -a'
+alias ll='ls --color=auto -l'
 alias cp='cp -i'
 alias whereami="pwd"
 
@@ -69,6 +77,7 @@ alias sleepl="systemctl suspend"
 
 alias nf="neofetch --ascii_colors 8 7 --colors 1 15 8 1 15 15"
 alias nfd="neofetch --ascii_distro"
+alias ff="fastfetch"
 
 alias compare="git diff --no-index"
 alias gitconfigw="git config user.name nbalcarc && git config user.email nathan.balcarcel@wsu.edu"
@@ -179,4 +188,5 @@ export PATH=/home/terrior/.ghcup/bin:$PATH
 export XDG_DATA_DIRS="$HOME/desktop:$XDG_DATA_DIRS"
 
 #export GIT_SSH="/usr/bin/ssh"
+
 
