@@ -1,0 +1,50 @@
+
+
+
+
+abbrev_path() {
+    normal_path=${PWD/#$HOME/'~'}
+    collected=""
+
+    IFS='/' read -rA parts <<< "$normal_path" #split and store into array
+    for part in "${parts[@]}"; do #iterate over array
+        if [[ -z "$collected" ]]; then #check if collected is empty
+            collected=$part
+        else
+            if [[ $part == .* ]]; then
+                part=$(echo $part | cut -c1-2)
+            else
+                part=$(echo $part | cut -c1-1)
+            fi
+            collected=$collected/$part
+        fi
+    done
+    echo $collected
+}
+
+
+#PROMPT=$'%B%F{15}%n%F{214}@%m%F{15}:%F{130}%~%F{15}$%b%f '
+PROMPT=$'%B%F{15}%n%F{10}@%m%F{15}:%F{12}%~%F{15}$%b%f '
+#PROMPT=$'%B%F{15}%n%F{214}@$(abbrev_path)%F{15}:%F{130}%~%F{15}$%b%f '
+#PROMPT=$'%B%F{15}%n%F{214}@%m%F{15}:%F{130}$(abbrev_path)%F{15}$%b%f '
+#PROMPT=$'%B%F{15}%n%F{214}@%F{15}%F{130}$(abbrev_path)%F{15}$%b%f '
+#PROMPT='%B%F{15}%n%F{214}@%m%F{15}:%F{130}'$(abbrev_path)'%F{15}$%b%f '
+#echo $new_path
+#PROMPT="%B%F{15}%n%F{214}@%m%F{15}:%F{130}$(abbrev_path)%F{15}$%b%f "
+#PROMPT="%B%F{15}%n%F{214}@%m%F{15}:%F{130}$(abbrev_path)%F{15}$%b%f "
+
+
+alias ls='ls --color=auto'
+alias la='ls -a --color=auto'
+alias ll='ls -lh --color=auto'
+alias cp='cp -i'
+
+alias gitconfigp="git config user.name opossalite && git config user.email werbird10@gmail.com"
+alias gitconfigw="git config user.name nbalcarc && git config user.email nathan.balcarcel@gmail.com"
+alias gitconfigm="git config user.name horprus && git config user.email horprus@proton.me"
+
+
+export EDITOR=nvim
+
+
+

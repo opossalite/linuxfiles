@@ -46,13 +46,10 @@ bspc config ignore_ewmh_focus true
 
 
 
-
-
 # STARTUP
 #/home/terrior/.config/autorun.sh
 
-if [ -f $HOME/autorun.sh ]; then
-    . $HOME/autorun.sh
-fi
-
+#if [ -f $HOME/autorun.sh ]; then
+#    command $HOME/autorun.sh
+#fi
 
