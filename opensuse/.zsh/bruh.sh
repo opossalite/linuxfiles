@@ -1,1 +1,0 @@
-alias bruh="echo ho"

@@ -1,1 +1,0 @@
-alias dumb="echo hi"
