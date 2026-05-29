@@ -1,0 +1,17 @@
+[Default Applications]
+audio/flac=org.atheme.audacious.desktop
+image/png=org.gnome.Loupe.desktop
+image/jpeg=org.gnome.Loupe.desktop
+audio/mpeg=org.atheme.audacious.desktop
+audio/vnd.wave=org.atheme.audacious.desktop
+audio/x-wavpack=org.atheme.audacious.desktop
+audio/mp4=org.atheme.audacious.desktop
+
+[Added Associations]
+audio/flac=org.atheme.audacious.desktop;
+image/png=org.gnome.Loupe.desktop;
+image/jpeg=org.gnome.Loupe.desktop;
+audio/mpeg=org.gnome.Rhythmbox3.desktop;org.atheme.audacious.desktop;
+audio/vnd.wave=org.atheme.audacious.desktop;
+audio/x-wavpack=org.atheme.audacious.desktop;
+audio/mp4=org.atheme.audacious.desktop;
