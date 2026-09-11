@@ -14,7 +14,7 @@ super + Return
 
 # rofi
 super + space
-    rofi -show drun & #whatever the fuck, it was running another executable
+    rofi -show drun -theme grey &
     #/usr/bin/rofi -show drun -theme grey #whatever the fuck, it was running another executable
 
 # shutdown
@@ -101,20 +101,8 @@ super + shift + t
 
 
 
-# rofi power menu
-super + a
-    command $HOME/.config/rofi/scripts/power_menu.sh
-
-# window mode switching
-super + s; {j,k,l}
-    {\
-        bspc node -t floating,\
-        bspc node -t tiled,\
-        bspc node -t fullscreen,\
-    } &
-
 # launch apps
-super + d; {u,i,o, h,j,k,l}
+super + a; {u,i,o, h,j,k,l}
     {\
         flatpak run com.spotify.Client,\
         flatpak run com.discordapp.Discord,\
@@ -124,6 +112,18 @@ super + d; {u,i,o, h,j,k,l}
         firefox,\
         brave-browser,\
         dolphin,\
+    } &
+
+# rofi power menu
+super + s
+    command $HOME/.config/rofi/scripts/power_menu.sh
+
+# window mode switching
+super + d; {j,k,l}
+    {\
+        bspc node -t floating,\
+        bspc node -t tiled,\
+        bspc node -t fullscreen,\
     } &
 
 
