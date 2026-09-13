@@ -1,0 +1,3 @@
+--ColorRefresh("tokyobones")
+--colorscheme tokyobones
+

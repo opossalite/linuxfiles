@@ -1,0 +1,68 @@
+#!/bin/zsh
+
+
+#start_time=0
+#
+#preexec() {
+#    start_time=$SECONDS
+#}
+#
+#precmd() {
+#    if (( start_time > 0 )); then
+#        elapsed_time=$(( SECONDS - start_time ))
+#    else
+#        elapsed_time=0
+#    fi
+#}
+
+
+
+#abbrev_path() {
+#    echo "hi"
+#    normal_path=${PWD/#$HOME/'~'}
+#    collected=""
+#
+#    IFS='/' read -rA parts <<< "$normal_path" #split and store into array
+#    for part in "${parts[@]}"; do #iterate over array
+#        if [[ -z "$collected" ]]; then #check if collected is empty
+#            collected=$part
+#        else
+#            if [[ $part == .* ]]; then
+#                part=$(echo $part | cut -c1-2)
+#            else
+#                part=$(echo $part | cut -c1-1)
+#            fi
+#            collected=$collected/$part
+#        fi
+#    done
+#    echo $collected
+#}
+
+
+
+
+precmd() {
+    #PROMPT="%B%F{15}%n%F{10}@%m%F{15}:%F{12}$(dir_abbrev $PWD)%F{15}$%b%f "
+    PROMPT="%F{10}%n%F{15}@%m %F{10}$(dir_abbrev $PWD)%F{15}>%f "
+}
+
+
+#PROMPT=$'%B%F{15}%n%F{10}@%m%F{15}:%F{12}%~%F{15}$%b%f '
+
+## problem: it's not updating after changing directory
+#abbrev="$(dir_abbrev $PWD)"
+#echo $abbrev
+#PROMPT='%B%F{15}%n%F{10}@%m%F{15}:%F{12}$(abbrev_path PWD)%F{15}$%b%f '
+
+#PROMPT="%B%F{green}%n%F{blue}@%F{yellow}$(abbrev_path)%F{magenta}:%F{cyan}%(!.#)$%b%f "
+
+# Add elapsed time if the last command took longer than 1 second
+#RPROMPT="%(?.%F{green}✔%f.%F{red}✘%f) %(2L.%F{red}${elapsed_time}s%f.)"
+
+
+
+
+
+ff
+
+
