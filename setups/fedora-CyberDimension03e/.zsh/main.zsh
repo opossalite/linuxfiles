@@ -1,8 +1,6 @@
 # main place to source everything in this directory
-# git clone _ ~/.zsh/_
-# [[ -f ~/.zshrc-personal ]] && source ~/.zshrc-personal
 
-# place this in .zshrc
+# place this in .zshrc:
 # source ~/.zsh/main.zsh
 
 
@@ -13,13 +11,14 @@ source ~/.zsh/variables.zsh
 source ~/.zsh/aliases.zsh
 
 # zsh-autosuggestions           https://github.com/zsh-users/zsh-autosuggestions
-source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
+source ~/.zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
 
 # zsh-syntax-highlighting       https://github.com/zsh-users/zsh-syntax-highlighting
-source ~/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+source ~/.zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
 # zsh-history-substring-search  https://github.com/zsh-users/zsh-history-substring-search
-source ~/.zsh/zsh-history-substring-search/zsh-history-substring-search.zsh
+source ~/.zsh/plugins/zsh-history-substring-search/zsh-history-substring-search.zsh
+
 bindkey '^[[A' history-substring-search-up
 bindkey '^[[B' history-substring-search-down
 

@@ -46,12 +46,12 @@ pyv() {
         echo "Keywords: "$keywords_py
     elif [[ " ${keywords_py[@]} " =~ " $1 " ]]; then
         mkdir ~/.pyv
-        python3 ~/.zsh/python/pyv.py $*
+        python3 ~/.zsh/scripts/pyv.py $*
     elif [[ " ${keywords_da[@]} " =~ " $1 " ]]; then
         deactivate
     else
         source $HOME"/.pyv/"$1"/bin/activate"
     fi
 }
-alias dir_abbrev="python3 ~/.zsh/python/dir_abbrev.py"
+alias dir_abbrev="python3 ~/.zsh/scripts/dir_abbrev.py"
 
