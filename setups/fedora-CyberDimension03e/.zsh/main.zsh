@@ -33,6 +33,16 @@ precmd() {
     PROMPT="$(get-venv)%F{12}%n%F{15}@%m %F{12}$(dir_abbrev $PWD)%F{15}>%f "
 }
 
+# bindings
+bindkey "^[[H" beginning-of-line
+bindkey "^[[F" end-of-line
+
+# path
+export PATH="$HOME/.local/bin:$PATH"
+export PATH="$HOME/go/bin:$PATH"
+
+export PATH="$HOME/gits/llama.cpp/build/bin:$PATH"
+
 # run
-fastfetch
+fastfetch --logo-color-2 000000
 

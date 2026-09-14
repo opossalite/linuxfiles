@@ -15,8 +15,8 @@
 // This line starts waybar, a commonly used bar for Wayland compositors.
 spawn-at-startup "waybar"
 spawn-at-startup "/usr/libexec/lxqt-policykit-agent"
-//spawn-at-startup "swhks"
-//spawn-at-startup "swhkd"
+spawn-sh-at-startup "flatpak run com.nextcloud.desktopclient.nextcloud --background"
+spawn-sh-at-startup "flatpak run com.github.wwmm.easyeffects --service-mode --hide-window"
 
 // To run a shell command (with variables, pipes, etc.), use spawn-sh-at-startup:
 // spawn-sh-at-startup "qs -c ~/source/qs/MyAwesomeShell"
@@ -96,7 +96,7 @@ input {
 // Find more information on the wiki:
 // https://yalter.github.io/niri/Configuration:-Outputs
 // Remember to uncomment the node by removing "/-"!
-/-output "eDP-1" {
+output "DP-3" {
     // Uncomment this line to disable this output.
     // off
 
@@ -107,10 +107,13 @@ input {
     // If the mode is omitted altogether or is invalid, niri will pick one automatically.
     // Run `niri msg outputs` while inside a niri instance to list all outputs and their modes.
     //mode "1920x1080@120.030"
-    mode "1920x1080@165"
+    mode "2560x1440@180.001"
+
+    //variable-refresh-rate on-demand=true
 
     // You can use integer or fractional scale, for example use 1.5 for 150% scale.
-    scale 2
+    //scale 2
+    scale 1.25
 
     // Transform allows to rotate the output counter-clockwise, valid values are:
     // normal, 90, 180, 270, flipped, flipped-90, flipped-180 and flipped-270.
@@ -125,7 +128,7 @@ input {
     // so to put another output directly adjacent to it on the right, set its x to 1920.
     // If the position is unset or results in an overlap, the output is instead placed
     // automatically.
-    position x=1280 y=0
+    //position x=1280 y=0
 }
 
 // Settings that influence how windows are positioned and sized.
@@ -198,7 +201,8 @@ layout {
         // - CSS-like notation: "rgb(255, 127, 0)", rgba(), hsl() and a few others.
 
         // Color of the ring on the active monitor.
-        active-color "#7fc8ff"
+        //active-color "#7fc8ff"
+        active-color "#d79921"
 
         // Color of the ring on inactive monitors.
         //
@@ -363,8 +367,8 @@ window-rule {
     match app-id=r#"firefox$"# title="^Picture-in-Picture$"
     match app-id=r#"org.mozilla.firefox$"# title="^Picture-in-Picture$"
     match app-id=r#"lxqt-policykit-agent"# title="^Authentication Required$"
-    //match app-id=r#"krita"# title="Krita"
     match app-id=r#"steam"#
+    match app-id=r#"qalculate-gtk"#
     open-floating true
 }
 
@@ -399,7 +403,8 @@ window-rule {
 binds {
 
     // launch
-    Mod+Return hotkey-overlay-title="Terminal: alacritty" { spawn "alacritty"; } //should be overwritten by swhkd anyway
+    //Mod+Return hotkey-overlay-title="Terminal: ghostty" { spawn "ghostty"; }
+    Mod+Return hotkey-overlay-title="Terminal: alacritty" { spawn "alacritty"; }
     Mod+Space hotkey-overlay-title="Application Launcher: fuzzel" { spawn "fuzzel"; }
 
     Mod+A { spawn-sh "flatpak run org.mozilla.firefox"; }
@@ -477,7 +482,8 @@ binds {
     Mod+Shift+9 { move-column-to-workspace 9; }
 
     // close
-    Mod+Shift+Z repeat=false { close-window; }
+    //Mod+Shift+Z repeat=false { close-window; }
+    Mod+W repeat=false { close-window; }
 
     // exit
     Mod+Q { spawn-sh "~/.config/fuzzel/power.sh"; }
@@ -509,8 +515,8 @@ binds {
     Mod+Shift+M { switch-focus-between-floating-and-tiling; }
 
     // lock / turn off monitors
-    Mod+W hotkey-overlay-title="Lock the Screen: swaylock" { spawn "swaylock"; }
-    Mod+Shift+W { power-off-monitors; }
+    //Mod+W hotkey-overlay-title="Lock the Screen: swaylock" { spawn "swaylock"; }
+    //Mod+Shift+W { power-off-monitors; }
 
     // screenshots
     Print { screenshot; }
