@@ -1,0 +1,9 @@
+Host github.com-p
+    HostName github.com
+    User opossalite
+    IdentityFile ~/.ssh/id_ed25519
+
+Host github.com-w
+    HostName github.com
+    User nbalcarc
+    IdentityFile ~/.ssh/id_ed25519
