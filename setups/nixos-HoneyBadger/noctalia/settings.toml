@@ -1,0 +1,223 @@
+config_version = 14
+
+[bar.default]
+center = [ "ribbon" ]
+end = [ "group:g3", "group:g1", "group:g2", "clock", "notifications", "session" ]
+start = [ "launcher", "widget", "workspaces", "tray" ]
+
+    [[bar.default.capsule_group]]
+    accordion = false
+    accordion_direction = "end"
+    enabled = true
+    fill = "surface_variant"
+    id = "g1"
+    members = [ "bluetooth", "network" ]
+    opacity = 1.0
+    padding = 6.0
+
+    [[bar.default.capsule_group]]
+    accordion = false
+    accordion_direction = "end"
+    enabled = true
+    fill = "surface_variant"
+    id = "g2"
+    members = [ "brightness", "battery" ]
+    opacity = 1.0
+    padding = 6.0
+
+    [[bar.default.capsule_group]]
+    accordion = false
+    accordion_direction = "end"
+    enabled = true
+    fill = "surface_variant"
+    id = "g3"
+    members = [ "media", "input_volume", "volume" ]
+    opacity = 1.0
+    padding = 6.0
+
+[idle]
+behavior_order = [ "lock", "screen-off", "lock-and-suspend", "idle-behavior" ]
+pre_action_fade_seconds = 30
+
+    [idle.behavior.idle-behavior]
+    action = "suspend"
+    enabled = true
+    lock_before_suspend = false
+    timeout = 900.0
+
+    [idle.behavior.lock]
+    action = "lock"
+    enabled = false
+    timeout = 600.0
+
+    [idle.behavior.lock-and-suspend]
+    action = "lock_and_suspend"
+    enabled = false
+    timeout = 900.0
+
+    [idle.behavior.screen-off]
+    action = "screen_off"
+    enabled = false
+    timeout = 660.0
+
+[keybinds]
+tab_next = [ "Tab", "Ctrl+n" ]
+tab_previous = [ "Shift+ISO_Left_Tab", "Ctrl+p" ]
+validate = [ "Return", "KP_Enter", "space", "Ctrl+y" ]
+
+[location]
+auto_locate = true
+
+[lockscreen]
+enabled = false
+
+[lockscreen_widgets]
+enabled = false
+schema_version = 2
+widget_order = [ "lockscreen-login-box@eDP-1" ]
+
+    [lockscreen_widgets.grid]
+    cell_size = 16
+    major_interval = 4
+    visible = true
+
+    [lockscreen_widgets.widget."lockscreen-login-box@eDP-1"]
+    box_height = 196.0
+    box_width = 810.0
+    cx = 960.0
+    cy = 898.0
+    output = "eDP-1"
+    placement_height = 1080.0
+    placement_width = 1920.0
+    rotation = 0.0
+    type = "login_box"
+
+        [lockscreen_widgets.widget."lockscreen-login-box@eDP-1".settings]
+        background_color = "surface_variant"
+        background_opacity = 0.88
+        background_radius = 12.0
+        center_password_text = false
+        input_opacity = 1.0
+        input_radius = 6.0
+        layout = "regular"
+        show_caps_lock = true
+        show_keyboard_layout = true
+        show_login_button = true
+        show_media = true
+        show_session_buttons = true
+        show_unlock_hint = true
+        show_weather = true
+
+[nightlight]
+enabled = true
+force = true
+temperature_night = 3500
+
+[notification]
+filter_order = []
+
+[osd.kinds]
+keyboard_backlight = false
+media = false
+nightlight = false
+
+[plugins]
+enabled = [ "oldirtty/color_picker", "luochen1990/niri-ribbon" ]
+
+[shell]
+niri_overview_type_to_launch_enabled = true
+polkit_agent = true
+telemetry_enabled = true
+
+    [shell.panel]
+    open_near_click_control_center = true
+
+    [shell.screenshot]
+    pipe_command = "satty --initial-tool brush -f -"
+    pipe_to_command = true
+    save_to_file = false
+
+    [[shell.session.actions]]
+    action = "lock"
+    countdown_seconds = 0.0
+    enabled = false
+    shortcut = "1"
+    variant = "default"
+
+    [[shell.session.actions]]
+    action = "lock_and_suspend"
+    countdown_seconds = 0.0
+    enabled = false
+    shortcut = "3"
+    variant = "default"
+
+    [[shell.session.actions]]
+    action = "suspend"
+    countdown_seconds = 0.0
+    enabled = true
+    shortcut = "Return"
+    variant = "secondary"
+
+    [[shell.session.actions]]
+    action = "logout"
+    countdown_seconds = 0.0
+    enabled = true
+    shortcut = "1"
+    variant = "default"
+
+    [[shell.session.actions]]
+    action = "reboot"
+    countdown_seconds = 0.0
+    enabled = true
+    shortcut = "2"
+    variant = "default"
+
+    [[shell.session.actions]]
+    action = "shutdown"
+    countdown_seconds = 0.0
+    enabled = true
+    shortcut = "3"
+    variant = "destructive"
+
+[theme]
+builtin = "Gruvbox"
+community_palette = "Oxocarbon"
+mode = "dark"
+source = "builtin"
+wallpaper_scheme = "m3-content"
+
+    [theme.templates]
+    builtin_ids = [ "alacritty", "gtk3", "gtk4", "qt" ]
+
+[wallpaper]
+directory = "/home/mossifer/gits/linuxfiles/images/wallpapers"
+
+    [wallpaper.default]
+    path = "/home/mossifer/gits/linuxfiles/images/wallpapers/barred_owl_5-27-2025_4k_background.jpg"
+
+    [wallpaper.last]
+    path = "/home/mossifer/gits/linuxfiles/images/wallpapers/barred_owl_5-27-2025_4k_background.jpg"
+
+    [wallpaper.monitors.eDP-1]
+    path = "/home/mossifer/gits/linuxfiles/images/wallpapers/barred_owl_5-27-2025_4k_background.jpg"
+
+[weather]
+unit = "imperial"
+
+[widget.input_volume]
+show_label = false
+
+[widget.media]
+show_progress = true
+
+    [widget.media.actions]
+    right = "none"
+    scroll_down = "none"
+    scroll_up = "none"
+
+[widget.ribbon]
+type = "luochen1990/niri-ribbon:ribbon"
+
+[widget.widget]
+enabled = false
+type = "oldirtty/color_picker:widget"

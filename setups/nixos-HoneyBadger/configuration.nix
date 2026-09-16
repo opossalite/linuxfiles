@@ -153,19 +153,16 @@
   # You can use https://search.nixos.org/ to find more packages (and options).
   environment.systemPackages = with pkgs; [
     alacritty
+    bat
     brightnessctl
     fastfetch
-    fuzzel
-    gammastep
     git
-    lxqt.lxqt-policykit
-    mako
     nemo
-    networkmanagerapplet
     neovim
+    noctalia
     python3
-    swaybg
-    waybar
+    satty
+    trash-cli
     wget
     wl-clipboard
     xwayland-satellite
