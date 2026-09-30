@@ -1,0 +1,18 @@
+# Copy yanked files to the system clipboard
+[[mgr.prepend_keymap]]
+on  = "y"
+run = [ "yank", 'plugin sysclip -- --action=copy --disable-paste-notifications' ]
+desc = "Yank selected files (copy)"
+
+# Keep behaviour consistent with cut
+[[mgr.prepend_keymap]]
+on  = "x"
+run = [ "yank --cut", 'plugin sysclip -- --action=copy --disable-paste-notifications' ]
+desc = "Yank selected files (cut)"
+
+# Paste files from the system clipboard into the current directory
+[[mgr.prepend_keymap]]
+#on  = "<C-p>"
+on  = "p"
+run = [ 'plugin sysclip -- --action=paste --disable-paste-notifications' ]
+desc = "Paste yanked system clipboard files"

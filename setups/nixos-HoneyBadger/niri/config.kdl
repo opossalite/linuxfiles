@@ -17,8 +17,8 @@ environment {
 // See the binds section below for more spawn examples.
 
 spawn-at-startup "noctalia"
-spawn-sh-at-startup "flatpak run com.nextcloud.desktopclient.nextcloud --background"
-spawn-sh-at-startup "flatpak run com.github.wwmm.easyeffects --service-mode --hide-window"
+spawn-at-startup "flatpak" "run" "com.nextcloud.desktopclient.nextcloud" "--background"
+spawn-at-startup "flatpak" "run" "com.github.wwmm.easyeffects" "--service-mode" "--hide-window"
 
 // To run a shell command (with variables, pipes, etc.), use spawn-sh-at-startup:
 // spawn-sh-at-startup "qs -c ~/source/qs/MyAwesomeShell"
@@ -409,7 +409,8 @@ binds {
 
     // launch
     //Mod+Return hotkey-overlay-title="Terminal: ghostty" { spawn "ghostty"; }
-    Mod+Return hotkey-overlay-title="Terminal: alacritty" { spawn "alacritty"; }
+    //Mod+Return hotkey-overlay-title="Terminal: alacritty" { spawn "alacritty"; }
+    Mod+Return hotkey-overlay-title="Terminal: kitty" { spawn "kitty"; }
     //Mod+Space hotkey-overlay-title="Application Launcher: fuzzel" { spawn "fuzzel"; }
     Mod+Space hotkey-overlay-title="Noctalia Launcher" { spawn "noctalia" "msg" "panel-open" "launcher"; }
     // for later

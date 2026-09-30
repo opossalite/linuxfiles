@@ -1,7 +1,7 @@
 config_version = 14
 
 [bar.default]
-center = [ "ribbon" ]
+center = [ "Niri-Workspace-Up", "Niri-Workspace-Down", "ribbon", "Niri-New-Workspace" ]
 end = [ "group:g3", "group:g1", "group:g2", "clock", "notifications", "session" ]
 start = [ "launcher", "widget", "workspaces", "tray" ]
 
@@ -34,6 +34,17 @@ start = [ "launcher", "widget", "workspaces", "tray" ]
     members = [ "media", "input_volume", "volume" ]
     opacity = 1.0
     padding = 6.0
+
+[desktop_widgets]
+schema_version = 2
+widget_order = []
+
+    [desktop_widgets.grid]
+    cell_size = 16
+    major_interval = 4
+    visible = true
+
+    [desktop_widgets.widget]
 
 [idle]
 behavior_order = [ "lock", "screen-off", "lock-and-suspend", "idle-behavior" ]
@@ -109,7 +120,7 @@ widget_order = [ "lockscreen-login-box@eDP-1" ]
         show_weather = true
 
 [nightlight]
-enabled = true
+enabled = false
 force = true
 temperature_night = 3500
 
@@ -187,7 +198,7 @@ source = "builtin"
 wallpaper_scheme = "m3-content"
 
     [theme.templates]
-    builtin_ids = [ "alacritty", "gtk3", "gtk4", "qt" ]
+    builtin_ids = [ "alacritty", "gtk3", "gtk4", "kitty", "qt" ]
 
 [wallpaper]
 directory = "/home/mossifer/gits/linuxfiles/images/wallpapers"
@@ -203,6 +214,27 @@ directory = "/home/mossifer/gits/linuxfiles/images/wallpapers"
 
 [weather]
 unit = "imperial"
+
+[widget.Niri-New-Workspace]
+glyph = "plus"
+type = "custom_button"
+
+    [widget.Niri-New-Workspace.actions]
+    left = "exec ~/.config/niri/scripts/insert-workspace.py"
+
+[widget.Niri-Workspace-Down]
+glyph = "chevron-down"
+type = "custom_button"
+
+    [widget.Niri-Workspace-Down.actions]
+    left = "exec niri msg action move-workspace-down"
+
+[widget.Niri-Workspace-Up]
+glyph = "chevron-up"
+type = "custom_button"
+
+    [widget.Niri-Workspace-Up.actions]
+    left = "exec niri msg action move-workspace-up"
 
 [widget.input_volume]
 show_label = false
