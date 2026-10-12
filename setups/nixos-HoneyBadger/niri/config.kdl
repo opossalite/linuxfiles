@@ -7,6 +7,9 @@
 
 
 environment {
+    QT_QPA_PLATFORMTHEME "kde"
+    QT_QPA_PLATFORMTHEME_QT6 "kde"
+    XDG_MENU_PREFIX "plasma-"
 }
 
 
@@ -421,7 +424,7 @@ binds {
     //Mod+D { spawn-sh "flatpak run com.spotify.Client"; }
     //Mod+F { spawn-sh "flatpak run com.discordapp.Discord"; }
     //Mod+Z { spawn-sh "nemo"; }
-    Mod+A { spawn-sh "nemo"; }
+    Mod+A { spawn-sh "dolphin"; }
 
     // audio
     XF86AudioRaiseVolume allow-when-locked=true { spawn "noctalia" "msg" "volume-up" "5"; }

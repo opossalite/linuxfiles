@@ -1,0 +1,22 @@
+MenuBar=Disabled
+
+[ContentDisplay]
+DirectorySizeMode=ContentSize
+
+[General]
+ShowStatusBar=FullWidth
+Version=202
+ViewPropsTimestamp=2026,10,8,19,43,15.925
+
+[KFileDialog Settings]
+Places Icons Auto-resize=false
+Places Icons Static Size=22
+
+[MainWindow]
+MenuBar=Disabled
+
+[PreviewSettings]
+Plugins=appimagethumbnail,audiothumbnail,glycin-heif,papers,comicbookthumbnail,cursorthumbnail,djvuthumbnail,ebookthumbnail,exrthumbnail,imagethumbnail,glycin-image-rs,jpegthumbnail,glycin-jxl,kraorathumbnail,windowsexethumbnail,windowsimagethumbnail,gst-video-thumbnailer,opendocumentthumbnail,gst-audio-thumbnailer,glycin-svg,svgthumbnail,gnome-font-viewer
+
+[UiSettings]
+ColorScheme=BreezeDark

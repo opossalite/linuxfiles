@@ -2,7 +2,7 @@
 # your system. Help is available in the configuration.nix(5) man page, on
 # https://search.nixos.org/options and in the NixOS manual (`nixos-help`).
 
-{ config, pkgs, ... }:
+{ config, pkgs, pkgs-unstable, ... }:
 
 {
   imports =
@@ -11,28 +11,6 @@
     ];
 
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
-
-  # configure flatpak
-  services.flatpak = {
-    enable = true;
-    packages = [
-      "org.videolan.VLC"
-      "com.spotify.Client"
-      "com.github.wwmm.easyeffects"
-    ];
-  };
-  # example of freezing one app to a specific commit:
-  # packages = [
-  #   "org.mozilla.firefox"
-  #   "com.discordapp.Discord"
-  #   "com.spotify.Client"
-  # 
-  #   {
-  #     appId = "com.obsproject.Studio";
-  #     origin = "flathub";
-  #     commit = "PUT-THE-COMMIT-HASH-HERE";
-  #   }
-  # ];
 
   # Use the systemd-boot EFI boot loader.
   boot.loader.systemd-boot.enable = true;
@@ -65,6 +43,25 @@
     LC_TELEPHONE = "en_US.UTF-8";
     LC_TIME = "en_US.UTF-8";
   };
+
+  # Some programs need SUID wrappers, can be configured further or are
+  # started in user sessions.
+  # programs.mtr.enable = true;
+  # programs.gnupg.agent = {
+  #   enable = true;
+  #   enableSSHSupport = true;
+  # };
+
+  # List services that you want to enable:
+
+  # Enable the OpenSSH daemon.
+  services.openssh.enable = true;
+
+  # Open ports in the firewall.
+  # networking.firewall.allowedTCPPorts = [ ... ];
+  # networking.firewall.allowedUDPPorts = [ ... ];
+  # Or disable the firewall altogether.
+  # networking.firewall.enable = false;
 
   # Enable the GNOME Desktop Environment.
   #services.displayManager.gdm.enable = true;
@@ -123,6 +120,13 @@
 
 
 
+  # tailscale
+  services.tailscale.enable = true;
+
+
+  # Should fix lsps:
+  programs.nix-ld.enable = true;
+
   # Install firefox.
   programs.firefox.enable = true;
 
@@ -148,44 +152,66 @@
     config.common.default = "*";
   };
 
+  # configure flatpak
+  # example of freezing one app to a specific commit:
+  # packages = [
+  #   "com.discordapp.Discord"
+  #   {
+  #     appId = "com.obsproject.Studio";
+  #     origin = "flathub";
+  #     commit = "PUT-THE-COMMIT-HASH-HERE";
+  #   }
+  #   "com.spotify.Client"
+  # ];
+  services.flatpak = {
+    enable = true;
+    packages = [
+      "com.discordapp.Discord"
+      "com.github.wwmm.easyeffects"
+      "com.nextcloud.desktopclient.nextcloud"
+      "com.spotify.Client"
+      "md.obsidian.Obsidian"
+      "org.audacityteam.Audacity"
+      "org.gimp.GIMP"
+      "org.libreoffice.LibreOffice"
+      "org.videolan.VLC"
+    ];
+  };
+
 
   # List packages installed in system profile.
   # You can use https://search.nixos.org/ to find more packages (and options).
   environment.systemPackages = with pkgs; [
-    alacritty
     bat
-    brightnessctl
+    duf
     fastfetch
+    gcc
     git
-    nemo
+    go
+    gparted
+    htop
+    kdePackages.ark
+    kdePackages.dolphin
+    kdePackages.plasma-integration   # provides the "kde" platform theme
+    kitty
     neovim
     noctalia
+    nodejs
     python3
     satty
     trash-cli
     wget
     wl-clipboard
     xwayland-satellite
+    pkgs-unstable.yazi #waiting for 26.9.1 for drag and drop
+    unzip
+
+    cowsay
+    cmatrix
+    lolcat
+    nms
+    pipes-rs
   ];
-
-  # Some programs need SUID wrappers, can be configured further or are
-  # started in user sessions.
-  # programs.mtr.enable = true;
-  # programs.gnupg.agent = {
-  #   enable = true;
-  #   enableSSHSupport = true;
-  # };
-
-  # List services that you want to enable:
-
-  # Enable the OpenSSH daemon.
-  services.openssh.enable = true;
-
-  # Open ports in the firewall.
-  # networking.firewall.allowedTCPPorts = [ ... ];
-  # networking.firewall.allowedUDPPorts = [ ... ];
-  # Or disable the firewall altogether.
-  # networking.firewall.enable = false;
 
   # Copy the NixOS configuration file and link it from the resulting system
   # (/run/current-system/configuration.nix). This is useful in case you
