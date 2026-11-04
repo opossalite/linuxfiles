@@ -4,24 +4,17 @@
 // https://yalter.github.io/niri/Configuration:-Introduction
 
 
-
-
-
 // Add lines like this to spawn processes at startup.
 // Note that running niri as a session supports xdg-desktop-autostart,
 // which may be more convenient to use.
 // See the binds section below for more spawn examples.
 
-// This line starts waybar, a commonly used bar for Wayland compositors.
-spawn-at-startup "waybar"
-spawn-at-startup "/usr/libexec/lxqt-policykit-agent"
-spawn-sh-at-startup "flatpak run com.nextcloud.desktopclient.nextcloud --background"
-spawn-sh-at-startup "flatpak run com.github.wwmm.easyeffects --service-mode --hide-window"
+spawn-at-startup "noctalia"
+spawn-at-startup "flatpak" "run" "com.nextcloud.desktopclient.nextcloud" "--background"
+spawn-at-startup "flatpak" "run" "com.github.wwmm.easyeffects" "--service-mode" "--hide-window"
 
 // To run a shell command (with variables, pipes, etc.), use spawn-sh-at-startup:
 // spawn-sh-at-startup "qs -c ~/source/qs/MyAwesomeShell"
-
-
 
 
 // Input device configuration.
@@ -29,6 +22,9 @@ spawn-sh-at-startup "flatpak run com.github.wwmm.easyeffects --service-mode --hi
 // https://yalter.github.io/niri/Configuration:-Input
 input {
     keyboard {
+	repeat-delay 330
+        repeat-rate 25
+
         xkb {
             // You can set rules, model, layout, variant and options.
             // For more information, see xkeyboard-config(7).
@@ -96,7 +92,7 @@ input {
 // Find more information on the wiki:
 // https://yalter.github.io/niri/Configuration:-Outputs
 // Remember to uncomment the node by removing "/-"!
-output "DP-3" {
+output "DP-2" {
     // Uncomment this line to disable this output.
     // off
 
@@ -112,8 +108,7 @@ output "DP-3" {
     //variable-refresh-rate on-demand=true
 
     // You can use integer or fractional scale, for example use 1.5 for 150% scale.
-    //scale 2
-    scale 1.25
+    //scale 1.25
 
     // Transform allows to rotate the output counter-clockwise, valid values are:
     // normal, 90, 180, 270, flipped, flipped-90, flipped-180 and flipped-270.
@@ -367,8 +362,10 @@ window-rule {
     match app-id=r#"firefox$"# title="^Picture-in-Picture$"
     match app-id=r#"org.mozilla.firefox$"# title="^Picture-in-Picture$"
     match app-id=r#"lxqt-policykit-agent"# title="^Authentication Required$"
+    match title="^Authentication Required$"
     match app-id=r#"steam"#
     match app-id=r#"qalculate-gtk"#
+    //match title="satty"
     open-floating true
 }
 
@@ -404,34 +401,41 @@ binds {
 
     // launch
     //Mod+Return hotkey-overlay-title="Terminal: ghostty" { spawn "ghostty"; }
-    Mod+Return hotkey-overlay-title="Terminal: alacritty" { spawn "alacritty"; }
-    Mod+Space hotkey-overlay-title="Application Launcher: fuzzel" { spawn "fuzzel"; }
+    //Mod+Return hotkey-overlay-title="Terminal: alacritty" { spawn "alacritty"; }
+    Mod+Return hotkey-overlay-title="Terminal: kitty" { spawn "kitty"; }
+    //Mod+Space hotkey-overlay-title="Application Launcher: fuzzel" { spawn "fuzzel"; }
+    Mod+Space hotkey-overlay-title="Noctalia Launcher" { spawn "noctalia" "msg" "panel-open" "launcher"; }
+    // for later
+    //Mod+Space hotkey-overlay-title="Noctalia Launcher" { spawn-sh "noctalia msg window-switcher"; }
 
-    Mod+A { spawn-sh "flatpak run org.mozilla.firefox"; }
-    Mod+S { spawn-sh "flatpak run com.brave.Browser"; }
-    Mod+D { spawn-sh "flatpak run com.spotify.Client"; }
-    Mod+F { spawn-sh "flatpak run com.discordapp.Discord"; }
-    Mod+Z { spawn-sh "nemo"; }
+    //Mod+A { spawn-sh "flatpak run org.mozilla.firefox"; }
+    //Mod+S { spawn-sh "flatpak run com.brave.Browser"; }
+    //Mod+D { spawn-sh "flatpak run com.spotify.Client"; }
+    //Mod+F { spawn-sh "flatpak run com.discordapp.Discord"; }
+    //Mod+Z { spawn-sh "nemo"; }
+    Mod+A { spawn-sh "dolphin"; }
 
     // audio
-    XF86AudioRaiseVolume allow-when-locked=true { spawn-sh "wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.1+"; }
-    XF86AudioLowerVolume allow-when-locked=true { spawn-sh "wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.1-"; }
-    XF86AudioMute        allow-when-locked=true { spawn-sh "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"; }
-    XF86AudioMicMute     allow-when-locked=true { spawn-sh "wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle"; }
+    XF86AudioRaiseVolume allow-when-locked=true { spawn "noctalia" "msg" "volume-up" "5"; }
+    XF86AudioLowerVolume allow-when-locked=true { spawn "noctalia" "msg" "volume-down" "5"; }
+    XF86AudioMute        allow-when-locked=true { spawn "noctalia" "msg" "volume-mute"; }
+    XF86AudioMicMute     allow-when-locked=true { spawn "noctalia" "msg" "mic-mute"; }
 
     // display
-    XF86MonBrightnessUp allow-when-locked=true { spawn "brightnessctl" "--class=backlight" "set" "+10%"; }
-    XF86MonBrightnessDown allow-when-locked=true { spawn "brightnessctl" "--class=backlight" "set" "10%-"; }
-    Mod+Comma { spawn-sh "pgrep gammastep >/dev/null || gammastep -P -O 3500"; }
-    Mod+Period { spawn-sh "pkill gammastep"; }
+    XF86MonBrightnessUp allow-when-locked=true { spawn "noctalia" "msg" "brightness-up" "5%"; }
+    Shift+XF86MonBrightnessUp allow-when-locked=true { spawn "noctalia" "msg" "brightness-up" "1%"; }
+    XF86MonBrightnessDown allow-when-locked=true { spawn "noctalia" "msg" "brightness-down" "5%"; }
+    Shift+XF86MonBrightnessDown allow-when-locked=true { spawn "noctalia" "msg" "brightness-down" "1%"; }
+    Mod+Comma { spawn "noctalia" "msg" "nightlight-enable"; }
+    Mod+Period { spawn "noctalia" "msg" "nightlight-disable"; }
 
     // navigate
     Mod+H     { focus-column-left; }
     Mod+J     { focus-window-or-workspace-down; }
     Mod+K     { focus-window-or-workspace-up; }
     Mod+L     { focus-column-right; }
-    Mod+Home { focus-column-first; }
-    Mod+End  { focus-column-last; }
+    //Mod+Home { focus-column-first; }
+    //Mod+End  { focus-column-last; }
 
     Mod+WheelScrollDown      cooldown-ms=150 { focus-workspace-down; }
     Mod+WheelScrollUp        cooldown-ms=150 { focus-workspace-up; }
@@ -445,8 +449,8 @@ binds {
     Mod+Shift+J     { move-window-down-or-to-workspace-down; }
     Mod+Shift+K     { move-window-up-or-to-workspace-up; }
     Mod+Shift+L     { move-column-right; }
-    Mod+Shift+Home { move-column-to-first; }
-    Mod+Shift+End  { move-column-to-last; }
+    //Mod+Shift+Home { move-column-to-first; }
+    //Mod+Shift+End  { move-column-to-last; }
 
     Mod+Ctrl+WheelScrollDown cooldown-ms=150 { move-column-to-workspace-down; }
     Mod+Ctrl+WheelScrollUp   cooldown-ms=150 { move-column-to-workspace-up; }
@@ -486,23 +490,24 @@ binds {
     Mod+W repeat=false { close-window; }
 
     // exit
-    Mod+Q { spawn-sh "~/.config/fuzzel/power.sh"; }
+    Mod+Q { spawn "noctalia" "msg" "panel-open" "session"; }
     Mod+Shift+Q { quit; }
     Ctrl+Alt+Delete { quit; }
 
     // width/height adjustment, tabbed
     Mod+N { switch-preset-column-width; }
     Mod+Shift+N { switch-preset-window-height; }
-    Mod+Ctrl+N { toggle-column-tabbed-display; }
+    //Mod+Ctrl+N { toggle-column-tabbed-display; }
 
 
     // maximize/fullscreen
     Mod+F11 { fullscreen-window; }
-    Mod+Shift+F11 { maximize-column; }
-    Mod+Ctrl+F11 { expand-column-to-available-width; }
+    //Mod+Shift+F11 { maximize-column; }
+    Mod+Shift+F11 { expand-column-to-available-width; }
 
     // overview
     Mod+O repeat=false { toggle-overview; }
+    //Mod+I repeat=false { spawn "noctalia" "msg" "window-switcher"; }
 
     // overlay
     Mod+Backslash { show-hotkey-overlay; }
@@ -519,9 +524,8 @@ binds {
     //Mod+Shift+W { power-off-monitors; }
 
     // screenshots
-    Print { screenshot; }
-    Ctrl+Print { screenshot-screen; }
-    Alt+Print { screenshot-window; }
+    Print { spawn "noctalia" "msg" "screenshot-region"; }
+    Shift+Print { spawn "noctalia" "msg" "screenshot-fullscreen"; }
 
     // Actions to switch layouts.
     // Note: if you uncomment these, make sure you do NOT have
@@ -531,3 +535,7 @@ binds {
     // Mod+D       { switch-layout "next"; }
     // Mod+Shift+D { switch-layout "prev"; }
 }
+
+
+
+

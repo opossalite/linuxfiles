@@ -7,5 +7,6 @@ italic = { family = "DejaVuSansM Nerd Font Mono", style = "Italic" }
 bold_italic = { family = "DejaVuSansM Nerd Font Mono", style = "Bold Italic" }
 
 [general]
-import = ["./themes/gruvbox_dark.toml"]
+import = ["./themes/gruvbox_dark.toml"    "~/.config/alacritty/themes/noctalia.toml",
+]
 
