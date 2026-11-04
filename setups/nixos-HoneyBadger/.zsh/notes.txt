@@ -1,0 +1,10 @@
+
+if spotify doesn't launch, this worked but cleared all settings and downloads too:
+trash ~/.var/app/com.spotify.Client/cache
+-- probably use a disk usage program to find where all the downloads are and avoid that
+
+
+
+
+
+

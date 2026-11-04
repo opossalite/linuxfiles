@@ -252,6 +252,3 @@ show_progress = true
 [widget.ribbon]
 type = "luochen1990/niri-ribbon:ribbon"
 
-[widget.widget]
-enabled = false
-type = "oldirtty/color_picker:widget"
