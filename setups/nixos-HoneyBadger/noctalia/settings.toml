@@ -72,8 +72,10 @@ pre_action_fade_seconds = 30
     timeout = 660.0
 
 [keybinds]
-tab_next = [ "Tab", "Ctrl+n" ]
-tab_previous = [ "Shift+ISO_Left_Tab", "Ctrl+p" ]
+down = [ "Down", "Ctrl+n" ]
+tab_next = [ "Tab" ]
+tab_previous = [ "Shift+ISO_Left_Tab" ]
+up = [ "Up", "Ctrl+p" ]
 validate = [ "Return", "KP_Enter", "space", "Ctrl+y" ]
 
 [location]

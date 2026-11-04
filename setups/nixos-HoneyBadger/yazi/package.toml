@@ -3,5 +3,10 @@ use = "opossalite/sysclip"
 rev = "d9f3ce6"
 hash = "17d8b0f3d2d97359de2c7ed5f5178b56"
 
+[[plugin.deps]]
+use = "yazi-rs/plugins:mount"
+rev = "6cf1f43"
+hash = "b95f898e6dc60b52edbc415952e14395"
+
 [flavor]
 deps = []

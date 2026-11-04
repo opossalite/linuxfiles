@@ -16,3 +16,36 @@ desc = "Yank selected files (cut)"
 on  = "p"
 run = [ 'plugin sysclip -- --action=paste --disable-paste-notifications' ]
 desc = "Paste yanked system clipboard files"
+
+# Mount plugin
+[[mgr.prepend_keymap]]
+on   = "M"
+run  = "plugin mount"
+desc = "Manage drives"
+
+# Jump to mounted drives
+[[mgr.prepend_keymap]]
+on   = ["g", "m"]
+run  = "cd /run/media/mossifer"
+desc = "Go to mounted drives"
+
+#####
+##### BOOKMARKS
+#####
+
+[[mgr.prepend_keymap]]
+on   = ["b", "p"]
+run  = "cd ~/Programming"
+desc = "Programming"
+
+[[mgr.prepend_keymap]]
+on   = ["b", "l"]
+run  = "cd ~/gits/linuxfiles"
+desc = "linuxfiles"
+
+[[mgr.prepend_keymap]]
+on   = ["b", "n"]
+run  = "cd ~/Nextcloud/"
+desc = "Nextcloud"
+
+
