@@ -3,6 +3,9 @@
 # place this in .zshrc:
 # source ~/.zsh/main.zsh
 
+# install zsh and run this:
+# chsh -s $(which zsh)
+
 
 # variables
 source ~/.zsh/variables.zsh
@@ -43,5 +46,13 @@ export PATH="$HOME/go/bin:$PATH"
 export PATH="$HOME/gits/llama.cpp/build/bin:$PATH"
 
 # run
-fastfetch --logo-color-2 000000
+#echo hi
+#fastfetch --logo-color-2 000000
+#fastfetch --logo-type nones
+#fastfetch --structure os:host:kernel:uptime:packages:shell:display:wm:cursor:terminal:terminalfont:cpu:gpu:memory:swap:disk:localip:battery:locale
+#fastfetch --structure title:separator:os:host:kernel:uptime:packages:shell:display:wm:cursor:cpu:gpu:memory:swap:disk:localip:battery:locale
+#fastfetch --structure
+#echo "You're on NixOS, bitch!" | cowsay
+#echo ""
+python3 ~/.zsh/scripts/cowsay-logo.py
 

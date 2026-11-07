@@ -24,6 +24,10 @@ alias niri-prop="niri msg pick-window"
 # easy nemo terminal switcher, just append the name of the terminal at the end
 alias nemo-set-terminal="gsettings set org.cinnamon.desktop.default-applications.terminal exec"
 
+alias nire="sudo nixos-rebuild --flake /etc/nixos#NixPC"
+alias nire-flake-update="sudo nix flake update --flake /etc/nixos/"
+alias nire-edit="sudo nvim /etc/nixos/configuration.nix"
+
 # use bat instead of cat if available
 ##cat() {
 ##    if command -v bat >/dev/null 2>&1; then
