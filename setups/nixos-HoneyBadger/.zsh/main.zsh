@@ -56,4 +56,3 @@ export PATH="$HOME/gits/llama.cpp/build/bin:$PATH"
 #echo ""
 python3 ~/.zsh/scripts/cowsay-logo.py
 
-
